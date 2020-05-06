@@ -1,0 +1,108 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "parking assist",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "purple",
+                    "slots": [],
+                    "samples": [
+                        "purple permit",
+                        "purple",
+                        "I have purple permit"
+                    ]
+                },
+                {
+                    "name": "orange",
+                    "slots": [],
+                    "samples": [
+                        "orange",
+                        "orange permit"
+                    ]
+                },
+                {
+                    "name": "gold",
+                    "slots": [],
+                    "samples": [
+                        "gold",
+                        "yellow",
+                        "gold permit"
+                    ]
+                },
+                {
+                    "name": "green",
+                    "slots": [],
+                    "samples": [
+                        "green",
+                        "green permit"
+                    ]
+                },
+                {
+                    "name": "grey",
+                    "slots": [],
+                    "samples": [
+                        "metered",
+                        "grey permit",
+                        "pay by space",
+                        "paid",
+                        "grey",
+                        "pay spots"
+                    ]
+                },
+                {
+                    "name": "red",
+                    "slots": [],
+                    "samples": [
+                        "lot",
+                        "street",
+                        "residence",
+                        "red",
+                        "residence parking"
+                    ]
+                },
+                {
+                    "name": "invalid",
+                    "slots": [],
+                    "samples": [
+                        "stuff",
+                        "office",
+                        "other",
+                        "white",
+                        "black",
+                        "pink"
+                    ]
+                },
+                {
+                    "name": "visitor",
+                    "slots": [],
+                    "samples": [
+                        "I am from outside",
+                        "I am not from U T D",
+                        "no permit",
+                        "I do not have a permit",
+                        "visitor",
+                        "I am visiting",
+                        "I'm a visitor."
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
