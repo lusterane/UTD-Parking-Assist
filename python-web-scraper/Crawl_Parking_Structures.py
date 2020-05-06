@@ -54,6 +54,19 @@ class CrawlRoot:
             for permit in ps.permit:
                 print(ps.structure + ", " + permit.color + ", " + str(permit.level) + ", " + str(permit.spots))
 
+    # create json format for mongoDB
+    # returns array of JSONs to send to mongoDB
+    def buildJSONFormat(self):
+        jsonArr = []
+        for ps in self.psList:
+            currentJson = {"structure": ps.structure, "permit_category": []}
+            permit_category_lis = []
+            for permit in ps.permit:
+                permit_category_lis.append({"color": permit.color, "level": permit.level, "spots": permit.spots})
+            currentJson["permit_category"] = permit_category_lis
+            jsonArr.append(currentJson)
+        return jsonArr
+
     # general function for invoking HTML parse
     # placeholder function for lambda invocation
     def find_parking(self):
