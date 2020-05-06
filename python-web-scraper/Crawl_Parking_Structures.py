@@ -7,30 +7,12 @@ import urllib3
 import certifi
 from bs4 import BeautifulSoup
 from Parking_Structure import Parking_Structure
-from Permit import Permit
+from Parking_Structure import Permit
 
 
 class CrawlRoot:
     def __init__(self):
-        # example: {"purple": {"parking structure 1": {"0": {"level": "5", "spots": "2"}, "1": {"level": "3", "spots": "1"}} , "parking structure 3": "10","parking structure 4": "6"}}
-        self.intent_dict = {
-            "purple": {},
-            "orange": {},
-            "gold": {},
-            "green": {},
-            "grey": {},
-            "pay-by-space": {}
-        }
-
-        self.parking_json = {
-        }
         self.psList = []
-        # mapped values as template for dict
-        self.parking_dict = {
-            "ps1": "parking structure 1",
-            "ps3": "parking structure 3",
-            "ps4": "parking structure 4"
-        }
 
     # finds parking options and available Spaces of parking structure
     # returns dictionary of available space and level+color

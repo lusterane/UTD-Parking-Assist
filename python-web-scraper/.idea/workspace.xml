@@ -20,13 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="031c9585-5861-4aa9-8ad1-df37d522b47b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Permit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crawl_Parking_Structures.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawl_Parking_Structures.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Parking_Structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parking_Structure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Parking_Structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/Parking_Structure.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,22 +158,22 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="417" y="163" key="FileChooserDialogImpl/0.0.1280.800@0.0.1280.800" timestamp="1588745017320" />
-    <state width="1176" height="205" key="GridCell.Tab.0.bottom" timestamp="1588793058678">
+    <state width="1176" height="205" key="GridCell.Tab.0.bottom" timestamp="1588793130339">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1588793058678" />
-    <state width="1176" height="205" key="GridCell.Tab.0.center" timestamp="1588793058678">
+    <state width="1176" height="205" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1588793130339" />
+    <state width="1176" height="205" key="GridCell.Tab.0.center" timestamp="1588793130338">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1588793058678" />
-    <state width="1176" height="205" key="GridCell.Tab.0.left" timestamp="1588793058677">
+    <state width="1176" height="205" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1588793130338" />
+    <state width="1176" height="205" key="GridCell.Tab.0.left" timestamp="1588793130338">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1588793058677" />
-    <state width="1176" height="205" key="GridCell.Tab.0.right" timestamp="1588793058678">
+    <state width="1176" height="205" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1588793130338" />
+    <state width="1176" height="205" key="GridCell.Tab.0.right" timestamp="1588793130339">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1588793058678" />
+    <state width="1176" height="205" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1588793130339" />
     <state width="1239" height="239" key="GridCell.Tab.1.bottom" timestamp="1588784159641">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -201,16 +198,5 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="197" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.800@0.0.1280.800" timestamp="1588783801771" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
