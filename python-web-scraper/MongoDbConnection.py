@@ -13,7 +13,8 @@ class MongoDbConnection:
         for ps in json:
             ps_name = ps['structure']
             # change to insert_one to initialize collection
-            result = db.parking_data.replace_one({'structure': ps_name}, ps)
+            # result = db.parkingstructures.insert_one(ps)
+            result = db.parkingstructures.replace_one({'structure': ps_name}, ps)
             print(result)
 
         client.close()
