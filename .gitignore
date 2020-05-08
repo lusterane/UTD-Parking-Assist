@@ -1,4 +1,4 @@
 .DS_STORE
 nodemon.json
 node_modules
-.vscode/
+.vscode
