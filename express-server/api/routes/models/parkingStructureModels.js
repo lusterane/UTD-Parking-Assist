@@ -9,6 +9,7 @@ const Object = mongoose.Schema({
 const parkingStructureSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     structure: String,
+    utc_time_updated: Date,
     permit_category: [Object],
 });
 
