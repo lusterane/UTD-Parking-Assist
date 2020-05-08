@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-const ParkingStructure = require("./models/parkingStructureModels");
+const ParkingStructure = require("../models/parkingStructureModels");
 
 // Handles GET request
 router.get("/", (req, res, next) => {

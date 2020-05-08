@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 // DB model
-const Product = require("./models/productModels");
+const Product = require("../models/productModels");
 
 // handle incoming GET requests to /products
 // gets all products
