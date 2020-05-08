@@ -6,16 +6,16 @@ const mongoose = require("mongoose");
 
 const productsRoute = require("./api/routes/products");
 const ordersRoute = require("./api/routes/orders");
-const parkingStructuresRoute = require("./api/routes/parkingStructures")
+const parkingStructuresRoute = require("./api/routes/parkingStructures");
 
 mongoose.connect(
 	"mongodb+srv://lusterane:" +
 		process.env.MONGO_ATLAS_PW +
 		"@utd-parking-assist-fo6hm.mongodb.net/utd_parking?retryWrites=true&w=majority",
-		{
-			useUnifiedTopology: true,
-			useNewUrlParser: true
-		}
+	{
+		useUnifiedTopology: true,
+		useNewUrlParser: true,
+	}
 );
 
 // middleware

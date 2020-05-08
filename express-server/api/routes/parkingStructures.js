@@ -1,47 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 
-const ParkingStructure = require("../models/parkingStructureModels");
 
-// Handles GET request
-router.get("/", (req, res, next) => {
-	ParkingStructure.find()
-		.exec()
-		.then((docs) => {
-			res.status(200).json(docs);
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).json({
-				error: err,
-			});
-		});
-});
+const PSController = require("../controllers/psController");
+
+// Handles GET request for all parking structures
+router.get("/", PSController.getAllParkingStructures);
 
 // Handles GET request for a parking structure
-router.get("/:parkingStructure", (req, res, next) => {
-	const psId = req.params["parkingStructure"];
-
-	ParkingStructure.findOne({ structure: psId })
-		.exec()
-		.then((docs) => {
-			if(docs){
-			res.status(200).json(docs);
-			}
-			else{
-				res.status(404).json({
-					message: "Parking structure '" + psId + "' not found"
-				})
-			}
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).json({
-				error: err,
-			});
-		});
-});
+router.get("/:parkingStructure", PSController.getAParkingStructure);
 
 // TESTING
 // // Handles POST request
