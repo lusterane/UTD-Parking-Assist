@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 // DB model
-const Product = require("./models/product");
+const Product = require("./models/productModels");
 
 // handle incoming GET requests to /products
 // gets all products
@@ -80,20 +80,24 @@ router.get("/:productId", (req, res, next) => {
 router.patch("/:productId", (req, res, next) => {
 	const id = req.params.productId;
 	const updateOperations = {};
-	for (const ops of req.body) { // incase you don't want to change all values
+	for (const ops of req.body) {
+		// incase you don't want to change all values
 		updateOperations[ops.propName] = ops.value;
 	}
-	Product.update({ _id: id }, { $set: updateOperations }).exec().then(result => {
-        console.log(res);
-        res.status(200).json(result);
-    }).catch(err => {
-        res.status(500).json({
-            error: err
-        });
-    });
+	Product.update({ _id: id }, { $set: updateOperations })
+		.exec()
+		.then((result) => {
+			console.log(res);
+			res.status(200).json(result);
+		})
+		.catch((err) => {
+			res.status(500).json({
+				error: err,
+			});
+		});
 });
 
-// handle incoming DELETE requests to /prolducts
+// handle incoming DELETE requests to /products
 router.delete("/:productId", (req, res, next) => {
 	const id = req.params.productId;
 

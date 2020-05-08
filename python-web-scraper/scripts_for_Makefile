@@ -1,0 +1,1 @@
+cp {Crawl_Parking_Structures.py,MongoDbConnection.py,Parking_Structure.py,Permit.py,main.py,requirements.txt} ./Google_Cloud_Function   

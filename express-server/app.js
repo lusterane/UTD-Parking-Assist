@@ -6,11 +6,12 @@ const mongoose = require("mongoose");
 
 const productsRoute = require("./api/routes/products");
 const ordersRoute = require("./api/routes/orders");
+const parkingStructuresRoute = require("./api/routes/parkingStructures")
 
 mongoose.connect(
 	"mongodb+srv://lusterane:" +
 		process.env.MONGO_ATLAS_PW +
-		"@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority",
+		"@utd-parking-assist-fo6hm.mongodb.net/utd_parking?retryWrites=true&w=majority",
 		{
 			useUnifiedTopology: true,
 			useNewUrlParser: true
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 
 app.use("/products", productsRoute);
 app.use("/orders", ordersRoute);
+app.use("/parkingStructures", parkingStructuresRoute);
 
 // error handling
 
