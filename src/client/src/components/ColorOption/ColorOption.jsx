@@ -6,15 +6,20 @@ class ColorOption extends Component {
 	state = {};
 
 	render() {
-		const classStr = this.props.color + "-option" + " square";
+		const { color, onClick, handleMouseOver, handleMouseLeave } = this.props;
+		const classStr = color + "-option square";
+
 		return (
 			<React.Fragment>
 				<div
+					onClick={() => {
+						onClick(color);
+					}}
 					onMouseOver={() => {
-						this.props.handleMouseOver(this.props.color);
+						handleMouseOver(color);
 					}}
 					onMouseLeave={() => {
-						this.props.handleMouseLeave(this.props.color);
+						handleMouseLeave(color);
 					}}
 					className={classStr}
 				></div>
