@@ -1,0 +1,35 @@
+.green-option {
+	background-color: green;
+}
+.gold-option {
+	background-color: gold;
+}
+.orange-option {
+	background-color: orange;
+}
+.purple-option {
+	background-color: purple;
+}
+.pay-by-space-option {
+	background-color: black;
+}
+
+.green {
+	color: green;
+}
+.gold {
+	color: gold;
+}
+.orange {
+	color: orange;
+}
+.purple {
+	color: purple;
+}
+.pay-by-space {
+	color: black;
+}
+
+.black {
+	color: black;
+}
