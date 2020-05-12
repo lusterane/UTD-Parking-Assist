@@ -1,0 +1,11 @@
+.card {
+	margin: 1rem;
+}
+
+.fa-sort-down {
+	float: right;
+}
+
+.card-text-container {
+	cursor: pointer;
+}

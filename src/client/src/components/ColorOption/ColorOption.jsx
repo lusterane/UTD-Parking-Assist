@@ -19,7 +19,7 @@ class ColorOption extends Component {
 						handleMouseOver(color);
 					}}
 					onMouseLeave={() => {
-						handleMouseLeave(color);
+						handleMouseLeave();
 					}}
 					className={classStr}
 				></div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function ConfirmModal(props) {
 	return (
@@ -10,9 +11,11 @@ function ConfirmModal(props) {
 				</Modal.Header>
 				<Modal.Body>Do you have a {props.color} permit?</Modal.Body>
 				<Modal.Footer>
-					<Button variant="primary" onClick={props.onModalConfirm}>
-						Yes
-					</Button>
+					<Link to="/parkinginfo">
+						<Button variant="primary" onClick={props.onModalConfirm}>
+							Yes
+						</Button>
+					</Link>
 				</Modal.Footer>
 			</Modal>
 		</>

@@ -1,35 +1,51 @@
+:root {
+	--green: #28a745;
+	--gold: #ffc107;
+	--orange: #ff9f1c;
+	--purple: #773dbc;
+	--grey: #f8f9fa;
+}
+
 .green-option {
-	background-color: green;
+	background-color: var(--green);
 }
 .gold-option {
-	background-color: gold;
+	background-color: var(--gold);
 }
 .orange-option {
-	background-color: orange;
+	background-color: var(--orange);
 }
 .purple-option {
-	background-color: purple;
+	background-color: var(--purple);
 }
 .pay-by-space-option {
-	background-color: black;
+	background-color: var(--grey);
 }
 
 .green {
-	color: green;
+	color: var(--green);
 }
 .gold {
-	color: gold;
+	color: var(--gold);
 }
 .orange {
-	color: orange;
+	color: var(--orange);
 }
 .purple {
-	color: purple;
+	color: var(--purple);
 }
 .pay-by-space {
-	color: black;
+	color: var(--grey);
 }
 
 .black {
 	color: black;
+}
+
+.light-text {
+	color: #ffffff !important;
+}
+
+.dark-text {
+	color: #343a40 !important;
 }

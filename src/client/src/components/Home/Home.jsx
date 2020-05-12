@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {} from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import ColorOption from "../ColorOption/ColorOption";
 import ConfirmModal from "./ConfirmModal/ConfirmModal";
@@ -9,7 +10,6 @@ import "../ColorOption/Colors.css";
 
 class Home extends Component {
 	state = {
-		color: "black",
 		showModal: false,
 	};
 
@@ -22,65 +22,61 @@ class Home extends Component {
 
 	handleModalConfirm = () => {
 		this.setState({ showModal: false });
-		console.log("confirm");
 	};
 
-	handleMouseOver = (color) => {
-		this.setState({ color: color });
-	};
-
-	handleMouseLeave = (color) => {
+	handleMouseLeave = () => {
 		if (!this.state.showModal) {
-			this.setState({ color: "black" });
+			this.props.changeColorDefault();
 		}
 	};
 
 	render() {
 		return (
 			<React.Fragment>
+				<Link to="/parkingInfo">Parking Info</Link>
 				<div className="container">
 					<div className="row center-vertical">
 						<div className="col center-horizontal">
-							<h1 className={this.state.color}>Permit Color?</h1>
+							<h1 className={this.props.color}>Permit Color?</h1>
 							<div className="row">
 								<ColorOption
 									color="green"
 									onClick={() => {
-										this.handleModalShow(this.state.color);
+										this.handleModalShow(this.props.color);
 									}}
-									handleMouseOver={this.handleMouseOver}
+									handleMouseOver={this.props.changeColor}
 									handleMouseLeave={this.handleMouseLeave}
 								/>
 								<ColorOption
 									color="gold"
 									onClick={() => {
-										this.handleModalShow(this.state.color);
+										this.handleModalShow(this.props.color);
 									}}
-									handleMouseOver={this.handleMouseOver}
+									handleMouseOver={this.props.changeColor}
 									handleMouseLeave={this.handleMouseLeave}
 								/>
 								<ColorOption
 									color="orange"
 									onClick={() => {
-										this.handleModalShow(this.state.color);
+										this.handleModalShow(this.props.color);
 									}}
-									handleMouseOver={this.handleMouseOver}
+									handleMouseOver={this.props.changeColor}
 									handleMouseLeave={this.handleMouseLeave}
 								/>
 								<ColorOption
 									color="purple"
 									onClick={() => {
-										this.handleModalShow(this.state.color);
+										this.handleModalShow(this.props.color);
 									}}
-									handleMouseOver={this.handleMouseOver}
+									handleMouseOver={this.props.changeColor}
 									handleMouseLeave={this.handleMouseLeave}
 								/>
 								<ColorOption
 									color="pay-by-space"
 									onClick={() => {
-										this.handleModalShow(this.state.color);
+										this.handleModalShow(this.props.color);
 									}}
-									handleMouseOver={this.handleMouseOver}
+									handleMouseOver={this.props.changeColor}
 									handleMouseLeave={this.handleMouseLeave}
 								/>
 							</div>
@@ -89,7 +85,7 @@ class Home extends Component {
 				</div>
 
 				<ConfirmModal
-					color={this.state.color}
+					color={this.props.color}
 					showModal={this.state.showModal}
 					onModalShow={this.handleModalShow}
 					onModalClose={this.handleModalClose}
