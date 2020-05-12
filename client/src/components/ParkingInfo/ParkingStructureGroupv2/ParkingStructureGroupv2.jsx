@@ -11,20 +11,7 @@ class ParkingStructureGroup extends Component {
 				id: "mongodbpermitid0",
 				textStyle: "light-text",
 				expand: false,
-				dataArr: [
-					{
-						id: "mongodbid1",
-						spots: 100,
-						structure: "ps1",
-						floor: 5,
-					},
-					{
-						id: "mongodbid0",
-						spots: 120,
-						structure: "ps3",
-						floor: 4,
-					},
-				],
+				dataArr: [],
 			},
 			gold: {
 				id: "mongodbpermitid1",
@@ -103,6 +90,38 @@ class ParkingStructureGroup extends Component {
 		this.handleGetPermitColor(this.props.color);
 	}
 
+	initializeState = (res) => {
+		let permit = { ...this.state.permit };
+		res.data.map((permit_entry) => {
+			const { id, color, level, spots, structure } = permit_entry;
+			const standardizedColor = this.standardizeColorLongToShort(color);
+			console.log(permit);
+			permit[standardizedColor].dataArr.push({
+				id: id,
+				spots: spots,
+				structure: structure,
+				floor: level,
+			});
+		});
+		this.setState({ permit: permit });
+	};
+
+	// returns standardized color. 'Green Permit' -> 'green'
+	standardizeColorLongToShort = (color) => {
+		switch (color) {
+			case "Green Permit":
+				return "green";
+			case "Gold Permit":
+				return "gold";
+			case "Orange Permit":
+				return "orange";
+			case "Purple Permit":
+				return "purple";
+			case "Pay-By-Space":
+				return "payBySpace";
+		}
+	};
+
 	handleGetPermitColor = (color) => {
 		// standardize to form 'Green Permit'
 		let standardizedColor = "";
@@ -127,7 +146,8 @@ class ParkingStructureGroup extends Component {
 		axios
 			.get(`http://localhost:5000/parkingStructures/color/` + standardizedColor)
 			.then((res) => {
-				console.log(res.data);
+				this.initializeState(res);
+				console.log(res);
 			})
 			.catch((err) => {
 				console.log(err);

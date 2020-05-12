@@ -6,7 +6,7 @@ import ParkingInfo from "./components/ParkingInfo/ParkingInfo";
 
 import "./App.css";
 
-const defaultColor = "black";
+const defaultColor = "green";
 class App extends Component {
 	state = {
 		color: defaultColor,
