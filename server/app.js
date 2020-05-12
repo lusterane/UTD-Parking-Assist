@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 // fix CORS error
 app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "www.this-website.com"); // give access to any origin
+	res.header("Access-Control-Allow-Origin", "*"); // give access to any origin
 	res.header(
 		"Access-Control-Allow-Headers",
 		"Origin, X-Requested-With, Content-Type, Accept, Authorization"

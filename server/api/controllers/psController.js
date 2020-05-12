@@ -40,27 +40,50 @@ exports.getAParkingStructure = (req, res, next) => {
 		});
 };
 
-// gets all relevant information for green parking
-
+// gets all relevant information for specific parking
 exports.getColorInfo = (req, res, next) => {
 	const color = req.params.color;
+	const unparsedColorArr = [
+		"Green Permit",
+		"Gold Permit",
+		"Orange Permit",
+		"Purple Permit",
+		"Pay-By-Space",
+	];
+
+	// filter out irrelevant colors in array
+	const index =
+		unparsedColorArr.findIndex((element) => {
+			return element == color;
+		}) + 1;
+
+	const parsedColorArr = [];
+	for (let i = 0; i < index; i++) {
+		parsedColorArr.push(unparsedColorArr[i]);
+	}
 
 	const permitCategoryObjects = [];
 	ParkingStructure.find()
 		.exec()
 		.then((docs) => {
-			docs.map((doc) => {
-				doc.permit_category.map((obj) => {
-					permitCategory = {};
-					permitCategory.structure = doc.structure;
-					permitCategory.color = obj.color;
-					permitCategory.level = obj.level;
-					permitCategory.spots = obj.spots;
-					permitCategory.utc_time_updated = doc.utc_time_updated;
+			docs.map((root_json) => {
+				root_json.permit_category.map((permit_category_entry) => {
+					// find color in color array
+					if (parsedColorArr.includes(permit_category_entry.color)) {
+						let objBuilder = {};
+						objBuilder["id"] = root_json._id;
+						objBuilder["color"] = permit_category_entry.color;
+						objBuilder["level"] = permit_category_entry.level;
+						objBuilder["spots"] = permit_category_entry.spots;
+						objBuilder["structure"] = root_json.structure;
+						objBuilder["time_updated"] = root_json.utc_time_updated;
 
-					permitCategoryObjects.push(permitCategory);
+						permitCategoryObjects.push(objBuilder);
+					}
 				});
 			});
+
+			console.log(permitCategoryObjects);
 			res.status(200).json(permitCategoryObjects);
 		})
 		.catch((err) => {

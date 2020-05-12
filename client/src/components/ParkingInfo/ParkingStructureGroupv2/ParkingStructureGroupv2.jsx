@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PSCard from "./PSCard/PSCard";
+import axios from "axios";
 
 import "./ParkingStructureGroup.css";
 
@@ -96,6 +97,18 @@ class ParkingStructureGroup extends Component {
 				],
 			},
 		},
+	};
+
+	componentDidMount() {
+		this.handleGetPermitColor("Green Permit");
+	}
+
+	handleGetParkingStructureData = () => {
+		axios.get("http://localhost:5000/parkingStructures").then((res) => console.log(res.data));
+	};
+
+	handleGetPermitColor = (color) => {
+		axios.get("http://localhost:5000/color/", color).then((res) => console.log(res.data));
 	};
 
 	handleExpandCard = (color) => {
