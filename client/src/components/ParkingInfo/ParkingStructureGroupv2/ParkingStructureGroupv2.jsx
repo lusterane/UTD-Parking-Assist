@@ -100,15 +100,38 @@ class ParkingStructureGroup extends Component {
 	};
 
 	componentDidMount() {
-		this.handleGetPermitColor("Green Permit");
+		this.handleGetPermitColor(this.props.color);
 	}
 
-	handleGetParkingStructureData = () => {
-		axios.get("http://localhost:5000/parkingStructures").then((res) => console.log(res.data));
-	};
-
 	handleGetPermitColor = (color) => {
-		axios.get("http://localhost:5000/color/", color).then((res) => console.log(res.data));
+		// standardize to form 'Green Permit'
+		let standardizedColor = "";
+		switch (color) {
+			case "green":
+				standardizedColor = "Green%20Permit";
+				break;
+			case "gold":
+				standardizedColor = "Gold%20Permit";
+				break;
+			case "orange":
+				standardizedColor = "Orange%20Permit";
+				break;
+			case "purple":
+				standardizedColor = "Purple%20Permit";
+				break;
+			case "pay-by-space":
+				standardizedColor = "Pay-By-Space";
+				break;
+		}
+
+		axios
+			.get(`http://localhost:5000/parkingStructures/color/` + standardizedColor)
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	handleExpandCard = (color) => {
