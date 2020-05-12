@@ -10,7 +10,7 @@ class ParkingInfo extends Component {
 		return (
 			<React.Fragment>
 				<h1>it's {this.state.color}</h1>
-				<ParkingStructureGroup />
+				<ParkingStructureGroup color={this.state.color} />
 			</React.Fragment>
 		);
 	}
