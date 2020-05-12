@@ -17,71 +17,25 @@ class ParkingStructureGroup extends Component {
 				id: "mongodbpermitid1",
 				textStyle: "light-text",
 				expand: false,
-				dataArr: [
-					{
-						id: "mongodbid2",
-						spots: 100,
-						structure: "ps1",
-						floor: 5,
-					},
-					{
-						id: "mongodbid3",
-						spots: 120,
-						structure: "ps3",
-						floor: 4,
-					},
-				],
+				dataArr: [],
 			},
 			orange: {
 				id: "mongodbpermitid2",
 				textStyle: "light-text",
 				expand: false,
-				dataArr: [
-					{
-						id: "mongodbid4",
-						spots: 120,
-						structure: "ps3",
-						floor: 3,
-					},
-				],
+				dataArr: [],
 			},
 			purple: {
 				id: "mongodbpermitid3",
 				textStyle: "light-text",
 				expand: false,
-				dataArr: [
-					{
-						id: "mongodbid6",
-						spots: 100,
-						structure: "ps1",
-						floor: 5,
-					},
-					{
-						id: "mongodbid7",
-						spots: 120,
-						structure: "ps3",
-						floor: 4,
-					},
-				],
+				dataArr: [],
 			},
 			payBySpace: {
 				id: "mongodbpermitid4",
 				textStyle: "dark-text",
 				expand: false,
-				dataArr: [
-					{
-						id: "mongodbid8",
-						spots: 100,
-						structure: "ps1",
-						floor: 5,
-					},
-					{
-						id: "mongodbid9",
-						spots: 120,
-						structure: "ps3",
-						floor: 4,
-					},
-				],
+				dataArr: [],
 			},
 		},
 	};

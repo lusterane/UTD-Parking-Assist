@@ -1,5 +1,6 @@
 .card {
 	margin: 1rem;
+	align-self: flex-start;
 }
 
 .fa-sort-down {

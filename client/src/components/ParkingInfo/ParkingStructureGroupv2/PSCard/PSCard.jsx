@@ -36,7 +36,7 @@ class PSCard extends Component {
 		// standardize for STYLING
 		const cardStyle =
 			textStyle + " " + (color === "payBySpace" ? "pay-by-space" : color) + "-option";
-		return (
+		return dataArr.length > 0 ? (
 			<Card className={cardStyle} style={{ width: "18rem" }}>
 				<Card.Header>{this.standardizeColor(color)}</Card.Header>
 				<Card.Body>
@@ -68,20 +68,20 @@ class PSCard extends Component {
 								onExpandCard(color);
 							}}
 						>
-							<Card.Title>{dataArr[0] ? dataArr[0].spots : "-"} spots</Card.Title>
+							<Card.Title>{dataArr[0].spots} spots</Card.Title>
 
 							<Card.Text>
-								<span>
-									{this.standardizePs(dataArr[0] ? dataArr[0].structure : "-")}
-								</span>
+								<span>{this.standardizePs(dataArr[0].structure)}</span>
 								<br></br>
-								<span>Floor {dataArr[0] ? dataArr[0].floor : "-"}</span>
+								<span>Floor {dataArr[0].floor}</span>
 								{dataArr.length > 1 ? <i className="fas fa-sort-down"></i> : ""}
 							</Card.Text>
 						</div>
 					)}
 				</Card.Body>
 			</Card>
+		) : (
+			""
 		);
 	}
 }
