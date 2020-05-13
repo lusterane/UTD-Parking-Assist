@@ -12,15 +12,15 @@ class ParkingInfo extends Component {
 		timeUpdated: {
 			ps1: {
 				utc_updated_time: "",
-				elapsedTime: "",
+				elapsedTime: 0,
 			},
 			ps3: {
 				utc_updated_time: "",
-				elapsedTime: "",
+				elapsedTime: 0,
 			},
 			ps4: {
 				utc_updated_time: "",
-				elapsedTime: "",
+				elapsedTime: 0,
 			},
 		},
 	};
@@ -79,9 +79,17 @@ class ParkingInfo extends Component {
 			const structure = value[0];
 			const time = new Date(value[1]);
 			timeUpdated[structure].utc_updated_time = time;
-			timeUpdated[structure].elapsedTime = 0;
 		});
+		this.handleResetElapsedTime();
+		this.setState({ timeUpdated: timeUpdated });
+	};
 
+	// avoid multiple API calls
+	handleResetElapsedTime = () => {
+		let timeUpdated = { ...this.state.timeUpdated };
+		timeUpdated["ps1"].elapsedTime = 0;
+		timeUpdated["ps1"].elapsedTime = 0;
+		timeUpdated["ps3"].elapsedTime = 0;
 		this.setState({ timeUpdated: timeUpdated });
 	};
 
@@ -93,6 +101,7 @@ class ParkingInfo extends Component {
 						<ParkingStructureGroup
 							timeUpdated={this.state.timeUpdated}
 							color={this.state.color}
+							onResetElapsedTime={this.handleResetElapsedTime}
 						/>
 						<Time timeUpdated={this.state.timeUpdated} />
 					</React.Fragment>

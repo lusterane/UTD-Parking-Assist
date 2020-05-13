@@ -58,8 +58,6 @@ class ParkingStructureGroup extends Component {
 			element[1].dataArr = [];
 		});
 
-		console.log(permit);
-
 		res.data.map((permit_entry) => {
 			const { id, level, spots, structure } = permit_entry;
 			const color = this.standardizeColorLongToShort(permit_entry.color);
@@ -71,6 +69,7 @@ class ParkingStructureGroup extends Component {
 				floor: level,
 			});
 		});
+		this.props.onResetElapsedTime();
 		this.setState({ permit: permit });
 	};
 
