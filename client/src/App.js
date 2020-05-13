@@ -15,7 +15,7 @@ class App extends Component {
 		updateOnlineStatusInterval: "",
 		onlineHours: {
 			fromHour: "8",
-			toHour: "23",
+			toHour: "20",
 		},
 
 		onlineStatus: false,

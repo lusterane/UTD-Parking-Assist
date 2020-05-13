@@ -19,35 +19,17 @@ class Time extends Component {
 			},
 		},
 		updateClientTimerInterval: "",
-		onlineStatus: false,
 	};
 
 	componentDidMount() {}
 	componentWillUnmount() {}
 
 	static getDerivedStateFromProps(props) {
-		return { onlineStatus: props.onlineStatus, timeUpdated: props.timeUpdated };
+		return { timeUpdated: props.timeUpdated };
 	}
 
-	// checkGetNewData = () => {
-	// 	if (this.state.onlineStatus) {
-	// 		const timeUpdated = { ...this.state.timeUpdated };
-
-	// 		const ret = Object.entries(timeUpdated).some((ps) => {
-	// 			const elapsedTime = ps[1].elapsedTime;
-	// 			if (elapsedTime == 60) {
-	// 				return true;
-	// 			}
-	// 		});
-	// 		return ret;
-	// 	}
-	// 	return false;
-	// };
-
 	getTimeText = (elapsedTime) => {
-		if (!this.state.onlineStatus) {
-			return "Server offline right now";
-		} else if (elapsedTime <= 1) {
+		if (elapsedTime <= 1) {
 			return "Updated a second ago";
 		} else if (elapsedTime >= 60) {
 			return "Updated a minute ago";

@@ -26,13 +26,13 @@ class ParkingInfo extends Component {
 	};
 	componentDidMount() {
 		this.setState({
-			updateClientTimerInterval: setInterval(this.updateClientTimer, 1000),
+			updateTimeUpdatedInStateInterval: setInterval(this.updateTimeUpdatedInState, 1000),
 		});
 		this.handleHTTPGetUpdateTime();
 	}
+
 	componentWillUnmount() {
-		// clearInterval(this.state.updateOnlineStatusInterval);
-		//clearInterval(this.state.updateClientTimerInterval);
+		clearInterval(this.state.updateTimeUpdatedInStateInterval);
 	}
 
 	componentDidUpdate() {
@@ -42,22 +42,21 @@ class ParkingInfo extends Component {
 	}
 
 	// updates elapsed time in state
-	updateClientTimer = () => {
+	updateTimeUpdatedInState = () => {
 		if (this.props.onlineStatus) {
 			let timeUpdated = { ...this.state.timeUpdated };
 			Object.entries(this.state.timeUpdated).map((value) => {
 				const structure = value[0];
 				const time = new Date(value[1].utc_updated_time);
-				timeUpdated[structure].elapsedTime = this.getElapsedTime(time);
+				timeUpdated[structure].elapsedTime = this.computeElapsedTime(time);
 			});
 
 			this.setState({ timeUpdated: timeUpdated });
 		}
 	};
-	getElapsedTime = (time) => {
-		const nowTime = new Date();
 
-		// seconds elapsed
+	computeElapsedTime = (time) => {
+		const nowTime = new Date();
 		return parseInt((nowTime - time) / 1000, 10);
 	};
 
@@ -73,6 +72,7 @@ class ParkingInfo extends Component {
 			});
 	};
 
+	// ran once in initial
 	updateTimeFromHTTPResponse = (res) => {
 		let timeUpdated = { ...this.state.timeUpdated };
 		Object.entries(res.data).map((value) => {
@@ -88,9 +88,14 @@ class ParkingInfo extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				{/* <ParkingStructureGroup color={this.state.color} /> */}
-				<h1> PARKING STRUCTURE STUFF PLACEHOLDER</h1>
-				<Time timeUpdated={this.state.timeUpdated} onlineStatus={this.props.onlineStatus} />
+				{this.props.onlineStatus ? (
+					<React.Fragment>
+						<ParkingStructureGroup color={this.state.color} />
+						<Time timeUpdated={this.state.timeUpdated} />
+					</React.Fragment>
+				) : (
+					<h1>OFFLINE</h1>
+				)}
 			</React.Fragment>
 		);
 	}
