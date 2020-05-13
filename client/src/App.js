@@ -11,7 +11,6 @@ const defaultColor = "green";
 class App extends Component {
 	state = {
 		color: defaultColor,
-
 		updateOnlineStatusInterval: "",
 		onlineHours: {
 			fromHour: "8",
