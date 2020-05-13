@@ -15,3 +15,8 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+.fa-exclamation-circle {
+	padding-right: 1rem;
+	font-size: 20px;
+}

@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-
+import { Spinner } from "react-bootstrap";
 import axios from "axios";
 
 //import ParkingStructureGroup from "./ParkingStructureGroup/ParkingStructureGroup";
 import ParkingStructureGroup from "./ParkingStructureGroupv2/ParkingStructureGroupv2";
 import Time from "./Time/Time";
+
+import "../../styles/shared/LoadingSpinner.css";
 
 class ParkingInfo extends Component {
 	state = {
@@ -96,17 +98,25 @@ class ParkingInfo extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				{this.props.onlineStatus ? (
-					<React.Fragment>
-						<ParkingStructureGroup
-							timeUpdated={this.state.timeUpdated}
-							color={this.state.color}
-							onResetElapsedTime={this.handleResetElapsedTime}
-						/>
-						<Time timeUpdated={this.state.timeUpdated} />
-					</React.Fragment>
+				{this.props.isLoaded ? (
+					this.props.onlineStatus ? (
+						<React.Fragment>
+							<ParkingStructureGroup
+								timeUpdated={this.state.timeUpdated}
+								color={this.state.color}
+								onResetElapsedTime={this.handleResetElapsedTime}
+							/>
+							<Time timeUpdated={this.state.timeUpdated} />
+						</React.Fragment>
+					) : (
+						<h1>OFFLINE</h1>
+					)
 				) : (
-					<h1>OFFLINE</h1>
+					<div className="spinner-container">
+						<Spinner animation="border" role="status">
+							<span className="sr-only">Loading...</span>
+						</Spinner>
+					</div>
 				)}
 			</React.Fragment>
 		);

@@ -19,6 +19,7 @@ class App extends Component {
 		},
 
 		onlineStatus: false,
+		isLoaded: false,
 	};
 	constructor() {
 		super();
@@ -43,6 +44,7 @@ class App extends Component {
 		} else {
 			this.setState({ onlineStatus: false });
 		}
+		this.setState({ isLoaded: true });
 	};
 
 	checkOnlineStatus = () => {
@@ -65,15 +67,18 @@ class App extends Component {
 					<Switch>
 						<Route exact path="/">
 							<HomePage
+								onlineStatus={this.state.onlineStatus}
 								changeColor={this.handleChangeColor}
 								changeColorDefault={this.handleChangeColorDefault}
 								color={this.state.color}
+								isLoaded={this.state.isLoaded}
 							/>
 						</Route>
 						<Router path="/parkingInfoPage">
 							<ParkingInfoPage
 								color={this.state.color}
 								onlineStatus={this.state.onlineStatus}
+								isLoaded={this.state.isLoaded}
 							/>
 						</Router>
 					</Switch>
