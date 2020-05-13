@@ -5,6 +5,7 @@ import axios from "axios";
 //import ParkingStructureGroup from "./ParkingStructureGroup/ParkingStructureGroup";
 import ParkingStructureGroup from "./ParkingStructureGroupv2/ParkingStructureGroupv2";
 import Time from "./Time/Time";
+import OfflinePage from "./OfflinePage/OfflinePage";
 
 import "../../styles/shared/LoadingSpinner.css";
 
@@ -109,7 +110,7 @@ class ParkingInfo extends Component {
 							<Time timeUpdated={this.state.timeUpdated} />
 						</React.Fragment>
 					) : (
-						<h1>OFFLINE</h1>
+						<OfflinePage />
 					)
 				) : (
 					<div className="spinner-container">
