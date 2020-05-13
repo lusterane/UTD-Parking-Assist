@@ -44,7 +44,7 @@ class PSCard extends Component {
 						dataArr.map((obj, index, arr) => {
 							return (
 								<div
-									key={obj.id}
+									key={obj.id + index}
 									className="card-text-container"
 									onClick={() => {
 										onExpandCard(color);
