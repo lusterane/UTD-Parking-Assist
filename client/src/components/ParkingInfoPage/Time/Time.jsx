@@ -4,29 +4,11 @@ import "./Time.css";
 
 class Time extends Component {
 	state = {
-		timeUpdated: {
-			ps1: {
-				utc_updated_time: "",
-				elapsedTime: "",
-			},
-			ps3: {
-				utc_updated_time: "",
-				elapsedTime: "",
-			},
-			ps4: {
-				utc_updated_time: "",
-				elapsedTime: "",
-			},
-		},
 		updateClientTimerInterval: "",
 	};
 
 	componentDidMount() {}
 	componentWillUnmount() {}
-
-	static getDerivedStateFromProps(props) {
-		return { timeUpdated: props.timeUpdated };
-	}
 
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime <= 1) {
@@ -38,9 +20,9 @@ class Time extends Component {
 	};
 
 	render() {
-		const ps1TimeText = this.getTimeText(this.state.timeUpdated.ps1.elapsedTime);
-		const ps3TimeText = this.getTimeText(this.state.timeUpdated.ps3.elapsedTime);
-		const ps4TimeText = this.getTimeText(this.state.timeUpdated.ps4.elapsedTime);
+		const ps1TimeText = this.getTimeText(this.props.timeUpdated.ps1.elapsedTime);
+		const ps3TimeText = this.getTimeText(this.props.timeUpdated.ps3.elapsedTime);
+		const ps4TimeText = this.getTimeText(this.props.timeUpdated.ps4.elapsedTime);
 
 		return (
 			<React.Fragment>

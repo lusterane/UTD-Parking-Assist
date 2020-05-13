@@ -44,20 +44,33 @@ class ParkingStructureGroup extends Component {
 		this.handleHTTPGetPermitColor(this.props.color);
 	}
 
-	initializePermitsFromHTTPResponse = (res) => {
-		// updated permits
+	componentDidUpdate() {
+		if (this.props.timeUpdated.ps1.elapsedTime === 61) {
+			this.handleHTTPGetPermitColor(this.props.color);
+		}
+	}
+
+	updatePermitsFromHTTPResponse = (res) => {
 		let permit = { ...this.state.permit };
+
+		// reset dataArr for all colors
+		Object.entries(permit).map((element) => {
+			element[1].dataArr = [];
+		});
+
+		console.log(permit);
+
 		res.data.map((permit_entry) => {
-			const { id, color, level, spots, structure } = permit_entry;
-			const standardizedColor = this.standardizeColorLongToShort(color);
-			permit[standardizedColor].dataArr.push({
+			const { id, level, spots, structure } = permit_entry;
+			const color = this.standardizeColorLongToShort(permit_entry.color);
+
+			permit[color].dataArr.push({
 				id: id,
 				spots: spots,
 				structure: structure,
 				floor: level,
 			});
 		});
-
 		this.setState({ permit: permit });
 	};
 
@@ -97,13 +110,13 @@ class ParkingStructureGroup extends Component {
 	};
 
 	handleHTTPGetPermitColor = (color) => {
+		console.log("HTTP CALL: GET /parkingStructures/color/:color");
 		// standardize to form 'Green Permit'
 		let standardizedColor = this.standardizeColorShortToLong(color);
-
 		axios
 			.get(`http://localhost:5000/parkingStructures/color/` + standardizedColor)
 			.then((res) => {
-				this.initializePermitsFromHTTPResponse(res);
+				this.updatePermitsFromHTTPResponse(res);
 			})
 			.catch((err) => {
 				console.log(err);

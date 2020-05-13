@@ -90,7 +90,10 @@ class ParkingInfo extends Component {
 			<React.Fragment>
 				{this.props.onlineStatus ? (
 					<React.Fragment>
-						<ParkingStructureGroup color={this.state.color} />
+						<ParkingStructureGroup
+							timeUpdated={this.state.timeUpdated}
+							color={this.state.color}
+						/>
 						<Time timeUpdated={this.state.timeUpdated} />
 					</React.Fragment>
 				) : (

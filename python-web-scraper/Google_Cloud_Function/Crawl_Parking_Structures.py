@@ -7,6 +7,8 @@ import urllib3
 import certifi
 import datetime
 from bs4 import BeautifulSoup
+from bson import ObjectId
+
 from Parking_Structure import Parking_Structure
 from Parking_Structure import Permit
 
@@ -67,7 +69,7 @@ class CrawlRoot:
             currentJson = {"structure": ps.structure, "utc_time_updated": datetime.datetime.utcnow(), "permit_category": []}
             permit_category_lis = []
             for permit in ps.permit:
-                permit_category_lis.append({"color": permit.color, "level": permit.level, "spots": permit.spots})
+                permit_category_lis.append({"id": ObjectId(),"color": permit.color, "level": permit.level, "spots": permit.spots})
             currentJson["permit_category"] = permit_category_lis
             jsonArr.append(currentJson)
         return jsonArr
