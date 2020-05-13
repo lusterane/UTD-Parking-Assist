@@ -11,7 +11,7 @@ function ConfirmModal(props) {
 				</Modal.Header>
 				<Modal.Body>Do you have a {props.color} permit?</Modal.Body>
 				<Modal.Footer>
-					<Link to="/parkinginfo">
+					<Link to="/parkinginfopage">
 						<Button variant="primary" onClick={props.onModalConfirm}>
 							Yes
 						</Button>

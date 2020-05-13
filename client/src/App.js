@@ -1,23 +1,53 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Home from "./components/Home/Home";
-import ParkingInfo from "./components/ParkingInfo/ParkingInfo";
+import HomePage from "./components/HomePage/HomePage";
+import ParkingInfoPage from "./components/ParkingInfoPage/ParkingInfoPage";
 
 import "./App.css";
 
 const defaultColor = "green";
+
 class App extends Component {
 	state = {
 		color: defaultColor,
+		onlineHours: {
+			fromHour: "8",
+			toHour: "24",
+		},
+		onlineStatus: false,
 	};
 
+	componentDidMount() {
+		this.setState({ updateOnlineStatusInterval: setInterval(this.updateOnlineStatus, 900) });
+	}
+
+	componentWillUnmount() {
+		// clearInterval(this.state.updateOnlineStatusInterval);
+	}
 	handleChangeColor = (color) => {
 		this.setState({ color: color });
 	};
 
 	handleChangeColorDefault = () => {
 		this.setState({ color: defaultColor });
+	};
+	updateOnlineStatus = () => {
+		if (this.checkOnlineStatus()) {
+			this.setState({ onlineStatus: true });
+		} else {
+			this.setState({ onlineStatus: false });
+		}
+	};
+	checkOnlineStatus = () => {
+		const nowHour = new Date().getHours();
+		const { fromHour, toHour } = this.state.onlineHours;
+		if (nowHour >= fromHour && nowHour < toHour) {
+			// online
+			return true;
+		} else {
+			return false;
+		}
 	};
 
 	render() {
@@ -28,14 +58,17 @@ class App extends Component {
             renders the first one that matches the current URL. */}
 					<Switch>
 						<Route exact path="/">
-							<Home
+							<HomePage
 								changeColor={this.handleChangeColor}
 								changeColorDefault={this.handleChangeColorDefault}
 								color={this.state.color}
 							/>
 						</Route>
-						<Router path="/parkingInfo">
-							<ParkingInfo color={this.state.color} />
+						<Router path="/parkingInfoPage">
+							<ParkingInfoPage
+								color={this.state.color}
+								onlineStatus={this.state.onlineStatus}
+							/>
 						</Router>
 					</Switch>
 				</div>

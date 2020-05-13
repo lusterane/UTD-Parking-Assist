@@ -17,7 +17,6 @@ exports.getAllParkingStructures = (req, res, next) => {
 };
 
 // gets a parking structure according to parking structure name i.e. ps1, ps3, ps4
-
 exports.getAParkingStructure = (req, res, next) => {
 	const psId = req.params["parkingStructure"];
 
@@ -82,9 +81,27 @@ exports.getColorInfo = (req, res, next) => {
 					}
 				});
 			});
-
-			console.log(permitCategoryObjects);
 			res.status(200).json(permitCategoryObjects);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json({
+				error: err,
+			});
+		});
+};
+
+// gets all times for each parking structure
+exports.getAllParkingStructureTimes = (req, res, next) => {
+	timeUpdated = {};
+
+	ParkingStructure.find()
+		.exec()
+		.then((docs) => {
+			docs.map((root_json) => {
+				timeUpdated[root_json.structure] = root_json.utc_time_updated;
+			});
+			res.status(200).json(timeUpdated);
 		})
 		.catch((err) => {
 			console.log(err);

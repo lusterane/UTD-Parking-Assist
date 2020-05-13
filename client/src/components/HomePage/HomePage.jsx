@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import ColorOption from "../ColorOption/ColorOption";
 import ConfirmModal from "./ConfirmModal/ConfirmModal";
 
-import "./HomeStyle.css";
+import "./HomePageStyle.css";
 import "../ColorOption/Colors.css";
 
 class Home extends Component {
@@ -33,7 +33,6 @@ class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Link to="/parkingInfo">Parking Info</Link>
 				<div className="container">
 					<div className="row center-vertical">
 						<div className="col center-horizontal">

@@ -7,10 +7,13 @@ const PSController = require("../controllers/psController");
 router.get("/", PSController.getAllParkingStructures);
 
 // Handles GET request for a parking structure
-router.get("/:parkingStructure", PSController.getAParkingStructure);
+router.get("/psName/:parkingStructure", PSController.getAParkingStructure);
 
 // Handles GET request for color permit
 router.get("/color/:color", PSController.getColorInfo);
+
+//Handles GET request for update times
+router.get("/timeUpdated", PSController.getAllParkingStructureTimes);
 
 // TESTING
 // // Handles POST request

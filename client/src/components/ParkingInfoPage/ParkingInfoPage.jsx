@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 //import ParkingStructureGroup from "./ParkingStructureGroup/ParkingStructureGroup";
 import ParkingStructureGroup from "./ParkingStructureGroupv2/ParkingStructureGroupv2";
-
+import Time from "./Time/Time";
 class ParkingInfo extends Component {
 	state = {
 		color: this.props.color,
@@ -9,8 +9,9 @@ class ParkingInfo extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<h1>it's {this.state.color}</h1>
-				<ParkingStructureGroup color={this.state.color} />
+				{/* <ParkingStructureGroup color={this.state.color} /> */}
+				<h1> PARKING STRUCTURE STUFF PLACEHOLDER</h1>
+				<Time onlineStatus={this.props.onlineStatus} />
 			</React.Fragment>
 		);
 	}

@@ -41,15 +41,15 @@ class ParkingStructureGroup extends Component {
 	};
 
 	componentDidMount() {
-		this.handleGetPermitColor(this.props.color);
+		this.handleHTTPGetPermitColor(this.props.color);
 	}
 
-	initializeState = (res) => {
+	initializePermitsFromHTTPResponse = (res) => {
+		// updated permits
 		let permit = { ...this.state.permit };
 		res.data.map((permit_entry) => {
 			const { id, color, level, spots, structure } = permit_entry;
 			const standardizedColor = this.standardizeColorLongToShort(color);
-			console.log(permit);
 			permit[standardizedColor].dataArr.push({
 				id: id,
 				spots: spots,
@@ -57,6 +57,7 @@ class ParkingStructureGroup extends Component {
 				floor: level,
 			});
 		});
+
 		this.setState({ permit: permit });
 	};
 
@@ -73,35 +74,36 @@ class ParkingStructureGroup extends Component {
 				return "purple";
 			case "Pay-By-Space":
 				return "payBySpace";
+			default:
+				return "green";
 		}
 	};
 
-	handleGetPermitColor = (color) => {
-		// standardize to form 'Green Permit'
-		let standardizedColor = "";
+	standardizeColorShortToLong = (color) => {
 		switch (color) {
 			case "green":
-				standardizedColor = "Green%20Permit";
-				break;
+				return "Green%20Permit";
 			case "gold":
-				standardizedColor = "Gold%20Permit";
-				break;
+				return "Gold%20Permit";
 			case "orange":
-				standardizedColor = "Orange%20Permit";
-				break;
+				return "Orange%20Permit";
 			case "purple":
-				standardizedColor = "Purple%20Permit";
-				break;
+				return "Purple%20Permit";
 			case "pay-by-space":
-				standardizedColor = "Pay-By-Space";
-				break;
+				return "Pay-By-Space";
+			default:
+				return "Green%20Permit";
 		}
+	};
+
+	handleHTTPGetPermitColor = (color) => {
+		// standardize to form 'Green Permit'
+		let standardizedColor = this.standardizeColorShortToLong(color);
 
 		axios
 			.get(`http://localhost:5000/parkingStructures/color/` + standardizedColor)
 			.then((res) => {
-				this.initializeState(res);
-				console.log(res);
+				this.initializePermitsFromHTTPResponse(res);
 			})
 			.catch((err) => {
 				console.log(err);
