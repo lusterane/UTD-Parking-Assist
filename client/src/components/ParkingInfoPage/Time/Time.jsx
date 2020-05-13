@@ -13,8 +13,11 @@ class Time extends Component {
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime <= 1) {
 			return "Updated a second ago";
-		} else if (elapsedTime >= 60) {
+		} else if (elapsedTime == 60) {
 			return "Updated a minute ago";
+		} else if (elapsedTime > 120) {
+			// 2 minutes
+			return "Updated a few minutes ago";
 		}
 		return "Updated " + elapsedTime + " seconds ago";
 	};
