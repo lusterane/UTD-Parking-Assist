@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 import "./Time.css";
 
@@ -20,29 +19,14 @@ class Time extends Component {
 			},
 		},
 		updateClientTimerInterval: "",
-		updateDataInterval: "",
 		onlineStatus: false,
 	};
 
-	componentDidMount() {
-		this.handleHTTPGetUpdateTime();
-		this.setState({
-			updateClientTimerInterval: setInterval(this.updateClientTimer, 1000),
-		});
-	}
+	componentDidMount() {}
+	componentWillUnmount() {}
 
 	static getDerivedStateFromProps(props) {
-		return { onlineStatus: props.onlineStatus };
-	}
-
-	componentWillUnmount() {
-		clearInterval(this.state.updateClientTimerInterval);
-	}
-
-	componentDidUpdate() {
-		if (this.state.timeUpdated.ps1.elapsedTime === 61) {
-			this.handleHTTPGetUpdateTime();
-		}
+		return { onlineStatus: props.onlineStatus, timeUpdated: props.timeUpdated };
 	}
 
 	// checkGetNewData = () => {
@@ -59,47 +43,6 @@ class Time extends Component {
 	// 	}
 	// 	return false;
 	// };
-
-	handleHTTPGetUpdateTime = () => {
-		console.log("HTTP CALL: GET /parkingStructures/timeUpdated");
-		axios
-			.get(`http://localhost:5000/parkingStructures/timeUpdated`)
-			.then((res) => {
-				this.updateTimeFromHTTPResponse(res);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
-	updateTimeFromHTTPResponse = (res) => {
-		let timeUpdated = { ...this.state.timeUpdated };
-		Object.entries(res.data).map((value) => {
-			const structure = value[0];
-			const time = new Date(value[1]);
-			timeUpdated[structure].utc_updated_time = time;
-			timeUpdated[structure].elapsedTime = 0;
-		});
-
-		this.setState({ timeUpdated: timeUpdated });
-	};
-	updateClientTimer = () => {
-		let timeUpdated = { ...this.state.timeUpdated };
-
-		Object.entries(this.state.timeUpdated).map((value) => {
-			const structure = value[0];
-			const time = new Date(value[1].utc_updated_time);
-			timeUpdated[structure].elapsedTime = this.getElapsedTime(time);
-		});
-
-		this.setState({ timeUpdated: timeUpdated });
-	};
-
-	getElapsedTime = (time) => {
-		const nowTime = new Date();
-
-		// seconds elapsed
-		return parseInt((nowTime - time) / 1000, 10);
-	};
 
 	getTimeText = (elapsedTime) => {
 		if (!this.state.onlineStatus) {

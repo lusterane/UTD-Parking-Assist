@@ -11,20 +11,23 @@ const defaultColor = "green";
 class App extends Component {
 	state = {
 		color: defaultColor,
+
+		updateOnlineStatusInterval: "",
 		onlineHours: {
 			fromHour: "8",
-			toHour: "24",
+			toHour: "23",
 		},
+
 		onlineStatus: false,
 	};
-
-	componentDidMount() {
+	constructor() {
+		super();
+	}
+	componentWillMount() {
 		this.setState({ updateOnlineStatusInterval: setInterval(this.updateOnlineStatus, 900) });
 	}
 
-	componentWillUnmount() {
-		// clearInterval(this.state.updateOnlineStatusInterval);
-	}
+	// permit color
 	handleChangeColor = (color) => {
 		this.setState({ color: color });
 	};
@@ -32,6 +35,8 @@ class App extends Component {
 	handleChangeColorDefault = () => {
 		this.setState({ color: defaultColor });
 	};
+
+	// update time
 	updateOnlineStatus = () => {
 		if (this.checkOnlineStatus()) {
 			this.setState({ onlineStatus: true });
@@ -39,6 +44,7 @@ class App extends Component {
 			this.setState({ onlineStatus: false });
 		}
 	};
+
 	checkOnlineStatus = () => {
 		const nowHour = new Date().getHours();
 		const { fromHour, toHour } = this.state.onlineHours;
