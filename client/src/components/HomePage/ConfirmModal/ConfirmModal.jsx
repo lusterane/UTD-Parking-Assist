@@ -6,13 +6,11 @@ function ConfirmModal(props) {
 	return (
 		<>
 			<Modal show={props.showModal} onHide={props.onModalClose} animation={false}>
-				<Modal.Header closeButton>
-					<Modal.Title>{props.color} Permit</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>Do you have a {props.color} permit?</Modal.Body>
+				<Modal.Header closeButton></Modal.Header>
+				<Modal.Body>You have a {props.color} permit?</Modal.Body>
 				<Modal.Footer>
 					<Link to="/parkinginfopage">
-						<Button variant="primary" onClick={props.onModalConfirm}>
+						<Button variant="primary" classonClick={props.onModalConfirm}>
 							Yes
 						</Button>
 					</Link>

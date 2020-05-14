@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ColorOptionStyle.css";
-import "./Colors.css";
+import "../../styles/shared/Colors.css";
 
 class ColorOption extends Component {
 	state = {};

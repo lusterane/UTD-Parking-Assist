@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 import ColorOption from "../ColorOption/ColorOption";
 import ConfirmModal from "./ConfirmModal/ConfirmModal";
+import Footer from "./Footer/Footer";
 
 import "./HomePageStyle.css";
-import "../ColorOption/Colors.css";
+import "../../styles/shared/Colors.css";
 import "../../styles/shared/LoadingSpinner.css";
 
 class Home extends Component {
@@ -44,10 +45,10 @@ class Home extends Component {
 								To reduce server loads, online hours are from 8:00AM - 8:00PM CST
 							</Alert>
 						)}
-						<div className="container">
-							<div className="row center-vertical">
-								<div className="col center-horizontal">
-									<h1 className={this.props.color}>Permit Color?</h1>
+						<div className="container center">
+							<div className="row">
+								<div className="col">
+									<h1 className={this.props.color}>Permit Color</h1>
 									<div className="row">
 										<ColorOption
 											color="green"
@@ -81,14 +82,6 @@ class Home extends Component {
 											handleMouseOver={this.props.changeColor}
 											handleMouseLeave={this.handleMouseLeave}
 										/>
-										<ColorOption
-											color="pay-by-space"
-											onClick={() => {
-												this.handleModalShow(this.props.color);
-											}}
-											handleMouseOver={this.props.changeColor}
-											handleMouseLeave={this.handleMouseLeave}
-										/>
 									</div>
 								</div>
 							</div>
@@ -108,6 +101,7 @@ class Home extends Component {
 						</Spinner>
 					</div>
 				)}
+				<Footer />
 			</React.Fragment>
 		);
 	}

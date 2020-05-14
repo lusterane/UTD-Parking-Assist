@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 
-import "../../../ColorOption/Colors.css";
+import "../../../../styles/shared/Colors.css";
 import "./PSCard.css";
 
 class PSCard extends Component {
