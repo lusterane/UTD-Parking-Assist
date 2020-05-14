@@ -35,7 +35,7 @@ class PSCard extends Component {
 
 		// standardize for STYLING
 		const cardStyle =
-			textStyle + " " + (color === "payBySpace" ? "pay-by-space" : color) + "-option";
+			textStyle + " " + (color === "payBySpace" ? "pay-by-space" : color) + "-background";
 		return (
 			<Card className={cardStyle} style={{ width: "18rem" }}>
 				<Card.Header>{this.standardizeColor(color)}</Card.Header>

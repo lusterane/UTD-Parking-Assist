@@ -1,0 +1,18 @@
+.modal-body-text {
+	text-align: center;
+}
+
+.modal {
+	top: -18vh !important;
+}
+.modal-header {
+	border-bottom: 0 none;
+}
+
+.confirm-button {
+	width: 75px;
+}
+
+.modal-footer {
+	border-top: 0 none;
+}

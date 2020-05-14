@@ -1,24 +1,28 @@
 :root {
-	--green: #28a745;
+	--green: #28a746;
 	--gold: #ffc107;
 	--orange: #ff9f1c;
 	--purple: #773dbc;
 	--grey: #f8f9fa;
+	--shaded-green: #24933e;
+	--shaded-gold: #e1aa05;
+	--shaded-orange: #e69119;
+	--shaded-purple: #582c8e;
 }
 
-.green-option {
+.green-background {
 	background-color: var(--green);
 }
-.gold-option {
+.gold-background {
 	background-color: var(--gold);
 }
-.orange-option {
+.orange-background {
 	background-color: var(--orange);
 }
-.purple-option {
+.purple-background {
 	background-color: var(--purple);
 }
-.pay-by-space-option {
+.pay-by-space-background {
 	background-color: var(--grey);
 }
 
@@ -48,4 +52,38 @@
 
 .dark-text {
 	color: #343a40 !important;
+}
+
+.green-button {
+	background-color: var(--green);
+	border-color: var(--green);
+}
+.gold-button {
+	background-color: var(--gold);
+	border-color: var(--gold);
+}
+.orange-button {
+	background-color: var(--orange);
+	border-color: var(--orange);
+}
+.purple-button {
+	background-color: var(--purple);
+	border-color: var(--purple);
+}
+
+.green-button:hover {
+	background-color: var(--shaded-green);
+	border-color: var(--shaded-green);
+}
+.gold-button:hover {
+	background-color: var(--shaded-gold);
+	border-color: var(--shaded-gold);
+}
+.orange-button:hover {
+	background-color: var(--shaded-orange);
+	border-color: var(--shaded-orange);
+}
+.purple-button:hover {
+	background-color: var(--shaded-purple);
+	border-color: var(--shaded-purple);
 }

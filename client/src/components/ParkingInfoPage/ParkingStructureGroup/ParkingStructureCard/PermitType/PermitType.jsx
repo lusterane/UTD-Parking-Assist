@@ -14,7 +14,7 @@ class PermitType extends Component {
 
 	render() {
 		const { color, textStyle } = this.props;
-		const styles = color + "-option " + textStyle;
+		const styles = color + "-background " + textStyle;
 
 		const data = this.state.expanded ? (
 			<span>

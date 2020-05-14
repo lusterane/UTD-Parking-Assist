@@ -7,7 +7,7 @@ class ColorOption extends Component {
 
 	render() {
 		const { color, onClick, handleMouseOver, handleMouseLeave } = this.props;
-		const classStr = color + "-option square";
+		const classStr = color + "-background square";
 
 		return (
 			<React.Fragment>
