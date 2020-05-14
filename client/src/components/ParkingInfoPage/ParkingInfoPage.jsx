@@ -66,7 +66,7 @@ class ParkingInfo extends Component {
 	handleHTTPGetUpdateTime = () => {
 		console.log("HTTP CALL: GET /parkingStructures/timeUpdated");
 		axios
-			.get(`http://localhost:5000/parkingStructures/TEST_timeUpdated`)
+			.get(`http://localhost:5000/parkingStructures/timeUpdated`)
 			.then((res) => {
 				this.updateTimeFromHTTPResponse(res);
 			})

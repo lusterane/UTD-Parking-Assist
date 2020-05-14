@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Tooltip } from "react-bootstrap";
+
 import "./ColorOptionStyle.css";
 import "../../styles/shared/Colors.css";
 
@@ -12,6 +14,7 @@ class ColorOption extends Component {
 		return (
 			<React.Fragment>
 				<div
+					id={"Tooltip-" + color}
 					onClick={() => {
 						onClick(color);
 					}}

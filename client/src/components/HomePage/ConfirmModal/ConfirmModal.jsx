@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Tooltip } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./ConfirmModal.css";
@@ -26,7 +26,7 @@ function ConfirmModal(props) {
 							className={props.color + "-button confirm-button"}
 							onClick={props.onModalConfirm}
 						>
-							<i class="fas fa-check fa-sm"></i>
+							<i className="fas fa-check fa-sm"></i>
 						</Button>
 					</Link>
 				</Modal.Footer>

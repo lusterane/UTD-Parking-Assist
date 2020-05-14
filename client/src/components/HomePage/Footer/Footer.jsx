@@ -9,7 +9,7 @@ class Footer extends Component {
 			<React.Fragment>
 				<div className="footer">
 					<p>
-						Made with <i class="fas fa-heart"></i> by{" "}
+						Made with <i className="fas fa-heart"></i> by{" "}
 						<a href="https://github.com/lusterane" target="_blank">
 							Toby
 						</a>

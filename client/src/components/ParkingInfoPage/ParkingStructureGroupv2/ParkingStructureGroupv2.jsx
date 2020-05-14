@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import PSCard from "./PSCard/PSCard";
+import { Spinner } from "react-bootstrap";
 import axios from "axios";
+
 import EmptyGroup from "./EmptyGroup/EmptyGroup";
+import PSCard from "./PSCard/PSCard";
 
 import "./ParkingStructureGroup.css";
 
@@ -39,6 +41,7 @@ class ParkingStructureGroup extends Component {
 				dataArr: [],
 			},
 		},
+		isLoaded: false,
 	};
 
 	componentDidMount() {
@@ -73,6 +76,8 @@ class ParkingStructureGroup extends Component {
 		});
 		this.props.onResetElapsedTime();
 		this.setState({ permit: permit });
+
+		this.setState({ isLoaded: true });
 	};
 
 	// returns standardized color. 'Green Permit' -> 'green'
@@ -115,7 +120,7 @@ class ParkingStructureGroup extends Component {
 		// standardize to form 'Green Permit'
 		let standardizedColor = this.standardizeColorShortToLong(color);
 		axios
-			.get(`http://localhost:5000/parkingStructures/TEST_color/` + standardizedColor)
+			.get(`http://localhost:5000/parkingStructures/color/` + standardizedColor)
 			.then((res) => {
 				this.updatePermitsFromHTTPResponse(res);
 			})
@@ -133,41 +138,48 @@ class ParkingStructureGroup extends Component {
 	checkEmpty = (permit) => {
 		let empty = true;
 		Object.values(permit).map((element) => {
+			console.log("element ", element);
 			if (element.dataArr.length) {
 				empty = false;
 			}
 		});
-
 		return empty;
 	};
 
 	render() {
 		const { permit } = this.state;
 		let empty = this.checkEmpty(permit);
-
 		return (
 			<React.Fragment>
-				<div className="card-container">
-					{empty ? (
+				{this.state.isLoaded ? (
+					empty ? (
 						<EmptyGroup />
 					) : (
-						Object.keys(permit).map((color, index) => {
-							if (permit[color].dataArr.length !== 0) {
-								return (
-									<PSCard
-										key={index}
-										cardId={permit[color].id}
-										dataArr={permit[color].dataArr}
-										textStyle={permit[color].textStyle}
-										color={color}
-										expand={permit[color].expand}
-										onExpandCard={this.handleExpandCard}
-									/>
-								);
-							}
-						})
-					)}
-				</div>
+						<div className="card-container">
+							{Object.keys(permit).map((color, index) => {
+								if (permit[color].dataArr.length !== 0) {
+									return (
+										<PSCard
+											key={index}
+											cardId={permit[color].id}
+											dataArr={permit[color].dataArr}
+											textStyle={permit[color].textStyle}
+											color={color}
+											expand={permit[color].expand}
+											onExpandCard={this.handleExpandCard}
+										/>
+									);
+								}
+							})}
+						</div>
+					)
+				) : (
+					<div className="spinner-container">
+						<Spinner animation="border" role="status">
+							<span className="sr-only">Loading...</span>
+						</Spinner>
+					</div>
+				)}
 			</React.Fragment>
 		);
 	}

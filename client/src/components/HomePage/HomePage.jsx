@@ -41,7 +41,7 @@ class Home extends Component {
 							""
 						) : (
 							<Alert style={{ textAlign: "center" }} variant="warning">
-								<i className="fas fa-exclamation-circle"></i>
+								<i className="fas fa-exclamation-circle fa-lg"></i>
 								To reduce server loads, online hours are from 8:00AM - 8:00PM CST
 							</Alert>
 						)}
