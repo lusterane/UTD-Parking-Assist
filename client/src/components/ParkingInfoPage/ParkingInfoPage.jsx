@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import { Spinner } from "react-bootstrap";
-import axios from "axios";
+import React, { Component } from 'react';
+import { Spinner } from 'react-bootstrap';
+import axios from 'axios';
 
 //import ParkingStructureGroup from "./ParkingStructureGroup/ParkingStructureGroup";
-import ParkingStructureGroup from "./ParkingStructureGroupv2/ParkingStructureGroupv2";
-import Time from "./Time/Time";
-import OfflinePage from "./OfflinePage/OfflinePage";
+import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';
+import Time from './Time/Time';
+import OfflinePage from './OfflinePage/OfflinePage';
 
-import "../../styles/shared/LoadingSpinner.css";
+import '../../styles/shared/LoadingSpinner.css';
 
 class ParkingInfo extends Component {
 	state = {
 		color: this.props.color,
 		timeUpdated: {
 			ps1: {
-				utc_updated_time: "",
+				utc_updated_time: '',
 				elapsedTime: 0,
 			},
 			ps3: {
-				utc_updated_time: "",
+				utc_updated_time: '',
 				elapsedTime: 0,
 			},
 			ps4: {
-				utc_updated_time: "",
+				utc_updated_time: '',
 				elapsedTime: 0,
 			},
 		},
@@ -64,7 +64,7 @@ class ParkingInfo extends Component {
 	};
 
 	handleHTTPGetUpdateTime = () => {
-		console.log("HTTP CALL: GET /parkingStructures/timeUpdated");
+		console.log('HTTP CALL: GET /parkingStructures/timeUpdated');
 		axios
 			.get(`http://localhost:5000/parkingStructures/timeUpdated`)
 			.then((res) => {
@@ -90,9 +90,9 @@ class ParkingInfo extends Component {
 	// avoid multiple API calls
 	handleResetElapsedTime = () => {
 		let timeUpdated = { ...this.state.timeUpdated };
-		timeUpdated["ps1"].elapsedTime = 0;
-		timeUpdated["ps1"].elapsedTime = 0;
-		timeUpdated["ps3"].elapsedTime = 0;
+		timeUpdated['ps1'].elapsedTime = 0;
+		timeUpdated['ps3'].elapsedTime = 0;
+		timeUpdated['ps4'].elapsedTime = 0;
 		this.setState({ timeUpdated: timeUpdated });
 	};
 
@@ -113,9 +113,9 @@ class ParkingInfo extends Component {
 						<OfflinePage />
 					)
 				) : (
-					<div className="spinner-container">
-						<Spinner animation="border" role="status">
-							<span className="sr-only">Loading...</span>
+					<div className='spinner-container'>
+						<Spinner animation='border' role='status'>
+							<span className='sr-only'>Loading...</span>
 						</Spinner>
 					</div>
 				)}

@@ -1,20 +1,20 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import { Tooltip } from "react-bootstrap";
 
-import "./ColorOptionStyle.css";
-import "../../styles/shared/Colors.css";
+import './ColorOptionStyle.css';
+import '../../styles/shared/Colors.css';
 
 class ColorOption extends Component {
 	state = {};
 
 	render() {
 		const { color, onClick, handleMouseOver, handleMouseLeave } = this.props;
-		const classStr = color + "-background square";
+		const classStr = color + '-background square';
 
 		return (
 			<React.Fragment>
 				<div
-					id={"Tooltip-" + color}
+					id={'Tooltip-' + color}
 					onClick={() => {
 						onClick(color);
 					}}
