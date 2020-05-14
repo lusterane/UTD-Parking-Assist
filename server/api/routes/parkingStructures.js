@@ -4,36 +4,27 @@ const router = express.Router();
 const PSController = require("../controllers/psController");
 
 // Handles GET request for all parking structures
+// GET /parkingStructures
 router.get("/", PSController.getAllParkingStructures);
 
 // Handles GET request for a parking structure
+// GET /parkingStructures/psName/:parkingStructure
 router.get("/psName/:parkingStructure", PSController.getAParkingStructure);
 
 // Handles GET request for color permit
+// GET /parkingStructures/color/:color
 router.get("/color/:color", PSController.getColorInfo);
 
 //Handles GET request for update times
+// GET /parkingStructures/timeUpdated
 router.get("/timeUpdated", PSController.getAllParkingStructureTimes);
 
-// TESTING
-// // Handles POST request
-// router.post("/", (req, res, next) => {
-// 	const parkingStructure = new ParkingStructure({
-// 		_id: new mongoose.Types.ObjectId(),
-// 		structure: "ps5",
-// 		permit_category: [
-// 			{ color: "orange", level: "3", spots: "202" },
-// 			{ color: "orange", level: "3", spots: "202" },
-// 		],
-// 	});
+// Handles GET request for TEST color permit
+// GET /parkingStructures/TEST_color/:color
+router.get("/TEST_color/:color", PSController.TEST_getColorInfo);
 
-// 	parkingStructure.save().then(result => {
-// 		console.log(result);
-// 		res.status(201).json({
-// 			message: "Handle POST request",
-// 			createdParkingStructure: result,
-// 		})
-// 	})
-// });
+//Handles GET request for TEST update times
+// GET /parkingStructures/TEST_timeUpdated
+router.get("/TEST_timeUpdated", PSController.TEST_getAllParkingStructureTimes);
 
 module.exports = router;

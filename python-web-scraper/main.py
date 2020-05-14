@@ -21,8 +21,13 @@ def CloudFunction(request):
 
     # cr.printParkingStructureData()
 
+    # Normal
     json = cr.buildJSONFormat()  # array of json documents
     MongoDbConnection().writeToDB(json)
+
+    # Test
+    # testJson = cr.buildJSONTestFormat()  # array of json documents
+    # MongoDbConnection().writeToDB(testJson)
 
 
     if DEBUG_MODE:

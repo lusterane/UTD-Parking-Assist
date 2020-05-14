@@ -74,6 +74,21 @@ class CrawlRoot:
             jsonArr.append(currentJson)
         return jsonArr
 
+    # create TEST json format for mongoDB
+    # returns TESTarray of JSONs to send to mongoDB
+    def buildJSONTestFormat(self):
+        jsonArr = []
+        for ps in self.psList:
+            currentJson = {"structure": ps.structure, "utc_time_updated": datetime.datetime.utcnow(),
+                           "permit_category": []}
+            permit_category_lis = []
+            for permit in ps.permit:
+                permit_category_lis.append(
+                    {"id": ObjectId(), "color": permit.color, "level": permit.level, "spots": 0})
+            currentJson["permit_category"] = permit_category_lis
+            jsonArr.append(currentJson)
+        return jsonArr
+
     # general function for invoking HTML parse
     # placeholder function for lambda invocation
     def find_parking(self):

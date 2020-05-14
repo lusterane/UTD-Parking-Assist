@@ -4,8 +4,6 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const productsRoute = require("./api/routes/products");
-const ordersRoute = require("./api/routes/orders");
 const parkingStructuresRoute = require("./api/routes/parkingStructures");
 
 mongoose.connect(
@@ -38,8 +36,6 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use("/products", productsRoute);
-app.use("/orders", ordersRoute);
 app.use("/parkingStructures", parkingStructuresRoute);
 
 // error handling

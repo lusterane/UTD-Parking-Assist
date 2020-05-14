@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="031c9585-5861-4aa9-8ad1-df37d522b47b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/src/components/ParkingInfoPage/ParkingInfoPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/ParkingInfoPage/ParkingInfoPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/ParkingInfoPage/ParkingStructureGroupv2/ParkingStructureGroupv2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/ParkingInfoPage/ParkingStructureGroupv2/ParkingStructureGroupv2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/ParkingInfoPage/Time/Time.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/ParkingInfoPage/Time/Time.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crawl_Parking_Structures.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawl_Parking_Structures.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,22 +162,22 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="417" y="163" key="FileChooserDialogImpl/0.0.1280.800@0.0.1280.800" timestamp="1588745017320" />
-    <state width="1176" height="205" key="GridCell.Tab.0.bottom" timestamp="1589399190671">
+    <state width="1176" height="205" key="GridCell.Tab.0.bottom" timestamp="1589416146586">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1589399190671" />
-    <state width="1176" height="205" key="GridCell.Tab.0.center" timestamp="1589399190670">
+    <state width="1176" height="205" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1589416146586" />
+    <state width="1176" height="205" key="GridCell.Tab.0.center" timestamp="1589416146585">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1589399190670" />
-    <state width="1176" height="205" key="GridCell.Tab.0.left" timestamp="1589399190670">
+    <state width="1176" height="205" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1589416146585" />
+    <state width="1176" height="205" key="GridCell.Tab.0.left" timestamp="1589416146585">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1589399190670" />
-    <state width="1176" height="205" key="GridCell.Tab.0.right" timestamp="1589399190670">
+    <state width="1176" height="205" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1589416146585" />
+    <state width="1176" height="205" key="GridCell.Tab.0.right" timestamp="1589416146585">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1176" height="205" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1589399190670" />
+    <state width="1176" height="205" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1589416146585" />
     <state width="1239" height="239" key="GridCell.Tab.1.bottom" timestamp="1588784159641">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -196,10 +194,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1239" height="239" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1588784159640" />
-    <state x="237" y="0" width="900" height="722" key="SettingsEditor" timestamp="1589398931611">
+    <state x="237" y="0" width="900" height="722" key="SettingsEditor" timestamp="1589415492808">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="237" y="0" width="900" height="722" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1589398931611" />
+    <state x="237" y="0" width="900" height="722" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1589415492808" />
     <state x="197" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588783801771">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
