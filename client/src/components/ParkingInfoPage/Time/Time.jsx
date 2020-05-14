@@ -13,7 +13,7 @@ class Time extends Component {
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime <= 1) {
 			return "Updated a second ago";
-		} else if (elapsedTime == 60) {
+		} else if (elapsedTime === 60) {
 			return "Updated a minute ago";
 		} else if (elapsedTime > 120) {
 			// 2 minutes
@@ -24,8 +24,8 @@ class Time extends Component {
 
 	render() {
 		const ps1TimeText = this.getTimeText(this.props.timeUpdated.ps1.elapsedTime);
-		const ps3TimeText = this.getTimeText(this.props.timeUpdated.ps3.elapsedTime);
-		const ps4TimeText = this.getTimeText(this.props.timeUpdated.ps4.elapsedTime);
+		// const ps3TimeText = this.getTimeText(this.props.timeUpdated.ps3.elapsedTime);
+		// const ps4TimeText = this.getTimeText(this.props.timeUpdated.ps4.elapsedTime);
 
 		return (
 			<React.Fragment>

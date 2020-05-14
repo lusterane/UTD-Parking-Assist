@@ -48,7 +48,7 @@ class ParkingInfo extends Component {
 	updateTimeUpdatedInState = () => {
 		if (this.props.onlineStatus) {
 			let timeUpdated = { ...this.state.timeUpdated };
-			Object.entries(this.state.timeUpdated).map((value) => {
+			Object.entries(this.state.timeUpdated).forEach((value) => {
 				const structure = value[0];
 				const time = new Date(value[1].utc_updated_time);
 				timeUpdated[structure].elapsedTime = this.computeElapsedTime(time);
@@ -78,7 +78,7 @@ class ParkingInfo extends Component {
 	// ran once in initial
 	updateTimeFromHTTPResponse = (res) => {
 		let timeUpdated = { ...this.state.timeUpdated };
-		Object.entries(res.data).map((value) => {
+		Object.entries(res.data).forEach((value) => {
 			const structure = value[0];
 			const time = new Date(value[1]);
 			timeUpdated[structure].utc_updated_time = time;

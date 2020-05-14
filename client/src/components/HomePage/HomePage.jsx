@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Alert, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 import ColorOption from "../ColorOption/ColorOption";
 import ConfirmModal from "./ConfirmModal/ConfirmModal";

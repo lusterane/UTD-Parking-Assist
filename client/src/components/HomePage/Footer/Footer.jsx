@@ -10,7 +10,11 @@ class Footer extends Component {
 				<div className="footer">
 					<p>
 						Made with <i className="fas fa-heart"></i> by{" "}
-						<a href="https://github.com/lusterane" target="_blank">
+						<a
+							href="https://github.com/lusterane"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
 							Toby
 						</a>
 						.

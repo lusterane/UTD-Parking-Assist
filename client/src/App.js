@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./components/HomePage/HomePage";
 import ParkingInfoPage from "./components/ParkingInfoPage/ParkingInfoPage";
@@ -20,10 +20,7 @@ class App extends Component {
 		onlineStatus: false,
 		isLoaded: false,
 	};
-	constructor() {
-		super();
-	}
-	componentWillMount() {
+	componentDidMount() {
 		this.setState({ updateOnlineStatusInterval: setInterval(this.updateOnlineStatus, 900) });
 	}
 

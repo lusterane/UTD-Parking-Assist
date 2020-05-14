@@ -9,7 +9,7 @@ class PSCard extends Component {
 
 	// standardize color string
 	standardizeColor = (color) => {
-		if (color.charAt(3) == "-") {
+		if (color.charAt(3) === "-") {
 			return "Pay by space";
 		}
 		return color.charAt(0).toUpperCase() + color.slice(1);

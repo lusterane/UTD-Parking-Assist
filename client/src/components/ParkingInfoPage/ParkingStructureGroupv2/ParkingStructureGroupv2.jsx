@@ -58,11 +58,11 @@ class ParkingStructureGroup extends Component {
 		let permit = { ...this.state.permit };
 
 		// reset dataArr for all colors
-		Object.entries(permit).map((element) => {
+		Object.entries(permit).forEach((element) => {
 			element[1].dataArr = [];
 		});
 
-		res.data.map((permit_entry) => {
+		res.data.forEach((permit_entry) => {
 			const { id, level, spots, structure } = permit_entry;
 			const color = this.standardizeColorLongToShort(permit_entry.color);
 			if (spots !== 0) {
@@ -76,7 +76,6 @@ class ParkingStructureGroup extends Component {
 		});
 		this.props.onResetElapsedTime();
 		this.setState({ permit: permit });
-
 		this.setState({ isLoaded: true });
 	};
 
@@ -137,8 +136,7 @@ class ParkingStructureGroup extends Component {
 
 	checkEmpty = (permit) => {
 		let empty = true;
-		Object.values(permit).map((element) => {
-			console.log("element ", element);
+		Object.values(permit).forEach((element) => {
 			if (element.dataArr.length) {
 				empty = false;
 			}
@@ -170,6 +168,7 @@ class ParkingStructureGroup extends Component {
 										/>
 									);
 								}
+								return "";
 							})}
 						</div>
 					)
