@@ -1,56 +1,63 @@
-import React, { Component } from "react";
-import { Spinner } from "react-bootstrap";
-import axios from "axios";
+import React, { Component, useEffect } from 'react';
+import { Spinner } from 'react-bootstrap';
+import axios from 'axios';
 
-import EmptyGroup from "./EmptyGroup/EmptyGroup";
-import PSCard from "./PSCard/PSCard";
+import EmptyGroup from './EmptyGroup/EmptyGroup';
+import PSCard from './PSCard/PSCard';
 
-import "./ParkingStructureGroup.css";
+import './ParkingStructureGroup.css';
 
 class ParkingStructureGroup extends Component {
 	state = {
 		permit: {
 			green: {
-				id: "mongodbpermitid0",
-				textStyle: "light-text",
+				id: 'mongodbpermitid0',
+				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
 			gold: {
-				id: "mongodbpermitid1",
-				textStyle: "light-text",
+				id: 'mongodbpermitid1',
+				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
 			orange: {
-				id: "mongodbpermitid2",
-				textStyle: "light-text",
+				id: 'mongodbpermitid2',
+				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
 			purple: {
-				id: "mongodbpermitid3",
-				textStyle: "light-text",
+				id: 'mongodbpermitid3',
+				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
 			payBySpace: {
-				id: "mongodbpermitid4",
-				textStyle: "dark-text",
+				id: 'mongodbpermitid4',
+				textStyle: 'dark-text',
 				expand: false,
 				dataArr: [],
 			},
 		},
 		isLoaded: false,
+		color: '',
 	};
 
 	componentDidMount() {
-		this.handleHTTPGetPermitColor(this.props.color);
+		const data = localStorage.getItem('color');
+		if (data) {
+			console.log('set state to ', data);
+			this.setState({ color: data });
+		}
+		// don't know why I can't do this.handleHTTPGetPermitColor(this.state.color);
+		this.handleHTTPGetPermitColor(data);
 	}
 
 	componentDidUpdate() {
 		if (this.props.timeUpdated.ps1.elapsedTime === 61) {
-			this.handleHTTPGetPermitColor(this.props.color);
+			this.handleHTTPGetPermitColor(this.state.color);
 		}
 	}
 
@@ -82,40 +89,40 @@ class ParkingStructureGroup extends Component {
 	// returns standardized color. 'Green Permit' -> 'green'
 	standardizeColorLongToShort = (color) => {
 		switch (color) {
-			case "Green Permit":
-				return "green";
-			case "Gold Permit":
-				return "gold";
-			case "Orange Permit":
-				return "orange";
-			case "Purple Permit":
-				return "purple";
-			case "Pay-By-Space":
-				return "payBySpace";
+			case 'Green Permit':
+				return 'green';
+			case 'Gold Permit':
+				return 'gold';
+			case 'Orange Permit':
+				return 'orange';
+			case 'Purple Permit':
+				return 'purple';
+			case 'Pay-By-Space':
+				return 'payBySpace';
 			default:
-				return "green";
+				return 'green';
 		}
 	};
 
 	standardizeColorShortToLong = (color) => {
 		switch (color) {
-			case "green":
-				return "Green%20Permit";
-			case "gold":
-				return "Gold%20Permit";
-			case "orange":
-				return "Orange%20Permit";
-			case "purple":
-				return "Purple%20Permit";
-			case "pay-by-space":
-				return "Pay-By-Space";
+			case 'green':
+				return 'Green%20Permit';
+			case 'gold':
+				return 'Gold%20Permit';
+			case 'orange':
+				return 'Orange%20Permit';
+			case 'purple':
+				return 'Purple%20Permit';
+			case 'pay-by-space':
+				return 'Pay-By-Space';
 			default:
-				return "Green%20Permit";
+				return 'Green%20Permit';
 		}
 	};
 
 	handleHTTPGetPermitColor = (color) => {
-		console.log("HTTP CALL: GET /parkingStructures/color/:color");
+		console.log('HTTP CALL: GET /parkingStructures/color/:color');
 		// standardize to form 'Green Permit'
 		let standardizedColor = this.standardizeColorShortToLong(color);
 		axios
@@ -153,7 +160,7 @@ class ParkingStructureGroup extends Component {
 					empty ? (
 						<EmptyGroup />
 					) : (
-						<div className="card-container">
+						<div className='card-container'>
 							{Object.keys(permit).map((color, index) => {
 								if (permit[color].dataArr.length !== 0) {
 									return (
@@ -168,14 +175,14 @@ class ParkingStructureGroup extends Component {
 										/>
 									);
 								}
-								return "";
+								return '';
 							})}
 						</div>
 					)
 				) : (
-					<div className="spinner-container">
-						<Spinner animation="border" role="status">
-							<span className="sr-only">Loading...</span>
+					<div className='spinner-container'>
+						<Spinner animation='border' role='status'>
+							<span className='sr-only'>Loading...</span>
 						</Spinner>
 					</div>
 				)}

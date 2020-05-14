@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import HomePage from "./components/HomePage/HomePage";
-import ParkingInfoPage from "./components/ParkingInfoPage/ParkingInfoPage";
+import HomePage from './components/HomePage/HomePage';
+import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 
-import "./App.css";
+import './App.css';
 
-const defaultColor = "black";
+const defaultColor = 'black';
 
 class App extends Component {
 	state = {
 		color: defaultColor,
-		updateOnlineStatusInterval: "",
+		updateOnlineStatusInterval: '',
 		onlineHours: {
-			fromHour: "0",
-			toHour: "25",
+			fromHour: '0',
+			toHour: '25',
 		},
 
 		onlineStatus: false,
@@ -61,7 +61,7 @@ class App extends Component {
 					{/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
 					<Switch>
-						<Route exact path="/">
+						<Route exact path='/'>
 							<HomePage
 								onlineStatus={this.state.onlineStatus}
 								changeColor={this.handleChangeColor}
@@ -70,9 +70,8 @@ class App extends Component {
 								isLoaded={this.state.isLoaded}
 							/>
 						</Route>
-						<Router path="/parkingInfoPage">
+						<Router path='/parkingInfoPage'>
 							<ParkingInfoPage
-								color={this.state.color}
 								onlineStatus={this.state.onlineStatus}
 								isLoaded={this.state.isLoaded}
 							/>

@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { Alert, Spinner } from "react-bootstrap";
+import React, { Component } from 'react';
+import { Alert, Spinner } from 'react-bootstrap';
 
-import ColorOption from "../ColorOption/ColorOption";
-import ConfirmModal from "./ConfirmModal/ConfirmModal";
-import Footer from "./Footer/Footer";
+import ColorOption from '../ColorOption/ColorOption';
+import ConfirmModal from './ConfirmModal/ConfirmModal';
+import Footer from './Footer/Footer';
 
-import "./HomePageStyle.css";
-import "../../styles/shared/Colors.css";
-import "../../styles/shared/LoadingSpinner.css";
+import './HomePageStyle.css';
+import '../../styles/shared/Colors.css';
+import '../../styles/shared/LoadingSpinner.css';
 
 class Home extends Component {
 	state = {
@@ -22,6 +22,7 @@ class Home extends Component {
 	};
 
 	handleModalConfirm = () => {
+		localStorage.setItem('color', this.props.color);
 		this.setState({ showModal: false });
 	};
 
@@ -37,20 +38,20 @@ class Home extends Component {
 				{this.props.isLoaded ? (
 					<div>
 						{this.props.onlineStatus ? (
-							""
+							''
 						) : (
-							<Alert style={{ textAlign: "center" }} variant="warning">
-								<i className="fas fa-exclamation-circle fa-lg"></i>
+							<Alert style={{ textAlign: 'center' }} variant='warning'>
+								<i className='fas fa-exclamation-circle fa-lg'></i>
 								To reduce server loads, online hours are from 8:00AM - 8:00PM CST
 							</Alert>
 						)}
-						<div className="container center">
-							<div className="row">
-								<div className="col">
+						<div className='container center'>
+							<div className='row'>
+								<div className='col'>
 									<h1 className={this.props.color}>Permit Color</h1>
-									<div className="row">
+									<div className='row'>
 										<ColorOption
-											color="green"
+											color='green'
 											onClick={() => {
 												this.handleModalShow(this.props.color);
 											}}
@@ -58,7 +59,7 @@ class Home extends Component {
 											handleMouseLeave={this.handleMouseLeave}
 										/>
 										<ColorOption
-											color="gold"
+											color='gold'
 											onClick={() => {
 												this.handleModalShow(this.props.color);
 											}}
@@ -66,7 +67,7 @@ class Home extends Component {
 											handleMouseLeave={this.handleMouseLeave}
 										/>
 										<ColorOption
-											color="orange"
+											color='orange'
 											onClick={() => {
 												this.handleModalShow(this.props.color);
 											}}
@@ -74,7 +75,7 @@ class Home extends Component {
 											handleMouseLeave={this.handleMouseLeave}
 										/>
 										<ColorOption
-											color="purple"
+											color='purple'
 											onClick={() => {
 												this.handleModalShow(this.props.color);
 											}}
@@ -94,9 +95,9 @@ class Home extends Component {
 						</div>
 					</div>
 				) : (
-					<div className="spinner-container">
-						<Spinner animation="border" role="status">
-							<span className="sr-only">Loading...</span>
+					<div className='spinner-container'>
+						<Spinner animation='border' role='status'>
+							<span className='sr-only'>Loading...</span>
 						</Spinner>
 					</div>
 				)}

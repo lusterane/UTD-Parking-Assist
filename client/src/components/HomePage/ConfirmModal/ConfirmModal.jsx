@@ -1,8 +1,8 @@
-import React from "react";
-import { Modal, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-import "./ConfirmModal.css";
+import './ConfirmModal.css';
 
 function ConfirmModal(props) {
 	return (
@@ -15,18 +15,18 @@ function ConfirmModal(props) {
 			>
 				<Modal.Header closeButton></Modal.Header>
 				<Modal.Body>
-					<div className="modal-body-text">
-						You have {props.color === "orange" ? "an" : "a"} {props.color} permit?
+					<div className='modal-body-text'>
+						You have {props.color === 'orange' ? 'an' : 'a'} {props.color} permit?
 					</div>
 				</Modal.Body>
 				<Modal.Footer>
-					<Link to="/parkinginfopage">
+					<Link to='/parkinginfopage'>
 						<Button
-							variant="primary"
-							className={props.color + "-button confirm-button"}
+							variant='primary'
+							className={props.color + '-button confirm-button'}
 							onClick={props.onModalConfirm}
 						>
-							<i className="fas fa-check fa-sm"></i>
+							<i className='fas fa-check fa-sm'></i>
 						</Button>
 					</Link>
 				</Modal.Footer>

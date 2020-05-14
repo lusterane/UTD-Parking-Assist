@@ -11,7 +11,6 @@ import '../../styles/shared/LoadingSpinner.css';
 
 class ParkingInfo extends Component {
 	state = {
-		color: this.props.color,
 		timeUpdated: {
 			ps1: {
 				utc_updated_time: '',
@@ -104,7 +103,6 @@ class ParkingInfo extends Component {
 						<React.Fragment>
 							<ParkingStructureGroup
 								timeUpdated={this.state.timeUpdated}
-								color={this.state.color}
 								onResetElapsedTime={this.handleResetElapsedTime}
 							/>
 							<Time timeUpdated={this.state.timeUpdated} />
