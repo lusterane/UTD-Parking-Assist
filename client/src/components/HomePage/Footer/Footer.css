@@ -1,7 +1,13 @@
 .footer {
 	text-align: center;
+	height: 10vh;
 }
 
 .footer .fa-heart {
 	color: rgb(233, 53, 53);
+}
+
+.footer .bottom-text {
+	line-height: 0px;
+	font-weight: 300;
 }

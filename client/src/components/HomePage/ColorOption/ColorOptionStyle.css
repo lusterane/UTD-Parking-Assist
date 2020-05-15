@@ -1,7 +1,7 @@
 .square {
 	margin: 1rem;
-	height: 55px;
-	width: 55px;
+	height: 1rem;
+	width: 5rem;
 	border-radius: 10px;
 	cursor: pointer;
 }

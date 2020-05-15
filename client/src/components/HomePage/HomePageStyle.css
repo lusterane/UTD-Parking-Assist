@@ -2,11 +2,11 @@ body {
 }
 .center {
 	display: flex;
-	height: 80vh;
+	height: 70vh;
 	justify-content: center;
 	align-items: center;
 }
 
-.fa-exclamation-circle {
-	padding-right: 10px;
+.title-greeting {
+	font-size: 2rem;
 }

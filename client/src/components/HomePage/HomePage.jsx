@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Alert, Spinner } from 'react-bootstrap';
 
-import ColorOption from '../ColorOption/ColorOption';
+import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import Footer from './Footer/Footer';
+import Header from '../Header/Header';
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
@@ -37,18 +38,13 @@ class Home extends Component {
 			<React.Fragment>
 				{this.props.isLoaded ? (
 					<div>
-						{this.props.onlineStatus ? (
-							''
-						) : (
-							<Alert style={{ textAlign: 'center' }} variant='warning'>
-								<i className='fas fa-exclamation-circle fa-lg'></i>
-								To reduce server loads, online hours are from 8:00AM - 8:00PM CST
-							</Alert>
-						)}
+						{this.props.onlineStatus ? '' : <Header type='server-warning'></Header>}
 						<div className='container center'>
 							<div className='row'>
 								<div className='col'>
-									<h1 className={this.props.color}>Permit Color</h1>
+									<h1 className={this.props.color + ' title-greeting'}>
+										{this.props.getGreeting()}
+									</h1>
 									<div className='row'>
 										<ColorOption
 											color='green'

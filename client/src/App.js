@@ -14,7 +14,7 @@ class App extends Component {
 		updateOnlineStatusInterval: '',
 		onlineHours: {
 			fromHour: '8',
-			toHour: '25',
+			toHour: '20',
 		},
 
 		onlineStatus: false,
@@ -54,6 +54,38 @@ class App extends Component {
 		}
 	};
 
+	getGreeting = () => {
+		const nowHour = new Date().getHours();
+
+		// Night: [20-23], [0 or 24 - 5]
+		// Morning: [6-11]
+		// Afternoon: [12-16]
+		// Evening: [17-19] evening
+		if ((nowHour >= 20 && nowHour <= 23) || ((nowHour == 0 || nowHour == 24) && nowHour <= 5)) {
+			return this.getNightMessage();
+		} else if (nowHour >= 6 && nowHour <= 11) {
+			return this.getMorningMessage();
+		} else if (nowHour >= 12 && nowHour <= 16) {
+			return this.getAfternoonMessage();
+		} else {
+			return this.getEveningMessage();
+		}
+	};
+
+	// returns random  message
+	getNightMessage = () => {
+		return 'Good Night';
+	};
+	getMorningMessage = () => {
+		return 'Good Morning';
+	};
+	getAfternoonMessage = () => {
+		return 'Good Afternoon';
+	};
+	getEveningMessage = () => {
+		return 'Good Evening';
+	};
+
 	render() {
 		return (
 			<Router>
@@ -68,6 +100,7 @@ class App extends Component {
 								changeColorDefault={this.handleChangeColorDefault}
 								color={this.state.color}
 								isLoaded={this.state.isLoaded}
+								getGreeting={this.getGreeting}
 							/>
 						</Route>
 						<Router path='/parkingInfoPage'>
