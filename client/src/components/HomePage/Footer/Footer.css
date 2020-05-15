@@ -8,6 +8,8 @@
 }
 
 .footer .bottom-text {
-	line-height: 0px;
+	display: block;
+	font-size: 15px;
 	font-weight: 300;
+	line-height: 30px;
 }

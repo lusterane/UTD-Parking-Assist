@@ -8,7 +8,7 @@ class Footer extends Component {
 		return (
 			<React.Fragment>
 				<div className='footer'>
-					<p>
+					<div>
 						Made with <i className='fas fa-heart'></i> by{' '}
 						<a
 							href='https://github.com/lusterane'
@@ -18,7 +18,7 @@ class Footer extends Component {
 							Toby
 						</a>
 						.
-					</p>
+					</div>
 					<div className='bottom-text'>
 						<p>
 							Interested in the project? Check it out at the{' '}

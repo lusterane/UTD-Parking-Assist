@@ -2,7 +2,7 @@ body {
 }
 .center {
 	display: flex;
-	height: 70vh;
+	height: 75vh;
 	justify-content: center;
 	align-items: center;
 }

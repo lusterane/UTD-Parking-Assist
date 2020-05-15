@@ -61,7 +61,10 @@ class App extends Component {
 		// Morning: [6-11]
 		// Afternoon: [12-16]
 		// Evening: [17-19] evening
-		if ((nowHour >= 20 && nowHour <= 23) || ((nowHour == 0 || nowHour == 24) && nowHour <= 5)) {
+		if (
+			(nowHour >= 20 && nowHour <= 23) ||
+			((nowHour === 0 || nowHour === 24) && nowHour <= 5)
+		) {
 			return this.getNightMessage();
 		} else if (nowHour >= 6 && nowHour <= 11) {
 			return this.getMorningMessage();
