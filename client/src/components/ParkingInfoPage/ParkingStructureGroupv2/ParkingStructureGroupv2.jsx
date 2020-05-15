@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -48,7 +48,6 @@ class ParkingStructureGroup extends Component {
 	componentDidMount() {
 		const data = localStorage.getItem('color');
 		if (data) {
-			console.log('set state to ', data);
 			this.setState({ color: data });
 		}
 		// don't know why I can't do this.handleHTTPGetPermitColor(this.state.color);
@@ -56,8 +55,14 @@ class ParkingStructureGroup extends Component {
 	}
 
 	componentDidUpdate() {
-		if (this.props.timeUpdated.ps1.elapsedTime === 61) {
-			this.handleHTTPGetPermitColor(this.state.color);
+		// 63 64 65 66
+		// inclusive
+		const range = [62, 63];
+		for (let i = range[0]; i <= range[1]; i++) {
+			if (this.props.timeUpdated.ps1.elapsedTime === i) {
+				console.log('color: called with i = ' + i);
+				this.handleHTTPGetPermitColor(this.state.color);
+			}
 		}
 	}
 
@@ -81,7 +86,7 @@ class ParkingStructureGroup extends Component {
 				});
 			}
 		});
-		this.props.onResetElapsedTime();
+
 		this.setState({ permit: permit });
 		this.setState({ isLoaded: true });
 	};
@@ -128,7 +133,11 @@ class ParkingStructureGroup extends Component {
 		axios
 			.get(`http://localhost:5000/parkingStructures/color/` + standardizedColor)
 			.then((res) => {
-				this.updatePermitsFromHTTPResponse(res);
+				if (res.status === 200) {
+					this.updatePermitsFromHTTPResponse(res);
+				} else {
+					console.log('GET /parkingStructures/color/:color ' + res.status);
+				}
 			})
 			.catch((err) => {
 				console.log(err);

@@ -1,25 +1,25 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "./Time.css";
+import './Time.css';
 
 class Time extends Component {
 	state = {
-		updateClientTimerInterval: "",
+		updateClientTimerInterval: '',
 	};
-
-	componentDidMount() {}
-	componentWillUnmount() {}
-
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime <= 1) {
-			return "Updated a second ago";
+			return 'Updated a second ago';
+		} else if (elapsedTime > 1 && elapsedTime < 60) {
+			return 'Updated ' + elapsedTime + ' seconds ago';
 		} else if (elapsedTime === 60) {
-			return "Updated a minute ago";
-		} else if (elapsedTime > 120) {
+			return 'Updated a minute ago';
+		} else if (elapsedTime > 60 && elapsedTime < 119) {
+			const calcElapsedTime = elapsedTime - 60;
+			return 'Updated a minute and ' + calcElapsedTime + ' seconds ago';
+		} else if (elapsedTime >= 120) {
 			// 2 minutes
-			return "Updated a few minutes ago";
+			return 'Updated a few minutes ago';
 		}
-		return "Updated " + elapsedTime + " seconds ago";
 	};
 
 	render() {
@@ -29,8 +29,8 @@ class Time extends Component {
 
 		return (
 			<React.Fragment>
-				<div className="time-text-container">
-					<div className="time-text">{ps1TimeText}</div>
+				<div className='time-text-container'>
+					<div className='time-text'>{ps1TimeText}</div>
 				</div>
 			</React.Fragment>
 		);

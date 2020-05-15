@@ -25,6 +25,7 @@ class ParkingInfo extends Component {
 				elapsedTime: 0,
 			},
 		},
+		isLoadedTimer: false,
 	};
 	componentDidMount() {
 		this.setState({
@@ -38,8 +39,21 @@ class ParkingInfo extends Component {
 	}
 
 	componentDidUpdate() {
-		if (this.state.timeUpdated.ps1.elapsedTime === 61) {
-			this.handleHTTPGetUpdateTime();
+		// 63 64 65 66
+		// inclusive
+		const range = [62, 63];
+		// 63, 64 working well 4/14 7:30~
+		// 62, 63 working well 4/14 7:30~
+		// 61, 62 working for most part. extremely minor hiccup 4/14 8:00~
+		// 80 requests: 2 hiccups
+		// 62, 63 working well 4/14 8:40~
+		// 80 requests: NO hiccups
+		for (let i = range[0]; i <= range[1]; i++) {
+			if (this.state.timeUpdated.ps1.elapsedTime === i) {
+				console.log('time: called with i = ' + i);
+				this.handleResetElapsedTime();
+				this.handleHTTPGetUpdateTime();
+			}
 		}
 	}
 
@@ -67,7 +81,11 @@ class ParkingInfo extends Component {
 		axios
 			.get(`http://localhost:5000/parkingStructures/timeUpdated`)
 			.then((res) => {
-				this.updateTimeFromHTTPResponse(res);
+				if (res.status === 200) {
+					this.updateTimeFromHTTPResponse(res);
+				} else {
+					console.log('GET /parkingStructures/timeUpdated ' + res.status);
+				}
 			})
 			.catch((err) => {
 				console.log(err);
@@ -82,7 +100,6 @@ class ParkingInfo extends Component {
 			const time = new Date(value[1]);
 			timeUpdated[structure].utc_updated_time = time;
 		});
-		this.handleResetElapsedTime();
 		this.setState({ timeUpdated: timeUpdated });
 	};
 
@@ -105,7 +122,10 @@ class ParkingInfo extends Component {
 								timeUpdated={this.state.timeUpdated}
 								onResetElapsedTime={this.handleResetElapsedTime}
 							/>
-							<Time timeUpdated={this.state.timeUpdated} />
+							<Time
+								timeUpdated={this.state.timeUpdated}
+								isLoadedTimer={this.state.isLoadedTimer}
+							/>
 						</React.Fragment>
 					) : (
 						<OfflinePage />
