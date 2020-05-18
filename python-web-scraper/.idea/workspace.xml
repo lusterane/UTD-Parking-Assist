@@ -20,8 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="031c9585-5861-4aa9-8ad1-df37d522b47b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crawl_Parking_Structures.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawl_Parking_Structures.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MongoDbConnection.py" beforeDir="false" afterPath="$PROJECT_DIR$/MongoDbConnection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,10 +151,12 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="523" y="270" key="#Notifications/0.0.1280.800@0.0.1280.800" timestamp="1588742853959" />
-    <state x="62" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588831388344">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="111" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589609589727">
+      <screen x="55" y="0" width="1225" height="800" />
     </state>
     <state x="62" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1588831388344" />
+    <state x="111" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog/52.0.1228.800@52.0.1228.800" timestamp="1589608124324" />
+    <state x="111" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog/55.0.1225.800@55.0.1225.800" timestamp="1589609589727" />
     <state x="452" y="136" key="EnvironmentVariablesDialog" timestamp="1588831316802">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -162,22 +165,30 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="417" y="163" key="FileChooserDialogImpl/0.0.1280.800@0.0.1280.800" timestamp="1588745017320" />
-    <state width="1176" height="205" key="GridCell.Tab.0.bottom" timestamp="1589416146586">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1176" height="205" key="GridCell.Tab.0.bottom" timestamp="1589607595217">
+      <screen x="55" y="0" width="1225" height="800" />
     </state>
     <state width="1176" height="205" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1589416146586" />
-    <state width="1176" height="205" key="GridCell.Tab.0.center" timestamp="1589416146585">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1176" height="205" key="GridCell.Tab.0.bottom/52.0.1228.800@52.0.1228.800" timestamp="1589607587258" />
+    <state width="1176" height="205" key="GridCell.Tab.0.bottom/55.0.1225.800@55.0.1225.800" timestamp="1589607595217" />
+    <state width="1176" height="205" key="GridCell.Tab.0.center" timestamp="1589607595216">
+      <screen x="55" y="0" width="1225" height="800" />
     </state>
     <state width="1176" height="205" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1589416146585" />
-    <state width="1176" height="205" key="GridCell.Tab.0.left" timestamp="1589416146585">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1176" height="205" key="GridCell.Tab.0.center/52.0.1228.800@52.0.1228.800" timestamp="1589607587257" />
+    <state width="1176" height="205" key="GridCell.Tab.0.center/55.0.1225.800@55.0.1225.800" timestamp="1589607595216" />
+    <state width="1176" height="205" key="GridCell.Tab.0.left" timestamp="1589607595216">
+      <screen x="55" y="0" width="1225" height="800" />
     </state>
     <state width="1176" height="205" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1589416146585" />
-    <state width="1176" height="205" key="GridCell.Tab.0.right" timestamp="1589416146585">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1176" height="205" key="GridCell.Tab.0.left/52.0.1228.800@52.0.1228.800" timestamp="1589607587256" />
+    <state width="1176" height="205" key="GridCell.Tab.0.left/55.0.1225.800@55.0.1225.800" timestamp="1589607595216" />
+    <state width="1176" height="205" key="GridCell.Tab.0.right" timestamp="1589607595216">
+      <screen x="55" y="0" width="1225" height="800" />
     </state>
     <state width="1176" height="205" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1589416146585" />
+    <state width="1176" height="205" key="GridCell.Tab.0.right/52.0.1228.800@52.0.1228.800" timestamp="1589607587257" />
+    <state width="1176" height="205" key="GridCell.Tab.0.right/55.0.1225.800@55.0.1225.800" timestamp="1589607595216" />
     <state width="1239" height="239" key="GridCell.Tab.1.bottom" timestamp="1588784159641">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -194,10 +205,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="1239" height="239" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1588784159640" />
-    <state x="237" y="0" width="900" height="722" key="SettingsEditor" timestamp="1589415492808">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="279" y="0" width="900" height="722" key="SettingsEditor" timestamp="1589608913860">
+      <screen x="52" y="0" width="1228" height="800" />
     </state>
     <state x="237" y="0" width="900" height="722" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1589415492808" />
+    <state x="279" y="0" width="900" height="722" key="SettingsEditor/52.0.1228.800@52.0.1228.800" timestamp="1589608913860" />
     <state x="197" y="136" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1588783801771">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

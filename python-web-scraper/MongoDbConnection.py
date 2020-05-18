@@ -5,6 +5,9 @@ from pymongo import MongoClient
 class MongoDbConnection:
     def writeToDB(self, json):
         token = os.environ.get("MONGO_ATLAS_PW")
+
+        if token == None:
+            print("token: ", token)
         client = MongoClient("mongodb+srv://lusterane:" +
                              token +
                              "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
@@ -12,9 +15,10 @@ class MongoDbConnection:
 
         for ps in json:
             ps_name = ps['structure']
-            ## change to insert_one to initialize collection
+            # change to insert_one to initialize collection
             # result = db.parkingstructures.insert_one(ps)
-            result = db.parkingstructures.replace_one({'structure': ps_name}, ps)
+            result = db.parkingstructures.replace_one(
+                {'structure': ps_name}, ps)
             print(result)
 
         client.close()

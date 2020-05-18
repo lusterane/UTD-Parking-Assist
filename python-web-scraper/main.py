@@ -8,16 +8,15 @@ from MongoDbConnection import MongoDbConnection
 DEBUG_MODE = False
 
 # integration with Google Cloud Function
+
+
 def CloudFunction(request):
-
-
     if DEBUG_MODE:
         import time
         print("DEBUG_MODE ON")
         start_time = time.time()
     cr = CrawlRoot()
     cr.find_parking()
-
 
     # cr.printParkingStructureData()
 
@@ -28,7 +27,6 @@ def CloudFunction(request):
     # Test
     # testJson = cr.buildJSONTestFormat()  # array of json documents
     # MongoDbConnection().writeToDB(testJson)
-
 
     if DEBUG_MODE:
         print("elapsed time: " + str(time.time() - start_time))
