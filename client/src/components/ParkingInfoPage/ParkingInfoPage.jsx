@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios';
 
-//import ParkingStructureGroup from "./ParkingStructureGroup/ParkingStructureGroup";
-import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';
+//import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';
+import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
 
 import '../../styles/shared/LoadingSpinner.css';
+import './ParkingInfoPage.css';
 
 class ParkingInfo extends Component {
 	state = {
@@ -115,28 +116,31 @@ class ParkingInfo extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				{this.props.isLoaded ? (
-					this.props.onlineStatus ? (
-						<React.Fragment>
-							<ParkingStructureGroup
-								timeUpdated={this.state.timeUpdated}
-								onResetElapsedTime={this.handleResetElapsedTime}
-							/>
-							<Time
-								timeUpdated={this.state.timeUpdated}
-								isLoadedTimer={this.state.isLoadedTimer}
-							/>
-						</React.Fragment>
+				<div className='parking-info-page-container'>
+					{this.props.isLoaded ? (
+						this.props.onlineStatus ? (
+							<React.Fragment>
+								<i class='fas fa-chevron-left back-route-button'></i>
+								<Time
+									timeUpdated={this.state.timeUpdated}
+									isLoadedTimer={this.state.isLoadedTimer}
+								/>
+								<ParkingStructureGroup
+									timeUpdated={this.state.timeUpdated}
+									onResetElapsedTime={this.handleResetElapsedTime}
+								/>
+							</React.Fragment>
+						) : (
+							<OfflinePage />
+						)
 					) : (
-						<OfflinePage />
-					)
-				) : (
-					<div className='spinner-container'>
-						<Spinner animation='border' role='status'>
-							<span className='sr-only'>Loading...</span>
-						</Spinner>
-					</div>
-				)}
+						<div className='spinner-container'>
+							<Spinner animation='border' role='status'>
+								<span className='sr-only'>Loading...</span>
+							</Spinner>
+						</div>
+					)}
+				</div>
 			</React.Fragment>
 		);
 	}
