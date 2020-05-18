@@ -9,20 +9,16 @@ import './PSGroup.css';
 
 class PSGroup extends Component {
 	state = {
-		permit: {
+		structures: {
 			ps1: {
-				dataArr: [
-					{ id: 'mongodbid0', structure: 'PS1', spots: 102, color: 'gold', level: '3' },
-					{ id: 'mongodbid0', structure: 'PS1', spots: 200, color: 'purple', level: '2' },
-					{ id: 'mongodbid0', structure: 'PS1', spots: 201, color: 'green', level: '5' },
-				],
+				dataArr: [],
 			},
 			ps3: {
-				dataArr: [
-					{ id: 'mongodbid0', structure: 'PS3', spots: 5, color: 'purple', level: '2' },
-				],
+				dataArr: [],
 			},
-			ps4: { dataArr: [] },
+			ps4: {
+				dataArr: [],
+			},
 		},
 		isLoaded: true,
 		color: '',
@@ -33,7 +29,7 @@ class PSGroup extends Component {
 		if (data) {
 			this.setState({ color: data });
 		}
-		//this.handleHTTPGetPermitColor(data);
+		this.handleHTTPGetPS();
 	}
 
 	componentDidUpdate() {
@@ -42,10 +38,53 @@ class PSGroup extends Component {
 		const range = [62, 63];
 		for (let i = range[0]; i <= range[1]; i++) {
 			if (this.props.timeUpdated.ps1.elapsedTime === i) {
-				//this.handleHTTPGetPermitColor(this.state.color);
+				this.handleHTTPGetPS();
 			}
 		}
 	}
+
+	handleHTTPGetPS = () => {
+		console.log('HTTP CALL: GET /parkingStructures/');
+
+		axios
+			.get(`http://localhost:5000/parkingStructures/`)
+			.then((res) => {
+				if (res.status === 200) {
+					this.updatePSFromHTTPResponse(res);
+				} else {
+					console.log('GET /parkingStructures/ ' + res.status);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	updatePSFromHTTPResponse = (res) => {
+		let structures = { ...this.state.structures };
+
+		// reset dataArr for each parking structure
+		Object.entries(structures).forEach((element) => {
+			element[1].dataArr = [];
+		});
+		res.data.forEach((element) => {
+			structures[element.structure].dataArr = element.permit_category.map((permit) => {
+				const { id, color, level, spots } = permit;
+				if (spots !== 0) {
+					return {
+						id: id,
+						color: this.standardizeColorLongToShort(color),
+						level: level,
+						spots: spots,
+					};
+				} else {
+					return {};
+				}
+			});
+		});
+		this.setState({ structures: structures });
+		this.setState({ isLoaded: true });
+	};
 
 	// returns standardized color. 'Green Permit' -> 'green'
 	standardizeColorLongToShort = (color) => {
@@ -118,7 +157,7 @@ class PSGroup extends Component {
 	};
 
 	render() {
-		const { ps1, ps3, ps4 } = this.state.permit;
+		const { ps1, ps3, ps4 } = this.state.structures;
 		const ps1DataArr = this.getSortedDataArr(ps1.dataArr, 'spots');
 		const ps3DataArr = this.getSortedDataArr(ps3.dataArr, 'spots');
 		const ps4DataArr = this.getSortedDataArr(ps4.dataArr, 'spots');

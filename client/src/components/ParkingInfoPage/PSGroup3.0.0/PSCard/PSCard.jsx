@@ -16,12 +16,8 @@ class PSCard extends Component {
 		},
 	};
 
-	componentDidMount() {
-		this.updateCurrentPermit();
-	}
-
 	componentDidUpdate(prevProps, prevState) {
-		if (prevState.index !== this.state.index) {
+		if (prevState.index !== this.state.index || prevProps != this.props) {
 			this.updateCurrentPermit();
 		}
 	}
