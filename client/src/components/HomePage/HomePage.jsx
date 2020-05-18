@@ -39,7 +39,7 @@ class Home extends Component {
 				{this.props.isLoaded ? (
 					<div>
 						{this.props.onlineStatus ? '' : <Header type='server-warning'></Header>}
-						<div className='container center'>
+						<div className='container homepage-container'>
 							<div className='row'>
 								<div className='col'>
 									<h1 className={this.props.color + ' title-greeting'}>

@@ -34,7 +34,7 @@ class PSCard extends Component {
 							</div>
 						</div>
 						<div className='ps-card-footer'>
-							<hr></hr>
+							<hr className='ps-card-hr'></hr>
 							<p>PS1</p>
 						</div>
 					</Card.Body>

@@ -3,6 +3,7 @@
 }
 
 .ps-card {
+	position: relative;
 	height: 75vh;
 	width: 30vw;
 	min-width: 300px;
@@ -53,17 +54,18 @@
 }
 
 .ps-card-hr {
-	width: 100%;
+	width: 90%;
 }
 
 .ps-card-footer {
 	display: block;
-	padding: 0 1.25rem;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
 }
 
 .ps-card-footer p {
 	text-align: center;
-	width: 100%;
 	height: 100%;
 	font-size: 1.25rem;
 }
