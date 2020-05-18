@@ -1,4 +1,71 @@
+.card-body {
+	padding: 1.25rem 0px;
+}
+
 .ps-card {
+	border-radius: 1rem;
 	height: 75vh;
 	width: 30vw;
+	min-width: 300px;
+	min-height: 365px;
+	margin-bottom: 7vh;
+	box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.ps-card-header {
+	height: 0vh;
+	padding: 0px 1.25rem;
+}
+.ps-card-body {
+	display: flex;
+	height: 85%;
+}
+
+.ps-card-body .text {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.ps-card-body .main-text {
+	position: relative;
+	left: -0.5rem;
+	margin-bottom: 0px;
+	font-size: 2.25rem;
+	font-weight: 300;
+}
+
+.ps-card-body .sub-text {
+	margin-bottom: 0px;
+}
+
+.ps-card .arrow {
+	font-size: 1.5rem;
+}
+.ps-card .arrow-container {
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	cursor: pointer;
+	padding: 0 1.25rem;
+}
+
+.ps-card-hr {
+	width: 100%;
+}
+
+.ps-card-footer {
+	display: block;
+	padding: 0 1.25rem;
+}
+
+.ps-card-footer p {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	font-size: 1.25rem;
 }

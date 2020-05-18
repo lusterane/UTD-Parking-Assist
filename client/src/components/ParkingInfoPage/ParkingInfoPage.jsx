@@ -6,6 +6,7 @@ import axios from 'axios';
 import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
+import ParkingInfoFooter from './ParkingInfoFooter/ParkingInfoFooter';
 
 import '../../styles/shared/LoadingSpinner.css';
 import './ParkingInfoPage.css';
@@ -120,15 +121,18 @@ class ParkingInfo extends Component {
 					{this.props.isLoaded ? (
 						this.props.onlineStatus ? (
 							<React.Fragment>
-								<i class='fas fa-chevron-left back-route-button'></i>
-								<Time
-									timeUpdated={this.state.timeUpdated}
-									isLoadedTimer={this.state.isLoadedTimer}
-								/>
-								<ParkingStructureGroup
-									timeUpdated={this.state.timeUpdated}
-									onResetElapsedTime={this.handleResetElapsedTime}
-								/>
+								<div className='parking-info-container'>
+									<i className='fas fa-chevron-left back-route-button'></i>
+									<Time
+										timeUpdated={this.state.timeUpdated}
+										isLoadedTimer={this.state.isLoadedTimer}
+									/>
+									<ParkingStructureGroup
+										timeUpdated={this.state.timeUpdated}
+										onResetElapsedTime={this.handleResetElapsedTime}
+									/>
+									<ParkingInfoFooter />
+								</div>
 							</React.Fragment>
 						) : (
 							<OfflinePage />

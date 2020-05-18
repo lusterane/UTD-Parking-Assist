@@ -3,7 +3,7 @@
 	--gold: #ffc107;
 	--orange: #ff9f1c;
 	--purple: #773dbc;
-	--grey: #f8f9fa;
+	--grey: rgb(159, 158, 158);
 	--shaded-green: #24933e;
 	--shaded-gold: #e1aa05;
 	--shaded-orange: #e69119;
@@ -25,6 +25,9 @@
 .pay-by-space-background {
 	background-color: var(--grey);
 }
+.grey-background {
+	background-color: var(--grey);
+}
 
 .green {
 	color: var(--green);
@@ -39,6 +42,9 @@
 	color: var(--purple);
 }
 .pay-by-space {
+	color: var(--grey);
+}
+.grey {
 	color: var(--grey);
 }
 
