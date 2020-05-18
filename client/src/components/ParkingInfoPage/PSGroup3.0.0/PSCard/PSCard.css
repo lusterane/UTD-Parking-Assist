@@ -49,8 +49,11 @@
 	height: 100%;
 	justify-content: center;
 	flex-direction: column;
-	cursor: pointer;
 	padding: 0 1.25rem;
+}
+
+.pointer {
+	cursor: pointer;
 }
 
 .ps-card-hr {

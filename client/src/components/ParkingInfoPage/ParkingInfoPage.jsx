@@ -52,7 +52,6 @@ class ParkingInfo extends Component {
 		// 80 requests: NO hiccups
 		for (let i = range[0]; i <= range[1]; i++) {
 			if (this.state.timeUpdated.ps1.elapsedTime === i) {
-				console.log('time: called with i = ' + i);
 				this.handleResetElapsedTime();
 				this.handleHTTPGetUpdateTime();
 			}
