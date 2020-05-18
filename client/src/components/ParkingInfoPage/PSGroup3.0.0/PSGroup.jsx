@@ -13,7 +13,7 @@ class PSGroup extends Component {
 			ps1: {
 				dataArr: [
 					{ id: 'mongodbid0', structure: 'PS1', spots: 102, color: 'gold', level: '3' },
-					{ id: 'mongodbid0', structure: 'PS1', spots: 5, color: 'purple', level: '2' },
+					{ id: 'mongodbid0', structure: 'PS1', spots: 200, color: 'purple', level: '2' },
 					{ id: 'mongodbid0', structure: 'PS1', spots: 201, color: 'green', level: '5' },
 				],
 			},
@@ -82,14 +82,54 @@ class PSGroup extends Component {
 		}
 	};
 
+	getSortedDataArr = (dataArr, preference) => {
+		let sortedDataArr = [...dataArr];
+
+		// preference can be 'spots' or 'color'
+		const spotsWeight = preference === 'spots' ? 0.75 : 0.25;
+		const colorWeight = 1 - spotsWeight;
+
+		// assign pref score
+		sortedDataArr = sortedDataArr.map((element) => {
+			const weightedSpots = (element.spots / 250) * spotsWeight;
+			let weightedColor = 0;
+			switch (element.color) {
+				case 'purple':
+					weightedColor = 1;
+					break;
+				case 'orange':
+					weightedColor = 0.75;
+					break;
+				case 'gold':
+					weightedColor = 0.5;
+					break;
+				case 'green':
+					weightedColor = 0.25;
+					break;
+			}
+			weightedColor *= colorWeight;
+			return { ...element, score: weightedSpots + weightedColor };
+		});
+
+		// sort the array
+		sortedDataArr.sort((a, b) => (a.score < b.score ? 1 : -1));
+
+		return sortedDataArr;
+	};
+
 	render() {
+		const { ps1, ps3, ps4 } = this.state.permit;
+		const ps1DataArr = this.getSortedDataArr(ps1.dataArr, 'spots');
+		const ps3DataArr = this.getSortedDataArr(ps3.dataArr, 'spots');
+		const ps4DataArr = this.getSortedDataArr(ps4.dataArr, 'spots');
+
 		return (
 			<React.Fragment>
 				{this.state.isLoaded ? (
 					<div className='card-group-container'>
-						<PSCard dataArr={this.state.permit.ps1.dataArr} />
-						<PSCard dataArr={this.state.permit.ps3.dataArr} />
-						<PSCard dataArr={this.state.permit.ps4.dataArr} />
+						<PSCard dataArr={ps1DataArr} />
+						<PSCard dataArr={ps3DataArr} />
+						<PSCard dataArr={ps4DataArr} />
 					</div>
 				) : (
 					<div className='spinner-container'>

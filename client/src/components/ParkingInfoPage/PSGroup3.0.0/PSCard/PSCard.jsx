@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, ThemeProvider } from 'react-bootstrap';
 
 import './PSCard.css';
 import '../../../../styles/shared/Colors.css';
@@ -8,17 +8,28 @@ class PSCard extends Component {
 	state = {
 		index: 0,
 		currentPermit: {
-			id: 0,
-			spots: 0,
-			structure: 'PS1',
+			id: -1,
+			spots: -1,
+			structure: 'ps1',
 			color: 'green',
-			level: 0,
+			level: -1,
 		},
 	};
+
+	componentDidMount() {
+		this.updateCurrentPermit();
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.index !== this.state.index) {
+			this.updateCurrentPermit();
+		}
+	}
 
 	handleIncrementIndex = () => {
 		this.setState({ index: this.state.index + 1 });
 	};
+
 	handleDecrementIndex = () => {
 		this.setState({ index: this.state.index - 1 });
 	};
@@ -39,14 +50,6 @@ class PSCard extends Component {
 			},
 		});
 	};
-	componentDidMount() {
-		this.updateCurrentPermit();
-	}
-	componentDidUpdate(prevProps, prevState) {
-		if (prevState.index !== this.state.index) {
-			this.updateCurrentPermit();
-		}
-	}
 
 	render() {
 		const { id, spots, structure, color, level } = this.state.currentPermit;
