@@ -67,23 +67,36 @@ class PSGroup extends Component {
 		Object.entries(structures).forEach((element) => {
 			element[1].dataArr = [];
 		});
+
 		res.data.forEach((element) => {
-			structures[element.structure].dataArr = element.permit_category.map((permit) => {
-				const { id, color, level, spots } = permit;
-				if (spots !== 0) {
-					return {
+			element.permit_category.forEach((permit) => {
+				const { id, level, spots } = permit;
+				const color = this.standardizeColorLongToShort(permit.color);
+
+				if (spots !== 0 && this.isRelevantColor(color)) {
+					structures[element.structure].dataArr.push({
 						id: id,
-						color: this.standardizeColorLongToShort(color),
+						color: color,
 						level: level,
 						spots: spots,
-					};
-				} else {
-					return {};
+						structure: element.structure.toUpperCase(),
+					});
 				}
 			});
 		});
+		console.log(structures);
 		this.setState({ structures: structures });
 		this.setState({ isLoaded: true });
+	};
+
+	isRelevantColor = (color) => {
+		// cut array to relavent colors
+		let colorArr = ['green', 'gold', 'orange', 'purple'];
+		const index = colorArr.indexOf(this.state.color) + 1;
+		colorArr = colorArr.slice(0, index);
+
+		// check if color is in array
+		return colorArr.indexOf(color) > -1;
 	};
 
 	// returns standardized color. 'Green Permit' -> 'green'
@@ -125,7 +138,7 @@ class PSGroup extends Component {
 		let sortedDataArr = [...dataArr];
 
 		// preference can be 'spots' or 'color'
-		const spotsWeight = preference === 'spots' ? 0.75 : 0.25;
+		const spotsWeight = preference === 'spots' ? 0.55 : 0.45;
 		const colorWeight = 1 - spotsWeight;
 
 		// assign pref score

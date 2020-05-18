@@ -56,9 +56,13 @@ class PSCard extends Component {
 						<Card.Body>
 							<Card.Title></Card.Title>
 							<Card.Subtitle className='mb-2 text-muted'></Card.Subtitle>
-							<div className='text-muted ps-card-header'>
-								<i className='fas fa-star'></i> Recommended Choice
-							</div>
+							{this.state.index === 0 ? (
+								<div className='text-muted ps-card-header'>
+									<i className='fas fa-star'></i> Recommended Choice
+								</div>
+							) : (
+								''
+							)}
 							<div className='ps-card-body'>
 								{this.state.index !== 0 ? (
 									<div
