@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
 
 import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
@@ -89,7 +89,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Switch>
+			<BrowserRouter basename='/UTD-Parking-Assist'>
 				<Route exact path='/'>
 					<HomePage
 						onlineStatus={this.state.onlineStatus}
@@ -106,7 +106,7 @@ class App extends Component {
 						isLoaded={this.state.isLoaded}
 					/>
 				</Route>
-			</Switch>
+			</BrowserRouter>
 		);
 	}
 }
