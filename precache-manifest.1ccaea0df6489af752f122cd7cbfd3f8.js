@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fe67fe418b8272fb1daab262f80d84d5",
+    "revision": "0927b010c3b822ac005e02ab014d44d5",
     "url": "/UTD-Parking-Assist/index.html"
   },
   {
-    "revision": "0d05f5a312707fda3cd8",
+    "revision": "94620d4ea6f1a4346e26",
     "url": "/UTD-Parking-Assist/static/css/main.bcd977a8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/UTD-Parking-Assist/static/js/2.3cd98aef.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0d05f5a312707fda3cd8",
-    "url": "/UTD-Parking-Assist/static/js/main.d18c8a4e.chunk.js"
+    "revision": "94620d4ea6f1a4346e26",
+    "url": "/UTD-Parking-Assist/static/js/main.f5399856.chunk.js"
   },
   {
     "revision": "42840c85b947988bd144",
