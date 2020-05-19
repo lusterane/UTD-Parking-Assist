@@ -7,6 +7,7 @@ import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
 import ParkingInfoFooter from './ParkingInfoFooter/ParkingInfoFooter';
+import Header from '../Header/Header';
 
 import '../../styles/shared/LoadingSpinner.css';
 import './ParkingInfoPage.css';

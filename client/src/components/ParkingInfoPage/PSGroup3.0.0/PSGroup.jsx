@@ -3,7 +3,7 @@ import { Spinner } from 'react-bootstrap';
 import axios from 'axios';
 
 import PSCard from './PSCard/PSCard';
-import EmptyGroup from './EmptyGroup/EmptyGroup';
+import FullGroup from './FullGroup/FullGroup';
 
 import './PSGroup.css';
 
@@ -47,7 +47,7 @@ class PSGroup extends Component {
 		console.log('HTTP CALL: GET /parkingStructures/');
 
 		axios
-			.get(`http://localhost:5000/parkingStructures/`)
+			.get(`http://localhost:5000/parkingStructures/TEST`)
 			.then((res) => {
 				if (res.status === 200) {
 					this.updatePSFromHTTPResponse(res);
@@ -84,7 +84,6 @@ class PSGroup extends Component {
 				}
 			});
 		});
-		console.log(structures);
 		this.setState({ structures: structures });
 		this.setState({ isLoaded: true });
 	};
@@ -171,6 +170,7 @@ class PSGroup extends Component {
 
 	render() {
 		const { ps1, ps3, ps4 } = this.state.structures;
+
 		const ps1DataArr = this.getSortedDataArr(ps1.dataArr, 'spots');
 		const ps3DataArr = this.getSortedDataArr(ps3.dataArr, 'spots');
 		const ps4DataArr = this.getSortedDataArr(ps4.dataArr, 'spots');
@@ -178,11 +178,13 @@ class PSGroup extends Component {
 		return (
 			<React.Fragment>
 				{this.state.isLoaded ? (
-					<div className='card-group-container'>
-						<PSCard dataArr={ps1DataArr} />
-						<PSCard dataArr={ps3DataArr} />
-						<PSCard dataArr={ps4DataArr} />
-					</div>
+					<>
+						<div className='card-group-container'>
+							<PSCard dataArr={ps1DataArr} structure={'PS1'} />
+							<PSCard dataArr={ps3DataArr} structure={'PS3'} />
+							<PSCard dataArr={ps4DataArr} structure={'PS4'} />
+						</div>
+					</>
 				) : (
 					<div className='spinner-container'>
 						<Spinner animation='border' role='status'>

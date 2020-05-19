@@ -13,8 +13,8 @@ class App extends Component {
 		color: defaultColor,
 		updateOnlineStatusInterval: '',
 		onlineHours: {
-			fromHour: '8',
-			toHour: '20',
+			fromHour: '0',
+			toHour: '25',
 		},
 
 		onlineStatus: false,

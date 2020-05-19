@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const ParkingStructure = require("../models/parkingStructureModels");
-const TEST_ParkingStructure = require("../models/TEST_parkingStructureModels");
+const ParkingStructure = require('../models/parkingStructureModels');
+const TEST_ParkingStructure = require('../models/TEST_parkingStructureModels');
 exports.getAllParkingStructures = (req, res, next) => {
 	ParkingStructure.find()
 		.exec()
@@ -18,7 +18,7 @@ exports.getAllParkingStructures = (req, res, next) => {
 
 // gets a parking structure according to parking structure name i.e. ps1, ps3, ps4
 exports.getAParkingStructure = (req, res, next) => {
-	const psId = req.params["parkingStructure"];
+	const psId = req.params['parkingStructure'];
 
 	ParkingStructure.findOne({ structure: psId })
 		.exec()
@@ -43,11 +43,11 @@ exports.getAParkingStructure = (req, res, next) => {
 exports.getColorInfo = (req, res, next) => {
 	const color = req.params.color;
 	const unparsedColorArr = [
-		"Green Permit",
-		"Gold Permit",
-		"Orange Permit",
-		"Purple Permit",
-		"Pay-By-Space",
+		'Green Permit',
+		'Gold Permit',
+		'Orange Permit',
+		'Purple Permit',
+		'Pay-By-Space',
 	];
 
 	// filter out irrelevant colors in array
@@ -70,12 +70,12 @@ exports.getColorInfo = (req, res, next) => {
 					// find color in color array
 					if (parsedColorArr.includes(permit_category_entry.color)) {
 						let objBuilder = {};
-						objBuilder["id"] = root_json._id;
-						objBuilder["color"] = permit_category_entry.color;
-						objBuilder["level"] = permit_category_entry.level;
-						objBuilder["spots"] = permit_category_entry.spots;
-						objBuilder["structure"] = root_json.structure;
-						objBuilder["time_updated"] = root_json.utc_time_updated;
+						objBuilder['id'] = root_json._id;
+						objBuilder['color'] = permit_category_entry.color;
+						objBuilder['level'] = permit_category_entry.level;
+						objBuilder['spots'] = permit_category_entry.spots;
+						objBuilder['structure'] = root_json.structure;
+						objBuilder['time_updated'] = root_json.utc_time_updated;
 
 						permitCategoryObjects.push(objBuilder);
 					}
@@ -115,11 +115,11 @@ exports.getAllParkingStructureTimes = (req, res, next) => {
 exports.TEST_getColorInfo = (req, res, next) => {
 	const color = req.params.color;
 	const unparsedColorArr = [
-		"Green Permit",
-		"Gold Permit",
-		"Orange Permit",
-		"Purple Permit",
-		"Pay-By-Space",
+		'Green Permit',
+		'Gold Permit',
+		'Orange Permit',
+		'Purple Permit',
+		'Pay-By-Space',
 	];
 
 	// filter out irrelevant colors in array
@@ -142,12 +142,12 @@ exports.TEST_getColorInfo = (req, res, next) => {
 					// find color in color array
 					if (parsedColorArr.includes(permit_category_entry.color)) {
 						let objBuilder = {};
-						objBuilder["id"] = root_json._id;
-						objBuilder["color"] = permit_category_entry.color;
-						objBuilder["level"] = permit_category_entry.level;
-						objBuilder["spots"] = permit_category_entry.spots;
-						objBuilder["structure"] = root_json.structure;
-						objBuilder["time_updated"] = root_json.utc_time_updated;
+						objBuilder['id'] = root_json._id;
+						objBuilder['color'] = permit_category_entry.color;
+						objBuilder['level'] = permit_category_entry.level;
+						objBuilder['spots'] = permit_category_entry.spots;
+						objBuilder['structure'] = root_json.structure;
+						objBuilder['time_updated'] = root_json.utc_time_updated;
 
 						permitCategoryObjects.push(objBuilder);
 					}
@@ -174,6 +174,21 @@ exports.TEST_getAllParkingStructureTimes = (req, res, next) => {
 				timeUpdated[root_json.structure] = root_json.utc_time_updated;
 			});
 			res.status(200).json(timeUpdated);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json({
+				error: err,
+			});
+		});
+};
+
+// TEST gets all parking structures
+exports.TEST_getAllParkingStructures = (req, res, next) => {
+	TEST_ParkingStructure.find()
+		.exec()
+		.then((docs) => {
+			res.status(200).json(docs);
 		})
 		.catch((err) => {
 			console.log(err);

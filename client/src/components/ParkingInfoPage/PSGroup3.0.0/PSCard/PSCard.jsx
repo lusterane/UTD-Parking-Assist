@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Card, ThemeProvider } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+
+import FullPSCardBody from './FullPSCardBody/FullPSCardBody.jsx';
 
 import './PSCard.css';
 import '../../../../styles/shared/Colors.css';
@@ -51,11 +53,9 @@ class PSCard extends Component {
 		const { id, spots, structure, color, level } = this.state.currentPermit;
 		return (
 			<React.Fragment>
-				{this.props.dataArr.length !== 0 ? (
-					<Card className='ps-card'>
+				<Card className='ps-card'>
+					{this.props.dataArr.length !== 0 ? (
 						<Card.Body>
-							<Card.Title></Card.Title>
-							<Card.Subtitle className='mb-2 text-muted'></Card.Subtitle>
 							{this.state.index === 0 ? (
 								<div className='text-muted ps-card-header'>
 									<i className='fas fa-star'></i> Recommended Choice
@@ -101,10 +101,10 @@ class PSCard extends Component {
 								<p>{structure}</p>
 							</div>
 						</Card.Body>
-					</Card>
-				) : (
-					<h1>empty bro</h1>
-				)}
+					) : (
+						<FullPSCardBody structure={this.props.structure} />
+					)}
+				</Card>
 			</React.Fragment>
 		);
 	}
