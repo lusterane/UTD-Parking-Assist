@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
@@ -89,8 +89,8 @@ class App extends Component {
 
 	render() {
 		return (
-			<React.Fragment>
-				<BrowserRouter basename='/UTD-Parking-Assist'>
+			<BrowserRouter basename={process.env.PUBLIC_URL}>
+				<Switch>
 					<Route exact path='/'>
 						<HomePage
 							onlineStatus={this.state.onlineStatus}
@@ -101,16 +101,14 @@ class App extends Component {
 							getGreeting={this.getGreeting}
 						/>
 					</Route>
-				</BrowserRouter>
-				<BrowserRouter basename='/UTD-Parking-Assist'>
 					<Route path='/parkingInfoPage'>
 						<ParkingInfoPage
 							onlineStatus={this.state.onlineStatus}
 							isLoaded={this.state.isLoaded}
 						/>
 					</Route>
-				</BrowserRouter>
-			</React.Fragment>
+				</Switch>
+			</BrowserRouter>
 		);
 	}
 }

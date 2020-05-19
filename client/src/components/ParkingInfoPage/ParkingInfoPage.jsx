@@ -123,7 +123,10 @@ class ParkingInfo extends Component {
 						this.props.onlineStatus ? (
 							<React.Fragment>
 								<div className='parking-info-container'>
-									<a href='/' className='remove-decoration'>
+									<a
+										href={process.env.PUBLIC_URL + '/'}
+										className='remove-decoration'
+									>
 										<i className='fas fa-chevron-left back-route-button'></i>
 									</a>
 									<Time
