@@ -89,26 +89,24 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router basename={process.env.PUBLIC_URL}>
-				<Switch>
-					<Route exact path='/'>
-						<HomePage
-							onlineStatus={this.state.onlineStatus}
-							changeColor={this.handleChangeColor}
-							changeColorDefault={this.handleChangeColorDefault}
-							color={this.state.color}
-							isLoaded={this.state.isLoaded}
-							getGreeting={this.getGreeting}
-						/>
-					</Route>
-					<Route path='/parkingInfoPage'>
-						<ParkingInfoPage
-							onlineStatus={this.state.onlineStatus}
-							isLoaded={this.state.isLoaded}
-						/>
-					</Route>
-				</Switch>
-			</Router>
+			<Switch>
+				<Route exact path='/'>
+					<HomePage
+						onlineStatus={this.state.onlineStatus}
+						changeColor={this.handleChangeColor}
+						changeColorDefault={this.handleChangeColorDefault}
+						color={this.state.color}
+						isLoaded={this.state.isLoaded}
+						getGreeting={this.getGreeting}
+					/>
+				</Route>
+				<Route path='/parkingInfoPage'>
+					<ParkingInfoPage
+						onlineStatus={this.state.onlineStatus}
+						isLoaded={this.state.isLoaded}
+					/>
+				</Route>
+			</Switch>
 		);
 	}
 }
