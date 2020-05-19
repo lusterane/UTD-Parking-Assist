@@ -82,7 +82,7 @@ class ParkingInfo extends Component {
 	handleHTTPGetUpdateTime = () => {
 		console.log('HTTP CALL: GET /parkingStructures/timeUpdated');
 		axios
-			.get(process.env.API_ENDPOINT + `/parkingStructures/timeUpdated`)
+			.get(process.env.API_ENDPOINT + `parkingStructures/timeUpdated`)
 			.then((res) => {
 				if (res.status === 200) {
 					this.updateTimeFromHTTPResponse(res);
