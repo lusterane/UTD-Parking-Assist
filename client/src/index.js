@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import App from './App.js';
 
 ReactDOM.render(
-	<BrowserRouter basename={process.env.PUBLIC_URL}>
+	<BrowserRouter basename='/UTD-Parking-Assist'>
 		{console.log(process.env.PUBLIC_URL)}
 		<App />
 	</BrowserRouter>,
