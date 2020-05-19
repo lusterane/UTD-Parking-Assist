@@ -46,7 +46,7 @@ class PSGroup extends Component {
 		console.log('HTTP CALL: GET /parkingStructures/');
 
 		axios
-			.get(`http://localhost:5000/parkingStructures/TEST`)
+			.get(`http://localhost:5000/parkingStructures/`)
 			.then((res) => {
 				if (res.status === 200) {
 					this.updatePSFromHTTPResponse(res);
