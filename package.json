@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"server": "nodemon server.js",
-		"client": "npm start --prefix ../client",
-		"dev": "concurrently \"npm run server\" \"npm start --prefix ../client\""
+		"client": "npm start --prefix ./client",
+		"dev": "concurrently \"npm run server\" \"npm start --prefix ./client\""
 	},
 	"repository": {
 		"type": "git",
