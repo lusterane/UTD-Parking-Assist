@@ -4,6 +4,7 @@
 	"description": "Node.js RESTful API that displays parking information",
 	"main": "index.js",
 	"scripts": {
+		"start": "npm run server",
 		"server": "nodemon server.js",
 		"client": "npm start --prefix ./client",
 		"dev": "concurrently \"npm run server\" \"npm start --prefix ./client\""
