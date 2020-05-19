@@ -7,3 +7,17 @@ body {
 h1 {
 	font-weight: 300;
 }
+
+.pointer {
+	cursor: pointer;
+}
+
+.remove-decoration {
+	text-decoration: none;
+	color: black;
+}
+
+.remove-decoration:hover {
+	text-decoration: none;
+	color: black;
+}

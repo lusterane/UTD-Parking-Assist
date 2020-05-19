@@ -3,7 +3,6 @@ import { Spinner } from 'react-bootstrap';
 import axios from 'axios';
 
 import PSCard from './PSCard/PSCard';
-import FullGroup from './FullGroup/FullGroup';
 
 import './PSGroup.css';
 
@@ -20,7 +19,7 @@ class PSGroup extends Component {
 				dataArr: [],
 			},
 		},
-		isLoaded: true,
+		isLoaded: false,
 		color: '',
 	};
 

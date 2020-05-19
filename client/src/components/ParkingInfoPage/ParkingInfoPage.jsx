@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 //import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';
@@ -122,7 +123,9 @@ class ParkingInfo extends Component {
 						this.props.onlineStatus ? (
 							<React.Fragment>
 								<div className='parking-info-container'>
-									<i className='fas fa-chevron-left back-route-button'></i>
+									<a href='/' className='remove-decoration'>
+										<i className='fas fa-chevron-left back-route-button'></i>
+									</a>
 									<Time
 										timeUpdated={this.state.timeUpdated}
 										isLoadedTimer={this.state.isLoadedTimer}
