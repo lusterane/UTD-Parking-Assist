@@ -14,7 +14,7 @@
 		"react-router-dom": "^5.1.2",
 		"react-scripts": "3.4.1"
 	},
-	"homepage": "http://lusterane.github.io/utd-parking-assist",
+	"homepage": "http://lusterane.github.io/UTD-Parking-Assist",
 	"scripts": {
 		"predeploy": "npm run build client",
 		"deploy": "gh-pages -d build",
