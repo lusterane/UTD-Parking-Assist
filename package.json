@@ -4,6 +4,8 @@
 	"description": "Node.js RESTful API that displays parking information",
 	"main": "index.js",
 	"scripts": {
+		"predeploy": "npm run build --prefix ./client",
+		"deploy": "gh-pages -d ./client/build",
 		"start": "node server.js",
 		"server": "nodemon server.js",
 		"client": "npm start --prefix ./client",
@@ -23,7 +25,7 @@
 	"bugs": {
 		"url": "https://github.com/lusterane/UTD-Parking-Assist/issues"
 	},
-	"homepage": "https://github.com/lusterane/UTD-Parking-Assist#readme",
+	"homepage": "http://lusterane.github.io/utd-parking-assist",
 	"dependencies": {
 		"body-parser": "^1.19.0",
 		"concurrently": "^5.2.0",
@@ -33,6 +35,7 @@
 		"morgan": "^1.10.0"
 	},
 	"devDependencies": {
+		"gh-pages": "^2.2.0",
 		"nodemon": "^2.0.3"
 	}
 }
