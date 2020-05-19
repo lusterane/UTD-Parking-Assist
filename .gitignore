@@ -4,8 +4,7 @@
 
 # environment variables
 nodemon.json
-.env
-dev.env
+*.env
 
 # npm
 node_modules/
