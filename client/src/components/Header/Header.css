@@ -4,5 +4,6 @@
 }
 
 .header-container {
-	height: 10vh;
+	position: absolute;
+	width: 100%;
 }

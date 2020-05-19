@@ -6,14 +6,12 @@ import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 
 import './App.css';
 
-const defaultColor = 'black';
-
 class App extends Component {
 	state = {
-		color: defaultColor,
+		color: '',
 		updateOnlineStatusInterval: '',
 		onlineHours: {
-			fromHour: '0',
+			fromHour: '8',
 			toHour: '25',
 		},
 
@@ -30,7 +28,7 @@ class App extends Component {
 	};
 
 	handleChangeColorDefault = () => {
-		this.setState({ color: defaultColor });
+		this.setState({ color: '' });
 	};
 
 	// update time
@@ -77,24 +75,22 @@ class App extends Component {
 
 	// returns random  message
 	getNightMessage = () => {
-		return 'Good Night';
+		return <i className='fas fa-moon'></i>;
 	};
 	getMorningMessage = () => {
-		return 'Good Morning';
+		return <i className='fas fa-sun'></i>;
 	};
 	getAfternoonMessage = () => {
-		return 'Good Afternoon';
+		return <i className='fas fa-sun'></i>;
 	};
 	getEveningMessage = () => {
-		return 'Good Evening';
+		return <i className='fas fa-moon'></i>;
 	};
 
 	render() {
 		return (
 			<Router>
 				<div>
-					{/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
 					<Switch>
 						<Route exact path='/'>
 							<HomePage

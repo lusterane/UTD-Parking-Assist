@@ -19,19 +19,6 @@ class Footer extends Component {
 						</a>
 						.
 					</div>
-					<div className='bottom-text'>
-						<p>
-							Interested in the project? Check it out at the{' '}
-							<a
-								href='https://github.com/lusterane/UTD-Parking-Assist'
-								rel='noopener noreferrer'
-								target='_blank'
-							>
-								Github
-							</a>{' '}
-							repo.
-						</p>
-					</div>
 				</div>
 			</React.Fragment>
 		);

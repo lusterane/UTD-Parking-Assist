@@ -1,19 +1,12 @@
 .footer {
 	position: absolute;
-	bottom: 0px;
-	left: 50%;
+	bottom: 4vh;
+	left: 50vw;
+	margin-left: -10vw;
 	width: inherit;
-	margin-left: -25vw;
 	text-align: center;
 }
 
 .footer .fa-heart {
 	color: rgb(233, 53, 53);
-}
-
-.footer .bottom-text {
-	display: block;
-	font-size: 1rem;
-	font-weight: 300;
-	line-height: 1.5rem;
 }

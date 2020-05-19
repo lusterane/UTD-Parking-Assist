@@ -9,23 +9,26 @@ class ColorOption extends Component {
 
 	render() {
 		const { color, onClick, handleMouseOver, handleMouseLeave } = this.props;
-		const classStr = color + '-background square';
 
 		return (
 			<React.Fragment>
-				<div
-					id={'Tooltip-' + color}
-					onClick={() => {
-						onClick(color);
-					}}
-					onMouseOver={() => {
-						handleMouseOver(color);
-					}}
-					onMouseLeave={() => {
-						handleMouseLeave();
-					}}
-					className={classStr}
-				></div>
+				{color === 'grey' ? (
+					<div className={color + '-background square'}></div>
+				) : (
+					<div
+						id={'Tooltip-' + color}
+						onClick={() => {
+							onClick(color);
+						}}
+						onMouseOver={() => {
+							handleMouseOver(color);
+						}}
+						onMouseLeave={() => {
+							handleMouseLeave();
+						}}
+						className={color + '-background square pointer'}
+					></div>
+				)}
 			</React.Fragment>
 		);
 	}
