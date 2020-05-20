@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/UTD-Parking-Assist/precache-manifest.ed9d3f8b4d6ec6429d90c9ecee42d5f4.js"
+  "/UTD-Parking-Assist/precache-manifest.16ad47a18951b3a8cf8bb5c409437896.js"
 );
 
 self.addEventListener('message', (event) => {
