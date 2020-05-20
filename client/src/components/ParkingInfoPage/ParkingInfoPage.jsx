@@ -18,17 +18,20 @@ class ParkingInfo extends Component {
 		timeUpdated: {
 			ps1: {
 				utc_updated_time: '',
-				elapsedTime: 0,
+				elapsedTime: -1,
 			},
 			ps3: {
 				utc_updated_time: '',
-				elapsedTime: 0,
+				elapsedTime: -1,
 			},
 			ps4: {
 				utc_updated_time: '',
-				elapsedTime: 0,
+				elapsedTime: -1,
 			},
 		},
+		timerLoaded: false,
+		psGroupLoaded: false,
+		onlineStatusLoaded: false,
 	};
 	componentDidMount() {
 		this.setState({
@@ -42,6 +45,19 @@ class ParkingInfo extends Component {
 	}
 
 	componentDidUpdate() {
+		// late night coding. ugly ass code!!
+
+		// check time loaded
+		if (this.state.timeUpdated.ps1.elapsedTime !== -1 && this.state.timerLoaded === false) {
+			this.setState({ timerLoaded: true });
+		}
+
+		// check online status loaded
+		if (this.props.onlineStatusLoaded === true && this.state.onlineStatusLoaded === false) {
+			console.log('lmao');
+			this.setState({ onlineStatusLoaded: true });
+		}
+
 		// 63 64 65 66
 		// inclusive
 		const range = [62, 63];
@@ -113,40 +129,47 @@ class ParkingInfo extends Component {
 		this.setState({ timeUpdated: timeUpdated });
 	};
 
+	setPSGroupLoadedTrue = () => {
+		this.setState({ psGroupLoaded: true });
+	};
+
 	render() {
 		return (
 			<React.Fragment>
 				<div className='parking-info-page-container'>
-					{this.props.isLoaded ? (
-						this.props.onlineStatus ? (
-							<React.Fragment>
-								<div className='parking-info-container'>
-									<a
-										href={process.env.PUBLIC_URL + '/'}
-										className='remove-decoration'
-									>
-										<i className='fas fa-chevron-left back-route-button'></i>
-									</a>
-									<Time
-										timeUpdated={this.state.timeUpdated}
-										isLoadedTimer={this.state.isLoadedTimer}
-									/>
-									<ParkingStructureGroup
-										timeUpdated={this.state.timeUpdated}
-										onResetElapsedTime={this.handleResetElapsedTime}
-									/>
-									<ParkingInfoFooter />
-								</div>
-							</React.Fragment>
-						) : (
-							<OfflinePage />
-						)
+					{this.state.onlineStatusLoaded &&
+					this.state.timerLoaded &&
+					this.state.psGroupLoaded ? (
+						''
 					) : (
-						<div className='spinner-container'>
-							<Spinner animation='border' role='status'>
-								<span className='sr-only'>Loading...</span>
-							</Spinner>
-						</div>
+						<>
+							<div className='spinner-container'>
+								<Spinner animation='border' role='status'>
+									<span className='sr-only'>Loading...</span>
+								</Spinner>
+							</div>
+						</>
+					)}
+					{this.props.onlineStatus ? (
+						<React.Fragment>
+							<div className='parking-info-container'>
+								<a
+									href={process.env.PUBLIC_URL + '/'}
+									className='remove-decoration'
+								>
+									<i className='fas fa-chevron-left back-route-button'></i>
+								</a>
+								<Time timeUpdated={this.state.timeUpdated} />
+								<ParkingStructureGroup
+									setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
+									timeUpdated={this.state.timeUpdated}
+									onResetElapsedTime={this.handleResetElapsedTime}
+								/>
+								<ParkingInfoFooter />
+							</div>
+						</React.Fragment>
+					) : (
+						<OfflinePage />
 					)}
 				</div>
 			</React.Fragment>

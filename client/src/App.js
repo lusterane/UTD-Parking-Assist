@@ -11,12 +11,12 @@ class App extends Component {
 		color: '',
 		updateOnlineStatusInterval: '',
 		onlineHours: {
-			fromHour: '8',
+			fromHour: '0',
 			toHour: '25',
 		},
 
 		onlineStatus: false,
-		isLoaded: false,
+		onlineStatusLoaded: false,
 	};
 	componentDidMount() {
 		this.setState({ updateOnlineStatusInterval: setInterval(this.updateOnlineStatus, 900) });
@@ -38,7 +38,7 @@ class App extends Component {
 		} else {
 			this.setState({ onlineStatus: false });
 		}
-		this.setState({ isLoaded: true });
+		this.setState({ onlineStatusLoaded: true });
 	};
 
 	checkOnlineStatus = () => {
@@ -97,14 +97,14 @@ class App extends Component {
 							changeColor={this.handleChangeColor}
 							changeColorDefault={this.handleChangeColorDefault}
 							color={this.state.color}
-							isLoaded={this.state.isLoaded}
+							onlineStatusLoaded={this.state.onlineStatusLoaded}
 							getGreeting={this.getGreeting}
 						/>
 					</Route>
 					<Route path='/parkingInfoPage'>
 						<ParkingInfoPage
 							onlineStatus={this.state.onlineStatus}
-							isLoaded={this.state.isLoaded}
+							onlineStatusLoaded={this.state.onlineStatusLoaded}
 						/>
 					</Route>
 				</Switch>

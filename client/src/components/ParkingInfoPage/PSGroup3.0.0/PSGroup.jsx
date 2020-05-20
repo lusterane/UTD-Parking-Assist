@@ -19,8 +19,8 @@ class PSGroup extends Component {
 				dataArr: [],
 			},
 		},
-		isLoaded: false,
 		color: '',
+		psGroupIsLoaded: false,
 	};
 
 	componentDidMount() {
@@ -84,7 +84,7 @@ class PSGroup extends Component {
 			});
 		});
 		this.setState({ structures: structures });
-		this.setState({ isLoaded: true });
+		this.props.setPSGroupLoadedTrue();
 	};
 
 	isRelevantColor = (color) => {
@@ -176,21 +176,11 @@ class PSGroup extends Component {
 
 		return (
 			<React.Fragment>
-				{this.state.isLoaded ? (
-					<>
-						<div className='card-group-container'>
-							<PSCard dataArr={ps1DataArr} structure={'PS1'} />
-							<PSCard dataArr={ps3DataArr} structure={'PS3'} />
-							<PSCard dataArr={ps4DataArr} structure={'PS4'} />
-						</div>
-					</>
-				) : (
-					<div className='spinner-container'>
-						<Spinner animation='border' role='status'>
-							<span className='sr-only'>Loading...</span>
-						</Spinner>
-					</div>
-				)}
+				<div className='card-group-container'>
+					<PSCard dataArr={ps1DataArr} structure={'PS1'} />
+					<PSCard dataArr={ps3DataArr} structure={'PS3'} />
+					<PSCard dataArr={ps4DataArr} structure={'PS4'} />
+				</div>
 			</React.Fragment>
 		);
 	}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Spinner } from 'react-bootstrap';
 
 import './Time.css';
 
 class Time extends Component {
 	state = {
 		updateClientTimerInterval: '',
+		timerIsLoaded: false,
 	};
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime <= 1) {
