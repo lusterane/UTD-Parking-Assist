@@ -1,10 +1,11 @@
 body {
 }
-.homepage-container {
+.content-container {
 	display: flex;
 	position: relative;
 	height: 100vh;
 	width: 100vw;
+	bottom: 7vh;
 	justify-content: center;
 	align-items: center;
 }

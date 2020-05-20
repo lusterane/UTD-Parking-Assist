@@ -26,8 +26,18 @@ class ColorOption extends Component {
 						onMouseLeave={() => {
 							handleMouseLeave();
 						}}
-						className={color + '-background square pointer'}
-					></div>
+						className={
+							this.props.colorBlindMode ? '' : color + '-background square pointer'
+						}
+					>
+						{this.props.colorBlindMode ? (
+							<div className={'pointer border-' + color}>
+								{color.charAt(0).toUpperCase() + color.slice(1)} Permit
+							</div>
+						) : (
+							''
+						)}
+					</div>
 				)}
 			</React.Fragment>
 		);

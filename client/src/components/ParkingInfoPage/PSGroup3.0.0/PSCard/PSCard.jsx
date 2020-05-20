@@ -16,11 +16,18 @@ class PSCard extends Component {
 			color: 'green',
 			level: -1,
 		},
+		colorBlindMode: false,
 	};
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevState.index !== this.state.index || prevProps != this.props) {
 			this.updateCurrentPermit();
+		}
+
+		// get color blind status
+		const data = localStorage.getItem('color-blind-status') === 'true';
+		if (this.state.colorBlindMode !== data) {
+			this.setState({ colorBlindMode: data });
 		}
 	}
 
@@ -79,9 +86,16 @@ class PSCard extends Component {
 								<div className='text'>
 									<p className='main-text'>{spots} SPOTS</p>
 									<p className='sub-text'>Level {level}</p>
-									<p className='sub-text'>
-										Color <i className={'fas fa-circle ' + color}></i>
-									</p>
+
+									{this.state.colorBlindMode ? (
+										<p className={'sub-text border-' + color}>
+											{color.charAt(0).toUpperCase() + color.slice(1)}
+										</p>
+									) : (
+										<p className='sub-text'>
+											Color <i className={'fas fa-circle ' + color}></i>
+										</p>
+									)}
 								</div>
 								{this.state.index !== this.props.dataArr.length - 1 ? (
 									<div

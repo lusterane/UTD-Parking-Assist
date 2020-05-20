@@ -93,3 +93,28 @@
 	background-color: var(--shaded-purple);
 	border-color: var(--shaded-purple);
 }
+
+.border-green {
+	margin: 1rem;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	border: 2px solid rgba(40, 167, 70, 0.7);
+}
+.border-gold {
+	margin: 1rem;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	border: 2px solid rgba(249, 201, 56, 0.7);
+}
+.border-orange {
+	margin: 1rem;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	border: 2px solid rgba(255, 140, 0, 0.7);
+}
+.border-purple {
+	margin: 1rem;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	border: 2px solid rgba(119, 61, 188, 0.7);
+}

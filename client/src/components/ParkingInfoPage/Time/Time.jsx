@@ -9,18 +9,22 @@ class Time extends Component {
 		timerIsLoaded: false,
 	};
 	getTimeText = (elapsedTime) => {
-		if (elapsedTime <= 1) {
-			return 'Updated a second ago';
-		} else if (elapsedTime > 1 && elapsedTime < 60) {
-			return 'Updated ' + elapsedTime + ' seconds ago';
-		} else if (elapsedTime === 60) {
-			return 'Updated a minute ago';
-		} else if (elapsedTime > 60 && elapsedTime < 119) {
-			const calcElapsedTime = elapsedTime - 60;
-			return 'Updated a minute and ' + calcElapsedTime + ' seconds ago';
-		} else if (elapsedTime >= 120) {
-			// 2 minutes
-			return 'Updated a few minutes ago';
+		const maxTime = 63;
+		if (elapsedTime > maxTime) {
+			return 'Unknown problem, please refresh page';
+		} else {
+			return 'Live update in ' + this.standardizeSecondsToMinutes(elapsedTime, maxTime);
+		}
+	};
+
+	standardizeSecondsToMinutes = (elapsedTime, maxTime) => {
+		const calculatedTime = maxTime - elapsedTime;
+		if (calculatedTime < 60) {
+			const calculatedTime = maxTime - elapsedTime;
+			return calculatedTime + ' seconds';
+		} else if (calculatedTime === 0 || calculatedTime >= 60) {
+			// better ux. change if update is many seconds over minute
+			return 'less than 1 second';
 		}
 	};
 

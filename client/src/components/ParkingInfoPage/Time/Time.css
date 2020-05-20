@@ -4,5 +4,7 @@
 }
 
 .time-text-container {
+	position: relative;
+	right: 3rem;
 	float: right;
 }

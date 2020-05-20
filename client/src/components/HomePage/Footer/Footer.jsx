@@ -17,7 +17,6 @@ class Footer extends Component {
 						>
 							Toby
 						</a>
-						.
 					</div>
 				</div>
 			</React.Fragment>

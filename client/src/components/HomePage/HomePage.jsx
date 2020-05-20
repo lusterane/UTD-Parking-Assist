@@ -5,6 +5,7 @@ import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import Footer from './Footer/Footer';
 import Header from '../Header/Header';
+import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
@@ -14,12 +15,21 @@ class Home extends Component {
 	//home
 	state = {
 		showModal: false,
+		colorBlindMode: false,
 	};
+
+	componentDidUpdate() {
+		const data = localStorage.getItem('color-blind-status') === 'true';
+
+		if (this.state.colorBlindMode !== data) {
+			this.setState({ colorBlindMode: data });
+		}
+	}
 
 	handleModalClose = () => {
 		this.setState({ showModal: false });
 	};
-	handleModalShow = (color) => {
+	handleModalShow = () => {
 		this.setState({ showModal: true });
 	};
 
@@ -47,60 +57,69 @@ class Home extends Component {
 					</div>
 				)}
 				{this.props.onlineStatus ? (
-					<div className='container homepage-container'>
-						<div className='row'>
-							<div className='col'>
-								<h1 className={this.props.color + ' title-greeting'}>
-									UTD Parking
-								</h1>
-								{/* <h1 className={this.props.color + ' title-greeting'}>
+					<>
+						<ColorBlindButton />
+
+						<div className='content-container'>
+							<div className='row'>
+								<div className='col'>
+									<h1 className={this.props.color + ' title-greeting'}>
+										UTD Parking
+									</h1>
+									<p>Live parking data at your fingertips</p>
+									{/* <h1 className={this.props.color + ' title-greeting'}>
 										{this.props.getGreeting()}
 									</h1> */}
 
-								<div className='row'>
-									<ColorOption
-										color='green'
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={this.handleMouseLeave}
-									/>
-									<ColorOption
-										color='gold'
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={this.handleMouseLeave}
-									/>
-									<ColorOption
-										color='orange'
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={this.handleMouseLeave}
-									/>
-									<ColorOption
-										color='purple'
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={this.handleMouseLeave}
-									/>
+									<div className='row'>
+										<ColorOption
+											color='green'
+											colorBlindMode={this.state.colorBlindMode}
+											onClick={() => {
+												this.handleModalShow(this.props.color);
+											}}
+											handleMouseOver={this.props.changeColor}
+											handleMouseLeave={this.handleMouseLeave}
+										/>
+										<ColorOption
+											color='gold'
+											colorBlindMode={this.state.colorBlindMode}
+											onClick={() => {
+												this.handleModalShow(this.props.color);
+											}}
+											handleMouseOver={this.props.changeColor}
+											handleMouseLeave={this.handleMouseLeave}
+										/>
+										<ColorOption
+											color='orange'
+											colorBlindMode={this.state.colorBlindMode}
+											onClick={() => {
+												this.handleModalShow(this.props.color);
+											}}
+											handleMouseOver={this.props.changeColor}
+											handleMouseLeave={this.handleMouseLeave}
+										/>
+										<ColorOption
+											color='purple'
+											colorBlindMode={this.state.colorBlindMode}
+											onClick={() => {
+												this.handleModalShow(this.props.color);
+											}}
+											handleMouseOver={this.props.changeColor}
+											handleMouseLeave={this.handleMouseLeave}
+										/>
+									</div>
 								</div>
 							</div>
+							<ConfirmModal
+								color={this.props.color}
+								showModal={this.state.showModal}
+								onModalShow={this.handleModalShow}
+								onModalClose={this.handleModalClose}
+								onModalConfirm={this.handleModalConfirm}
+							/>
 						</div>
-						<ConfirmModal
-							color={this.props.color}
-							showModal={this.state.showModal}
-							onModalShow={this.handleModalShow}
-							onModalClose={this.handleModalClose}
-							onModalConfirm={this.handleModalConfirm}
-						/>
-					</div>
+					</>
 				) : (
 					<React.Fragment>
 						<Header type='server-warning'></Header>
@@ -121,7 +140,6 @@ class Home extends Component {
 							</div>
 						</div>
 					</React.Fragment>
-				)}
 				)}
 				<Footer />
 			</React.Fragment>

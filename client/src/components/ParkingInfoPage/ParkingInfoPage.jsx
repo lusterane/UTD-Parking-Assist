@@ -8,7 +8,7 @@ import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
 import ParkingInfoFooter from './ParkingInfoFooter/ParkingInfoFooter';
-import Header from '../Header/Header';
+import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
 
 import '../../styles/shared/LoadingSpinner.css';
 import './ParkingInfoPage.css';
@@ -33,6 +33,7 @@ class ParkingInfo extends Component {
 		psGroupLoaded: false,
 		onlineStatusLoaded: false,
 	};
+
 	componentDidMount() {
 		this.setState({
 			updateTimeUpdatedInStateInterval: setInterval(this.updateTimeUpdatedInState, 1000),
@@ -43,10 +44,7 @@ class ParkingInfo extends Component {
 	componentWillUnmount() {
 		clearInterval(this.state.updateTimeUpdatedInStateInterval);
 	}
-
 	componentDidUpdate() {
-		// late night coding. ugly ass code!!
-
 		// check time loaded
 		if (this.state.timeUpdated.ps1.elapsedTime !== -1 && this.state.timerLoaded === false) {
 			this.setState({ timerLoaded: true });
@@ -151,6 +149,7 @@ class ParkingInfo extends Component {
 					)}
 					{this.props.onlineStatus ? (
 						<React.Fragment>
+							<ColorBlindButton />
 							<div className='parking-info-container'>
 								<a
 									href={process.env.PUBLIC_URL + '/'}
