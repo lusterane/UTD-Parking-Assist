@@ -20,7 +20,7 @@ function ConfirmModal(props) {
 					</div>
 				</Modal.Body>
 				<Modal.Footer>
-					<Link to='/parkinginfopage'>
+					<Link to={process.env.PUBLIC_URL + '/parkingInfoPage'}>
 						<Button
 							variant='primary'
 							className={props.color + '-button confirm-button'}

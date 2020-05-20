@@ -89,10 +89,9 @@ class App extends Component {
 
 	render() {
 		return (
-			<BrowserRouter basename={process.env.PUBLIC_URL}>
-				{console.log(process.env.PUBLIC_URL)}
+			<BrowserRouter>
 				<Switch>
-					<Route exact path='/'>
+					<Route exact path={process.env.PUBLIC_URL + '/'}>
 						<HomePage
 							onlineStatus={this.state.onlineStatus}
 							changeColor={this.handleChangeColor}
@@ -102,7 +101,7 @@ class App extends Component {
 							getGreeting={this.getGreeting}
 						/>
 					</Route>
-					<Route path='/parkingInfoPage'>
+					<Route path={process.env.PUBLIC_URL + '/parkingInfoPage'}>
 						<ParkingInfoPage
 							onlineStatus={this.state.onlineStatus}
 							onlineStatusLoaded={this.state.onlineStatusLoaded}
