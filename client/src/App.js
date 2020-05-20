@@ -90,6 +90,7 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter basename={process.env.PUBLIC_URL}>
+				{console.log(process.env.PUBLIC_URL)}
 				<Switch>
 					<Route exact path='/'>
 						<HomePage

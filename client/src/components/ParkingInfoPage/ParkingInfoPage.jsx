@@ -54,7 +54,6 @@ class ParkingInfo extends Component {
 
 		// check online status loaded
 		if (this.props.onlineStatusLoaded === true && this.state.onlineStatusLoaded === false) {
-			console.log('lmao');
 			this.setState({ onlineStatusLoaded: true });
 		}
 
