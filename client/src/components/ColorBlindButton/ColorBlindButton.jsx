@@ -43,9 +43,9 @@ class ColorBlindButton extends Component {
 					className='color-blind-container pointer'
 				>
 					{this.state.colorBlindMode ? (
-						<i className='fas fa-low-vision fa-lg'></i>
-					) : (
 						<i className='fas fa-eye fa-lg'></i>
+					) : (
+						<i className='fas fa-low-vision fa-lg'></i>
 					)}
 				</div>
 				<Tooltip
