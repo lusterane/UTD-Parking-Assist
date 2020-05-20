@@ -11,6 +11,7 @@ import '../../styles/shared/Colors.css';
 import '../../styles/shared/LoadingSpinner.css';
 
 class Home extends Component {
+	//home
 	state = {
 		showModal: false,
 	};
