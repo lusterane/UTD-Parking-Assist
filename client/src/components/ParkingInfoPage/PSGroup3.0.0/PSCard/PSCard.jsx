@@ -20,7 +20,7 @@ class PSCard extends Component {
 	};
 
 	componentDidUpdate(prevProps, prevState) {
-		if (prevState.index !== this.state.index || prevProps != this.props) {
+		if (prevState.index !== this.state.index || prevProps !== this.props) {
 			this.updateCurrentPermit();
 		}
 
@@ -57,7 +57,7 @@ class PSCard extends Component {
 	};
 
 	render() {
-		const { id, spots, structure, color, level } = this.state.currentPermit;
+		const { spots, structure, color, level } = this.state.currentPermit;
 		return (
 			<React.Fragment>
 				<Card className='ps-card'>

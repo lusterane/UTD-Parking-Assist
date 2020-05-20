@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Spinner } from 'react-bootstrap';
 import axios from 'axios';
 
 import PSCard from './PSCard/PSCard';
@@ -155,6 +154,9 @@ class PSGroup extends Component {
 					break;
 				case 'green':
 					weightedColor = 0.25;
+					break;
+				default:
+					weightedColor = 0;
 					break;
 			}
 			weightedColor *= colorWeight;
