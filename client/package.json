@@ -16,7 +16,7 @@
 	},
 	"homepage": "http://lusterane.github.io/UTD-Parking-Assist",
 	"scripts": {
-		"predeploy": "npm run build client",
+		"predeploy": "npm run build utd-parking-assist",
 		"deploy": "gh-pages -d build",
 		"start": "export REACT_APP_API_ENDPOINT=https://utd-parking.herokuapp.com/ && react-scripts start",
 		"build": "react-scripts build",

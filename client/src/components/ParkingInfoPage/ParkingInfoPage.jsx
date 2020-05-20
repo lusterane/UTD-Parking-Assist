@@ -29,7 +29,6 @@ class ParkingInfo extends Component {
 				elapsedTime: 0,
 			},
 		},
-		isLoadedTimer: false,
 	};
 	componentDidMount() {
 		this.setState({
@@ -95,7 +94,6 @@ class ParkingInfo extends Component {
 			});
 	};
 
-	// ran once in initial
 	updateTimeFromHTTPResponse = (res) => {
 		let timeUpdated = { ...this.state.timeUpdated };
 		Object.entries(res.data).forEach((value) => {
