@@ -130,7 +130,9 @@ class ParkingStructureGroup extends Component {
 		// standardize to form 'Green Permit'
 		let standardizedColor = this.standardizeColorShortToLong(color);
 		axios
-			.get(process.env.API_ENDPOINT + `parkingStructures/color/` + standardizedColor)
+			.get(
+				process.env.REACT_APP_API_ENDPOINT + `parkingStructures/color/` + standardizedColor
+			)
 			.then((res) => {
 				if (res.status === 200) {
 					this.updatePermitsFromHTTPResponse(res);
