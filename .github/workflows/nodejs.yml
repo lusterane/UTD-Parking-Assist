@@ -23,6 +23,6 @@ jobs:
             - name: Build
               run: |
                   npm install --prefix ./client
-                  npm run-script build --prefix ./client
+                  CI=false npm run-script build --prefix ./client
               env:
                   REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
