@@ -26,9 +26,9 @@ jobs:
                   CI=false npm run-script build --prefix ./client
               env:
                   REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
-            - name: Deploy 🚀
-                uses: JamesIves/github-pages-deploy-action@releases/v3
-                with:
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                    BRANCH: gh-pages
-                    FOLDER: dist
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages
+                  FOLDER: build
