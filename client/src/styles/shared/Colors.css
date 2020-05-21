@@ -10,25 +10,7 @@
 	--shaded-purple: #582c8e;
 }
 
-.green-background {
-	background-color: var(--green);
-}
-.gold-background {
-	background-color: var(--gold);
-}
-.orange-background {
-	background-color: var(--orange);
-}
-.purple-background {
-	background-color: var(--purple);
-}
-.pay-by-space-background {
-	background-color: var(--grey);
-}
-.grey-background {
-	background-color: var(--grey);
-}
-
+/* General */
 .green {
 	color: var(--green);
 }
@@ -52,6 +34,13 @@
 	color: black;
 }
 
+.pay-by-space-background {
+	background-color: var(--grey);
+}
+.grey-background {
+	background-color: var(--grey);
+}
+
 .light-text {
 	color: #ffffff !important;
 }
@@ -60,6 +49,56 @@
 	color: #343a40 !important;
 }
 
+/* Color Options Buttons */
+.green-background {
+	background-color: var(--green);
+	border-color: var(--green) !important;
+	border: 1px solid transparent;
+	color: #fff;
+}
+
+.green-background:hover {
+	background-color: transparent !important;
+	color: var(--green) !important;
+}
+
+.gold-background {
+	background-color: var(--gold);
+	border-color: var(--gold) !important;
+	border: 1px solid transparent;
+	color: #fff;
+}
+
+.gold-background:hover {
+	background-color: transparent !important;
+	color: var(--gold) !important;
+}
+
+.orange-background {
+	background-color: var(--orange);
+	border-color: var(--orange) !important;
+	border: 1px solid transparent;
+	color: #fff;
+}
+
+.orange-background:hover {
+	background-color: transparent !important;
+	color: var(--orange) !important;
+}
+
+.purple-background {
+	background-color: var(--purple);
+	border-color: var(--purple) !important;
+	border: 1px solid transparent;
+	color: #fff;
+}
+
+.purple-background:hover {
+	background-color: transparent !important;
+	color: var(--purple) !important;
+}
+
+/* confirmation buttons (NOT COLOR OPTIONS) */
 .green-button {
 	background-color: var(--green);
 	border-color: var(--green);
@@ -94,27 +133,76 @@
 	border-color: var(--shaded-purple);
 }
 
+/* color blind color options*/
 .border-green {
-	margin: 1rem;
+	margin: 1rem 0.7rem;
 	padding: 0.5rem;
 	border-radius: 0.25rem;
 	border: 2px solid rgba(40, 167, 70, 0.7);
 }
 .border-gold {
-	margin: 1rem;
+	margin: 1rem 0.7rem;
 	padding: 0.5rem;
 	border-radius: 0.25rem;
 	border: 2px solid rgba(249, 201, 56, 0.7);
 }
 .border-orange {
-	margin: 1rem;
+	margin: 1rem 0.7rem;
 	padding: 0.5rem;
 	border-radius: 0.25rem;
 	border: 2px solid rgba(255, 140, 0, 0.7);
 }
 .border-purple {
-	margin: 1rem;
+	margin: 1rem 0.7rem;
 	padding: 0.5rem;
 	border-radius: 0.25rem;
 	border: 2px solid rgba(119, 61, 188, 0.7);
+}
+
+.green-color-blind-background {
+	color: var(--shaded-green);
+	font-weight: 300;
+}
+
+.green-color-blind-background:hover {
+	background-color: var(--green) !important;
+	border-color: var(--green) !important;
+	color: #fff;
+	font-weight: 500;
+}
+
+.gold-color-blind-background {
+	color: var(--shaded-gold);
+	font-weight: 300;
+}
+
+.gold-color-blind-background:hover {
+	background-color: var(--gold) !important;
+	border-color: var(--gold) !important;
+	color: #fff;
+	font-weight: 500;
+}
+
+.orange-color-blind-background {
+	color: var(--shaded-orange);
+	font-weight: 300;
+}
+
+.orange-color-blind-background:hover {
+	background-color: var(--orange) !important;
+	border-color: var(--orange) !important;
+	color: #fff;
+	font-weight: 500;
+}
+
+.purple-color-blind-background {
+	color: var(--shaded-purple);
+	font-weight: 300;
+}
+
+.purple-color-blind-background:hover {
+	background-color: var(--purple) !important;
+	border-color: var(--purple) !important;
+	color: #fff;
+	font-weight: 500;
 }

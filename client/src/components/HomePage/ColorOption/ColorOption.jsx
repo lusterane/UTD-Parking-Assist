@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Tooltip } from "react-bootstrap";
+import { Button } from 'reactstrap';
 
 import './ColorOptionStyle.css';
 import '../../../styles/shared/Colors.css';
@@ -13,10 +13,11 @@ class ColorOption extends Component {
 		return (
 			<React.Fragment>
 				{color === 'grey' ? (
-					<div className={color + '-background square'}></div>
-				) : (
-					<div
-						id={'Tooltip-' + color}
+					<div className={color + '-background color-option'}></div>
+				) : this.props.colorBlindMode ? (
+					<Button
+						outline
+						color='secondary'
 						onClick={() => {
 							onClick(color);
 						}}
@@ -27,17 +28,36 @@ class ColorOption extends Component {
 							handleMouseLeave();
 						}}
 						className={
-							this.props.colorBlindMode ? '' : color + '-background square pointer'
+							color +
+							'-color-blind-background color-blind-option pointer border-' +
+							color
 						}
 					>
-						{this.props.colorBlindMode ? (
-							<div className={'pointer border-' + color}>
-								{color.charAt(0).toUpperCase() + color.slice(1)} Permit
-							</div>
-						) : (
-							''
-						)}
-					</div>
+						{color.charAt(0).toUpperCase() + color.slice(1)} Permit
+					</Button>
+				) : (
+					<Button
+						outline
+						type='button'
+						color='secondary'
+						onClick={() => {
+							onClick(color);
+						}}
+						onMouseOver={() => {
+							handleMouseOver(color);
+						}}
+						onMouseLeave={() => {
+							handleMouseLeave();
+						}}
+						className={color + '-background color-option'}
+						// className={
+						// 	this.props.colorBlindMode
+						// 		? ''
+						// 		: color + '-background color-option pointer'
+						// }
+					>
+						<i className='fas fa-car-side'></i>
+					</Button>
 				)}
 			</React.Fragment>
 		);
