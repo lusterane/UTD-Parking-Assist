@@ -13,7 +13,9 @@ class ColorOption extends Component {
 		return (
 			<React.Fragment>
 				{color === 'grey' ? (
-					<div className={color + '-background color-option'}></div>
+					<div className={color + '-background color-option'}>
+						<i className='fas fa-car-side' style={{ color: '#fff' }}></i>
+					</div>
 				) : this.props.colorBlindMode ? (
 					<Button
 						outline

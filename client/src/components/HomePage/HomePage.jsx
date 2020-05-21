@@ -123,13 +123,14 @@ class Home extends Component {
 				) : (
 					<React.Fragment>
 						<Header type='server-warning'></Header>
-						<div className='container homepage-container'>
+						<div className='content-container'>
 							<div className='row'>
 								<div className='col'>
 									<h1 className={'grey title-greeting'}>UTD Parking</h1>
 									{/* <h1 className={this.props.color + ' title-greeting'}>
 										{this.props.getGreeting()}
 									</h1> */}
+									<p className={'grey'}>Live parking data at your fingertips</p>
 									<div className='row'>
 										<ColorOption color='grey' />
 										<ColorOption color='grey' />
