@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Button, Popover, PopoverBody, PopoverHeader } from 'reactstrap';
 
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
@@ -16,6 +16,7 @@ class Home extends Component {
 	state = {
 		showModal: false,
 		colorBlindMode: false,
+		popoverOpen: false,
 	};
 
 	componentDidUpdate() {
@@ -25,7 +26,10 @@ class Home extends Component {
 			this.setState({ colorBlindMode: data });
 		}
 	}
+	// maintain popover
+	togglePopover = () => this.setState({ popoverOpen: !this.state.popoverOpen });
 
+	// maintain modal
 	handleModalClose = () => {
 		this.setState({ showModal: false });
 	};
@@ -59,7 +63,42 @@ class Home extends Component {
 				{this.props.onlineStatus ? (
 					<>
 						<ColorBlindButton />
-
+						<Popover
+							innerClassName='popover-content'
+							trigger='hover'
+							placement='bottom'
+							isOpen={this.state.popoverOpen}
+							target='info-text'
+							toggle={this.togglePopover}
+							flip={true}
+						>
+							<PopoverBody>
+								<div className='popover-text-container'>
+									If any visual impairements, select the{' '}
+									<i className='fas fa-low-vision'></i> at the top right.
+									<hr></hr>
+									<p>UTD Permits works on shared tiers:</p>
+									<div className='color-access-listings'>
+										<p>
+											<span className='green'>Green</span> accesses{' '}
+											<span className='green'>Green</span>
+										</p>
+										<p>
+											<span className='gold'>Gold</span> accesses{' '}
+											<span className='green'>Green</span>,and{' '}
+											<span className='gold'>Gold</span>
+										</p>
+										<p>
+											<span className='purple'>Purple</span> accesses{' '}
+											<span className='green'>Green</span>,
+											<span className='gold'>Gold</span>,
+											<span className='orange'>Orange</span>,and{' '}
+											<span className='purple'>Purple</span>
+										</p>
+									</div>
+								</div>
+							</PopoverBody>
+						</Popover>
 						<div className='content-container'>
 							<div className='row'>
 								<div className='col'>
@@ -109,6 +148,11 @@ class Home extends Component {
 											handleMouseLeave={this.handleMouseLeave}
 										/>
 									</div>
+								</div>
+							</div>
+							<div id='info-text' className='bottom-text row'>
+								<div className='col'>
+									<p>But, how does it work?</p>
 								</div>
 							</div>
 							<ConfirmModal

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from 'reactstrap';
 import axios from 'axios';
 
 //import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';

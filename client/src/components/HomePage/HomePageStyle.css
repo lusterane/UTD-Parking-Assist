@@ -1,15 +1,38 @@
-body {
-}
 .content-container {
 	display: flex;
 	position: relative;
 	height: 100vh;
 	width: 100vw;
 	bottom: 10vh;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
+.content-container .bottom-text {
+	padding-top: 5vh;
+}
+
 .title-greeting {
 	font-size: 2rem;
+}
+
+.popover-content {
+	font-family: 'Roboto Mono', monospace;
+	font-weight: 300;
+	padding: 1.5rem;
+	width: 70vw;
+	line-height: 1rem;
+}
+
+.popover-text-container {
+	text-align: center;
+}
+
+.color-access-listings {
+	font-weight: 400;
+}
+
+.popover {
+	max-width: 100%;
 }
