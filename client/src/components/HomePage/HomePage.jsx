@@ -167,6 +167,42 @@ class Home extends Component {
 				) : (
 					<React.Fragment>
 						<Header type='server-warning'></Header>
+						<Popover
+							innerClassName='popover-content'
+							trigger='hover'
+							placement='bottom'
+							isOpen={this.state.popoverOpen}
+							target='info-text'
+							toggle={this.togglePopover}
+							flip={true}
+						>
+							<PopoverBody>
+								<div className='popover-text-container'>
+									If any visual impairements, select the{' '}
+									<i className='fas fa-low-vision'></i> at the top right.
+									<hr></hr>
+									<p>UTD Permits works on shared tiers:</p>
+									<div className='color-access-listings'>
+										<p>
+											<span className='green'>Green</span> accesses{' '}
+											<span className='green'>Green</span>
+										</p>
+										<p>
+											<span className='gold'>Gold</span> accesses{' '}
+											<span className='green'>Green</span>,and{' '}
+											<span className='gold'>Gold</span>
+										</p>
+										<p>
+											<span className='purple'>Purple</span> accesses{' '}
+											<span className='green'>Green</span>,
+											<span className='gold'>Gold</span>,
+											<span className='orange'>Orange</span>,and{' '}
+											<span className='purple'>Purple</span>
+										</p>
+									</div>
+								</div>
+							</PopoverBody>
+						</Popover>
 						<div className='content-container'>
 							<div className='row'>
 								<div className='col'>
@@ -181,6 +217,11 @@ class Home extends Component {
 										<ColorOption color='grey' />
 										<ColorOption color='grey' />
 									</div>
+								</div>
+							</div>
+							<div id='info-text' className='bottom-text row grey'>
+								<div className='col'>
+									<p>But, how does it work?</p>
 								</div>
 							</div>
 						</div>
