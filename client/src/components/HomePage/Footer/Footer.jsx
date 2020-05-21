@@ -19,7 +19,7 @@ class Footer extends Component {
 						</a>
 						.
 					</p>
-					<p class='sub-text'>
+					<p className='sub-text'>
 						Like the project? A <i className='far fa-star'></i> on the{' '}
 						<a
 							href='https://github.com/lusterane/UTD-Parking-Assist'

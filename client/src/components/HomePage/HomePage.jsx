@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spinner, Button, Popover, PopoverBody, PopoverHeader } from 'reactstrap';
+import { Spinner, Popover, PopoverBody } from 'reactstrap';
 
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
@@ -55,9 +55,7 @@ class Home extends Component {
 					''
 				) : (
 					<div className='spinner-container'>
-						<Spinner animation='border' role='status'>
-							<span className='sr-only'>Loading...</span>
-						</Spinner>
+						<Spinner animation='border' role='status'></Spinner>
 					</div>
 				)}
 				{this.props.onlineStatus ? (
