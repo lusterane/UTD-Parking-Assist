@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const Objects = mongoose.Schema({
 	_id: mongoose.Schema.Types.ObjectId,
@@ -14,4 +14,8 @@ const parkingStructureSchema = mongoose.Schema({
 	permit_category: [Objects],
 });
 
-module.exports = mongoose.model("ParkingStructure", parkingStructureSchema);
+module.exports = mongoose.model(
+	'ParkingStructure',
+	parkingStructureSchema,
+	'recent_parkingstructures'
+);
