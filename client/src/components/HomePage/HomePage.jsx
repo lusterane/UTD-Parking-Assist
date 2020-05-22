@@ -36,16 +36,9 @@ class Home extends Component {
 	handleModalShow = () => {
 		this.setState({ showModal: true });
 	};
-
 	handleModalConfirm = () => {
 		localStorage.setItem('color', this.props.color);
 		this.setState({ showModal: false });
-	};
-
-	handleMouseLeave = () => {
-		if (!this.state.showModal) {
-			this.props.changeColorDefault();
-		}
 	};
 
 	render() {
@@ -116,7 +109,11 @@ class Home extends Component {
 												this.handleModalShow(this.props.color);
 											}}
 											handleMouseOver={this.props.changeColor}
-											handleMouseLeave={this.handleMouseLeave}
+											handleMouseLeave={() => {
+												if (!this.state.showModal) {
+													this.props.changeColorDefault();
+												}
+											}}
 										/>
 										<ColorOption
 											color='gold'
@@ -125,7 +122,11 @@ class Home extends Component {
 												this.handleModalShow(this.props.color);
 											}}
 											handleMouseOver={this.props.changeColor}
-											handleMouseLeave={this.handleMouseLeave}
+											handleMouseLeave={() => {
+												if (!this.state.showModal) {
+													this.props.changeColorDefault();
+												}
+											}}
 										/>
 										<ColorOption
 											color='orange'
@@ -134,7 +135,11 @@ class Home extends Component {
 												this.handleModalShow(this.props.color);
 											}}
 											handleMouseOver={this.props.changeColor}
-											handleMouseLeave={this.handleMouseLeave}
+											handleMouseLeave={() => {
+												if (!this.state.showModal) {
+													this.props.changeColorDefault();
+												}
+											}}
 										/>
 										<ColorOption
 											color='purple'
@@ -143,7 +148,11 @@ class Home extends Component {
 												this.handleModalShow(this.props.color);
 											}}
 											handleMouseOver={this.props.changeColor}
-											handleMouseLeave={this.handleMouseLeave}
+											handleMouseLeave={() => {
+												if (!this.state.showModal) {
+													this.props.changeColorDefault();
+												}
+											}}
 										/>
 									</div>
 								</div>

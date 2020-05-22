@@ -19,7 +19,6 @@ class PSGroup extends Component {
 			},
 		},
 		color: '',
-		psGroupIsLoaded: false,
 	};
 
 	componentDidMount() {
@@ -31,8 +30,6 @@ class PSGroup extends Component {
 	}
 
 	componentDidUpdate() {
-		// 63 64 65 66
-		// inclusive
 		const range = [62, 63];
 		for (let i = range[0]; i <= range[1]; i++) {
 			if (this.props.timeUpdated.ps1.elapsedTime === i) {
@@ -83,8 +80,7 @@ class PSGroup extends Component {
 				}
 			});
 		});
-		this.setState({ structures: structures });
-		this.props.setPSGroupLoadedTrue();
+		this.setState({ structures: structures }, this.props.setPSGroupLoadedTrue);
 	};
 
 	isRelevantColor = (color) => {

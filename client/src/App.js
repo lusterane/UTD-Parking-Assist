@@ -9,20 +9,20 @@ import './App.css';
 class App extends Component {
 	state = {
 		color: '',
-		updateOnlineStatusInterval: '',
 		onlineHours: {
 			fromHour: '0',
-			toHour: '25',
+			toHour: '20',
 		},
 
 		onlineStatus: false,
 		onlineStatusLoaded: false,
 	};
+
 	componentDidMount() {
-		this.setState({ updateOnlineStatusInterval: setInterval(this.updateOnlineStatus, 900) });
+		setInterval(this.updateOnlineStatus, 900);
 	}
 
-	// permit color
+	// changes color for header
 	handleChangeColor = (color) => {
 		this.setState({ color: color });
 	};
@@ -34,11 +34,10 @@ class App extends Component {
 	// update time
 	updateOnlineStatus = () => {
 		if (this.checkOnlineStatus()) {
-			this.setState({ onlineStatus: true });
+			this.setState({ onlineStatus: true, onlineStatusLoaded: true });
 		} else {
-			this.setState({ onlineStatus: false });
+			this.setState({ onlineStatus: false, onlineStatusLoaded: true });
 		}
-		this.setState({ onlineStatusLoaded: true });
 	};
 
 	checkOnlineStatus = () => {

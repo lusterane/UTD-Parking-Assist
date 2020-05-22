@@ -30,7 +30,6 @@ class ParkingInfo extends Component {
 		},
 		timerLoaded: false,
 		psGroupLoaded: false,
-		onlineStatusLoaded: false,
 	};
 
 	componentDidMount() {
@@ -44,25 +43,7 @@ class ParkingInfo extends Component {
 		clearInterval(this.state.updateTimeUpdatedInStateInterval);
 	}
 	componentDidUpdate() {
-		// check time loaded
-		if (this.state.timeUpdated.ps1.elapsedTime !== -1 && this.state.timerLoaded === false) {
-			this.setState({ timerLoaded: true });
-		}
-
-		// check online status loaded
-		if (this.props.onlineStatusLoaded === true && this.state.onlineStatusLoaded === false) {
-			this.setState({ onlineStatusLoaded: true });
-		}
-
-		// 63 64 65 66
-		// inclusive
 		const range = [62, 63];
-		// 63, 64 working well 4/14 7:30~
-		// 62, 63 working well 4/14 7:30~
-		// 61, 62 working for most part. extremely minor hiccup 4/14 8:00~
-		// 80 requests: 2 hiccups
-		// 62, 63 working well 4/14 8:40~
-		// 80 requests: NO hiccups
 		for (let i = range[0]; i <= range[1]; i++) {
 			if (this.state.timeUpdated.ps1.elapsedTime === i) {
 				this.handleResetElapsedTime();
@@ -81,7 +62,7 @@ class ParkingInfo extends Component {
 				timeUpdated[structure].elapsedTime = this.computeElapsedTime(time);
 			});
 
-			this.setState({ timeUpdated: timeUpdated });
+			this.setState({ timeUpdated: timeUpdated, timerLoaded: true });
 		}
 	};
 
@@ -133,7 +114,7 @@ class ParkingInfo extends Component {
 		return (
 			<React.Fragment>
 				<div className='parking-info-page-container'>
-					{this.state.onlineStatusLoaded &&
+					{this.props.onlineStatusLoaded &&
 					this.state.timerLoaded &&
 					this.state.psGroupLoaded ? (
 						''

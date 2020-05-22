@@ -10,7 +10,7 @@ class Time extends Component {
 	getTimeText = (elapsedTime) => {
 		const maxTime = 63;
 		if (elapsedTime > maxTime) {
-			return 'Unknown problem, please refresh page';
+			return 'Unknown problem, try refreshing the page';
 		} else {
 			return 'Live update in ' + this.standardizeSecondsToMinutes(elapsedTime, maxTime);
 		}

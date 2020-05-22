@@ -19,9 +19,19 @@ class PSCard extends Component {
 		colorBlindMode: false,
 	};
 
-	componentDidUpdate(prevProps, prevState) {
-		if (prevState.index !== this.state.index || prevProps !== this.props) {
-			this.updateCurrentPermit();
+	componentDidUpdate() {
+		// initialize current permit
+		if (this.state.currentPermit.id === -1 && this.props.dataArr.length > 0) {
+			this.setState((state, props) => ({
+				currentPermit: {
+					id: props.dataArr[0].id,
+					spots: props.dataArr[0].spots,
+					structure: props.dataArr[0].structure,
+					color: props.dataArr[0].color,
+					level: props.dataArr[0].level,
+					spot_change: props.dataArr[0].spot_change,
+				},
+			}));
 		}
 
 		// get color blind status
@@ -31,30 +41,32 @@ class PSCard extends Component {
 		}
 	}
 
-	handleIncrementIndex = () => {
-		this.setState({ index: this.state.index + 1 });
-	};
-
-	handleDecrementIndex = () => {
-		this.setState({ index: this.state.index - 1 });
-	};
-
-	updateCurrentPermit = () => {
-		const { id, spots, structure, color, level, spot_change } =
-			this.props.dataArr.length !== 0
-				? this.props.dataArr[this.state.index]
-				: { id: -1, spots: -1, color: 'green', level: -1 };
-
-		this.setState({
+	handleIncrementUpdate = () => {
+		this.setState((state, props) => ({
+			index: state.index + 1,
 			currentPermit: {
-				id: id,
-				spots: spots,
-				structure: structure,
-				color: color,
-				level: level,
-				spot_change: spot_change,
+				id: props.dataArr[state.index + 1].id,
+				spots: props.dataArr[state.index + 1].spots,
+				structure: props.dataArr[state.index + 1].structure,
+				color: props.dataArr[state.index + 1].color,
+				level: props.dataArr[state.index + 1].level,
+				spot_change: props.dataArr[state.index + 1].spot_change,
 			},
-		});
+		}));
+	};
+
+	handleDecrementUpdate = () => {
+		this.setState((state, props) => ({
+			index: state.index - 1,
+			currentPermit: {
+				id: props.dataArr[state.index - 1].id,
+				spots: props.dataArr[state.index - 1].spots,
+				structure: props.dataArr[state.index - 1].structure,
+				color: props.dataArr[state.index - 1].color,
+				level: props.dataArr[state.index - 1].level,
+				spot_change: props.dataArr[state.index - 1].spot_change,
+			},
+		}));
 	};
 
 	getSpotChangeJSX = (spot_change) => {
@@ -78,7 +90,7 @@ class PSCard extends Component {
 			return (
 				<div className='percent-change-container'>
 					<p className='percent-change-text'>
-						<span className='percent-change-red'>-{spot_change}%</span> SPACES
+						<span className='percent-change-red'>{spot_change}%</span> SPACES
 					</p>
 				</div>
 			);
@@ -102,7 +114,7 @@ class PSCard extends Component {
 							<div className='ps-card-body'>
 								{this.state.index !== 0 ? (
 									<div
-										onClick={this.handleDecrementIndex}
+										onClick={this.handleDecrementUpdate}
 										className='pointer arrow-container'
 									>
 										<i className='arrow fas fa-angle-left'></i>
@@ -129,7 +141,7 @@ class PSCard extends Component {
 								</div>
 								{this.state.index !== this.props.dataArr.length - 1 ? (
 									<div
-										onClick={this.handleIncrementIndex}
+										onClick={this.handleIncrementUpdate}
 										className='arrow-container pointer'
 									>
 										<i className='arrow fas fa-angle-right'></i>
