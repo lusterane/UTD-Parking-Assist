@@ -68,7 +68,7 @@ class PSGroup extends Component {
 
 		res.data.forEach((element) => {
 			element.permit_category.forEach((permit) => {
-				const { id, level, spots } = permit;
+				const { id, level, spots, percent_change_past_10_mins } = permit;
 				const color = this.standardizeColorLongToShort(permit.color);
 
 				if (spots !== 0 && this.isRelevantColor(color)) {
@@ -78,6 +78,7 @@ class PSGroup extends Component {
 						level: level,
 						spots: spots,
 						structure: element.structure.toUpperCase(),
+						spot_change: Number((percent_change_past_10_mins * 100).toFixed(2)),
 					});
 				}
 			});

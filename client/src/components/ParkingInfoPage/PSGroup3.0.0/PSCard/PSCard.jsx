@@ -40,7 +40,7 @@ class PSCard extends Component {
 	};
 
 	updateCurrentPermit = () => {
-		const { id, spots, structure, color, level } =
+		const { id, spots, structure, color, level, spot_change } =
 			this.props.dataArr.length !== 0
 				? this.props.dataArr[this.state.index]
 				: { id: -1, spots: -1, color: 'green', level: -1 };
@@ -52,12 +52,41 @@ class PSCard extends Component {
 				structure: structure,
 				color: color,
 				level: level,
+				spot_change: spot_change,
 			},
 		});
 	};
 
+	getSpotChangeJSX = (spot_change) => {
+		if (spot_change === 0) {
+			return (
+				<div className='percent-change-container'>
+					<p className='percent-change-text'>
+						<span className='grey'>-</span>
+					</p>
+				</div>
+			);
+		} else if (spot_change > 0) {
+			return (
+				<div className='percent-change-container'>
+					<p className='percent-change-text'>
+						<span className='percent-change-green'>+{spot_change}%</span> SPACES
+					</p>
+				</div>
+			);
+		} else {
+			return (
+				<div className='percent-change-container'>
+					<p className='percent-change-text'>
+						<span className='percent-change-red'>-{spot_change}%</span> SPACES
+					</p>
+				</div>
+			);
+		}
+	};
+
 	render() {
-		const { spots, structure, color, level } = this.state.currentPermit;
+		const { spots, structure, color, level, spot_change } = this.state.currentPermit;
 		return (
 			<React.Fragment>
 				<Card className='ps-card'>
@@ -96,6 +125,7 @@ class PSCard extends Component {
 											Color <i className={'fas fa-circle ' + color}></i>
 										</p>
 									)}
+									{this.getSpotChangeJSX(spot_change)}
 								</div>
 								{this.state.index !== this.props.dataArr.length - 1 ? (
 									<div
