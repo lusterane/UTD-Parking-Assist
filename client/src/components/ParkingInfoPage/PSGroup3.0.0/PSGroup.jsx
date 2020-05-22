@@ -128,16 +128,18 @@ class PSGroup extends Component {
 		}
 	};
 
-	getSortedDataArr = (dataArr, preference) => {
+	getSortedDataArr = (dataArr) => {
 		let sortedDataArr = [...dataArr];
 
-		// preference can be 'spots' or 'color'
-		const spotsWeight = preference === 'spots' ? 0.55 : 0.45;
-		const colorWeight = 1 - spotsWeight;
+		const spotsWeight = 0.25;
+		const colorWeight = 0.35;
+		const spotChangeWeight = 0.4;
 
 		// assign pref score
 		sortedDataArr = sortedDataArr.map((element) => {
+			const weightedSpotChange = element.spot_change * spotChangeWeight;
 			const weightedSpots = (element.spots / 250) * spotsWeight;
+
 			let weightedColor = 0;
 			switch (element.color) {
 				case 'purple':
@@ -157,7 +159,7 @@ class PSGroup extends Component {
 					break;
 			}
 			weightedColor *= colorWeight;
-			return { ...element, score: weightedSpots + weightedColor };
+			return { ...element, score: weightedSpots + weightedColor + weightedSpotChange };
 		});
 
 		// sort the array
@@ -169,9 +171,9 @@ class PSGroup extends Component {
 	render() {
 		const { ps1, ps3, ps4 } = this.state.structures;
 
-		const ps1DataArr = this.getSortedDataArr(ps1.dataArr, 'spots');
-		const ps3DataArr = this.getSortedDataArr(ps3.dataArr, 'spots');
-		const ps4DataArr = this.getSortedDataArr(ps4.dataArr, 'spots');
+		const ps1DataArr = this.getSortedDataArr(ps1.dataArr);
+		const ps3DataArr = this.getSortedDataArr(ps3.dataArr);
+		const ps4DataArr = this.getSortedDataArr(ps4.dataArr);
 
 		return (
 			<React.Fragment>

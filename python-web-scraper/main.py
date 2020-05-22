@@ -30,7 +30,6 @@ def CloudFunction(request):
     # update percent change if necessary
     if cr.psCount == 30:
         json = mongo_db.updatePercentChange(json)
-
     if numberCurrentDocuments < 30:
         mongo_db.placeIntoPSCollection(json)
         mongo_db.placeIntoRecentCollection(json)

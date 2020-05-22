@@ -82,7 +82,8 @@ class PSCard extends Component {
 			return (
 				<div className='percent-change-container'>
 					<p className='percent-change-text'>
-						<span className='percent-change-green'>+{spot_change}%</span> SPACES
+						<span className='percent-change-green'>+{spot_change}%</span> space
+						availability
 					</p>
 				</div>
 			);
@@ -90,7 +91,8 @@ class PSCard extends Component {
 			return (
 				<div className='percent-change-container'>
 					<p className='percent-change-text'>
-						<span className='percent-change-red'>{spot_change}%</span> SPACES
+						<span className='percent-change-red'>{spot_change}%</span> space
+						availability
 					</p>
 				</div>
 			);
@@ -125,7 +127,7 @@ class PSCard extends Component {
 									</div>
 								)}
 								<div className='text'>
-									<p className='main-text'>{spots} SPOTS</p>
+									<p className='main-text'>{spots} SPACES</p>
 									<p className='sub-text'>Level {level}</p>
 
 									{this.state.colorBlindMode ? (
