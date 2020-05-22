@@ -15,14 +15,21 @@ def CloudFunction(request):
         import time
         print("DEBUG_MODE ON")
         start_time = time.time()
-    cr = CrawlRoot()
-    cr.find_parking()
 
-    # cr.printParkingStructureData()
+    numberCurrentDocuments = MongoDbConnection().getEntriesCount()
+    cr = CrawlRoot(numberCurrentDocuments)
+    cr.find_parking()
 
     # Normal
     json = cr.buildJSONFormat()  # array of json documents
-    MongoDbConnection().writeToDB(json)
+    if numberCurrentDocuments < 30:
+        MongoDbConnection().insertNewDocuments(json)
+    elif MongoDbConnection().checkDataIsStale():
+        MongoDbConnection().CRITICAL_deleteAllDocuments()
+    elif numberCurrentDocuments == 30:
+        MongoDbConnection().replaceOldDocuments(json)
+    else: # > 30
+        MongoDbConnection().deleteOldestThreeDocuments()
 
     # Test
     # testJson = cr.buildJSONTestFormat()  # array of json documents
@@ -32,5 +39,10 @@ def CloudFunction(request):
         print("elapsed time: " + str(time.time() - start_time))
 
 
+def Test():
+    print(MongoDbConnection().getEntriesCount())
+
+
 if __name__ == "__main__":
     CloudFunction({})
+    # Test()
