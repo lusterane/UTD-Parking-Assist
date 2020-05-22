@@ -3,15 +3,30 @@ import datetime
 from pymongo import MongoClient
 
 class MongoDbConnection:
-    def replaceOldDocuments(self, json):
+    def __init__(self):
+        self.client = ""
+
+    def initializeDBContext(self):
         token = os.environ.get("MONGO_ATLAS_PW")
 
-        if token == None:
+        if token is None:
             print("token: ", os.environ)
-        client = MongoClient("mongodb+srv://lusterane:" +
-                             token +
-                             "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.utd_parking
+        self.client = MongoClient("mongodb+srv://lusterane:" + token + "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
+
+    def terminateDBContext(self):
+        self.client.close()
+
+    def placeIntoRecentCollection(self, json):
+        db = self.client.utd_parking
+        collection = db.recent_parkingstructures
+        print('recent_parkingstructures: ', collection.delete_many({}))
+        for ps in json:
+            result = collection.insert_one(ps)
+            print('recent_parkingstructures: ', result)
+
+
+    def replaceOldPSDocuments(self, json):
+        db = self.client.utd_parking
 
         collection = db.parkingstructures
         old_permit_list = self.getListOldestPermits(collection)
@@ -26,17 +41,8 @@ class MongoDbConnection:
             result = collection.replace_one({'_id': old_document_id}, ps)
             print(result)
 
-        client.close()
-
-    def insertNewDocuments(self, json):
-        token = os.environ.get("MONGO_ATLAS_PW")
-
-        if token == None:
-            print("token: ", os.environ)
-        client = MongoClient("mongodb+srv://lusterane:" +
-                             token +
-                             "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.utd_parking
+    def placeIntoPSCollection(self, json):
+        db = self.client.utd_parking
 
         collection = db.parkingstructures
 
@@ -44,17 +50,8 @@ class MongoDbConnection:
             result = collection.insert_one(ps)
             print(result)
 
-        client.close()
-
     def deleteOldestThreeDocuments(self):
-        token = os.environ.get("MONGO_ATLAS_PW")
-
-        if token == None:
-            print("token: ", os.environ)
-        client = MongoClient("mongodb+srv://lusterane:" +
-                             token +
-                             "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.utd_parking
+        db = self.client.utd_parking
 
         collection = db.parkingstructures
         old_permit_list = self.getListOldestPermits(collection)
@@ -67,80 +64,64 @@ class MongoDbConnection:
         print(collection.delete_one({"_id": ps3_id}))
         print(collection.delete_one({"_id": ps4_id}))
 
-        client.close()
-
     def checkDataIsStale(self):
         # get most recent document
-        token = os.environ.get("MONGO_ATLAS_PW")
+        db = self.client.utd_parking
+        collection = db.recent_parkingstructures
 
-        if token == None:
-            print("token: ", os.environ)
-        client = MongoClient("mongodb+srv://lusterane:" +
-                             token +
-                             "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.utd_parking
-        collection = db.parkingstructures
-
-        most_recent_document = collection.find().sort([("utc_time_updated", -1)]).limit(1)
         stale = False
 
+        most_recent_document = collection.find()
         if most_recent_document is not None:
-            # check if stale
-            raw_document_datetime = most_recent_document.next()['utc_time_updated']
-            # ex: 2020-05-22
-            most_recent_date = datetime.datetime.date(raw_document_datetime)
-            now_date = datetime.datetime.utcnow().date()
+            for document in most_recent_document:
+                # check if stale
+                # ex: 2020-05-22
+                most_recent_date = datetime.datetime.date(document['utc_time_updated'])
+                now_date = datetime.datetime.utcnow().date()
 
-            if most_recent_date != now_date:
-                stale = True
-
-            # ex: 01:16:44.232000
-            # MAYBE UNNECESSARY CODE. WILL KNOW IN FUTURE
-            # most_recent_time = datetime.datetime.time(raw_document_datetime)
-            # now_time = datetime.datetime
-
-        client.close()
+                if most_recent_date != now_date:
+                    stale = True
         return stale
 
+    # def checkDataIsStale(self):
+    #     # get most recent document
+    #     db = self.client.utd_parking
+    #     collection = db.parkingstructures
+    #
+    #     most_recent_document = collection.find().sort([("utc_time_updated", -1)]).limit(1)
+    #     stale = False
+    #
+    #     if most_recent_document is not None:
+    #         # check if stale
+    #         raw_document_datetime = most_recent_document.next()['utc_time_updated']
+    #         # ex: 2020-05-22
+    #         most_recent_date = datetime.datetime.date(raw_document_datetime)
+    #         now_date = datetime.datetime.utcnow().date()
+    #
+    #         if most_recent_date != now_date:
+    #             stale = True
+    #
+    #         # ex: 01:16:44.232000
+    #         # MAYBE UNNECESSARY CODE. WILL KNOW IN FUTURE
+    #         # most_recent_time = datetime.datetime.time(raw_document_datetime)
+    #         # now_time = datetime.datetime
+    #     return stale
+
     # only call if data is stale
-    def CRITICAL_deleteAllDocuments(self):
-        token = os.environ.get("MONGO_ATLAS_PW")
+    def CRITICAL_ResetPSCollection(self):
+        db = self.client.utd_parking
+        collection_ps = db.parkingstructures
 
-        if token == None:
-            print("token: ", os.environ)
-        client = MongoClient("mongodb+srv://lusterane:" +
-                             token +
-                             "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.utd_parking
-        collection = db.parkingstructures
-
-        print(collection.delete_many({}))
-        print("DELETED ALL DOCUMENTS")
-        client.close()
+        print('parkingstructures: ', collection_ps.delete_many({}))
 
     def getEntriesCount(self):
-        token = os.environ.get("MONGO_ATLAS_PW")
-
-        if token == None:
-            print("token: ", os.environ)
-        client = MongoClient("mongodb+srv://lusterane:" +
-                             token +
-                             "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.utd_parking
+        db = self.client.utd_parking
         collection = db.parkingstructures
-        client.close()
         return collection.count()
 
     # returns updated list with percent change values
     def updatePercentChange(self, permit_category_lis):
-        token = os.environ.get("MONGO_ATLAS_PW")
-
-        if token == None:
-            print("token: ", os.environ)
-        client = MongoClient("mongodb+srv://lusterane:" +
-                             token +
-                             "@utd-parking-assist-fo6hm.mongodb.net/test?retryWrites=true&w=majority")
-        db = client.utd_parking
+        db = self.client.utd_parking
 
         collection = db.parkingstructures
 
@@ -157,8 +138,6 @@ class MongoDbConnection:
                 # calculate percent change
                 percent_change = (current_permit_spots - old_permit_spots) / old_permit_spots
                 current_permit['percent_change_past_10_mins'] = percent_change
-
-        client.close()
         # return updated permit category list
         return permit_category_lis
 

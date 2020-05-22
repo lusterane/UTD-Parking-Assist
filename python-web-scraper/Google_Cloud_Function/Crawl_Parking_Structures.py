@@ -14,34 +14,36 @@ from Parking_Structure import Permit
 
 
 class CrawlRoot:
-    def __init__(self):
+    def __init__(self, psCount):
         self.psList = []
+        self.psCount = psCount # number of current parking structure entries
 
     # finds parking options and available Spaces of parking structure
     # returns dictionary of available space and level+color
     # param:
     #   soup is the beautiful soup return
-    #   park_struc is string representation of parkign structure. EX: 'ps1' 'ps3' 'ps4'
-    def parse_parking(self, soup, park_struc):
+    #   parking_structure_name is string representation of parkign structure. EX: 'ps1' 'ps3' 'ps4'
+    def parse_parking(self, soup, parking_structure_name):
         # build parking structure object
-        psBuilder = Parking_Structure(park_struc)
+        psBuilder = Parking_Structure(parking_structure_name)
 
         # real time of parking structure update
         # rawTime = soup.find("tfoot").find('tr').find('td').find('p').text
         # self.timeUpdated = rawTime[13:len(rawTime)-1]
 
-        for element in soup.findAll('table', {'id': park_struc}):
+        for element in soup.findAll('table', {'id': parking_structure_name}):
             body = element.find('tbody')
             # finds each row for parking
             for row in body.findAll('tr'):
                 cells = row.findAll("td")
 
-                ## parse info into variables
+                # parse info into variables
 
                 # level
                 level = cells[0].text
                 # permit type
-                option = cells[1].text # cells[1].text.rsplit(' ', 1)[0].lower()
+                # cells[1].text.rsplit(' ', 1)[0].lower()
+                option = cells[1].text
                 # available space
                 spots = cells[2].text
 
@@ -59,17 +61,36 @@ class CrawlRoot:
     def printParkingStructureData(self):
         for ps in self.psList:
             for permit in ps.permit:
-                print(ps.structure + ", " + permit.color + ", " + str(permit.level) + ", " + str(permit.spots))
+                print(ps.structure + ", " + permit.color + ", " +
+                      str(permit.level) + ", " + str(permit.spots))
 
     # create json format for mongoDB
     # returns array of JSONs to send to mongoDB
     def buildJSONFormat(self):
         jsonArr = []
         for ps in self.psList:
-            currentJson = {"structure": ps.structure, "utc_time_updated": datetime.datetime.utcnow(), "permit_category": []}
+            currentJson = {"structure": ps.structure,
+                           "utc_time_updated": datetime.datetime.utcnow(), "permit_category": []}
             permit_category_lis = []
             for permit in ps.permit:
-                permit_category_lis.append({"id": ObjectId(),"color": permit.color, "level": permit.level, "spots": permit.spots})
+                permit_obj = {"id": ObjectId(), "color": permit.color, "level": permit.level, "spots": permit.spots}
+                permit_category_lis.append(permit_obj)
+            currentJson["permit_category"] = permit_category_lis
+            jsonArr.append(currentJson)
+        return jsonArr
+
+    # create TEST json format for mongoDB
+    # returns TESTarray of JSONs to send to mongoDB
+    # NEEDS REFACTORING
+    def buildJSONTestFormat(self):
+        jsonArr = []
+        for ps in self.psList:
+            currentJson = {"structure": ps.structure, "utc_time_updated": datetime.datetime.utcnow(),
+                           "permit_category": []}
+            permit_category_lis = []
+            for permit in ps.permit:
+                permit_category_lis.append(
+                    {"id": ObjectId(), "color": permit.color, "level": permit.level, "spots": 0})
             currentJson["permit_category"] = permit_category_lis
             jsonArr.append(currentJson)
         return jsonArr
@@ -77,7 +98,8 @@ class CrawlRoot:
     # general function for invoking HTML parse
     # placeholder function for lambda invocation
     def find_parking(self):
-        http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED', ca_certs=certifi.where())
+        http = urllib3.PoolManager(
+            cert_reqs='CERT_REQUIRED', ca_certs=certifi.where())
         url_php = "https://www.utdallas.edu/services/transit/garages/_code.php"
         response = http.request('GET', url_php)
         soup = BeautifulSoup(response.data, features="html.parser")

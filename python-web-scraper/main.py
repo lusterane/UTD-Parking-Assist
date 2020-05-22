@@ -16,24 +16,39 @@ def CloudFunction(request):
         print("DEBUG_MODE ON")
         start_time = time.time()
 
-    numberCurrentDocuments = MongoDbConnection().getEntriesCount()
+    # initialize db context
+    mongo_db = MongoDbConnection()
+    mongo_db.initializeDBContext()
+
+    numberCurrentDocuments = mongo_db.getEntriesCount()
     cr = CrawlRoot(numberCurrentDocuments)
     cr.find_parking()
 
     # Normal
     json = cr.buildJSONFormat()  # array of json documents
+
+    # update percent change if necessary
+    if cr.psCount == 30:
+        json = mongo_db.updatePercentChange(json)
+
     if numberCurrentDocuments < 30:
-        MongoDbConnection().insertNewDocuments(json)
-    elif MongoDbConnection().checkDataIsStale():
-        MongoDbConnection().CRITICAL_deleteAllDocuments()
+        mongo_db.placeIntoPSCollection(json)
+        mongo_db.placeIntoRecentCollection(json)
+    elif mongo_db.checkDataIsStale():
+        mongo_db.CRITICAL_ResetPSCollection()
+        mongo_db.placeIntoPSCollection(json)
+        mongo_db.placeIntoRecentCollection(json)
     elif numberCurrentDocuments == 30:
-        MongoDbConnection().replaceOldDocuments(json)
+        mongo_db.replaceOldPSDocuments(json)
+        mongo_db.placeIntoRecentCollection(json)
     else: # > 30
-        MongoDbConnection().deleteOldestThreeDocuments()
+        mongo_db.deleteOldestThreeDocuments()
+    mongo_db.terminateDBContext()
 
     # Test
+    # REQUIRES REFACTORING
     # testJson = cr.buildJSONTestFormat()  # array of json documents
-    # MongoDbConnection().writeToDB(testJson)
+    # mongo_db.writeToDB(testJson)
 
     if DEBUG_MODE:
         print("elapsed time: " + str(time.time() - start_time))

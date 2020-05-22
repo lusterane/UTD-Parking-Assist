@@ -11,7 +11,6 @@ from bson import ObjectId
 
 from Parking_Structure import Parking_Structure
 from Parking_Structure import Permit
-from MongoDbConnection import MongoDbConnection
 
 
 class CrawlRoot:
@@ -78,9 +77,6 @@ class CrawlRoot:
                 permit_category_lis.append(permit_obj)
             currentJson["permit_category"] = permit_category_lis
             jsonArr.append(currentJson)
-        # update percent change if necessary
-        if self.psCount == 30:
-            jsonArr = MongoDbConnection().updatePercentChange(jsonArr)
         return jsonArr
 
     # create TEST json format for mongoDB

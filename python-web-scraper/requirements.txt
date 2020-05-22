@@ -1,5 +1,0 @@
-certifi==2020.4.5.1
-dnspython==1.16.0
-pymongo==3.10.1
-pyusb==1.0.2
-beautifulsoup4==4.9.0
