@@ -29,6 +29,10 @@
 		justify-content: center;
 		left: 0 !important;
 	}
+
+	.bottom-text-container {
+		margin-top: 10vh;
+	}
 }
 
 .content-container {
@@ -45,7 +49,7 @@
 .inner-content-container {
 	display: flex;
 	flex-direction: column;
-	padding-bottom: 2.5rem;
+	padding-bottom: 4rem;
 }
 
 .color-option-container {

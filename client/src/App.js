@@ -5,13 +5,12 @@ import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 
 import './App.css';
-import { Container } from 'reactstrap';
 
 class App extends Component {
 	state = {
 		color: '',
 		onlineHours: {
-			fromHour: '20',
+			fromHour: '8',
 			toHour: '20',
 		},
 

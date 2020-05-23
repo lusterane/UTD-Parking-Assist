@@ -8,7 +8,7 @@ class Footer extends Component {
 		return (
 			<React.Fragment>
 				<div className='footer-container'>
-					<p>
+					<div>
 						Made with <i className='fas fa-heart'></i> by{' '}
 						<a
 							href='https://github.com/lusterane'
@@ -18,8 +18,8 @@ class Footer extends Component {
 							Toby
 						</a>
 						.
-					</p>
-					<p className='sub-text'>
+					</div>
+					<div className='sub-text'>
 						Like the project? A <i className='far fa-star'></i> on the{' '}
 						<a
 							href='https://github.com/lusterane/UTD-Parking-Assist'
@@ -29,7 +29,7 @@ class Footer extends Component {
 							repo
 						</a>{' '}
 						is much appeciated :D
-					</p>
+					</div>
 				</div>
 			</React.Fragment>
 		);

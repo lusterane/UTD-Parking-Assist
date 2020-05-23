@@ -54,124 +54,120 @@ class Home extends Component {
 					</div>
 				)}
 				{this.props.onlineStatus ? (
-					<>
-						<div className='content-container'>
-							<ColorBlindButton />
-							<Popover
-								innerClassName='popover-content'
-								trigger='hover'
-								placement='bottom'
-								isOpen={this.state.popoverOpen}
-								target='info-text'
-								toggle={this.togglePopover}
-								flip={true}
-							>
-								<PopoverBody>
-									<div className='popover-text-container'>
-										For color blind accessibility, select the{' '}
-										<i className='fas fa-low-vision'></i> at the top right.
-										<hr></hr>
-										<p>UTD Permits works on shared tiers:</p>
-										<div className='color-access-listings'>
-											<p>
-												<span className='green'>Green</span> accesses [
-												<span className='green'>Green</span>]
-											</p>
-											<p>
-												<span className='gold'>Gold</span> accesses [
-												<span className='green'>Green</span>
-												{' & '}
-												<span className='gold'>Gold</span>]
-											</p>
-											<p>
-												<span className='purple'>Purple</span> accesses [
-												<span className='green'>Green</span>,
-												<span className='gold'>Gold</span>,
-												<span className='orange'>Orange</span>
-												{' & '}
-												<span className='purple'>Purple</span>]
-											</p>
-										</div>
+					<div className='content-container'>
+						<ColorBlindButton />
+						<Popover
+							innerClassName='popover-content'
+							trigger='hover'
+							placement='bottom'
+							isOpen={this.state.popoverOpen}
+							target='info-text'
+							toggle={this.togglePopover}
+							flip={true}
+						>
+							<PopoverBody>
+								<div className='popover-text-container'>
+									For color blind accessibility, select the{' '}
+									<i className='fas fa-low-vision'></i> at the top right.
+									<hr></hr>
+									<p>UTD Permits works on shared tiers:</p>
+									<div className='color-access-listings'>
+										<p>
+											<span className='green'>Green</span> accesses [
+											<span className='green'>Green</span>]
+										</p>
+										<p>
+											<span className='gold'>Gold</span> accesses [
+											<span className='green'>Green</span>
+											{' & '}
+											<span className='gold'>Gold</span>]
+										</p>
+										<p>
+											<span className='purple'>Purple</span> accesses [
+											<span className='green'>Green</span>,
+											<span className='gold'>Gold</span>,
+											<span className='orange'>Orange</span>
+											{' & '}
+											<span className='purple'>Purple</span>]
+										</p>
 									</div>
-								</PopoverBody>
-							</Popover>
-							<div className='inner-content-container'>
-								<h1 className={this.props.color + ' title-greeting'}>
-									UTD Parking
-								</h1>
-								<p>Live parking data at your fingertips</p>
-								{/* <h1 className={this.props.color + ' title-greeting'}>
+								</div>
+							</PopoverBody>
+						</Popover>
+						<div className='inner-content-container'>
+							<h1 className={this.props.color + ' title-greeting'}>UTD Parking</h1>
+							<p>Live parking data at your fingertips</p>
+							{/* <h1 className={this.props.color + ' title-greeting'}>
 										{this.props.getGreeting()}
 									</h1> */}
 
-								<div className='color-option-container'>
-									<ColorOption
-										color='green'
-										colorBlindMode={this.state.colorBlindMode}
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={() => {
-											if (!this.state.showModal) {
-												this.props.changeColorDefault();
-											}
-										}}
-									/>
-									<ColorOption
-										color='gold'
-										colorBlindMode={this.state.colorBlindMode}
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={() => {
-											if (!this.state.showModal) {
-												this.props.changeColorDefault();
-											}
-										}}
-									/>
-									<ColorOption
-										color='orange'
-										colorBlindMode={this.state.colorBlindMode}
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={() => {
-											if (!this.state.showModal) {
-												this.props.changeColorDefault();
-											}
-										}}
-									/>
-									<ColorOption
-										color='purple'
-										colorBlindMode={this.state.colorBlindMode}
-										onClick={() => {
-											this.handleModalShow(this.props.color);
-										}}
-										handleMouseOver={this.props.changeColor}
-										handleMouseLeave={() => {
-											if (!this.state.showModal) {
-												this.props.changeColorDefault();
-											}
-										}}
-									/>
-								</div>
-								<div id='info-text' className='bottom-text-container'>
-									<p>But, how does it work?</p>
-								</div>
-								<ConfirmModal
-									color={this.props.color}
-									showModal={this.state.showModal}
-									onModalShow={this.handleModalShow}
-									onModalClose={this.handleModalClose}
-									onModalConfirm={this.handleModalConfirm}
+							<div className='color-option-container'>
+								<ColorOption
+									color='green'
+									colorBlindMode={this.state.colorBlindMode}
+									onClick={() => {
+										this.handleModalShow(this.props.color);
+									}}
+									handleMouseOver={this.props.changeColor}
+									handleMouseLeave={() => {
+										if (!this.state.showModal) {
+											this.props.changeColorDefault();
+										}
+									}}
+								/>
+								<ColorOption
+									color='gold'
+									colorBlindMode={this.state.colorBlindMode}
+									onClick={() => {
+										this.handleModalShow(this.props.color);
+									}}
+									handleMouseOver={this.props.changeColor}
+									handleMouseLeave={() => {
+										if (!this.state.showModal) {
+											this.props.changeColorDefault();
+										}
+									}}
+								/>
+								<ColorOption
+									color='orange'
+									colorBlindMode={this.state.colorBlindMode}
+									onClick={() => {
+										this.handleModalShow(this.props.color);
+									}}
+									handleMouseOver={this.props.changeColor}
+									handleMouseLeave={() => {
+										if (!this.state.showModal) {
+											this.props.changeColorDefault();
+										}
+									}}
+								/>
+								<ColorOption
+									color='purple'
+									colorBlindMode={this.state.colorBlindMode}
+									onClick={() => {
+										this.handleModalShow(this.props.color);
+									}}
+									handleMouseOver={this.props.changeColor}
+									handleMouseLeave={() => {
+										if (!this.state.showModal) {
+											this.props.changeColorDefault();
+										}
+									}}
 								/>
 							</div>
-							<Footer />
+							<div id='info-text' className='bottom-text-container'>
+								<p>But, how does it work?</p>
+							</div>
+							<ConfirmModal
+								color={this.props.color}
+								showModal={this.state.showModal}
+								onModalShow={this.handleModalShow}
+								onModalClose={this.handleModalClose}
+								onModalConfirm={this.handleModalConfirm}
+							/>
 						</div>
-					</>
+						<Footer />
+					</div>
 				) : (
 					<React.Fragment>
 						<Header type='server-warning'></Header>
