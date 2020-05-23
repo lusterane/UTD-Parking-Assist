@@ -47,6 +47,8 @@
 }
 
 .inner-content-container {
+	position: relative;
+	top: -3vh;
 	display: flex;
 	flex-direction: column;
 	padding-top: 3rem;
@@ -64,6 +66,7 @@
 	display: block;
 	height: 3rem;
 	margin-top: 10vh;
+	width: auto;
 }
 
 .popover-content {

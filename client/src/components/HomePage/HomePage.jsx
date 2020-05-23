@@ -151,8 +151,8 @@ class Home extends Component {
 									}}
 								/>
 							</div>
-							<div id='info-text' className='bottom-text-container'>
-								<span>
+							<div className='bottom-text-container'>
+								<span id='info-text'>
 									<i className='fas fa-angle-double-right'></i> But, how does it
 									work?
 								</span>
@@ -218,8 +218,11 @@ class Home extends Component {
 									<ColorOption color='grey' />
 									<ColorOption color='grey' />
 								</div>
-								<div id='info-text' className='bottom-text-container grey'>
-									<p>But, how does it work?</p>
+								<div className='bottom-text-container grey'>
+									<span id='info-text'>
+										<i className='fas fa-angle-double-right'></i> But, how does
+										it work?
+									</span>
 								</div>
 								<ConfirmModal
 									color={this.props.color}
