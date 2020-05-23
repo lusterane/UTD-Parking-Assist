@@ -129,13 +129,18 @@ class ParkingInfo extends Component {
 						<React.Fragment>
 							<ColorBlindButton />
 							<div className='parking-info-container'>
-								<a
-									href={process.env.PUBLIC_URL + '/'}
-									className='remove-decoration'
-								>
-									<i className='fas fa-chevron-left back-route-button'></i>
-								</a>
-								<Time timeUpdated={this.state.timeUpdated} />
+								<div className='parking-info-header'>
+									<div className='back-route-container'>
+										<a
+											href={process.env.PUBLIC_URL + '/'}
+											className='remove-decoration'
+										>
+											<i className='fas fa-chevron-left back-route-button'></i>
+										</a>
+									</div>
+									<Time timeUpdated={this.state.timeUpdated} />
+								</div>
+
 								<ParkingStructureGroup
 									setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
 									timeUpdated={this.state.timeUpdated}

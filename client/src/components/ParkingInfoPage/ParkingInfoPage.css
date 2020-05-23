@@ -1,5 +1,18 @@
+.back-route-container {
+	display: block;
+}
+
 .back-route-button {
-	display: inline-block;
 	font-size: 1.5rem;
-	margin: 1rem;
+}
+
+.parking-info-container {
+	height: 100vh;
+	width: 100vw;
+}
+
+.parking-info-header {
+	display: block;
+	width: 100%;
+	padding: 1rem;
 }

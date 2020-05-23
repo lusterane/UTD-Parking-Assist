@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Alert } from 'reactstrap';
 
 import './Time.css';
 
@@ -10,21 +11,27 @@ class Time extends Component {
 	getTimeText = (elapsedTime) => {
 		const maxTime = 63;
 		if (elapsedTime > maxTime) {
-			return 'Unknown problem, try refreshing the page';
+			return <Alert color='danger'>Something went wrong. Try refreshing the page</Alert>;
 		} else {
-			return 'Live update in ' + this.standardizeSecondsToMinutes(elapsedTime, maxTime);
+			const calculatedTime = maxTime - elapsedTime;
+			const updateTimeText = this.standardizeSecondsToMinutes(calculatedTime);
+
+			if (calculatedTime <= 3 || calculatedTime === 0 || calculatedTime >= 60) {
+				return <Alert color='success'>Live update in {updateTimeText}</Alert>;
+			} else {
+				return <Alert color='warning'>Live update in {updateTimeText}</Alert>;
+			}
 		}
 	};
 
-	standardizeSecondsToMinutes = (elapsedTime, maxTime) => {
-		const calculatedTime = maxTime - elapsedTime;
+	standardizeSecondsToMinutes = (calculatedTime) => {
 		if (calculatedTime < 60) {
-			const calculatedTime = maxTime - elapsedTime;
 			return calculatedTime + ' seconds';
 		} else if (calculatedTime === 0 || calculatedTime >= 60) {
 			// better ux. change if update is many seconds over minute
 			return 'less than 1 second';
 		}
+		return '-';
 	};
 
 	render() {

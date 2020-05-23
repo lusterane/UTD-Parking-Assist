@@ -11,7 +11,7 @@ class App extends Component {
 		color: '',
 		onlineHours: {
 			fromHour: '0',
-			toHour: '20',
+			toHour: '25',
 		},
 
 		onlineStatus: false,

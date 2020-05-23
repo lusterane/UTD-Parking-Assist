@@ -3,26 +3,38 @@
 }
 
 .ps-card {
-	position: relative;
-	height: 75vh;
+	height: 100%;
 	width: 30vw;
-	min-width: 300px;
-	min-height: 365px;
+	min-width: 325px;
+	min-height: 457px;
 	margin-bottom: 7vh;
 	box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
 .ps-card-header {
-	height: 0vh;
+	height: 10%;
 	padding: 0px 1.25rem;
 }
+
+.best-choice-container {
+	display: inline;
+}
+
+.icon-container {
+	display: inline;
+	position: absolute;
+	right: 7%;
+}
+
 .ps-card-body {
 	display: flex;
-	height: 85%;
+	height: 75%;
 }
 
 .ps-card-body .text {
 	display: flex;
+	position: relative;
+	top: -5%;
 	height: 100%;
 	width: 100%;
 	flex-direction: column;
@@ -42,7 +54,8 @@
 }
 
 .percent-change-container {
-	margin-top: 10vh;
+	height: 10%;
+	margin-top: 10%;
 	text-align: center;
 }
 
@@ -55,7 +68,8 @@
 }
 
 .percent-change-text {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
+	font-weight: 300;
 }
 
 .ps-card .arrow {
@@ -71,17 +85,15 @@
 
 .ps-card-hr {
 	width: 90%;
+	height: 0;
 }
 
 .ps-card-footer {
-	display: block;
-	position: absolute;
-	bottom: 0px;
+	height: 15%;
 	width: 100%;
 }
 
 .ps-card-footer p {
 	text-align: center;
-	height: 100%;
-	font-size: 1.25rem;
+	font-size: 1.5rem;
 }

@@ -70,7 +70,7 @@ class PSCard extends Component {
 	};
 
 	getSpotChangeJSX = (spot_change) => {
-		if (spot_change === 0) {
+		if (isNaN(spot_change) || spot_change === 0) {
 			return (
 				<div className='percent-change-container'>
 					<p className='percent-change-text'>
@@ -99,6 +99,17 @@ class PSCard extends Component {
 		}
 	};
 
+	getParkingStructureLink = (structure) => {
+		if (structure === 'PS1') {
+			return 'https://goo.gl/maps/KHvbiG6WtTbbTKSa9';
+		} else if (structure === 'PS3') {
+			return 'https://goo.gl/maps/kFAHUwgEb1NwTAbv5';
+		} else {
+			// 'ps4
+			return 'https://goo.gl/maps/jcU9wcRKYS6MoVuY8';
+		}
+	};
+
 	render() {
 		const { spots, structure, color, level, spot_change } = this.state.currentPermit;
 		return (
@@ -106,13 +117,27 @@ class PSCard extends Component {
 				<Card className='ps-card'>
 					{this.props.dataArr.length !== 0 ? (
 						<Card.Body>
-							{this.state.index === 0 ? (
-								<div className='text-muted ps-card-header'>
-									<i className='fas fa-star'></i> Recommended Choice
+							<div className='text-muted ps-card-header'>
+								<div className='best-choice-container'>
+									{this.state.index === 0 ? (
+										<>
+											<i className='fas fa-star'></i> <span>BEST CHOICE</span>
+										</>
+									) : (
+										''
+									)}
 								</div>
-							) : (
-								''
-							)}
+								<div className='icon-container'>
+									<a
+										rel='noopener noreferrer'
+										target='_blank'
+										href={this.getParkingStructureLink(structure)}
+									>
+										<i className='fas fa-map-marked-alt fa-lg'></i>
+									</a>
+								</div>
+							</div>
+
 							<div className='ps-card-body'>
 								{this.state.index !== 0 ? (
 									<div
