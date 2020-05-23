@@ -1,6 +1,9 @@
 body {
 	font-family: 'Roboto Mono', monospace;
 	font-weight: 300;
+}
+
+.root-container {
 	height: 100vh;
 	width: 100vw;
 }

@@ -5,13 +5,14 @@ import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 
 import './App.css';
+import { Container } from 'reactstrap';
 
 class App extends Component {
 	state = {
 		color: '',
 		onlineHours: {
-			fromHour: '0',
-			toHour: '25',
+			fromHour: '20',
+			toHour: '20',
 		},
 
 		onlineStatus: false,
@@ -88,26 +89,28 @@ class App extends Component {
 
 	render() {
 		return (
-			<BrowserRouter>
-				<Switch>
-					<Route exact path={process.env.PUBLIC_URL + '/'}>
-						<HomePage
-							onlineStatus={this.state.onlineStatus}
-							changeColor={this.handleChangeColor}
-							changeColorDefault={this.handleChangeColorDefault}
-							color={this.state.color}
-							onlineStatusLoaded={this.state.onlineStatusLoaded}
-							getGreeting={this.getGreeting}
-						/>
-					</Route>
-					<Route path={process.env.PUBLIC_URL + '/parkingInfoPage'}>
-						<ParkingInfoPage
-							onlineStatus={this.state.onlineStatus}
-							onlineStatusLoaded={this.state.onlineStatusLoaded}
-						/>
-					</Route>
-				</Switch>
-			</BrowserRouter>
+			<div className='root-container'>
+				<BrowserRouter>
+					<Switch>
+						<Route exact path={process.env.PUBLIC_URL + '/'}>
+							<HomePage
+								onlineStatus={this.state.onlineStatus}
+								changeColor={this.handleChangeColor}
+								changeColorDefault={this.handleChangeColorDefault}
+								color={this.state.color}
+								onlineStatusLoaded={this.state.onlineStatusLoaded}
+								getGreeting={this.getGreeting}
+							/>
+						</Route>
+						<Route path={process.env.PUBLIC_URL + '/parkingInfoPage'}>
+							<ParkingInfoPage
+								onlineStatus={this.state.onlineStatus}
+								onlineStatusLoaded={this.state.onlineStatusLoaded}
+							/>
+						</Route>
+					</Switch>
+				</BrowserRouter>
+			</div>
 		);
 	}
 }

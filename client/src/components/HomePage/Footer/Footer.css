@@ -1,17 +1,21 @@
-.footer {
-	position: absolute;
-	bottom: 4vh;
-	width: 100%;
-	left: 50vw;
-	margin-left: -50%;
-	text-align: center;
-	line-height: 0.1rem;
+/* mobile */
+@media only screen and (max-width: 599px) {
+	.footer-container {
+	}
 }
 
-.footer .fa-heart {
+.footer-container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;
+	text-align: center;
+}
+
+.footer-container .fa-heart {
 	color: rgb(233, 53, 53);
 }
 
-.footer .fa-star {
+.footer-container .fa-star {
 	color: rgb(255, 217, 0);
 }

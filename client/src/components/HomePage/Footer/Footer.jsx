@@ -7,7 +7,7 @@ class Footer extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div className='footer'>
+				<div className='footer-container'>
 					<p>
 						Made with <i className='fas fa-heart'></i> by{' '}
 						<a

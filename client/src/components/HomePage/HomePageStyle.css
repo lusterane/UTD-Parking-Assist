@@ -3,9 +3,14 @@
 	.inner-content-container {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 	}
+
+	.content-container {
+		position: relative;
+		top: -4vh;
+	}
+
 	.color-option-container {
 		justify-content: center;
 		left: 0 !important;
@@ -27,11 +32,11 @@
 }
 
 .content-container {
-	display: flex;
 	position: relative;
-	height: 100vh;
-	width: 100vw;
-	bottom: 10vh;
+	min-height: 100vh;
+	display: flex;
+	height: 100%;
+	width: 100%;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -40,6 +45,7 @@
 .inner-content-container {
 	display: flex;
 	flex-direction: column;
+	padding-bottom: 2.5rem;
 }
 
 .color-option-container {
@@ -47,11 +53,6 @@
 	position: relative;
 	left: -0.9rem;
 	flex-flow: row wrap;
-}
-
-.bottom-text-container {
-	margin-top: 20%;
-	text-align: center;
 }
 
 .title-greeting {
@@ -68,10 +69,6 @@
 
 .popover-text-container {
 	text-align: center;
-}
-
-.color-access-listings {
-	font-weight: 400;
 }
 
 .popover {

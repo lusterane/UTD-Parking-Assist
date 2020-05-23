@@ -28,7 +28,6 @@ class Home extends Component {
 	}
 	// maintain popover
 	togglePopover = () => {
-		console.log('toggled popover');
 		this.setState({ popoverOpen: !this.state.popoverOpen });
 	};
 
@@ -170,72 +169,79 @@ class Home extends Component {
 									onModalConfirm={this.handleModalConfirm}
 								/>
 							</div>
+							<Footer />
 						</div>
 					</>
 				) : (
 					<React.Fragment>
 						<Header type='server-warning'></Header>
-						<Popover
-							innerClassName='popover-content'
-							trigger='hover'
-							placement='bottom'
-							isOpen={this.state.popoverOpen}
-							target='info-text'
-							toggle={this.togglePopover}
-							flip={true}
-						>
-							<PopoverBody>
-								<div className='popover-text-container'>
-									If any visual impairements, select the{' '}
-									<i className='fas fa-low-vision'></i> at the top right.
-									<hr></hr>
-									<p>UTD Permits works on shared tiers:</p>
-									<div className='color-access-listings'>
-										<p>
-											<span className='green'>Green</span> accesses{' '}
-											<span className='green'>Green</span>
-										</p>
-										<p>
-											<span className='gold'>Gold</span> accesses{' '}
-											<span className='green'>Green</span>,and{' '}
-											<span className='gold'>Gold</span>
-										</p>
-										<p>
-											<span className='purple'>Purple</span> accesses{' '}
-											<span className='green'>Green</span>,
-											<span className='gold'>Gold</span>,
-											<span className='orange'>Orange</span>,and{' '}
-											<span className='purple'>Purple</span>
-										</p>
-									</div>
-								</div>
-							</PopoverBody>
-						</Popover>
 						<div className='content-container'>
-							<div className='row'>
-								<div className='col'>
-									<h1 className={'grey title-greeting'}>UTD Parking</h1>
-									{/* <h1 className={this.props.color + ' title-greeting'}>
+							<Popover
+								innerClassName='popover-content'
+								trigger='hover'
+								placement='bottom'
+								isOpen={this.state.popoverOpen}
+								target='info-text'
+								toggle={this.togglePopover}
+								flip={true}
+							>
+								<PopoverBody>
+									<div className='popover-text-container'>
+										For color blind accessibility, select the{' '}
+										<i className='fas fa-low-vision'></i> at the top right.
+										<hr></hr>
+										<p>UTD Permits works on shared tiers:</p>
+										<div className='color-access-listings'>
+											<p>
+												<span className='green'>Green</span> accesses [
+												<span className='green'>Green</span>]
+											</p>
+											<p>
+												<span className='gold'>Gold</span> accesses [
+												<span className='green'>Green</span>
+												{' & '}
+												<span className='gold'>Gold</span>]
+											</p>
+											<p>
+												<span className='purple'>Purple</span> accesses [
+												<span className='green'>Green</span>,
+												<span className='gold'>Gold</span>,
+												<span className='orange'>Orange</span>
+												{' & '}
+												<span className='purple'>Purple</span>]
+											</p>
+										</div>
+									</div>
+								</PopoverBody>
+							</Popover>
+							<div className='inner-content-container'>
+								<h1 className={'grey title-greeting'}>UTD Parking</h1>
+								<p className={'grey'}>Live parking data at your fingertips</p>
+								{/* <h1 className={this.props.color + ' title-greeting'}>
 										{this.props.getGreeting()}
 									</h1> */}
-									<p className={'grey'}>Live parking data at your fingertips</p>
-									<div className='row'>
-										<ColorOption color='grey' />
-										<ColorOption color='grey' />
-										<ColorOption color='grey' />
-										<ColorOption color='grey' />
-									</div>
+
+								<div className='color-option-container'>
+									<ColorOption color='grey' />
+									<ColorOption color='grey' />
+									<ColorOption color='grey' />
+									<ColorOption color='grey' />
 								</div>
-							</div>
-							<div id='info-text' className='bottom-text row grey'>
-								<div className='col'>
+								<div id='info-text' className='bottom-text-container grey'>
 									<p>But, how does it work?</p>
 								</div>
+								<ConfirmModal
+									color={this.props.color}
+									showModal={this.state.showModal}
+									onModalShow={this.handleModalShow}
+									onModalClose={this.handleModalClose}
+									onModalConfirm={this.handleModalConfirm}
+								/>
 							</div>
+							<Footer />
 						</div>
 					</React.Fragment>
 				)}
-				<Footer />
 			</React.Fragment>
 		);
 	}

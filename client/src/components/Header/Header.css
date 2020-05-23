@@ -1,9 +1,17 @@
-.fa-exclamation-circle,
-.fa-exclamation-triangle {
-	padding-right: 10px;
+.header-container .alert {
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	margin-bottom: auto;
+	padding: 0.5rem 1.25rem;
 }
 
 .header-container {
-	position: absolute;
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.alert .fas {
+	margin-right: 1rem;
 }
