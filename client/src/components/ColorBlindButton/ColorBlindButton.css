@@ -1,9 +1,9 @@
 .color-blind-container {
 	position: fixed;
-	top: 1vh;
-	right: 1vw;
+	top: 1%;
+	right: 1%;
 	text-align: center;
-	z-index: 1;
+	z-index: 5;
 	padding: 0.5rem;
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	border-radius: 0.25rem;

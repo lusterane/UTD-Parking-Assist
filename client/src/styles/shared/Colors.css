@@ -49,55 +49,6 @@
 	color: #343a40 !important;
 }
 
-/* Color Options Buttons */
-.green-background {
-	background-color: var(--green);
-	border-color: var(--green) !important;
-	border: 1px solid transparent;
-	color: #fff;
-}
-
-.green-background:hover {
-	background-color: transparent !important;
-	color: var(--green) !important;
-}
-
-.gold-background {
-	background-color: var(--gold);
-	border-color: var(--gold) !important;
-	border: 1px solid transparent;
-	color: #fff;
-}
-
-.gold-background:hover {
-	background-color: transparent !important;
-	color: var(--gold) !important;
-}
-
-.orange-background {
-	background-color: var(--orange);
-	border-color: var(--orange) !important;
-	border: 1px solid transparent;
-	color: #fff;
-}
-
-.orange-background:hover {
-	background-color: transparent !important;
-	color: var(--orange) !important;
-}
-
-.purple-background {
-	background-color: var(--purple);
-	border-color: var(--purple) !important;
-	border: 1px solid transparent;
-	color: #fff;
-}
-
-.purple-background:hover {
-	background-color: transparent !important;
-	color: var(--purple) !important;
-}
-
 /* confirmation buttons (NOT COLOR OPTIONS) */
 .green-button {
 	background-color: var(--green);
@@ -133,7 +84,7 @@
 	border-color: var(--shaded-purple);
 }
 
-/* color blind color options*/
+/* color options*/
 .border-green {
 	margin: 1rem 0.7rem;
 	padding: 0.5rem;
@@ -159,50 +110,50 @@
 	border: 2px solid rgba(119, 61, 188, 0.7);
 }
 
-.green-color-blind-background {
+.green-color-background {
 	color: var(--shaded-green);
 	font-weight: 300;
 }
 
-.green-color-blind-background:hover {
+.green-color-background:hover {
 	background-color: var(--green) !important;
 	border-color: var(--green) !important;
-	color: #fff;
+	color: #fff !important;
 	font-weight: 500;
 }
 
-.gold-color-blind-background {
+.gold-color-background {
 	color: var(--shaded-gold);
 	font-weight: 300;
 }
 
-.gold-color-blind-background:hover {
+.gold-color-background:hover {
 	background-color: var(--gold) !important;
 	border-color: var(--gold) !important;
-	color: #fff;
+	color: #fff !important;
 	font-weight: 500;
 }
 
-.orange-color-blind-background {
+.orange-color-background {
 	color: var(--shaded-orange);
 	font-weight: 300;
 }
 
-.orange-color-blind-background:hover {
+.orange-color-background:hover {
 	background-color: var(--orange) !important;
 	border-color: var(--orange) !important;
-	color: #fff;
+	color: #fff !important;
 	font-weight: 500;
 }
 
-.purple-color-blind-background {
+.purple-color-background {
 	color: var(--shaded-purple);
 	font-weight: 300;
 }
 
-.purple-color-blind-background:hover {
+.purple-color-background:hover {
 	background-color: var(--purple) !important;
 	border-color: var(--purple) !important;
-	color: #fff;
+	color: #fff !important;
 	font-weight: 500;
 }

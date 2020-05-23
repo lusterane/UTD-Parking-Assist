@@ -29,18 +29,15 @@ class ColorOption extends Component {
 						onMouseLeave={() => {
 							handleMouseLeave();
 						}}
-						className={
-							color +
-							'-color-blind-background color-blind-option pointer border-' +
-							color
-						}
+						className={color + '-color-background color-option pointer border-' + color}
 					>
-						{color.charAt(0).toUpperCase() + color.slice(1)} Permit
+						<span className='color-blind-option-text'>
+							{color.charAt(0).toUpperCase() + color.slice(1)} Permit
+						</span>
 					</Button>
 				) : (
 					<Button
 						outline
-						type='button'
 						color='secondary'
 						onClick={() => {
 							onClick(color);
@@ -51,14 +48,9 @@ class ColorOption extends Component {
 						onMouseLeave={() => {
 							handleMouseLeave();
 						}}
-						className={color + '-background color-option'}
-						// className={
-						// 	this.props.colorBlindMode
-						// 		? ''
-						// 		: color + '-background color-option pointer'
-						// }
+						className={`${color}-color-background color-blind-option pointer border-${color}`}
 					>
-						<i className='fas fa-car-side'></i>
+						{color.charAt(0).toUpperCase() + color.slice(1)} Permit
 					</Button>
 				)}
 			</React.Fragment>
