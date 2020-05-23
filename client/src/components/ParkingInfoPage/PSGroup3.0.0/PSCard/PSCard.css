@@ -5,9 +5,11 @@
 .ps-card {
 	height: 100%;
 	width: 30vw;
-	min-width: 325px;
-	min-height: 457px;
-	margin-bottom: 7vh;
+	min-width: 20.3rem;
+	min-height: 28.5rem;
+	max-width: 21.8rem;
+	max-height: 34.3rem;
+	margin: 0 2vw 7vh 2vw;
 	box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.2);
 }
 

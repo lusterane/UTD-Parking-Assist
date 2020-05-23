@@ -1,7 +1,8 @@
 .card-group-container {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 	height: 70%;
+	width: 100%;
 }
