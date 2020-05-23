@@ -97,10 +97,6 @@ class Home extends Component {
 						<div className='inner-content-container'>
 							<h1 className={this.props.color + ' title-greeting'}>UTD Parking</h1>
 							<p>Live parking data at your fingertips</p>
-							{/* <h1 className={this.props.color + ' title-greeting'}>
-										{this.props.getGreeting()}
-									</h1> */}
-
 							<div className='color-option-container'>
 								<ColorOption
 									color='green'
@@ -156,7 +152,10 @@ class Home extends Component {
 								/>
 							</div>
 							<div id='info-text' className='bottom-text-container'>
-								<p>But, how does it work?</p>
+								<span>
+									<i className='fas fa-angle-double-right'></i> But, how does it
+									work?
+								</span>
 							</div>
 							<ConfirmModal
 								color={this.props.color}
@@ -170,8 +169,8 @@ class Home extends Component {
 					</div>
 				) : (
 					<React.Fragment>
-						<Header type='server-warning'></Header>
 						<div className='content-container'>
+							<Header type='server-warning'></Header>
 							<Popover
 								innerClassName='popover-content'
 								trigger='hover'
@@ -213,10 +212,6 @@ class Home extends Component {
 							<div className='inner-content-container'>
 								<h1 className={'grey title-greeting'}>UTD Parking</h1>
 								<p className={'grey'}>Live parking data at your fingertips</p>
-								{/* <h1 className={this.props.color + ' title-greeting'}>
-										{this.props.getGreeting()}
-									</h1> */}
-
 								<div className='color-option-container'>
 									<ColorOption color='grey' />
 									<ColorOption color='grey' />

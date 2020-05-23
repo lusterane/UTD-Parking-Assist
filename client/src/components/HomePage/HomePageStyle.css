@@ -49,6 +49,7 @@
 .inner-content-container {
 	display: flex;
 	flex-direction: column;
+	padding-top: 3rem;
 	padding-bottom: 4rem;
 }
 
@@ -59,8 +60,10 @@
 	flex-flow: row wrap;
 }
 
-.title-greeting {
-	font-size: 2rem;
+.bottom-text-container {
+	display: block;
+	height: 3rem;
+	margin-top: 10vh;
 }
 
 .popover-content {

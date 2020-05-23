@@ -10,7 +10,7 @@ class App extends Component {
 	state = {
 		color: '',
 		onlineHours: {
-			fromHour: '8',
+			fromHour: '0',
 			toHour: '20',
 		},
 
