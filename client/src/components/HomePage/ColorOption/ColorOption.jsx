@@ -16,7 +16,7 @@ class ColorOption extends Component {
 					<div className={color + '-background color-option'}>
 						<i className='fas fa-car-side' style={{ color: '#fff' }}></i>
 					</div>
-				) : this.props.colorBlindMode ? (
+				) : !this.props.colorBlindMode ? (
 					<Button
 						outline
 						color='secondary'
@@ -29,11 +29,9 @@ class ColorOption extends Component {
 						onMouseLeave={() => {
 							handleMouseLeave();
 						}}
-						className={color + '-color-background color-option pointer border-' + color}
+						className={`${color}-color-background color-option pointer border-${color}`}
 					>
-						<span className='color-blind-option-text'>
-							{color.charAt(0).toUpperCase() + color.slice(1)} Permit
-						</span>
+						{color.charAt(0).toUpperCase() + color.slice(1)} Permit
 					</Button>
 				) : (
 					<Button
