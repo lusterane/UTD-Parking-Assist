@@ -1,3 +1,13 @@
+/* mobile */
+@media only screen and (max-width: 599px) {
+}
+
+/* tablet */
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
+	.header-container {
+	}
+}
+
 .header-container .alert {
 	display: flex !important;
 	justify-content: center !important;
