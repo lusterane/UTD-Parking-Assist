@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/UTD-Parking-Assist/static/css/main.69d37536.chunk.css",
-    "main.js": "/UTD-Parking-Assist/static/js/main.2a746986.chunk.js",
-    "main.js.map": "/UTD-Parking-Assist/static/js/main.2a746986.chunk.js.map",
+    "main.css": "/UTD-Parking-Assist/static/css/main.126217a3.chunk.css",
+    "main.js": "/UTD-Parking-Assist/static/js/main.9047aab2.chunk.js",
+    "main.js.map": "/UTD-Parking-Assist/static/js/main.9047aab2.chunk.js.map",
     "runtime-main.js": "/UTD-Parking-Assist/static/js/runtime-main.9f58eb11.js",
     "runtime-main.js.map": "/UTD-Parking-Assist/static/js/runtime-main.9f58eb11.js.map",
     "static/js/2.c8144872.chunk.js": "/UTD-Parking-Assist/static/js/2.c8144872.chunk.js",
     "static/js/2.c8144872.chunk.js.map": "/UTD-Parking-Assist/static/js/2.c8144872.chunk.js.map",
     "index.html": "/UTD-Parking-Assist/index.html",
-    "precache-manifest.c254973873c4b53174e211de418f279a.js": "/UTD-Parking-Assist/precache-manifest.c254973873c4b53174e211de418f279a.js",
+    "precache-manifest.4d3bc702d8b41feddbd4b4d1a514cd91.js": "/UTD-Parking-Assist/precache-manifest.4d3bc702d8b41feddbd4b4d1a514cd91.js",
     "service-worker.js": "/UTD-Parking-Assist/service-worker.js",
-    "static/css/main.69d37536.chunk.css.map": "/UTD-Parking-Assist/static/css/main.69d37536.chunk.css.map",
+    "static/css/main.126217a3.chunk.css.map": "/UTD-Parking-Assist/static/css/main.126217a3.chunk.css.map",
     "static/js/2.c8144872.chunk.js.LICENSE.txt": "/UTD-Parking-Assist/static/js/2.c8144872.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9f58eb11.js",
     "static/js/2.c8144872.chunk.js",
-    "static/css/main.69d37536.chunk.css",
-    "static/js/main.2a746986.chunk.js"
+    "static/css/main.126217a3.chunk.css",
+    "static/js/main.9047aab2.chunk.js"
   ]
 }
