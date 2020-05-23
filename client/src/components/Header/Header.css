@@ -1,11 +1,13 @@
 /* mobile */
 @media only screen and (max-width: 599px) {
+	.header-container .alert {
+		padding: 2rem 1.25rem !important;
+		height: 4rem !important;
+	}
 }
 
 /* tablet */
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
-	.header-container {
-	}
 }
 
 .header-container .alert {

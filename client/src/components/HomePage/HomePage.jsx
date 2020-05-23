@@ -96,7 +96,9 @@ class Home extends Component {
 						</Popover>
 						<div className='inner-content-container'>
 							<h1 className={this.props.color + ' title-greeting'}>UTD Parking</h1>
-							<p>Live parking data at your fingertips</p>
+							<div className='sub-title-greeting'>
+								<span>Live parking data at your fingertips</span>
+							</div>
 							<div className='color-option-container'>
 								<ColorOption
 									color='green'
