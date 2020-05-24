@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Spinner } from 'reactstrap';
 import axios from 'axios';
 
 //import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';
@@ -8,6 +7,7 @@ import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
 import ParkingInfoFooter from './ParkingInfoFooter/ParkingInfoFooter';
 import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 import '../../styles/shared/LoadingSpinner.css';
 import './ParkingInfoPage.css';
@@ -119,11 +119,7 @@ class ParkingInfo extends Component {
 					this.state.psGroupLoaded ? (
 						''
 					) : (
-						<>
-							<div className='spinner-container'>
-								<Spinner animation='border' role='status'></Spinner>
-							</div>
-						</>
+						<LoadingSpinner />
 					)}
 					{this.props.onlineStatus ? (
 						<React.Fragment>

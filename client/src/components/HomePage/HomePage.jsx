@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Spinner, Popover, PopoverBody } from 'reactstrap';
+import { Popover, PopoverBody } from 'reactstrap';
 
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import Footer from './Footer/Footer';
 import Header from '../Header/Header';
 import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
@@ -46,13 +47,7 @@ class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				{this.props.onlineStatusLoaded ? (
-					''
-				) : (
-					<div className='spinner-container'>
-						<Spinner animation='border' role='status'></Spinner>
-					</div>
-				)}
+				{!this.props.onlineStatusLoaded ? '' : <LoadingSpinner />}
 				{this.props.onlineStatus ? (
 					<div className='content-container'>
 						<ColorBlindButton />
