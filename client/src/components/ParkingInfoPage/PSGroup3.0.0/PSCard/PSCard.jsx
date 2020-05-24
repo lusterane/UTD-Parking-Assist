@@ -74,7 +74,7 @@ class PSCard extends Component {
 			return (
 				<div className='percent-change-container'>
 					<p className='percent-change-text'>
-						<span className='grey'>-</span>
+						<span className='grey'>No activity for 10 minutes</span>
 					</p>
 				</div>
 			);
@@ -82,8 +82,8 @@ class PSCard extends Component {
 			return (
 				<div className='percent-change-container'>
 					<p className='percent-change-text'>
-						<span className='percent-change-green'>+{spot_change}%</span> space
-						availability
+						<span className='percent-change-green'>+{spot_change}%</span>{' '}
+						<span className='grey'>space availability</span>
 					</p>
 				</div>
 			);
