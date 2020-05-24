@@ -8,6 +8,7 @@ import OfflinePage from './OfflinePage/OfflinePage';
 import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Footer from '../Footer/Footer';
+import ParticlesPage from '../ParticlesPage/ParticlesPage';
 
 import './ParkingInfoPage.css';
 
@@ -112,6 +113,7 @@ class ParkingInfo extends Component {
 	render() {
 		return (
 			<React.Fragment>
+				<ColorBlindButton />
 				{this.props.onlineStatusLoaded &&
 				this.state.timerLoaded &&
 				this.state.psGroupLoaded ? (
@@ -121,7 +123,8 @@ class ParkingInfo extends Component {
 				)}
 				{this.props.onlineStatus ? (
 					<div className='parking-info-container'>
-						<ColorBlindButton />
+						<ParticlesPage parent='ParkingInfoPage' />
+
 						<a href={process.env.PUBLIC_URL + '/'} className='remove-decoration'>
 							<i className='fas fa-chevron-left back-route-button'></i>
 						</a>

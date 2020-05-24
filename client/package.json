@@ -11,9 +11,11 @@
 		"react": "^16.13.1",
 		"react-bootstrap": "^1.0.1",
 		"react-dom": "^16.13.1",
+		"react-particles-js": "^3.2.1",
 		"react-router-dom": "^5.1.2",
 		"react-scripts": "3.4.1",
-		"reactstrap": "^8.4.1"
+		"reactstrap": "^8.4.1",
+		"tsparticles": "^1.14.3"
 	},
 	"homepage": "http://lusterane.github.io/UTD-Parking-Assist",
 	"scripts": {

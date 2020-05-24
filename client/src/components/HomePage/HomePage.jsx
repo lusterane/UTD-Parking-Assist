@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import ParticlesPage from '../ParticlesPage/ParticlesPage';
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
@@ -26,6 +27,7 @@ class Home extends Component {
 			this.setState({ colorBlindMode: data });
 		}
 	}
+
 	// maintain popover
 	togglePopover = () => {
 		this.setState({ popoverOpen: !this.state.popoverOpen });
@@ -46,6 +48,7 @@ class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
+				<ParticlesPage parent='HomePage' />
 				{this.props.onlineStatusLoaded ? '' : <LoadingSpinner />}
 				{this.props.onlineStatus ? (
 					<div className='content-container'>

@@ -1,0 +1,8 @@
+.particles-element {
+	position: absolute;
+	top: 0;
+	z-index: -999;
+	height: 100%;
+	width: 100%;
+	color: #c6c6c6;
+}
