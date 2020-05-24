@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/UTD-Parking-Assist/static/css/main.e7065a43.chunk.css",
+    "main.css": "/UTD-Parking-Assist/static/css/main.a788f8ce.chunk.css",
     "main.js": "/UTD-Parking-Assist/static/js/main.7953fe1e.chunk.js",
     "main.js.map": "/UTD-Parking-Assist/static/js/main.7953fe1e.chunk.js.map",
     "runtime-main.js": "/UTD-Parking-Assist/static/js/runtime-main.9f58eb11.js",
@@ -8,15 +8,15 @@
     "static/js/2.dfbf7ce5.chunk.js": "/UTD-Parking-Assist/static/js/2.dfbf7ce5.chunk.js",
     "static/js/2.dfbf7ce5.chunk.js.map": "/UTD-Parking-Assist/static/js/2.dfbf7ce5.chunk.js.map",
     "index.html": "/UTD-Parking-Assist/index.html",
-    "precache-manifest.e11b1e1120e44ec83468029d2a43af5f.js": "/UTD-Parking-Assist/precache-manifest.e11b1e1120e44ec83468029d2a43af5f.js",
+    "precache-manifest.9e3f99ca13df1e69f957382e090cd442.js": "/UTD-Parking-Assist/precache-manifest.9e3f99ca13df1e69f957382e090cd442.js",
     "service-worker.js": "/UTD-Parking-Assist/service-worker.js",
-    "static/css/main.e7065a43.chunk.css.map": "/UTD-Parking-Assist/static/css/main.e7065a43.chunk.css.map",
+    "static/css/main.a788f8ce.chunk.css.map": "/UTD-Parking-Assist/static/css/main.a788f8ce.chunk.css.map",
     "static/js/2.dfbf7ce5.chunk.js.LICENSE.txt": "/UTD-Parking-Assist/static/js/2.dfbf7ce5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9f58eb11.js",
     "static/js/2.dfbf7ce5.chunk.js",
-    "static/css/main.e7065a43.chunk.css",
+    "static/css/main.a788f8ce.chunk.css",
     "static/js/main.7953fe1e.chunk.js"
   ]
 }
