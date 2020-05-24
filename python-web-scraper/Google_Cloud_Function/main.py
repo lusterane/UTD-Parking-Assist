@@ -20,6 +20,12 @@ def CloudFunction(request):
     mongo_db = MongoDbConnection()
     mongo_db.initializeDBContext()
 
+    # testing
+    # NEEDS FLASK. implement in future
+    # req = request.args.get('name')
+    # if req and 'action' in req:
+    #     test(req, mongo_db)
+    # else:
     numberCurrentDocuments = mongo_db.getEntriesCount()
     cr = CrawlRoot(numberCurrentDocuments)
     cr.find_parking()
@@ -30,7 +36,6 @@ def CloudFunction(request):
     # update percent change if necessary
     if cr.psCount == 30:
         json = mongo_db.updatePercentChange(json)
-
     if numberCurrentDocuments < 30:
         mongo_db.placeIntoPSCollection(json)
         mongo_db.placeIntoRecentCollection(json)
@@ -39,23 +44,34 @@ def CloudFunction(request):
         mongo_db.placeIntoPSCollection(json)
         mongo_db.placeIntoRecentCollection(json)
     elif numberCurrentDocuments == 30:
-        mongo_db.replaceOldPSDocuments(json)
+        mongo_db.deleteOldestThreeDocuments()
+        mongo_db.placeIntoPSCollection(json)
         mongo_db.placeIntoRecentCollection(json)
     else: # > 30
         mongo_db.deleteOldestThreeDocuments()
     mongo_db.terminateDBContext()
 
-    # Test
-    # REQUIRES REFACTORING
-    # testJson = cr.buildJSONTestFormat()  # array of json documents
-    # mongo_db.writeToDB(testJson)
-
     if DEBUG_MODE:
         print("elapsed time: " + str(time.time() - start_time))
 
+# testing for Google Cloud Function
+def test(req, mongo_db):
+    if req == 'reset_parkingstructures':
+        print('ACTION: RESETTING PARKING STRUCTURES')
+        mongo_db.CRITICAL_ResetPSCollection()
+    elif req == 'place_into_ps_collection':
+        print('ACTION: PLACE INTO PS COLLECTION')
+        numberCurrentDocuments = mongo_db.getEntriesCount()
 
-def Test():
-    print(MongoDbConnection().getEntriesCount())
+        cr = CrawlRoot(numberCurrentDocuments)
+        cr.find_parking()
+        json = cr.buildJSONFormat()
+
+        mongo_db.placeIntoPSCollection(json)
+    else:
+        print('UNKNOWN ACTION')
+        print('Available Actions: reset_parkingstructures | place_into_ps_collection')
+        print('i.e. {"action": "reset_parkingstructures"}')
 
 
 if __name__ == "__main__":

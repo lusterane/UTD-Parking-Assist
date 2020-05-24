@@ -25,21 +25,21 @@ class MongoDbConnection:
             print('recent_parkingstructures: ', result)
 
 
-    def replaceOldPSDocuments(self, json):
-        db = self.client.utd_parking
-
-        collection = db.parkingstructures
-        old_permit_list = self.getListOldestPermits(collection)
-
-        for ps in json:
-            current_structure = ps['structure']
-            old_document_id = old_permit_list[current_structure]['_id']
-
-            # change to insert_one to initialize collection
-            #result = collection.insert_one(ps)
-
-            result = collection.replace_one({'_id': old_document_id}, ps)
-            print(result)
+    # def replaceOldPSDocuments(self, json):
+    #     db = self.client.utd_parking
+    #
+    #     collection = db.parkingstructures
+    #     old_permit_list = self.getListOldestPermits(collection)
+    #
+    #     for ps in json:
+    #         current_structure = ps['structure']
+    #         old_document_id = old_permit_list[current_structure]['_id']
+    #
+    #         # change to insert_one to initialize collection
+    #         #result = collection.insert_one(ps)
+    #
+    #         result = collection.replace_one({'_id': old_document_id}, ps)
+    #         print(result)
 
     def placeIntoPSCollection(self, json):
         db = self.client.utd_parking
