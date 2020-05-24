@@ -56,11 +56,9 @@ class Home extends Component {
 						<Popover
 							innerClassName='popover-content'
 							trigger='hover'
-							placement='bottom'
 							isOpen={this.state.popoverOpen}
 							target='info-text'
 							toggle={this.togglePopover}
-							flip={true}
 						>
 							<PopoverBody>
 								<div className='popover-text-container'>
@@ -150,8 +148,8 @@ class Home extends Component {
 									}}
 								/>
 							</div>
-							<div className='bottom-text-container'>
-								<span id='info-text'>
+							<div className='info-text-container'>
+								<span id='info-text' class='info-text'>
 									<i className='fas fa-angle-double-right'></i> But, how does it
 									work?
 								</span>

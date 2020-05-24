@@ -2,8 +2,8 @@
 @media only screen and (max-width: 599px) {
 	.footer-container {
 		bottom: -20vh !important;
-		margin-bottom: 10vh;
 		padding: 0 0.75rem;
+		margin-bottom: 1vh;
 	}
 }
 
@@ -14,7 +14,6 @@
 	height: 3.5rem;
 	font-size: 0.75rem;
 	text-align: center;
-	margin-bottom: 0;
 }
 
 .footer-container .fa-heart {

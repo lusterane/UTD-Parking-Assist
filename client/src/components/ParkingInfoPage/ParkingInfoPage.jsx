@@ -122,34 +122,36 @@ class ParkingInfo extends Component {
 					<LoadingSpinner />
 				)}
 				{this.props.onlineStatus ? (
-					<div className='parking-info-container'>
-						<ParticlesPage parent='ParkingInfoPage' />
+					<>
+						<div className='parking-info-container'>
+							<ParticlesPage parent='ParkingInfoPage' />
 
-						<a href={process.env.PUBLIC_URL + '/'} className='remove-decoration'>
-							<i className='fas fa-chevron-left back-route-button'></i>
-						</a>
-						<div className='parking-info-header'>
-							<div className='centered-header'>
-								<h1 className={this.props.color + ' title-greeting'}>
-									UTD Parking
-								</h1>
-								<div className='sub-title-greeting'>
-									<span>Live parking data at your fingertips</span>
+							<a href={process.env.PUBLIC_URL + '/'} className='remove-decoration'>
+								<i className='fas fa-chevron-left back-route-button'></i>
+							</a>
+							<div className='parking-info-header'>
+								<div className='centered-header'>
+									<h1 className={this.props.color + ' title-greeting'}>
+										UTD Parking
+									</h1>
+									<div className='sub-title-greeting'>
+										<span>Live parking data at your fingertips</span>
+									</div>
 								</div>
 							</div>
+							<div className='parking-data'>
+								<Time timeUpdated={this.state.timeUpdated} />
+								<ParkingStructureGroup
+									setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
+									timeUpdated={this.state.timeUpdated}
+									onResetElapsedTime={this.handleResetElapsedTime}
+								/>
+							</div>
 						</div>
-						<div className='parking-data'>
-							<Time timeUpdated={this.state.timeUpdated} />
-							<ParkingStructureGroup
-								setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
-								timeUpdated={this.state.timeUpdated}
-								onResetElapsedTime={this.handleResetElapsedTime}
-							/>
-						</div>
-						<div className='inner-content'>
+						<div id='parking-info-footer-container' className='footer-container'>
 							<Footer />
 						</div>
-					</div>
+					</>
 				) : (
 					<OfflinePage />
 				)}

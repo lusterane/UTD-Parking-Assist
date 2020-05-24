@@ -41,7 +41,7 @@
 		left: 0 !important;
 	}
 
-	.bottom-text-container {
+	.info-text-container {
 		margin-top: 10vh;
 	}
 }
@@ -73,10 +73,14 @@
 	flex-flow: row wrap;
 }
 
-.bottom-text-container {
+.info-text-container {
 	display: block;
 	height: 3rem;
 	margin-top: 10vh;
+}
+
+.info-text-container span {
+	padding-right: 1vw;
 }
 
 .popover-content {
