@@ -122,24 +122,29 @@ class ParkingInfo extends Component {
 				{this.props.onlineStatus ? (
 					<div className='parking-info-container'>
 						<ColorBlindButton />
+						<a href={process.env.PUBLIC_URL + '/'} className='remove-decoration'>
+							<i className='fas fa-chevron-left back-route-button'></i>
+						</a>
 						<div className='parking-info-header'>
-							<div>
-								<a
-									href={process.env.PUBLIC_URL + '/'}
-									className='remove-decoration'
-								>
-									<i className='fas fa-chevron-left back-route-button'></i>
-								</a>
+							<div className='centered-header'>
+								<h1 className={this.props.color + ' title-greeting'}>
+									UTD Parking
+								</h1>
+								<div className='sub-title-greeting'>
+									<span>Live parking data at your fingertips</span>
+								</div>
 							</div>
 						</div>
-						<div className='inner-content'>
+						<div className='parking-data'>
+							<Time timeUpdated={this.state.timeUpdated} />
 							<ParkingStructureGroup
 								setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
 								timeUpdated={this.state.timeUpdated}
 								onResetElapsedTime={this.handleResetElapsedTime}
 							/>
-
-							<Time timeUpdated={this.state.timeUpdated} />
+						</div>
+						<div className='inner-content'>
+							<Footer />
 						</div>
 					</div>
 				) : (

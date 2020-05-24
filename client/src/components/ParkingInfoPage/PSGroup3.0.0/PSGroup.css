@@ -2,7 +2,4 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin-bottom: 10vh;
-	height: 100%;
-	width: 100%;
 }

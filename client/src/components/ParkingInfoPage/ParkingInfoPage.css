@@ -5,22 +5,44 @@
 /* tablet */
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
 }
-
-.back-route-button {
-	font-size: 1.5rem;
-}
-
-.parking-info-container {
-	height: 100vh;
-	width: 100vw;
-}
-
-.inner-content {
-	width: 100vw;
-	padding: 0 2rem;
-}
-
 .parking-info-header {
 	width: 100%;
 	padding: 1rem;
+}
+
+.parking-info-header .centered-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.back-route-button {
+	padding: 1rem;
+	font-size: 1.5rem;
+}
+
+.parking-data {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #fff;
+	margin: 6vh 3vh 0 3vh;
+	border-radius: 0.25rem;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.parking-info-container {
+	font-size: 14px;
+	height: 100%;
+	width: 100%;
+}
+
+.inner-content {
+	position: relative;
+	height: 50%;
+	width: 100%;
+	padding: 0 2rem;
 }
