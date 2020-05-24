@@ -47,7 +47,7 @@ class Home extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				{this.props.onlineStatusLoaded ? '' : <LoadingSpinner />}
+				{!this.props.onlineStatusLoaded ? '' : <LoadingSpinner />}
 				{this.props.onlineStatus ? (
 					<div className='content-container'>
 						<ColorBlindButton />

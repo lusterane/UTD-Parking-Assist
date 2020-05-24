@@ -7,9 +7,8 @@ class LoadingSpinner extends Component {
 	state = {
 		textList: [
 			'Starting Up Car ...',
-			'Engaging In Drag Race ...',
+			'Entering In Drag Race ...',
 			'Running Red Lights ...',
-			'Parking In Purple ...',
 			'Taking Up Two Spaces ...',
 			"Almost Done!! Don't Refresh!",
 		],
@@ -19,7 +18,7 @@ class LoadingSpinner extends Component {
 
 	componentDidMount() {
 		this.setState({
-			incrementIndexTimeout: setInterval(this.incrementIndex, 1200),
+			incrementIndexTimeout: setInterval(this.incrementIndex, 1500),
 		});
 	}
 
@@ -30,9 +29,9 @@ class LoadingSpinner extends Component {
 	incrementIndex = () => {
 		const { textList, index } = this.state;
 		if (index < textList.length - 1) {
-			this.setState((state, props) => {
-				index: state.index += 1;
-			});
+			this.setState((state, props) => ({
+				index: state.index + 1,
+			}));
 		}
 	};
 
