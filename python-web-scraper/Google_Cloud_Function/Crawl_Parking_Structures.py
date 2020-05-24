@@ -54,7 +54,11 @@ class CrawlRoot:
                 psBuilder.permit.append(permit)
 
         # add built ps to list of parking structures
+        if len(psBuilder.permit) < 7 :
+            print("parse_parking() psBuilder.permit:", len(psBuilder.permit))
         self.psList.append(psBuilder)
+
+
 
     # print all parking structures in psList
     # for debugging
