@@ -3,7 +3,7 @@
 }
 
 .ps-card {
-	height: 100%;
+	height: 100vh;
 	width: 30vw;
 	min-width: 20.3rem;
 	min-height: 28.5rem;

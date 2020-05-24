@@ -5,11 +5,10 @@ import axios from 'axios';
 import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
-import ParkingInfoFooter from './ParkingInfoFooter/ParkingInfoFooter';
 import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import Footer from '../Footer/Footer';
 
-import '../../styles/shared/LoadingSpinner.css';
 import './ParkingInfoPage.css';
 
 class ParkingInfo extends Component {
@@ -113,42 +112,39 @@ class ParkingInfo extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div className='parking-info-page-container'>
-					{this.props.onlineStatusLoaded &&
-					this.state.timerLoaded &&
-					this.state.psGroupLoaded ? (
-						''
-					) : (
-						<LoadingSpinner />
-					)}
-					{this.props.onlineStatus ? (
-						<React.Fragment>
-							<ColorBlindButton />
-							<div className='parking-info-container'>
-								<div className='parking-info-header'>
-									<div className='back-route-container'>
-										<a
-											href={process.env.PUBLIC_URL + '/'}
-											className='remove-decoration'
-										>
-											<i className='fas fa-chevron-left back-route-button'></i>
-										</a>
-									</div>
-									<Time timeUpdated={this.state.timeUpdated} />
-								</div>
-
-								<ParkingStructureGroup
-									setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
-									timeUpdated={this.state.timeUpdated}
-									onResetElapsedTime={this.handleResetElapsedTime}
-								/>
-								<ParkingInfoFooter />
+				{this.props.onlineStatusLoaded &&
+				this.state.timerLoaded &&
+				this.state.psGroupLoaded ? (
+					''
+				) : (
+					<LoadingSpinner />
+				)}
+				{this.props.onlineStatus ? (
+					<div className='parking-info-container'>
+						<ColorBlindButton />
+						<div className='parking-info-header'>
+							<div>
+								<a
+									href={process.env.PUBLIC_URL + '/'}
+									className='remove-decoration'
+								>
+									<i className='fas fa-chevron-left back-route-button'></i>
+								</a>
 							</div>
-						</React.Fragment>
-					) : (
-						<OfflinePage />
-					)}
-				</div>
+						</div>
+						<div className='inner-content'>
+							<ParkingStructureGroup
+								setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
+								timeUpdated={this.state.timeUpdated}
+								onResetElapsedTime={this.handleResetElapsedTime}
+							/>
+
+							<Time timeUpdated={this.state.timeUpdated} />
+						</div>
+					</div>
+				) : (
+					<OfflinePage />
+				)}
 			</React.Fragment>
 		);
 	}

@@ -1,5 +1,9 @@
-.back-route-container {
-	display: block;
+/* mobile */
+@media only screen and (max-width: 599px) {
+}
+
+/* tablet */
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
 }
 
 .back-route-button {
@@ -11,8 +15,12 @@
 	width: 100vw;
 }
 
+.inner-content {
+	width: 100vw;
+	padding: 0 2rem;
+}
+
 .parking-info-header {
-	display: block;
 	width: 100%;
 	padding: 1rem;
 }
