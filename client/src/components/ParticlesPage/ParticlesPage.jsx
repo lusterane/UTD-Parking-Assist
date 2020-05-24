@@ -94,7 +94,7 @@ class ParticlesPage extends Component {
 								value: 5,
 							},
 						},
-						retina_detect: true,
+						retina_detect: false,
 					}}
 				/>
 			</React.Fragment>
