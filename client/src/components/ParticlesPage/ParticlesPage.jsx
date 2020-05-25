@@ -9,11 +9,8 @@ class ParticlesPage extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		let color = '';
 		if (prevProps.parent === 'HomePage') {
-			console.log('home');
 			color = 'default';
 		} else {
-			console.log('other page');
-			// other page is parent
 			color = localStorage.getItem('color');
 		}
 

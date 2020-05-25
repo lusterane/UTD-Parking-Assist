@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert } from 'reactstrap';
+import { Alert, UncontrolledTooltip } from 'reactstrap';
 
 import './Time.css';
 
@@ -41,7 +41,10 @@ class Time extends Component {
 
 		return (
 			<React.Fragment>
-				<div className='time-text-container'>
+				<UncontrolledTooltip placement='top' target='timer'>
+					Updates every minute instead of second to conserve server power
+				</UncontrolledTooltip>
+				<div className='time-text-container' id='timer'>
 					<div className='time-text'>{ps1TimeText}</div>
 				</div>
 			</React.Fragment>

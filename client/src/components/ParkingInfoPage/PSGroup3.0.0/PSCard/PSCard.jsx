@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
+import { UncontrolledTooltip } from 'reactstrap';
 
 import FullPSCardBody from './FullPSCardBody/FullPSCardBody.jsx';
 
@@ -117,8 +118,13 @@ class PSCard extends Component {
 				<Card className='ps-card'>
 					{this.props.dataArr.length !== 0 ? (
 						<Card.Body>
+							<UncontrolledTooltip placement='bottom' target='best-choice'>
+								Calculated by weighting Spot Change Trend, # Of Current Spots, and
+								Permit Color
+							</UncontrolledTooltip>
+
 							<div className='text-muted ps-card-header'>
-								<div className='best-choice-container'>
+								<div className='best-choice-container' id='best-choice'>
 									{this.state.index === 0 ? (
 										<>
 											<i className='fas fa-star'></i> <span>BEST CHOICE</span>
