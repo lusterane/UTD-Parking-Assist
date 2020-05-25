@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Spinner, Toast, ToastBody, ToastHeader } from 'reactstrap';
+import { Spinner, Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 import './LoadingSpinner.css';
 
