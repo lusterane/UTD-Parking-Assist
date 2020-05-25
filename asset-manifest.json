@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/UTD-Parking-Assist/static/css/main.3281d89a.chunk.css",
-    "main.js": "/UTD-Parking-Assist/static/js/main.3b1c40b0.chunk.js",
-    "main.js.map": "/UTD-Parking-Assist/static/js/main.3b1c40b0.chunk.js.map",
+    "main.css": "/UTD-Parking-Assist/static/css/main.455c2f27.chunk.css",
+    "main.js": "/UTD-Parking-Assist/static/js/main.4a7dd39b.chunk.js",
+    "main.js.map": "/UTD-Parking-Assist/static/js/main.4a7dd39b.chunk.js.map",
     "runtime-main.js": "/UTD-Parking-Assist/static/js/runtime-main.9f58eb11.js",
     "runtime-main.js.map": "/UTD-Parking-Assist/static/js/runtime-main.9f58eb11.js.map",
-    "static/js/2.dfbf7ce5.chunk.js": "/UTD-Parking-Assist/static/js/2.dfbf7ce5.chunk.js",
-    "static/js/2.dfbf7ce5.chunk.js.map": "/UTD-Parking-Assist/static/js/2.dfbf7ce5.chunk.js.map",
+    "static/js/2.a67c99ba.chunk.js": "/UTD-Parking-Assist/static/js/2.a67c99ba.chunk.js",
+    "static/js/2.a67c99ba.chunk.js.map": "/UTD-Parking-Assist/static/js/2.a67c99ba.chunk.js.map",
     "index.html": "/UTD-Parking-Assist/index.html",
-    "precache-manifest.232f560409370d1092af38c0d66c2630.js": "/UTD-Parking-Assist/precache-manifest.232f560409370d1092af38c0d66c2630.js",
+    "precache-manifest.e15a45beecbd99f79d131e52377ac7a2.js": "/UTD-Parking-Assist/precache-manifest.e15a45beecbd99f79d131e52377ac7a2.js",
     "service-worker.js": "/UTD-Parking-Assist/service-worker.js",
-    "static/css/main.3281d89a.chunk.css.map": "/UTD-Parking-Assist/static/css/main.3281d89a.chunk.css.map",
-    "static/js/2.dfbf7ce5.chunk.js.LICENSE.txt": "/UTD-Parking-Assist/static/js/2.dfbf7ce5.chunk.js.LICENSE.txt"
+    "static/css/main.455c2f27.chunk.css.map": "/UTD-Parking-Assist/static/css/main.455c2f27.chunk.css.map",
+    "static/js/2.a67c99ba.chunk.js.LICENSE.txt": "/UTD-Parking-Assist/static/js/2.a67c99ba.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9f58eb11.js",
-    "static/js/2.dfbf7ce5.chunk.js",
-    "static/css/main.3281d89a.chunk.css",
-    "static/js/main.3b1c40b0.chunk.js"
+    "static/js/2.a67c99ba.chunk.js",
+    "static/css/main.455c2f27.chunk.css",
+    "static/js/main.4a7dd39b.chunk.js"
   ]
 }
