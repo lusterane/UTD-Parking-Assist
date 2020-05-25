@@ -8,6 +8,7 @@
 	--shaded-gold: #e1aa05;
 	--shaded-orange: #e69119;
 	--shaded-purple: #582c8e;
+	--white: #fff;
 }
 
 /* General */
@@ -156,4 +157,17 @@
 	border-color: var(--purple) !important;
 	color: #fff !important;
 	font-weight: 500;
+}
+
+/* DARK MODE  */
+.dark-mode {
+	color: white !important;
+	background-color: rgb(35, 39, 65);
+	opacity: 0.9;
+}
+
+.dark-mode-off-hue-dark {
+	color: white !important;
+	background-color: rgb(46, 50, 87);
+	opacity: 0.9;
 }

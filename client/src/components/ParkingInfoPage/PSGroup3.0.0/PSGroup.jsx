@@ -17,14 +17,9 @@ class PSGroup extends Component {
 				dataArr: [],
 			},
 		},
-		color: '',
 	};
 
 	componentDidMount() {
-		const data = localStorage.getItem('color');
-		if (data) {
-			this.setState({ color: data });
-		}
 		this.handleHTTPGetPS();
 	}
 
@@ -85,7 +80,7 @@ class PSGroup extends Component {
 	isRelevantColor = (color) => {
 		// cut array to relavent colors
 		let colorArr = ['green', 'gold', 'orange', 'purple'];
-		const index = colorArr.indexOf(this.state.color) + 1;
+		const index = colorArr.indexOf(this.props.color) + 1;
 		colorArr = colorArr.slice(0, index);
 
 		// check if color is in array

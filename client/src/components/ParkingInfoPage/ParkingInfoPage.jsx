@@ -5,7 +5,7 @@ import axios from 'axios';
 import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
-import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
+import ColorBlindButton from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Footer from '../Footer/Footer';
 import ParticlesPage from '../ParticlesPage/ParticlesPage';
@@ -33,6 +33,10 @@ class ParkingInfo extends Component {
 	};
 
 	componentDidMount() {
+		const data = localStorage.getItem('color');
+		if (data) {
+			this.setState({ color: data });
+		}
 		this.setState({
 			updateTimeUpdatedInStateInterval: setInterval(this.updateTimeUpdatedInState, 1000),
 		});
@@ -111,6 +115,7 @@ class ParkingInfo extends Component {
 	};
 
 	render() {
+		const { color, timeUpdated } = this.state;
 		return (
 			<React.Fragment>
 				<ColorBlindButton />
@@ -131,19 +136,18 @@ class ParkingInfo extends Component {
 							</a>
 							<div className='parking-info-header'>
 								<div className='centered-header'>
-									<h1 className={this.props.color + ' title-greeting'}>
-										UTD Parking
-									</h1>
+									<h1 className={color}>UTD Parking</h1>
 									<div className='sub-title-greeting'>
 										<span>Live parking data at your fingertips</span>
 									</div>
 								</div>
 							</div>
 							<div className='parking-data'>
-								<Time timeUpdated={this.state.timeUpdated} />
+								<Time timeUpdated={timeUpdated} />
 								<ParkingStructureGroup
+									color={color}
 									setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
-									timeUpdated={this.state.timeUpdated}
+									timeUpdated={timeUpdated}
 									onResetElapsedTime={this.handleResetElapsedTime}
 								/>
 							</div>

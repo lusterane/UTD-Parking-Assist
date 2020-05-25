@@ -8,13 +8,20 @@ class ColorOption extends Component {
 	state = {};
 
 	render() {
-		const { color, onClick, handleMouseOver, handleMouseLeave } = this.props;
+		const {
+			color,
+			colorBlindMode,
+			darkMode,
+			onClick,
+			handleMouseOver,
+			handleMouseLeave,
+		} = this.props;
 
 		return (
 			<React.Fragment>
 				{color === 'grey' ? (
 					<div className={color + '-background color-option'}></div>
-				) : !this.props.colorBlindMode ? (
+				) : !colorBlindMode ? (
 					<Button
 						outline
 						color='secondary'
@@ -44,7 +51,9 @@ class ColorOption extends Component {
 						onMouseLeave={() => {
 							handleMouseLeave();
 						}}
-						className={`${color}-color-background color-blind-option pointer border-${color}`}
+						className={`${color}-color-background color-blind-option pointer border-${color} ${
+							darkMode ? 'light-text' : ''
+						}`}
 					>
 						{color.charAt(0).toUpperCase() + color.slice(1)} Permit
 					</Button>

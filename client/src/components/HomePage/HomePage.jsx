@@ -5,7 +5,7 @@ import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import ColorBlindButton from '../ColorBlindButton/ColorBlindButton';
+import ColorBlindButton from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ParticlesPage from '../ParticlesPage/ParticlesPage';
 
@@ -17,12 +17,17 @@ class Home extends Component {
 	state = {
 		showModal: false,
 		colorBlindMode: false,
+		darkMode: false,
 		popoverOpen: false,
 	};
 
 	componentDidUpdate() {
 		const data = localStorage.getItem('color-blind-status') === 'true';
+		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
 
+		if (this.state.darkMode !== darkMode) {
+			this.setState({ darkMode: darkMode });
+		}
 		if (this.state.colorBlindMode !== data) {
 			this.setState({ colorBlindMode: data });
 		}
@@ -51,19 +56,39 @@ class Home extends Component {
 				<ParticlesPage parent='HomePage' />
 				{this.props.onlineStatusLoaded ? '' : <LoadingSpinner />}
 				{this.props.onlineStatus ? (
-					<div className='content-container'>
+					<div
+						className={
+							this.state.darkMode
+								? 'content-container dark-mode'
+								: 'content-container'
+						}
+					>
 						<ColorBlindButton />
 						<Popover
-							innerClassName='popover-content'
+							innerClassName={
+								this.state.darkMode
+									? 'popover-content dark-mode-off-hue-dark'
+									: 'popover-content '
+							}
 							trigger='hover'
 							isOpen={this.state.popoverOpen}
 							target='info-text'
 							toggle={this.togglePopover}
 						>
 							<PopoverBody>
-								<div className='popover-text-container'>
-									For color blind accessibility, select the{' '}
-									<i className='fas fa-low-vision'></i> at the top right.
+								<div
+									className={
+										this.state.darkMode
+											? 'popover-text-container dark-mode-off-hue-dark'
+											: 'popover-text-container'
+									}
+								>
+									For <span className='bold'>dark mode</span>, select the{' '}
+									<i className='far fa-moon'></i> at the top right.
+									<hr></hr>
+									For <span className='bold'>color blind accessibility</span>,
+									select the <i className='fas fa-low-vision'></i> at the top
+									right.
 									<hr></hr>
 									<p>UTD Permits works on shared tiers:</p>
 									<div className='color-access-listings'>
@@ -98,6 +123,7 @@ class Home extends Component {
 								<ColorOption
 									color='green'
 									colorBlindMode={this.state.colorBlindMode}
+									darkMode={this.state.darkMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -111,6 +137,7 @@ class Home extends Component {
 								<ColorOption
 									color='gold'
 									colorBlindMode={this.state.colorBlindMode}
+									darkMode={this.state.darkMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -124,6 +151,7 @@ class Home extends Component {
 								<ColorOption
 									color='orange'
 									colorBlindMode={this.state.colorBlindMode}
+									darkMode={this.state.darkMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -137,6 +165,7 @@ class Home extends Component {
 								<ColorOption
 									color='purple'
 									colorBlindMode={this.state.colorBlindMode}
+									darkMode={this.state.darkMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -179,8 +208,12 @@ class Home extends Component {
 							>
 								<PopoverBody>
 									<div className='popover-text-container'>
-										For color blind accessibility, select the{' '}
-										<i className='fas fa-low-vision'></i> at the top right.
+										For <span className='bold'>dark mode</span>, select the{' '}
+										<i className='far fa-moon'></i> at the top right.
+										<hr></hr>
+										For <span className='bold'>color blind accessibility</span>,
+										select the <i className='fas fa-low-vision'></i> at the top
+										right.
 										<hr></hr>
 										<p>UTD Permits works on shared tiers:</p>
 										<div className='color-access-listings'>

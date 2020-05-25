@@ -16,6 +16,10 @@ h1 {
 	cursor: pointer;
 }
 
+.bold {
+	font-weight: 500;
+}
+
 .remove-decoration {
 	text-decoration: none;
 	color: black;
