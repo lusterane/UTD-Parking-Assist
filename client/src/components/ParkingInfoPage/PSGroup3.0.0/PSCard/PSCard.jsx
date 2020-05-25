@@ -113,6 +113,7 @@ class PSCard extends Component {
 
 	render() {
 		const { spots, structure, color, level, spot_change } = this.state.currentPermit;
+
 		return (
 			<React.Fragment>
 				<Card className='ps-card'>
@@ -126,9 +127,9 @@ class PSCard extends Component {
 							<div className='text-muted ps-card-header'>
 								<div className='best-choice-container' id='best-choice'>
 									{this.state.index === 0 ? (
-										<>
-											<i className='fas fa-star'></i> <span>BEST CHOICE</span>
-										</>
+										<span>
+											<i className='fas fa-star'></i> BEST CHOICE
+										</span>
 									) : (
 										''
 									)}

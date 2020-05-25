@@ -20,6 +20,7 @@
 
 .best-choice-container {
 	display: inline;
+	font-size: 1rem;
 }
 
 .icon-container {
@@ -98,4 +99,9 @@
 .ps-card-footer p {
 	text-align: center;
 	font-size: 1.5rem;
+}
+
+.animated-div {
+	height: 100vh;
+	width: 100%;
 }

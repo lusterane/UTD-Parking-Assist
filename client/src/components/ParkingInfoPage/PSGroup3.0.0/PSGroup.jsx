@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import PSCard from './PSCard/PSCard';
-
 import './PSGroup.css';
 
 class PSGroup extends Component {
