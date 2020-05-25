@@ -7,10 +7,11 @@ class LoadingSpinner extends Component {
 	state = {
 		textList: [
 			'Starting Up Car ...',
-			'Entering In Drag Race ...',
 			'Running Red Lights ...',
+			'Picking Up Coffee ...',
+			'Spilling Coffee On Dashboard ...',
 			'Taking Up Two Spaces ...',
-			"Almost Done!! Don't Refresh!",
+			'Almost Ready!!',
 		],
 		index: 0,
 		incrementIndexTimeout: '',
@@ -18,7 +19,7 @@ class LoadingSpinner extends Component {
 
 	componentDidMount() {
 		this.setState({
-			incrementIndexTimeout: setInterval(this.incrementIndex, 1500),
+			incrementIndexTimeout: setInterval(this.incrementIndex, 2000),
 		});
 	}
 
