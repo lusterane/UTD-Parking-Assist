@@ -119,13 +119,12 @@ class PSCard extends Component {
 				<Card className='ps-card'>
 					{this.props.dataArr.length !== 0 ? (
 						<Card.Body>
-							<UncontrolledTooltip placement='bottom' target='best-choice'>
-								Calculated by weighting Spot Change Trend, # Of Current Spots, and
-								Permit Color
+							<UncontrolledTooltip placement='left' target='map'>
+								Google Maps
 							</UncontrolledTooltip>
 
 							<div className='text-muted ps-card-header'>
-								<div className='best-choice-container' id='best-choice'>
+								<div className='best-choice-container'>
 									{this.state.index === 0 ? (
 										<span>
 											<i className='fas fa-star'></i> BEST CHOICE
@@ -140,7 +139,7 @@ class PSCard extends Component {
 										target='_blank'
 										href={this.getParkingStructureLink(structure)}
 									>
-										<i className='fas fa-map-marked-alt fa-lg'></i>
+										<i id='map' className='fas fa-map-marked-alt fa-lg'></i>
 									</a>
 								</div>
 							</div>

@@ -29,6 +29,10 @@
 	right: 7%;
 }
 
+#map {
+	padding-left: 0.5rem;
+}
+
 .ps-card-body {
 	display: flex;
 	height: 75%;

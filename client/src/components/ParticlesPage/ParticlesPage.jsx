@@ -37,7 +37,7 @@ class ParticlesPage extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Particles
+				{/* <Particles
 					className='particles-element'
 					params={{
 						fps_limit: 60,
@@ -57,38 +57,86 @@ class ParticlesPage extends Component {
 						},
 						particles: {
 							color: { value: this.state.parsedColor },
-							line_linked: {
-								color: this.state.parsedColor,
-								distance: 150,
-								enable: true,
-								opacity: 0.4,
-								width: 1,
-							},
+							// line_linked: {
+							// 	color: this.state.parsedColor,
+							// 	distance: 130,
+							// 	enable: true,
+							// 	opacity: 0.5,
+							// 	width: 1,
+							// },
 							move: {
 								attract: { enable: false, rotateX: 600, rotateY: 1200 },
 								bounce: false,
 								direction: 'none',
 								enable: true,
 								out_mode: 'out',
-								random: false,
+								random: true,
 								speed: 2,
 								straight: false,
 							},
-							number: { density: { enable: true, value_area: 800 }, value: 80 },
-							opacity: {
-								anim: {
-									enable: false,
-									opacity_min: 0.1,
-									speed: 1,
-									sync: false,
-								},
-								random: false,
-								value: 0.5,
-							},
+							number: { value: 50 },
+							// opacity: {
+							// 	anim: {
+							// 		enable: false,
+							// 		opacity_min: 0.1,
+							// 		speed: 1,
+							// 		sync: false,
+							// 	},
+							// 	random: false,
+							// 	value: .5,
+							// },
 							size: {
 								anim: { enable: false, size_min: 0.1, speed: 40, sync: false },
 								random: true,
-								value: 5,
+								value: 3,
+							},
+						},
+						retina_detect: false,
+					}}
+				/> */}
+				<Particles
+					className='particles-element'
+					params={{
+						fps_limit: 60,
+						particles: {
+							color: { value: this.state.parsedColor },
+							opacity: { value: 1 },
+							number: {
+								value: 160,
+							},
+							size: {
+								value: 3,
+								random: true,
+								anim: {
+									speed: 4,
+									size_min: 0.3,
+								},
+							},
+							line_linked: {
+								enable: false,
+							},
+							move: {
+								random: true,
+								speed: 1,
+								direction: 'top',
+								out_mode: 'out',
+							},
+						},
+						interactivity: {
+							detect_on: 'window',
+							events: {
+								onhover: {
+									enable: true,
+									mode: 'bubble',
+								},
+							},
+							modes: {
+								bubble: {
+									distance: 100,
+									duration: 2,
+									size: 0,
+									opacity: 0,
+								},
 							},
 						},
 						retina_detect: false,

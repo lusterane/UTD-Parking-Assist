@@ -53,7 +53,10 @@ class LoadingSpinner extends Component {
 					<Spinner animation='border' role='status'></Spinner>
 					<div className='loading-text'>{textList[index]}</div>
 					<Toast isOpen={this.state.showToast}>
-						<ToastHeader icon={<i class='fas fa-bed'></i>} toggle={this.toggleToast}>
+						<ToastHeader
+							icon={<i className='fas fa-bed'></i>}
+							toggle={this.toggleToast}
+						>
 							Waking Up
 						</ToastHeader>
 						<ToastBody>
@@ -61,8 +64,6 @@ class LoadingSpinner extends Component {
 								Looks like the server's waking up. Don't worry, this won't take
 								long.
 							</span>
-							<hr></hr>
-							<p className='remaining-loading-time'>{'<10 seconds remaining'}</p>
 						</ToastBody>
 					</Toast>
 				</div>
