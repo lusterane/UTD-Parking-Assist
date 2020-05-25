@@ -5,7 +5,7 @@ import axios from 'axios';
 import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import OfflinePage from './OfflinePage/OfflinePage';
-import ColorBlindButton from '../UIOptions/UIOptions';
+import UIOptions from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Footer from '../Footer/Footer';
 import ParticlesPage from '../ParticlesPage/ParticlesPage';
@@ -30,6 +30,7 @@ class ParkingInfo extends Component {
 		},
 		timerLoaded: false,
 		psGroupLoaded: false,
+		darkMode: false,
 	};
 
 	componentDidMount() {
@@ -53,6 +54,12 @@ class ParkingInfo extends Component {
 				this.handleResetElapsedTime();
 				this.handleHTTPGetUpdateTime();
 			}
+		}
+
+		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
+
+		if (this.state.darkMode !== darkMode) {
+			this.setState({ darkMode: darkMode });
 		}
 	}
 
@@ -115,50 +122,71 @@ class ParkingInfo extends Component {
 	};
 
 	render() {
-		const { color, timeUpdated } = this.state;
+		const { color, timeUpdated, darkMode } = this.state;
 		return (
 			<React.Fragment>
-				<ColorBlindButton />
-				{this.props.onlineStatusLoaded &&
-				this.state.timerLoaded &&
-				this.state.psGroupLoaded ? (
-					''
-				) : (
-					<LoadingSpinner />
-				)}
-				{this.props.onlineStatus ? (
-					<>
-						<div className='parking-info-container'>
-							<ParticlesPage parent='ParkingInfoPage' />
+				<div className={darkMode ? 'dark-mode' : ''}>
+					<UIOptions />
+					{this.props.onlineStatusLoaded &&
+					this.state.timerLoaded &&
+					this.state.psGroupLoaded ? (
+						''
+					) : (
+						<LoadingSpinner />
+					)}
+					{this.props.onlineStatus ? (
+						<div>
+							<div className='parking-info-container'>
+								<ParticlesPage parent='ParkingInfoPage' />
 
-							<a href={process.env.PUBLIC_URL + '/'} className='remove-decoration'>
-								<i className='fas fa-chevron-left back-route-button'></i>
-							</a>
-							<div className='parking-info-header'>
-								<div className='centered-header'>
-									<h1 className={color}>UTD Parking</h1>
-									<div className='sub-title-greeting'>
-										<span>Live parking data at your fingertips</span>
+								<a
+									href={process.env.PUBLIC_URL + '/'}
+									className='remove-decoration'
+								>
+									<i
+										className={
+											darkMode
+												? 'fas fa-chevron-left back-route-button light-text'
+												: 'fas fa-chevron-left back-route-button'
+										}
+									></i>
+								</a>
+								<div className='parking-info-header'>
+									<div className='centered-header'>
+										<h1 className={color}>UTD Parking</h1>
+										<div className='sub-title-greeting'>
+											<span>Live parking data at your fingertips</span>
+										</div>
 									</div>
 								</div>
+								<div
+									className={
+										darkMode ? 'parking-data dark-borders' : 'parking-data'
+									}
+								>
+									<Time timeUpdated={timeUpdated} />
+									<ParkingStructureGroup
+										darkMode={darkMode}
+										color={color}
+										setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
+										timeUpdated={timeUpdated}
+										onResetElapsedTime={this.handleResetElapsedTime}
+									/>
+								</div>
 							</div>
-							<div className='parking-data'>
-								<Time timeUpdated={timeUpdated} />
-								<ParkingStructureGroup
-									color={color}
-									setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
-									timeUpdated={timeUpdated}
-									onResetElapsedTime={this.handleResetElapsedTime}
-								/>
+							<div
+								id='parking-info-footer-container'
+								className={
+									darkMode ? 'dark-mode footer-container' : 'footer-container'
+								}
+							>
+								<Footer />
 							</div>
 						</div>
-						<div id='parking-info-footer-container' className='footer-container'>
-							<Footer />
-						</div>
-					</>
-				) : (
-					<OfflinePage />
-				)}
+					) : (
+						<OfflinePage />
+					)}
+				</div>
 			</React.Fragment>
 		);
 	}

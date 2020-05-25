@@ -5,7 +5,7 @@ import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import ColorBlindButton from '../UIOptions/UIOptions';
+import UIOptions from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import ParticlesPage from '../ParticlesPage/ParticlesPage';
 
@@ -63,7 +63,7 @@ class Home extends Component {
 								: 'content-container'
 						}
 					>
-						<ColorBlindButton />
+						<UIOptions />
 						<Popover
 							innerClassName={
 								this.state.darkMode
