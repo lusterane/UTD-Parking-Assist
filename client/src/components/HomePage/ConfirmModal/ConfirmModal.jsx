@@ -3,35 +3,35 @@ import { Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './ConfirmModal.css';
+import '../../../styles/shared/Colors.css';
 
 function ConfirmModal(props) {
+	const { darkMode, showModal, onModalClose, onModalConfirm, color } = props;
 	return (
-		<>
-			<Modal
-				centered={true}
-				show={props.showModal}
-				onHide={props.onModalClose}
-				animation={true}
-			>
-				<Modal.Header closeButton></Modal.Header>
-				<Modal.Body>
+		<div>
+			<Modal centered={true} show={showModal} onHide={onModalClose} animation={true}>
+				<Modal.Header
+					className={darkMode ? 'dark-mode dark-mode-close' : ''}
+					closeButton
+				></Modal.Header>
+				<Modal.Body className={darkMode ? 'dark-mode' : ''}>
 					<div className='modal-body-text'>
-						You have {props.color === 'orange' ? 'an' : 'a'} {props.color} permit?
+						You have {color === 'orange' ? 'an' : 'a'} {color} permit?
 					</div>
 				</Modal.Body>
-				<Modal.Footer>
+				<Modal.Footer className={darkMode ? 'dark-mode' : ''}>
 					<Link to={process.env.PUBLIC_URL + '/parkingInfoPage'}>
 						<Button
 							variant='primary'
-							className={props.color + '-button confirm-button'}
-							onClick={props.onModalConfirm}
+							className={color + '-button confirm-button'}
+							onClick={onModalConfirm}
 						>
 							<i className='fas fa-check fa-sm'></i>
 						</Button>
 					</Link>
 				</Modal.Footer>
 			</Modal>
-		</>
+		</div>
 	);
 }
 

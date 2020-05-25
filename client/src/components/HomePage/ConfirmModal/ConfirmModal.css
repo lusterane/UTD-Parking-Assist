@@ -16,3 +16,7 @@
 .modal-footer {
 	border-top: 0 none;
 }
+
+.dark-mode-close .close {
+	color: #fff !important;
+}

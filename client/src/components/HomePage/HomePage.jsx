@@ -184,6 +184,7 @@ class Home extends Component {
 								</span>
 							</div>
 							<ConfirmModal
+								darkMode={this.state.darkMode}
 								color={this.props.color}
 								showModal={this.state.showModal}
 								onModalShow={this.handleModalShow}
