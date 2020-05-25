@@ -149,7 +149,7 @@ class Home extends Component {
 								/>
 							</div>
 							<div className='info-text-container'>
-								<span id='info-text' class='info-text'>
+								<span id='info-text' className='info-text'>
 									<i className='fas fa-angle-double-right'></i> But, how does it
 									work?
 								</span>

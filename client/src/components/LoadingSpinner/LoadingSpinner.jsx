@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spinner } from 'reactstrap';
+import { Button, Spinner, Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 import './LoadingSpinner.css';
 
@@ -10,21 +10,26 @@ class LoadingSpinner extends Component {
 			'Running Red Lights ...',
 			'Picking Up Coffee ...',
 			'Spilling Coffee On Dashboard ...',
-			'Taking Up Two Spaces ...',
-			'Almost Ready!!',
+			'Parking In Red ...',
+			'Running To Class ...',
+			'Almost Ready!!!',
 		],
 		index: 0,
-		incrementIndexTimeout: '',
+		incrementIndexInterval: '',
+		showToastTimeout: '',
+		showToast: false,
 	};
 
 	componentDidMount() {
 		this.setState({
-			incrementIndexTimeout: setInterval(this.incrementIndex, 2000),
+			incrementIndexInterval: setInterval(this.incrementIndex, 2000),
+			showToastTimeout: setTimeout(this.toggleToast, 5000),
 		});
 	}
 
 	componentWillUnmount() {
-		clearTimeout(this.state.incrementIndexTimeout);
+		clearInterval(this.state.incrementIndexInterval);
+		clearTimeout(this.state.showToastTimeout);
 	}
 
 	incrementIndex = () => {
@@ -36,12 +41,31 @@ class LoadingSpinner extends Component {
 		}
 	};
 
+	toggleToast = () => {
+		this.setState((state, props) => ({ showToast: !state.showToast }));
+	};
+
 	render() {
 		const { textList, index } = this.state;
 		return (
 			<div className='spinner-container'>
-				<Spinner animation='border' role='status'></Spinner>
-				<div className='loading-text'>{textList[index]}</div>
+				<div className='loading-center'>
+					<Spinner animation='border' role='status'></Spinner>
+					<div className='loading-text'>{textList[index]}</div>
+					<Toast isOpen={this.state.showToast}>
+						<ToastHeader icon={<i class='fas fa-bed'></i>} toggle={this.toggleToast}>
+							Waking Up
+						</ToastHeader>
+						<ToastBody>
+							<span>
+								Looks like the server's waking up. Don't worry, this won't take
+								long.
+							</span>
+							<hr></hr>
+							<p className='remaining-loading-time'>{'<10 seconds remaining'}</p>
+						</ToastBody>
+					</Toast>
+				</div>
 			</div>
 		);
 	}
