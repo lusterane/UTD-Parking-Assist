@@ -1,7 +1,7 @@
 .icons-container {
 	display: flex;
 	position: fixed;
-	z-index: 999;
+	z-index: 100;
 	top: 1%;
 	right: 1%;
 }

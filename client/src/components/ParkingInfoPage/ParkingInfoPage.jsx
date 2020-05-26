@@ -132,7 +132,7 @@ class ParkingInfo extends Component {
 					this.state.psGroupLoaded ? (
 						''
 					) : (
-						<LoadingSpinner />
+						<LoadingSpinner darkMode={darkMode} />
 					)}
 					{this.props.onlineStatus ? (
 						<div>

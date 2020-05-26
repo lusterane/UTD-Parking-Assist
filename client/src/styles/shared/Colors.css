@@ -167,12 +167,16 @@
 /* DARK MODE  */
 .dark-mode {
 	color: white !important;
-	background-color: rgb(35, 39, 65);
+	background-color: rgb(35, 39, 65) !important;
 	opacity: 0.9;
 }
 
 .dark-mode-off-hue-dark {
 	color: white !important;
-	background-color: rgb(46, 50, 87);
+	background-color: rgb(46, 50, 87) !important;
 	opacity: 0.9;
+}
+
+.opaque {
+	opacity: 1 !important;
 }

@@ -18,8 +18,14 @@ class Home extends Component {
 		showModal: false,
 		colorBlindMode: false,
 		darkMode: false,
+		darkModeLoaded: false,
 		popoverOpen: false,
 	};
+
+	componentDidMount() {
+		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
+		this.setState({ darkMode: darkMode, darkModeLoaded: true });
+	}
 
 	componentDidUpdate() {
 		const data = localStorage.getItem('color-blind-status') === 'true';
@@ -35,7 +41,7 @@ class Home extends Component {
 
 	// maintain popover
 	togglePopover = () => {
-		this.setState({ popoverOpen: !this.state.popoverOpen });
+		this.setState((state, props) => ({ popoverOpen: !state.popoverOpen }));
 	};
 
 	// maintain modal
@@ -51,171 +57,46 @@ class Home extends Component {
 	};
 
 	render() {
+		const { darkMode, popoverOpen, darkModeLoaded } = this.state;
+		const { onlineStatusLoaded, onlineStatus } = this.props;
 		return (
 			<React.Fragment>
-				<ParticlesPage parent='HomePage' />
-				{this.props.onlineStatusLoaded ? '' : <LoadingSpinner />}
-				{this.props.onlineStatus ? (
-					<div
-						className={
-							this.state.darkMode
-								? 'content-container dark-mode'
-								: 'content-container'
-						}
-					>
-						<UIOptions />
-						<Popover
-							innerClassName={
-								this.state.darkMode
-									? 'popover-content dark-mode-off-hue-dark'
-									: 'popover-content '
-							}
-							trigger='hover'
-							isOpen={this.state.popoverOpen}
-							target='info-text'
-							toggle={this.togglePopover}
-						>
-							<PopoverBody>
-								<div
-									className={
-										this.state.darkMode
-											? 'popover-text-container dark-mode-off-hue-dark'
-											: 'popover-text-container'
-									}
-								>
-									For <span className='bold'>dark mode</span>, select the{' '}
-									<i className='far fa-moon'></i> at the top right.
-									<hr className={this.state.darkMode ? 'white-hr' : ''}></hr>
-									For <span className='bold'>color blind accessibility</span>,
-									select the <i className='fas fa-low-vision'></i> at the top
-									right.
-									<hr className={this.state.darkMode ? 'white-hr' : ''}></hr>
-									<p>UTD Permits works on shared tiers:</p>
-									<div className='color-access-listings'>
-										<p>
-											<span className='green'>Green</span> accesses [
-											<span className='green'>Green</span>]
-										</p>
-										<p>
-											<span className='gold'>Gold</span> accesses [
-											<span className='green'>Green</span>
-											{' & '}
-											<span className='gold'>Gold</span>]
-										</p>
-										<p>
-											<span className='purple'>Purple</span> accesses [
-											<span className='green'>Green</span>,
-											<span className='gold'>Gold</span>,
-											<span className='orange'>Orange</span>
-											{' & '}
-											<span className='purple'>Purple</span>]
-										</p>
-									</div>
-								</div>
-							</PopoverBody>
-						</Popover>
-						<div className='inner-content-container'>
-							<h1 className={this.props.color + ' title-greeting'}>UTD Parking</h1>
-							<div className='sub-title-greeting'>
-								<span>Live parking data at your fingertips</span>
-							</div>
-							<div className='color-option-container'>
-								<ColorOption
-									color='green'
-									colorBlindMode={this.state.colorBlindMode}
-									darkMode={this.state.darkMode}
-									onClick={() => {
-										this.handleModalShow(this.props.color);
-									}}
-									handleMouseOver={this.props.changeColor}
-									handleMouseLeave={() => {
-										if (!this.state.showModal) {
-											this.props.changeColorDefault();
-										}
-									}}
-								/>
-								<ColorOption
-									color='gold'
-									colorBlindMode={this.state.colorBlindMode}
-									darkMode={this.state.darkMode}
-									onClick={() => {
-										this.handleModalShow(this.props.color);
-									}}
-									handleMouseOver={this.props.changeColor}
-									handleMouseLeave={() => {
-										if (!this.state.showModal) {
-											this.props.changeColorDefault();
-										}
-									}}
-								/>
-								<ColorOption
-									color='orange'
-									colorBlindMode={this.state.colorBlindMode}
-									darkMode={this.state.darkMode}
-									onClick={() => {
-										this.handleModalShow(this.props.color);
-									}}
-									handleMouseOver={this.props.changeColor}
-									handleMouseLeave={() => {
-										if (!this.state.showModal) {
-											this.props.changeColorDefault();
-										}
-									}}
-								/>
-								<ColorOption
-									color='purple'
-									colorBlindMode={this.state.colorBlindMode}
-									darkMode={this.state.darkMode}
-									onClick={() => {
-										this.handleModalShow(this.props.color);
-									}}
-									handleMouseOver={this.props.changeColor}
-									handleMouseLeave={() => {
-										if (!this.state.showModal) {
-											this.props.changeColorDefault();
-										}
-									}}
-								/>
-							</div>
-							<div className='info-text-container'>
-								<span id='info-text' className='info-text'>
-									<i className='fas fa-angle-double-right'></i> But, how does it
-									work?
-								</span>
-							</div>
-							<ConfirmModal
-								darkMode={this.state.darkMode}
-								color={this.props.color}
-								showModal={this.state.showModal}
-								onModalShow={this.handleModalShow}
-								onModalClose={this.handleModalClose}
-								onModalConfirm={this.handleModalConfirm}
-							/>
-						</div>
-						<Footer />
-					</div>
-				) : (
-					<React.Fragment>
+				<div className={darkMode ? 'dark-mode' : ''}>
+					<ParticlesPage parent='HomePage' />
+					{onlineStatusLoaded && darkModeLoaded ? (
+						''
+					) : (
+						<LoadingSpinner darkMode={darkMode} />
+					)}
+					{onlineStatus ? (
 						<div className='content-container'>
-							<Header type='server-warning'></Header>
+							<UIOptions />
 							<Popover
-								innerClassName='popover-content'
+								innerClassName={
+									darkMode
+										? 'popover-content dark-mode-off-hue-dark'
+										: 'popover-content '
+								}
 								trigger='hover'
-								placement='bottom'
-								isOpen={this.state.popoverOpen}
+								isOpen={popoverOpen}
 								target='info-text'
 								toggle={this.togglePopover}
-								flip={true}
 							>
 								<PopoverBody>
-									<div className='popover-text-container'>
+									<div
+										className={
+											darkMode
+												? 'popover-text-container dark-mode-off-hue-dark'
+												: 'popover-text-container'
+										}
+									>
 										For <span className='bold'>dark mode</span>, select the{' '}
 										<i className='far fa-moon'></i> at the top right.
-										<hr></hr>
+										<hr className={darkMode ? 'white-hr' : ''}></hr>
 										For <span className='bold'>color blind accessibility</span>,
 										select the <i className='fas fa-low-vision'></i> at the top
 										right.
-										<hr></hr>
+										<hr className={darkMode ? 'white-hr' : ''}></hr>
 										<p>UTD Permits works on shared tiers:</p>
 										<div className='color-access-listings'>
 											<p>
@@ -241,21 +122,78 @@ class Home extends Component {
 								</PopoverBody>
 							</Popover>
 							<div className='inner-content-container'>
-								<h1 className={'grey title-greeting'}>UTD Parking</h1>
-								<p className={'grey'}>Live parking data at your fingertips</p>
-								<div className='color-option-container'>
-									<ColorOption color='grey' />
-									<ColorOption color='grey' />
-									<ColorOption color='grey' />
-									<ColorOption color='grey' />
+								<h1 className={this.props.color + ' title-greeting'}>
+									UTD Parking
+								</h1>
+								<div className='sub-title-greeting'>
+									<span>Live parking data at your fingertips</span>
 								</div>
-								<div className='bottom-text-container grey'>
-									<span id='info-text'>
+								<div className='color-option-container'>
+									<ColorOption
+										color='green'
+										colorBlindMode={this.state.colorBlindMode}
+										darkMode={darkMode}
+										onClick={() => {
+											this.handleModalShow(this.props.color);
+										}}
+										handleMouseOver={this.props.changeColor}
+										handleMouseLeave={() => {
+											if (!this.state.showModal) {
+												this.props.changeColorDefault();
+											}
+										}}
+									/>
+									<ColorOption
+										color='gold'
+										colorBlindMode={this.state.colorBlindMode}
+										darkMode={darkMode}
+										onClick={() => {
+											this.handleModalShow(this.props.color);
+										}}
+										handleMouseOver={this.props.changeColor}
+										handleMouseLeave={() => {
+											if (!this.state.showModal) {
+												this.props.changeColorDefault();
+											}
+										}}
+									/>
+									<ColorOption
+										color='orange'
+										colorBlindMode={this.state.colorBlindMode}
+										darkMode={darkMode}
+										onClick={() => {
+											this.handleModalShow(this.props.color);
+										}}
+										handleMouseOver={this.props.changeColor}
+										handleMouseLeave={() => {
+											if (!this.state.showModal) {
+												this.props.changeColorDefault();
+											}
+										}}
+									/>
+									<ColorOption
+										color='purple'
+										colorBlindMode={this.state.colorBlindMode}
+										darkMode={darkMode}
+										onClick={() => {
+											this.handleModalShow(this.props.color);
+										}}
+										handleMouseOver={this.props.changeColor}
+										handleMouseLeave={() => {
+											if (!this.state.showModal) {
+												this.props.changeColorDefault();
+											}
+										}}
+									/>
+								</div>
+								<div className='info-text-container'>
+									<span id='info-text' className='info-text'>
 										<i className='fas fa-angle-double-right'></i> But, how does
 										it work?
 									</span>
 								</div>
 								<ConfirmModal
+									darkMode={darkMode}
 									color={this.props.color}
 									showModal={this.state.showModal}
 									onModalShow={this.handleModalShow}
@@ -265,8 +203,89 @@ class Home extends Component {
 							</div>
 							<Footer />
 						</div>
-					</React.Fragment>
-				)}
+					) : (
+						<React.Fragment>
+							<div className='content-container'>
+								<Header type='server-warning'></Header>
+								<Popover
+									innerClassName={
+										darkMode
+											? 'popover-content dark-mode-off-hue-dark'
+											: 'popover-content '
+									}
+									trigger='hover'
+									isOpen={popoverOpen}
+									target='info-text'
+									toggle={this.togglePopover}
+								>
+									<PopoverBody>
+										<div
+											className={
+												darkMode
+													? 'popover-text-container dark-mode-off-hue-dark'
+													: 'popover-text-container'
+											}
+										>
+											For <span className='bold'>dark mode</span>, select the{' '}
+											<i className='far fa-moon'></i> at the top right.
+											<hr className={darkMode ? 'white-hr' : ''}></hr>
+											For{' '}
+											<span className='bold'>color blind accessibility</span>,
+											select the <i className='fas fa-low-vision'></i> at the
+											top right.
+											<hr className={darkMode ? 'white-hr' : ''}></hr>
+											<p>UTD Permits works on shared tiers:</p>
+											<div className='color-access-listings'>
+												<p>
+													<span className='green'>Green</span> accesses [
+													<span className='green'>Green</span>]
+												</p>
+												<p>
+													<span className='gold'>Gold</span> accesses [
+													<span className='green'>Green</span>
+													{' & '}
+													<span className='gold'>Gold</span>]
+												</p>
+												<p>
+													<span className='purple'>Purple</span> accesses
+													[<span className='green'>Green</span>,
+													<span className='gold'>Gold</span>,
+													<span className='orange'>Orange</span>
+													{' & '}
+													<span className='purple'>Purple</span>]
+												</p>
+											</div>
+										</div>
+									</PopoverBody>
+								</Popover>
+								<div className='inner-content-container'>
+									<h1 className={'grey title-greeting'}>UTD Parking</h1>
+									<p className={'grey'}>Live parking data at your fingertips</p>
+									<div className='color-option-container'>
+										<ColorOption color='grey' />
+										<ColorOption color='grey' />
+										<ColorOption color='grey' />
+										<ColorOption color='grey' />
+									</div>
+									<div className='info-text-container grey'>
+										<span id='info-text'>
+											<i className='fas fa-angle-double-right'></i> But, how
+											does it work?
+										</span>
+									</div>
+									<ConfirmModal
+										color={this.props.color}
+										showModal={this.state.showModal}
+										onModalShow={this.handleModalShow}
+										onModalClose={this.handleModalClose}
+										onModalConfirm={this.handleModalConfirm}
+									/>
+								</div>
+								<Footer />
+							</div>
+						</React.Fragment>
+					)}
+				</div>
 			</React.Fragment>
 		);
 	}
