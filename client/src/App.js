@@ -6,8 +6,6 @@ import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 
 import './App.css';
 
-const darkStyle = { color: 'white !important', backgroundColor: 'rgb(35, 39, 65)', opacity: '0.9' };
-
 class App extends Component {
 	state = {
 		color: '',
