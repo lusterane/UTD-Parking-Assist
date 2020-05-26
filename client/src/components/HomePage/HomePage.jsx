@@ -41,7 +41,6 @@ class Home extends Component {
 
 	// maintain popover
 	togglePopover = () => {
-		console.log('toggled');
 		this.setState((state, props) => ({ popoverOpen: !state.popoverOpen }));
 	};
 
