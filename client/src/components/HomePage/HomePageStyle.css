@@ -77,6 +77,10 @@
 	display: block;
 	height: 3rem;
 	margin-top: 10vh;
+
+	-webkit-user-select: none; /* Chrome all / Safari all */
+	-moz-user-select: none; /* Firefox all */
+	-ms-user-select: none; /* IE 10+ */
 }
 
 .info-text-container span {
