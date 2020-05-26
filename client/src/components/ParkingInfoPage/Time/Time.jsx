@@ -19,7 +19,7 @@ class Time extends Component {
 			if (calculatedTime <= 3 || calculatedTime === 0 || calculatedTime >= 60) {
 				return <Alert color='success'>Live update in {updateTimeText}</Alert>;
 			} else {
-				return <Alert color='warning'>Live update in {updateTimeText}</Alert>;
+				return <Alert color='primary'>Live update in {updateTimeText}</Alert>;
 			}
 		}
 	};

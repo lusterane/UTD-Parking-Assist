@@ -41,6 +41,7 @@ class Home extends Component {
 
 	// maintain popover
 	togglePopover = () => {
+		console.log('toggled');
 		this.setState((state, props) => ({ popoverOpen: !state.popoverOpen }));
 	};
 
@@ -81,6 +82,7 @@ class Home extends Component {
 								isOpen={popoverOpen}
 								target='info-text'
 								toggle={this.togglePopover}
+								hideArrow={true}
 							>
 								<PopoverBody>
 									<div
@@ -90,12 +92,23 @@ class Home extends Component {
 												: 'popover-text-container'
 										}
 									>
-										For <span className='bold'>dark mode</span>, select the{' '}
-										<i className='far fa-moon'></i> at the top right.
+										<div className='popover-exit'>
+											<i
+												className='fas fa-times pointer'
+												onClick={this.togglePopover}
+											></i>
+										</div>
+										<span>
+											For <span className='bold'>dark mode</span>, select the{' '}
+											<i className='far fa-moon'></i> at the top right.
+										</span>
 										<hr className={darkMode ? 'white-hr' : ''}></hr>
-										For <span className='bold'>color blind accessibility</span>,
-										select the <i className='fas fa-low-vision'></i> at the top
-										right.
+										<span>
+											For{' '}
+											<span className='bold'>color blind accessibility</span>,
+											select the <i className='fas fa-low-vision'></i> at the
+											top right.
+										</span>
 										<hr className={darkMode ? 'white-hr' : ''}></hr>
 										<p>UTD Permits works on shared tiers:</p>
 										<div className='color-access-listings'>
@@ -217,6 +230,7 @@ class Home extends Component {
 									isOpen={popoverOpen}
 									target='info-text'
 									toggle={this.togglePopover}
+									hideArrow={true}
 								>
 									<PopoverBody>
 										<div
@@ -226,13 +240,26 @@ class Home extends Component {
 													: 'popover-text-container'
 											}
 										>
-											For <span className='bold'>dark mode</span>, select the{' '}
-											<i className='far fa-moon'></i> at the top right.
+											<div className='popover-exit'>
+												<i
+													className='fas fa-times pointer'
+													onClick={this.togglePopover}
+												></i>
+											</div>
+											<span>
+												For <span className='bold'>dark mode</span>, select
+												the <i className='far fa-moon'></i> at the top
+												right.
+											</span>
 											<hr className={darkMode ? 'white-hr' : ''}></hr>
-											For{' '}
-											<span className='bold'>color blind accessibility</span>,
-											select the <i className='fas fa-low-vision'></i> at the
-											top right.
+											<span>
+												For{' '}
+												<span className='bold'>
+													color blind accessibility
+												</span>
+												, select the <i className='fas fa-low-vision'></i>{' '}
+												at the top right.
+											</span>
 											<hr className={darkMode ? 'white-hr' : ''}></hr>
 											<p>UTD Permits works on shared tiers:</p>
 											<div className='color-access-listings'>

@@ -92,7 +92,15 @@
 }
 
 .popover-text-container {
+	position: relative;
 	text-align: center;
+}
+
+.popover-exit {
+	position: absolute;
+	top: -1rem;
+	right: -1rem;
+	font-size: 1rem;
 }
 
 .popover {
