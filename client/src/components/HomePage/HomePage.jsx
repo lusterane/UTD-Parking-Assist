@@ -85,11 +85,11 @@ class Home extends Component {
 								>
 									For <span className='bold'>dark mode</span>, select the{' '}
 									<i className='far fa-moon'></i> at the top right.
-									<hr></hr>
+									<hr className={this.state.darkMode ? 'white-hr' : ''}></hr>
 									For <span className='bold'>color blind accessibility</span>,
 									select the <i className='fas fa-low-vision'></i> at the top
 									right.
-									<hr></hr>
+									<hr className={this.state.darkMode ? 'white-hr' : ''}></hr>
 									<p>UTD Permits works on shared tiers:</p>
 									<div className='color-access-listings'>
 										<p>

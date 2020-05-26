@@ -11,6 +11,11 @@
 	--white: #fff;
 }
 
+/* DOM */
+.white-hr {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* General */
 .green {
 	color: var(--green);
@@ -113,7 +118,7 @@
 
 .green-color-background {
 	color: var(--shaded-green);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .green-color-background:hover {
@@ -125,7 +130,7 @@
 
 .gold-color-background {
 	color: var(--shaded-gold);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .gold-color-background:hover {
@@ -137,7 +142,7 @@
 
 .orange-color-background {
 	color: var(--shaded-orange);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .orange-color-background:hover {
@@ -149,7 +154,7 @@
 
 .purple-color-background {
 	color: var(--shaded-purple);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .purple-color-background:hover {

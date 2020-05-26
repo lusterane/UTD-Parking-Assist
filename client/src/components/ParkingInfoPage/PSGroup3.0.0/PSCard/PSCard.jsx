@@ -186,7 +186,9 @@ class PSCard extends Component {
 								)}
 							</div>
 							<div className='ps-card-footer'>
-								<hr className='ps-card-hr'></hr>
+								<hr
+									className={darkMode ? 'ps-card-hr white-hr' : 'ps-card-hr'}
+								></hr>
 								<p>{structure}</p>
 							</div>
 						</Card.Body>
