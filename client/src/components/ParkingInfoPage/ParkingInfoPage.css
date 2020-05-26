@@ -43,9 +43,9 @@
 .parking-info-container {
 	position: relative;
 	font-size: 14px;
+	margin-bottom: 5vh;
 }
 
 #parking-info-footer-container {
 	position: relative;
-	top: 5vh;
 }

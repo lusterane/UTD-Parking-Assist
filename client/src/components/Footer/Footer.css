@@ -1,9 +1,7 @@
 /* mobile */
 @media only screen and (max-width: 599px) {
 	.footer-container {
-		bottom: -20vh !important;
-		padding: 0 0.75rem;
-		margin-bottom: 1vh;
+		bottom: 1vh !important;
 	}
 }
 
