@@ -32,10 +32,11 @@ def CloudFunction(request):
 
     # Normal
     json = cr.buildJSONFormat()  # array of json documents
-
+    print("Unformatted JSON empty: ", len(json[0]['permit_category']) == 0)
     # update percent change if necessary
-    if cr.psCount == 30:
+    if numberCurrentDocuments == 30:
         json = mongo_db.updatePercentChange(json)
+    print("Formatted JSON empty: ", len(json[0]['permit_category']) == 0)
     if numberCurrentDocuments < 30:
         mongo_db.placeIntoPSCollection(json)
         mongo_db.placeIntoRecentCollection(json)
