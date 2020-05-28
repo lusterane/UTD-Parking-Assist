@@ -14,9 +14,8 @@ from Parking_Structure import Permit
 
 
 class CrawlRoot:
-    def __init__(self, psCount):
+    def __init__(self):
         self.psList = []
-        self.psCount = psCount # number of current parking structure entries
 
     # finds parking options and available Spaces of parking structure
     # returns dictionary of available space and level+color
@@ -26,39 +25,32 @@ class CrawlRoot:
     def parse_parking(self, soup, parking_structure_name):
         # build parking structure object
         psBuilder = Parking_Structure(parking_structure_name)
+        while len(psBuilder.permit) == 0:
+            print("iterate", parking_structure_name)
+            for element in soup.findAll('table', {'id': parking_structure_name}):
+                body = element.find('tbody')
+                # finds each row for parking
+                for row in body.findAll('tr'):
+                    cells = row.findAll("td")
 
-        # real time of parking structure update
-        # rawTime = soup.find("tfoot").find('tr').find('td').find('p').text
-        # self.timeUpdated = rawTime[13:len(rawTime)-1]
+                    # parse info into variables
 
-        for element in soup.findAll('table', {'id': parking_structure_name}):
-            body = element.find('tbody')
-            # finds each row for parking
-            for row in body.findAll('tr'):
-                cells = row.findAll("td")
+                    # level
+                    level = cells[0].text
+                    # permit type
+                    # cells[1].text.rsplit(' ', 1)[0].lower()
+                    option = cells[1].text
+                    # available space
+                    spots = cells[2].text
 
-                # parse info into variables
+                    # build permit
+                    permit = Permit(option, level, spots)
 
-                # level
-                level = cells[0].text
-                # permit type
-                # cells[1].text.rsplit(' ', 1)[0].lower()
-                option = cells[1].text
-                # available space
-                spots = cells[2].text
-
-                # build permit
-                permit = Permit(option, level, spots)
-
-                # build parking structure object
-                psBuilder.permit.append(permit)
-
+                    # build parking structure object
+                    psBuilder.permit.append(permit)
+        # empty here
         # add built ps to list of parking structures
-        if len(psBuilder.permit) < 7 :
-            print("parse_parking() psBuilder.permit:", len(psBuilder.permit))
         self.psList.append(psBuilder)
-
-
 
     # print all parking structures in psList
     # for debugging
@@ -76,11 +68,14 @@ class CrawlRoot:
             currentJson = {"structure": ps.structure,
                            "utc_time_updated": datetime.datetime.utcnow(), "permit_category": []}
             permit_category_lis = []
-            for permit in ps.permit:
+            for permit in ps.permit: # bottle neck here??
                 permit_obj = {"id": ObjectId(), "color": permit.color, "level": permit.level, "spots": permit.spots}
                 permit_category_lis.append(permit_obj)
             currentJson["permit_category"] = permit_category_lis
             jsonArr.append(currentJson)
+        # print("buildJSONTestFormat PS1", len(jsonArr[0]['permit_category']) == 0)
+        # print("buildJSONTestFormat PS3", len(jsonArr[1]['permit_category']) == 0)
+        # print("buildJSONTestFormat PS4", len(jsonArr[2]['permit_category']) == 0)
         return jsonArr
 
     # create TEST json format for mongoDB

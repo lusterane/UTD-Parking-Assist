@@ -27,15 +27,18 @@ def CloudFunction(request):
     #     test(req, mongo_db)
     # else:
     numberCurrentDocuments = mongo_db.getEntriesCount()
-    cr = CrawlRoot(numberCurrentDocuments)
+    cr = CrawlRoot()
+
     cr.find_parking()
 
     # Normal
     json = cr.buildJSONFormat()  # array of json documents
-
+    # <--- problem is before this line
+    #print("Unformatted JSON empty: ", len(json[0]['permit_category']) == 0)
     # update percent change if necessary
-    if cr.psCount == 30:
+    if numberCurrentDocuments == 30:
         json = mongo_db.updatePercentChange(json)
+    #print("Formatted JSON empty: ", len(json[0]['permit_category']) == 0)
     if numberCurrentDocuments < 30:
         mongo_db.placeIntoPSCollection(json)
         mongo_db.placeIntoRecentCollection(json)
