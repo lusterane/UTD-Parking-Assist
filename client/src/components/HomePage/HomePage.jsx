@@ -17,13 +17,14 @@ class Home extends Component {
 	state = {
 		showModal: false,
 		colorBlindMode: false,
-		darkMode: false,
+		darkMode: true,
 		darkModeLoaded: false,
 		popoverOpen: false,
 	};
 
 	componentDidMount() {
 		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
+		console.log(localStorage.getItem('dark-mode-status'));
 		this.setState({ darkMode: darkMode, darkModeLoaded: true });
 	}
 
@@ -97,38 +98,37 @@ class Home extends Component {
 												onClick={this.togglePopover}
 											></i>
 										</div>
-										<span>
-											For <span className='bold'>dark mode</span>, select the{' '}
+
+										<h3>UI</h3>
+
+										<div>
+											<span className='bold'>Dark Mode</span>:{' '}
 											<i className='far fa-moon'></i> at the top right.
-										</span>
+										</div>
+										<div>
+											<span className='bold'>Color Blind Accessibility</span>:{' '}
+											<i className='fas fa-low-vision'></i> at the top right.
+										</div>
 										<hr className={darkMode ? 'white-hr' : ''}></hr>
-										<span>
-											For{' '}
-											<span className='bold'>color blind accessibility</span>,
-											select the <i className='fas fa-low-vision'></i> at the
-											top right.
-										</span>
-										<hr className={darkMode ? 'white-hr' : ''}></hr>
-										<p>UTD Permits works on shared tiers:</p>
-										<div className='color-access-listings'>
-											<p>
-												<span className='green'>Green</span> accesses [
-												<span className='green'>Green</span>]
-											</p>
-											<p>
-												<span className='gold'>Gold</span> accesses [
-												<span className='green'>Green</span>
-												{' & '}
-												<span className='gold'>Gold</span>]
-											</p>
-											<p>
-												<span className='purple'>Purple</span> accesses [
-												<span className='green'>Green</span>,
-												<span className='gold'>Gold</span>,
-												<span className='orange'>Orange</span>
-												{' & '}
-												<span className='purple'>Purple</span>]
-											</p>
+										<h3>What is this?</h3>
+										<div>
+											This site finds the <span className='bold'>best</span>{' '}
+											parking options based on the color permit you choose
+										</div>
+										<br></br>
+										<div>Achieves this by considering.</div>
+										<div>
+											<ul>
+												<li>
+													<span>Parking trends</span>
+												</li>
+												<li>
+													<span>Immediate spot availabilty</span>
+												</li>
+												<li>
+													<span>Permit tier</span>
+												</li>
+											</ul>
 										</div>
 									</div>
 								</PopoverBody>
@@ -200,8 +200,7 @@ class Home extends Component {
 								</div>
 								<div className='info-text-container'>
 									<span id='info-text' className='info-text'>
-										<i className='fas fa-angle-double-right'></i> But, how does
-										it work?
+										<i className='fas fa-angle-double-right'></i> What is this?
 									</span>
 								</div>
 								<ConfirmModal
@@ -263,18 +262,18 @@ class Home extends Component {
 											<p>UTD Permits works on shared tiers:</p>
 											<div className='color-access-listings'>
 												<p>
-													<span className='green'>Green</span> accesses [
-													<span className='green'>Green</span>]
+													<span className='green'>Green Permit</span>{' '}
+													parks [<span className='green'>Green</span>]
 												</p>
 												<p>
-													<span className='gold'>Gold</span> accesses [
+													<span className='gold'>Gold</span> parks [
 													<span className='green'>Green</span>
 													{' & '}
 													<span className='gold'>Gold</span>]
 												</p>
 												<p>
-													<span className='purple'>Purple</span> accesses
-													[<span className='green'>Green</span>,
+													<span className='purple'>Purple</span> parks
+													<span className='green'>Green</span>,
 													<span className='gold'>Gold</span>,
 													<span className='orange'>Orange</span>
 													{' & '}

@@ -83,10 +83,6 @@
 	-ms-user-select: none; /* IE 10+ */
 }
 
-.info-text-container span {
-	padding-right: 1vw;
-}
-
 .popover-content {
 	font-family: 'Roboto Mono', monospace;
 	font-weight: 300;
@@ -97,7 +93,6 @@
 
 .popover-text-container {
 	position: relative;
-	text-align: center;
 }
 
 .popover-exit {
@@ -109,4 +104,9 @@
 
 .popover {
 	max-width: 100%;
+}
+
+.popover-footer {
+	text-align: center;
+	padding-top: 10vh;
 }

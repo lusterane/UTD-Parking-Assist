@@ -114,19 +114,30 @@ class PSCard extends Component {
 	render() {
 		const { spots, structure, color, level, spot_change } = this.state.currentPermit;
 		const { darkMode } = this.props;
+		const { colorBlindMode } = this.state;
+
+		const bestChoiceCardBody = colorBlindMode
+			? 'best-choice-body-color-blind'
+			: 'best-choice-body';
 		return (
 			<React.Fragment>
 				<Card className={darkMode ? 'ps-card dark-mode-off-hue-dark' : 'ps-card'}>
 					{this.props.dataArr.length !== 0 ? (
-						<Card.Body>
+						<Card.Body className={this.state.index === 0 ? bestChoiceCardBody : ''}>
 							<UncontrolledTooltip placement='left' target='map'>
 								Google Maps
 							</UncontrolledTooltip>
-
+							<UncontrolledTooltip placement='bottom' target='best-choice'>
+								Computed by weighting{' '}
+								<span className='bold'>
+									parking trends, immediate spot availability,
+								</span>{' '}
+								and <span className='bold'> permit tier</span>
+							</UncontrolledTooltip>
 							<div className='text-muted ps-card-header'>
 								<div className='best-choice-container'>
 									{this.state.index === 0 ? (
-										<span className={darkMode ? 'gold' : ''}>
+										<span className={darkMode ? 'gold' : ''} id='best-choice'>
 											<i className='fas fa-star'></i> BEST CHOICE
 										</span>
 									) : (
@@ -163,7 +174,7 @@ class PSCard extends Component {
 
 									{this.state.colorBlindMode ? (
 										<p className={'sub-text border-' + color}>
-											{color.charAt(0).toUpperCase() + color.slice(1)}
+											{color.toUpperCase()}
 										</p>
 									) : (
 										<p className='sub-text'>
