@@ -7,16 +7,16 @@ class UIOptions extends Component {
 	state = {
 		colorBlindTooltipOpen: false,
 		colorBlindMode: false,
-		darkModeTooltipOpen: false,
-		darkMode: false,
+		lightModeTooltipOpen: false,
+		lightMode: false,
 	};
 
 	componentDidUpdate() {
-		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
+		const lightMode = localStorage.getItem('light-mode-status') === 'true';
 		const colorBlindStatus = localStorage.getItem('color-blind-status') === 'true';
 
-		if (this.state.darkMode !== darkMode) {
-			this.setState({ darkMode: darkMode });
+		if (this.state.lightMode !== lightMode) {
+			this.setState({ lightMode: lightMode });
 		}
 
 		if (this.state.colorBlindMode !== colorBlindStatus) {
@@ -24,10 +24,10 @@ class UIOptions extends Component {
 		}
 	}
 
-	toggleDarkMode = () => {
+	togglelightMode = () => {
 		this.setState(
-			{ darkMode: !this.state.darkMode },
-			localStorage.setItem('dark-mode-status', !this.state.darkMode)
+			{ lightMode: !this.state.lightMode },
+			localStorage.setItem('light-mode-status', !this.state.lightMode)
 		);
 	};
 
@@ -43,20 +43,20 @@ class UIOptions extends Component {
 		this.setState((state, props) => ({ colorBlindTooltipOpen: !state.colorBlindTooltipOpen }));
 	};
 
-	toggleDarkModeTooltip = () => {
-		this.setState((state, props) => ({ darkModeTooltipOpen: !state.darkModeTooltipOpen }));
+	togglelightModeTooltip = () => {
+		this.setState((state, props) => ({ lightModeTooltipOpen: !state.lightModeTooltipOpen }));
 	};
 	render() {
-		const { darkMode } = this.state;
+		const { lightMode } = this.state;
 		return (
 			<React.Fragment>
 				<div className='icons-container'>
 					<div
-						onClick={this.toggleDarkMode}
+						onClick={this.togglelightMode}
 						id='dark-mode'
-						className={darkMode ? 'dark-icon-border icon pointer' : 'icon pointer'}
+						className={lightMode ? 'icon pointer' : 'icon pointer dark-icon-border '}
 					>
-						{darkMode ? (
+						{lightMode ? (
 							<i className='fas fa-moon fa-lg'></i>
 						) : (
 							<i className='far fa-moon fa-lg'></i>
@@ -66,7 +66,7 @@ class UIOptions extends Component {
 					<div
 						onClick={this.toggleColorBlindMode}
 						id='color-blind'
-						className={darkMode ? 'dark-icon-border icon pointer' : 'icon pointer'}
+						className={lightMode ? 'icon pointer' : 'icon pointer dark-icon-border '}
 					>
 						{this.state.colorBlindMode ? (
 							<i className='fas fa-eye fa-lg'></i>
@@ -76,11 +76,11 @@ class UIOptions extends Component {
 					</div>
 					<Tooltip
 						placement='bottom'
-						isOpen={this.state.darkModeTooltipOpen}
+						isOpen={this.state.lightModeTooltipOpen}
 						target='dark-mode'
-						toggle={this.toggleDarkModeTooltip}
+						toggle={this.togglelightModeTooltip}
 					>
-						Dark Mode
+						Light Mode
 					</Tooltip>
 					<Tooltip
 						placement='bottom'

@@ -164,7 +164,7 @@ class PSGroup extends Component {
 
 	render() {
 		const { ps1, ps3, ps4 } = this.state.structures;
-		const { darkMode } = this.props;
+		const { lightMode } = this.props;
 
 		const ps1DataArr = this.getSortedDataArr(ps1.dataArr);
 		const ps3DataArr = this.getSortedDataArr(ps3.dataArr);
@@ -173,9 +173,9 @@ class PSGroup extends Component {
 		return (
 			<React.Fragment>
 				<div className='card-group-container'>
-					<PSCard darkMode={darkMode} dataArr={ps1DataArr} structure={'PS1'} />
-					<PSCard darkMode={darkMode} dataArr={ps3DataArr} structure={'PS3'} />
-					<PSCard darkMode={darkMode} dataArr={ps4DataArr} structure={'PS4'} />
+					<PSCard lightMode={lightMode} dataArr={ps1DataArr} structure={'PS1'} />
+					<PSCard lightMode={lightMode} dataArr={ps3DataArr} structure={'PS3'} />
+					<PSCard lightMode={lightMode} dataArr={ps4DataArr} structure={'PS4'} />
 				</div>
 			</React.Fragment>
 		);

@@ -47,15 +47,15 @@ class LoadingSpinner extends Component {
 
 	render() {
 		const { textList, index } = this.state;
-		const { darkMode } = this.props;
+		const { lightMode } = this.props;
 		return (
-			<div className={darkMode ? 'spinner-container dark-mode opaque' : 'spinner-container'}>
+			<div className={lightMode ? 'spinner-container' : 'spinner-container dark-mode opaque'}>
 				<div className='loading-center'>
 					<Spinner animation='border' role='status'></Spinner>
 					<div className='loading-text'>{textList[index]}</div>
 					<Toast
 						isOpen={this.state.showToast}
-						className={darkMode ? 'dark-mode-off-hue-dark opaque' : ''}
+						className={lightMode ? '' : 'dark-mode-off-hue-dark opaque'}
 					>
 						<ToastHeader
 							icon={<i className='fas fa-bed'></i>}

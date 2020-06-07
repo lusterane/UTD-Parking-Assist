@@ -164,7 +164,7 @@
 	font-weight: 500;
 }
 
-/* DARK MODE  */
+/* DARK MODE */
 .dark-mode {
 	color: white !important;
 	background-color: rgb(35, 39, 65) !important;
@@ -173,7 +173,7 @@
 
 .dark-mode-off-hue-dark {
 	color: white !important;
-	background-color: rgb(31, 35, 70) !important;
+	background-color: rgb(40, 45, 87) !important;
 	opacity: 0.9;
 }
 

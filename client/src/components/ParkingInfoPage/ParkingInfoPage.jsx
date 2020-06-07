@@ -30,7 +30,7 @@ class ParkingInfo extends Component {
 		},
 		timerLoaded: false,
 		psGroupLoaded: false,
-		darkMode: false,
+		lightMode: false,
 	};
 
 	componentDidMount() {
@@ -56,10 +56,10 @@ class ParkingInfo extends Component {
 			}
 		}
 
-		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
+		const lightMode = localStorage.getItem('light-mode-status') === 'true';
 
-		if (this.state.darkMode !== darkMode) {
-			this.setState({ darkMode: darkMode });
+		if (this.state.lightMode !== lightMode) {
+			this.setState({ lightMode: lightMode });
 		}
 	}
 
@@ -122,17 +122,17 @@ class ParkingInfo extends Component {
 	};
 
 	render() {
-		const { color, timeUpdated, darkMode } = this.state;
+		const { color, timeUpdated, lightMode } = this.state;
 		return (
 			<React.Fragment>
-				<div className={darkMode ? 'dark-mode' : ''}>
+				<div className={lightMode ? '' : 'dark-mode'}>
 					<UIOptions />
 					{this.props.onlineStatusLoaded &&
 					this.state.timerLoaded &&
 					this.state.psGroupLoaded ? (
 						''
 					) : (
-						<LoadingSpinner darkMode={darkMode} />
+						<LoadingSpinner lightMode={lightMode} />
 					)}
 					{this.props.onlineStatus ? (
 						<div>
@@ -145,9 +145,9 @@ class ParkingInfo extends Component {
 								>
 									<i
 										className={
-											darkMode
-												? 'fas fa-chevron-left back-route-button light-text'
-												: 'fas fa-chevron-left back-route-button'
+											lightMode
+												? 'fas fa-chevron-left back-route-button'
+												: 'fas fa-chevron-left back-route-button light-text'
 										}
 									></i>
 								</a>
@@ -161,12 +161,12 @@ class ParkingInfo extends Component {
 								</div>
 								<div
 									className={
-										darkMode ? 'parking-data dark-borders' : 'parking-data'
+										lightMode ? 'parking-data' : 'parking-data dark-borders'
 									}
 								>
 									<Time timeUpdated={timeUpdated} />
 									<ParkingStructureGroup
-										darkMode={darkMode}
+										lightMode={lightMode}
 										color={color}
 										setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
 										timeUpdated={timeUpdated}
@@ -177,7 +177,7 @@ class ParkingInfo extends Component {
 							<div
 								id='parking-info-footer-container'
 								className={
-									darkMode ? 'dark-mode footer-container' : 'footer-container'
+									lightMode ? 'footer-container' : 'dark-mode footer-container'
 								}
 							>
 								<Footer />

@@ -17,23 +17,23 @@ class Home extends Component {
 	state = {
 		showModal: false,
 		colorBlindMode: false,
-		darkMode: true,
-		darkModeLoaded: false,
+		lightMode: true,
+		lightModeLoaded: false,
 		popoverOpen: false,
 	};
 
 	componentDidMount() {
-		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
-		console.log(localStorage.getItem('dark-mode-status'));
-		this.setState({ darkMode: darkMode, darkModeLoaded: true });
+		const lightMode = localStorage.getItem('light-mode-status') === 'true';
+		console.log(localStorage.getItem('light-mode-status'));
+		this.setState({ lightMode: lightMode, lightModeLoaded: true });
 	}
 
 	componentDidUpdate() {
 		const data = localStorage.getItem('color-blind-status') === 'true';
-		const darkMode = localStorage.getItem('dark-mode-status') === 'true';
+		const lightMode = localStorage.getItem('light-mode-status') === 'true';
 
-		if (this.state.darkMode !== darkMode) {
-			this.setState({ darkMode: darkMode });
+		if (this.state.lightMode !== lightMode) {
+			this.setState({ lightMode: lightMode });
 		}
 		if (this.state.colorBlindMode !== data) {
 			this.setState({ colorBlindMode: data });
@@ -58,25 +58,25 @@ class Home extends Component {
 	};
 
 	render() {
-		const { darkMode, popoverOpen, darkModeLoaded } = this.state;
+		const { lightMode, popoverOpen, lightModeLoaded } = this.state;
 		const { onlineStatusLoaded, onlineStatus } = this.props;
 		return (
 			<React.Fragment>
-				<div className={darkMode ? 'dark-mode' : ''}>
+				<div className={lightMode ? '' : 'dark-mode'}>
 					<ParticlesPage parent='HomePage' />
-					{onlineStatusLoaded && darkModeLoaded ? (
+					{onlineStatusLoaded && lightModeLoaded ? (
 						''
 					) : (
-						<LoadingSpinner darkMode={darkMode} />
+						<LoadingSpinner lightMode={lightMode} />
 					)}
 					{onlineStatus ? (
 						<div className='content-container'>
 							<UIOptions />
 							<Popover
 								innerClassName={
-									darkMode
-										? 'popover-content dark-mode-off-hue-dark'
-										: 'popover-content '
+									lightMode
+										? 'popover-content'
+										: 'popover-content dark-mode-off-hue-dark'
 								}
 								trigger='hover'
 								isOpen={popoverOpen}
@@ -87,9 +87,9 @@ class Home extends Component {
 								<PopoverBody>
 									<div
 										className={
-											darkMode
-												? 'popover-text-container dark-mode-off-hue-dark'
-												: 'popover-text-container'
+											lightMode
+												? 'popover-text-container'
+												: 'popover-text-container dark-mode-off-hue-dark'
 										}
 									>
 										<div className='popover-exit'>
@@ -98,24 +98,13 @@ class Home extends Component {
 												onClick={this.togglePopover}
 											></i>
 										</div>
-
-										<h3>UI</h3>
-
-										<div>
-											<span className='bold'>Dark Mode</span>:{' '}
-											<i className='far fa-moon'></i> at the top right.
-										</div>
-										<div>
-											<span className='bold'>Color Blind Accessibility</span>:{' '}
-											<i className='fas fa-low-vision'></i> at the top right.
-										</div>
-										<hr className={darkMode ? 'white-hr' : ''}></hr>
-										<h3>What is this?</h3>
+										<h3>What?</h3>
 										<div>
 											This site finds the <span className='bold'>best</span>{' '}
-											parking options based on the color permit you choose
+											parking options based on your permit
 										</div>
 										<br></br>
+										<h3>How?</h3>
 										<div>Achieves this by considering.</div>
 										<div>
 											<ul>
@@ -129,6 +118,18 @@ class Home extends Component {
 													<span>Permit tier</span>
 												</li>
 											</ul>
+										</div>
+
+										<hr className={lightMode ? '' : 'white-hr'}></hr>
+										<h3>BTW...</h3>
+
+										<div>
+											<span className='bold'>Light Mode</span>:{' '}
+											<i className='far fa-moon'></i> at the top right.
+										</div>
+										<div>
+											<span className='bold'>Color Blind Accessibility</span>:{' '}
+											<i className='fas fa-low-vision'></i> at the top right.
 										</div>
 									</div>
 								</PopoverBody>
@@ -144,7 +145,7 @@ class Home extends Component {
 									<ColorOption
 										color='green'
 										colorBlindMode={this.state.colorBlindMode}
-										darkMode={darkMode}
+										lightMode={lightMode}
 										onClick={() => {
 											this.handleModalShow(this.props.color);
 										}}
@@ -158,7 +159,7 @@ class Home extends Component {
 									<ColorOption
 										color='gold'
 										colorBlindMode={this.state.colorBlindMode}
-										darkMode={darkMode}
+										lightMode={lightMode}
 										onClick={() => {
 											this.handleModalShow(this.props.color);
 										}}
@@ -172,7 +173,7 @@ class Home extends Component {
 									<ColorOption
 										color='orange'
 										colorBlindMode={this.state.colorBlindMode}
-										darkMode={darkMode}
+										lightMode={lightMode}
 										onClick={() => {
 											this.handleModalShow(this.props.color);
 										}}
@@ -186,7 +187,7 @@ class Home extends Component {
 									<ColorOption
 										color='purple'
 										colorBlindMode={this.state.colorBlindMode}
-										darkMode={darkMode}
+										lightMode={lightMode}
 										onClick={() => {
 											this.handleModalShow(this.props.color);
 										}}
@@ -204,7 +205,7 @@ class Home extends Component {
 									</span>
 								</div>
 								<ConfirmModal
-									darkMode={darkMode}
+									lightMode={lightMode}
 									color={this.props.color}
 									showModal={this.state.showModal}
 									onModalShow={this.handleModalShow}
@@ -220,9 +221,9 @@ class Home extends Component {
 								<Header type='server-warning'></Header>
 								<Popover
 									innerClassName={
-										darkMode
-											? 'popover-content dark-mode-off-hue-dark'
-											: 'popover-content '
+										lightMode
+											? 'popover-content'
+											: 'popover-content dark-mode-off-hue-dark'
 									}
 									trigger='hover'
 									isOpen={popoverOpen}
@@ -233,9 +234,9 @@ class Home extends Component {
 									<PopoverBody>
 										<div
 											className={
-												darkMode
-													? 'popover-text-container dark-mode-off-hue-dark'
-													: 'popover-text-container'
+												lightMode
+													? 'popover-text-container'
+													: 'popover-text-container dark-mode-off-hue-dark'
 											}
 										>
 											<div className='popover-exit'>
@@ -249,7 +250,7 @@ class Home extends Component {
 												the <i className='far fa-moon'></i> at the top
 												right.
 											</span>
-											<hr className={darkMode ? 'white-hr' : ''}></hr>
+											<hr className={lightMode ? 'white-hr' : ''}></hr>
 											<span>
 												For{' '}
 												<span className='bold'>
@@ -258,7 +259,7 @@ class Home extends Component {
 												, select the <i className='fas fa-low-vision'></i>{' '}
 												at the top right.
 											</span>
-											<hr className={darkMode ? 'white-hr' : ''}></hr>
+											<hr className={lightMode ? 'white-hr' : ''}></hr>
 											<p>UTD Permits works on shared tiers:</p>
 											<div className='color-access-listings'>
 												<p>

@@ -11,7 +11,7 @@ class ColorOption extends Component {
 		const {
 			color,
 			colorBlindMode,
-			darkMode,
+			lightMode,
 			onClick,
 			handleMouseOver,
 			handleMouseLeave,
@@ -52,7 +52,7 @@ class ColorOption extends Component {
 							handleMouseLeave();
 						}}
 						className={`${color}-color-background color-blind-option pointer border-${color} ${
-							darkMode ? 'light-text' : ''
+							lightMode ? '' : 'light-text'
 						}`}
 					>
 						{color.charAt(0).toUpperCase() + color.slice(1)} Permit

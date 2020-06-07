@@ -6,20 +6,20 @@ import './ConfirmModal.css';
 import '../../../styles/shared/Colors.css';
 
 function ConfirmModal(props) {
-	const { darkMode, showModal, onModalClose, onModalConfirm, color } = props;
+	const { lightMode, showModal, onModalClose, onModalConfirm, color } = props;
 	return (
 		<div>
 			<Modal centered={true} show={showModal} onHide={onModalClose} animation={true}>
 				<Modal.Header
-					className={darkMode ? 'dark-mode dark-mode-close' : ''}
+					className={lightMode ? '' : 'dark-mode dark-mode-close'}
 					closeButton
 				></Modal.Header>
-				<Modal.Body className={darkMode ? 'dark-mode' : ''}>
+				<Modal.Body className={lightMode ? '' : 'dark-mode'}>
 					<div className='modal-body-text'>
 						You have {color === 'orange' ? 'an' : 'a'} {color} permit?
 					</div>
 				</Modal.Body>
-				<Modal.Footer className={darkMode ? 'dark-mode' : ''}>
+				<Modal.Footer className={lightMode ? '' : 'dark-mode'}>
 					<Link to={process.env.PUBLIC_URL + '/parkingInfoPage'}>
 						<Button
 							variant='primary'

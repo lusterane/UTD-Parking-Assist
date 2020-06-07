@@ -113,7 +113,7 @@ class PSCard extends Component {
 
 	render() {
 		const { spots, structure, color, level, spot_change } = this.state.currentPermit;
-		const { darkMode } = this.props;
+		const { lightMode } = this.props;
 		const { colorBlindMode } = this.state;
 
 		const bestChoiceCardBody = colorBlindMode
@@ -121,7 +121,7 @@ class PSCard extends Component {
 			: 'best-choice-body';
 		return (
 			<React.Fragment>
-				<Card className={darkMode ? 'ps-card dark-mode-off-hue-dark' : 'ps-card'}>
+				<Card className={lightMode ? 'ps-card' : 'ps-card dark-mode-off-hue-dark'}>
 					{this.props.dataArr.length !== 0 ? (
 						<Card.Body className={this.state.index === 0 ? bestChoiceCardBody : ''}>
 							<UncontrolledTooltip placement='left' target='map'>
@@ -137,7 +137,7 @@ class PSCard extends Component {
 							<div className='text-muted ps-card-header'>
 								<div className='best-choice-container'>
 									{this.state.index === 0 ? (
-										<span className={darkMode ? 'gold' : ''} id='best-choice'>
+										<span className={lightMode ? '' : 'gold'} id='best-choice'>
 											<i className='fas fa-star'></i> BEST CHOICE
 										</span>
 									) : (
@@ -198,7 +198,7 @@ class PSCard extends Component {
 							</div>
 							<div className='ps-card-footer'>
 								<hr
-									className={darkMode ? 'ps-card-hr white-hr' : 'ps-card-hr'}
+									className={lightMode ? 'ps-card-hr' : 'ps-card-hr white-hr'}
 								></hr>
 								<p>{structure}</p>
 							</div>

@@ -84,11 +84,12 @@
 }
 
 .popover-content {
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Roboto Mono', monospace !important;
 	font-weight: 300;
 	padding: 1.5rem;
 	width: 100%;
-	line-height: 1rem;
+
+	font-size: 0.9rem !important;
 }
 
 .popover-text-container {
