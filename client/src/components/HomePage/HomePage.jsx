@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Popover, PopoverBody } from 'reactstrap';
+import { Popover, PopoverBody, Alert } from 'reactstrap';
 
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
@@ -63,6 +63,7 @@ class Home extends Component {
 		return (
 			<React.Fragment>
 				<div className={lightMode ? '' : 'dark-mode'}>
+					
 					<ParticlesPage parent='HomePage' />
 					{onlineStatusLoaded && lightModeLoaded ? (
 						''
@@ -71,6 +72,12 @@ class Home extends Component {
 					)}
 					{onlineStatus ? (
 						<div className='content-container'>
+							<Alert color="warning">
+        <b>NOTICE:</b> City wide power outages are affecting my parking data :( 
+			<br></br>
+			<br></br>
+			Likely everything will be back to normal on 2/22
+      </Alert>
 							<UIOptions />
 							<Popover
 								innerClassName={
