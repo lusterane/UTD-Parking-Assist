@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Popover, PopoverBody, Alert } from 'reactstrap';
+import { Popover, PopoverBody } from 'reactstrap';
 
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
