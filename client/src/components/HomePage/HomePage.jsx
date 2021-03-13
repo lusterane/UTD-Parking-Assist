@@ -63,21 +63,14 @@ class Home extends Component {
 		return (
 			<React.Fragment>
 				<div className={lightMode ? '' : 'dark-mode'}>
-					
-					<ParticlesPage parent='HomePage' />
+					<ParticlesPage parent="HomePage" />
 					{onlineStatusLoaded && lightModeLoaded ? (
 						''
 					) : (
 						<LoadingSpinner lightMode={lightMode} />
 					)}
 					{onlineStatus ? (
-						<div className='content-container'>
-							<Alert color="warning">
-        <b>NOTICE:</b> City wide power outages are affecting my parking data :( 
-			<br></br>
-			<br></br>
-			Likely everything will be back to normal on 2/22
-      </Alert>
+						<div className="content-container">
 							<UIOptions />
 							<Popover
 								innerClassName={
@@ -85,9 +78,9 @@ class Home extends Component {
 										? 'popover-content'
 										: 'popover-content dark-mode-off-hue-dark'
 								}
-								trigger='hover'
+								trigger="hover"
 								isOpen={popoverOpen}
-								target='info-text'
+								target="info-text"
 								toggle={this.togglePopover}
 								hideArrow={true}
 							>
@@ -99,15 +92,15 @@ class Home extends Component {
 												: 'popover-text-container dark-mode-off-hue-dark'
 										}
 									>
-										<div className='popover-exit'>
+										<div className="popover-exit">
 											<i
-												className='fas fa-times pointer'
+												className="fas fa-times pointer"
 												onClick={this.togglePopover}
 											></i>
 										</div>
 										<h3>What?</h3>
 										<div>
-											This site finds the <span className='bold'>best</span>{' '}
+											This site finds the <span className="bold">best</span>{' '}
 											parking options based on your permit
 										</div>
 										<br></br>
@@ -131,26 +124,26 @@ class Home extends Component {
 										<h3>BTW...</h3>
 
 										<div>
-											<span className='bold'>Light Mode</span>:{' '}
-											<i className='far fa-moon'></i> at the top right.
+											<span className="bold">Light Mode</span>:{' '}
+											<i className="far fa-moon"></i> at the top right.
 										</div>
 										<div>
-											<span className='bold'>Color Blind Accessibility</span>:{' '}
-											<i className='fas fa-low-vision'></i> at the top right.
+											<span className="bold">Color Blind Accessibility</span>:{' '}
+											<i className="fas fa-low-vision"></i> at the top right.
 										</div>
 									</div>
 								</PopoverBody>
 							</Popover>
-							<div className='inner-content-container'>
+							<div className="inner-content-container">
 								<h1 className={this.props.color + ' title-greeting'}>
 									UTD Parking
 								</h1>
-								<div className='sub-title-greeting'>
+								<div className="sub-title-greeting">
 									<span>Live parking data at your fingertips</span>
 								</div>
-								<div className='color-option-container'>
+								<div className="color-option-container">
 									<ColorOption
-										color='green'
+										color="green"
 										colorBlindMode={this.state.colorBlindMode}
 										lightMode={lightMode}
 										onClick={() => {
@@ -164,7 +157,7 @@ class Home extends Component {
 										}}
 									/>
 									<ColorOption
-										color='gold'
+										color="gold"
 										colorBlindMode={this.state.colorBlindMode}
 										lightMode={lightMode}
 										onClick={() => {
@@ -178,7 +171,7 @@ class Home extends Component {
 										}}
 									/>
 									<ColorOption
-										color='orange'
+										color="orange"
 										colorBlindMode={this.state.colorBlindMode}
 										lightMode={lightMode}
 										onClick={() => {
@@ -192,7 +185,7 @@ class Home extends Component {
 										}}
 									/>
 									<ColorOption
-										color='purple'
+										color="purple"
 										colorBlindMode={this.state.colorBlindMode}
 										lightMode={lightMode}
 										onClick={() => {
@@ -206,9 +199,9 @@ class Home extends Component {
 										}}
 									/>
 								</div>
-								<div className='info-text-container'>
-									<span id='info-text' className='info-text'>
-										<i className='fas fa-angle-double-right'></i> What is this?
+								<div className="info-text-container">
+									<span id="info-text" className="info-text">
+										<i className="fas fa-angle-double-right"></i> What is this?
 									</span>
 								</div>
 								<ConfirmModal
@@ -224,17 +217,17 @@ class Home extends Component {
 						</div>
 					) : (
 						<React.Fragment>
-							<div className='content-container'>
-								<Header type='server-warning'></Header>
+							<div className="content-container">
+								<Header type="server-warning"></Header>
 								<Popover
 									innerClassName={
 										lightMode
 											? 'popover-content'
 											: 'popover-content dark-mode-off-hue-dark'
 									}
-									trigger='hover'
+									trigger="hover"
 									isOpen={popoverOpen}
-									target='info-text'
+									target="info-text"
 									toggle={this.togglePopover}
 									hideArrow={true}
 								>
@@ -246,63 +239,63 @@ class Home extends Component {
 													: 'popover-text-container dark-mode-off-hue-dark'
 											}
 										>
-											<div className='popover-exit'>
+											<div className="popover-exit">
 												<i
-													className='fas fa-times pointer'
+													className="fas fa-times pointer"
 													onClick={this.togglePopover}
 												></i>
 											</div>
 											<span>
-												For <span className='bold'>dark mode</span>, select
-												the <i className='far fa-moon'></i> at the top
+												For <span className="bold">dark mode</span>, select
+												the <i className="far fa-moon"></i> at the top
 												right.
 											</span>
 											<hr className={lightMode ? 'white-hr' : ''}></hr>
 											<span>
 												For{' '}
-												<span className='bold'>
+												<span className="bold">
 													color blind accessibility
 												</span>
-												, select the <i className='fas fa-low-vision'></i>{' '}
+												, select the <i className="fas fa-low-vision"></i>{' '}
 												at the top right.
 											</span>
 											<hr className={lightMode ? 'white-hr' : ''}></hr>
 											<p>UTD Permits works on shared tiers:</p>
-											<div className='color-access-listings'>
+											<div className="color-access-listings">
 												<p>
-													<span className='green'>Green Permit</span>{' '}
-													parks [<span className='green'>Green</span>]
+													<span className="green">Green Permit</span>{' '}
+													parks [<span className="green">Green</span>]
 												</p>
 												<p>
-													<span className='gold'>Gold</span> parks [
-													<span className='green'>Green</span>
+													<span className="gold">Gold</span> parks [
+													<span className="green">Green</span>
 													{' & '}
-													<span className='gold'>Gold</span>]
+													<span className="gold">Gold</span>]
 												</p>
 												<p>
-													<span className='purple'>Purple</span> parks
-													<span className='green'>Green</span>,
-													<span className='gold'>Gold</span>,
-													<span className='orange'>Orange</span>
+													<span className="purple">Purple</span> parks
+													<span className="green">Green</span>,
+													<span className="gold">Gold</span>,
+													<span className="orange">Orange</span>
 													{' & '}
-													<span className='purple'>Purple</span>]
+													<span className="purple">Purple</span>]
 												</p>
 											</div>
 										</div>
 									</PopoverBody>
 								</Popover>
-								<div className='inner-content-container'>
+								<div className="inner-content-container">
 									<h1 className={'grey title-greeting'}>UTD Parking</h1>
 									<p className={'grey'}>Live parking data at your fingertips</p>
-									<div className='color-option-container'>
-										<ColorOption color='grey' />
-										<ColorOption color='grey' />
-										<ColorOption color='grey' />
-										<ColorOption color='grey' />
+									<div className="color-option-container">
+										<ColorOption color="grey" />
+										<ColorOption color="grey" />
+										<ColorOption color="grey" />
+										<ColorOption color="grey" />
 									</div>
-									<div className='info-text-container grey'>
-										<span id='info-text'>
-											<i className='fas fa-angle-double-right'></i> But, how
+									<div className="info-text-container grey">
+										<span id="info-text">
+											<i className="fas fa-angle-double-right"></i> But, how
 											does it work?
 										</span>
 									</div>
