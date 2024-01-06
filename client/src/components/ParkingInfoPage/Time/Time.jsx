@@ -9,29 +9,29 @@ class Time extends Component {
 		timerIsLoaded: false,
 	};
 	getTimeText = (elapsedTime) => {
-		const maxTime = 63;
-		if (elapsedTime > maxTime) {
-			return <Alert color='danger'>Something went wrong. Try refreshing the page</Alert>;
+		console.log('elapsed time', elapsedTime);
+		if (elapsedTime > 70) {
+			return (
+				<Alert color="danger">"Oops! Something went wrong, please refresh the page"</Alert>
+			);
 		} else {
-			const calculatedTime = maxTime - elapsedTime;
-			const updateTimeText = this.standardizeSecondsToMinutes(calculatedTime);
+			const calculatedTime = Math.min(60 - elapsedTime, 57);
 
-			if (calculatedTime <= 3 || calculatedTime === 0 || calculatedTime >= 60) {
-				return <Alert color='success'>Live update in {updateTimeText}</Alert>;
+			const updateTimeText = this.standardizeSeconds(calculatedTime);
+			if (calculatedTime <= 3 || calculatedTime === 0) {
+				return <Alert color="success">Live update in {updateTimeText}</Alert>;
 			} else {
-				return <Alert color='primary'>Live update in {updateTimeText}</Alert>;
+				return <Alert color="primary">Live update in {updateTimeText}</Alert>;
 			}
 		}
 	};
 
-	standardizeSecondsToMinutes = (calculatedTime) => {
-		if (calculatedTime < 60) {
-			return calculatedTime + ' seconds';
-		} else if (calculatedTime === 0 || calculatedTime >= 60) {
-			// better ux. change if update is many seconds over minute
+	standardizeSeconds = (calculatedTime) => {
+		if (calculatedTime < 1) {
 			return 'less than 1 second';
 		}
-		return '-';
+
+		return calculatedTime + (calculatedTime === 1 ? ' second' : ' seconds');
 	};
 
 	render() {
@@ -41,8 +41,8 @@ class Time extends Component {
 
 		return (
 			<React.Fragment>
-				<div className='time-text-container' id='timer'>
-					<div className='time-text'>{ps1TimeText}</div>
+				<div className="time-text-container" id="timer">
+					<div className="time-text">{ps1TimeText}</div>
 				</div>
 			</React.Fragment>
 		);

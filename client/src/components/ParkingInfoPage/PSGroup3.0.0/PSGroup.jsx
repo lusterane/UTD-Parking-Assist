@@ -24,11 +24,11 @@ class PSGroup extends Component {
 	}
 
 	componentDidUpdate() {
-		const range = [62, 63];
-		for (let i = range[0]; i <= range[1]; i++) {
-			if (this.props.timeUpdated.ps1.elapsedTime === i) {
-				this.handleHTTPGetPS();
-			}
+		const { elapsedTime } = this.props.timeUpdated.ps1;
+		const isTimeInRange = elapsedTime >= 60 && elapsedTime <= 66;
+
+		if (isTimeInRange) {
+			this.handleHTTPGetPS();
 		}
 	}
 
