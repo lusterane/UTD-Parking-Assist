@@ -4,7 +4,6 @@ import axios from 'axios';
 //import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';
 import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
-import OfflinePage from './OfflinePage/OfflinePage';
 import UIOptions from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Footer from '../Footer/Footer';
@@ -61,16 +60,14 @@ class ParkingInfo extends Component {
 
 	// updates elapsed time in state
 	updateTimeUpdatedInState = () => {
-		if (this.props.onlineStatus) {
-			let timeUpdated = { ...this.state.timeUpdated };
-			Object.entries(this.state.timeUpdated).forEach((value) => {
-				const structure = value[0];
-				const time = new Date(value[1].utc_updated_time);
-				timeUpdated[structure].elapsedTime = this.computeElapsedTime(time);
-			});
+		let timeUpdated = { ...this.state.timeUpdated };
+		Object.entries(this.state.timeUpdated).forEach((value) => {
+			const structure = value[0];
+			const time = new Date(value[1].utc_updated_time);
+			timeUpdated[structure].elapsedTime = this.computeElapsedTime(time);
+		});
 
-			this.setState({ timeUpdated: timeUpdated, timerLoaded: true });
-		}
+		this.setState({ timeUpdated: timeUpdated, timerLoaded: true });
 	};
 
 	computeElapsedTime = (time) => {
@@ -123,14 +120,12 @@ class ParkingInfo extends Component {
 			<React.Fragment>
 				<div className={lightMode ? '' : 'dark-mode'}>
 					<UIOptions />
-					{this.props.onlineStatusLoaded &&
-					this.state.timerLoaded &&
-					this.state.psGroupLoaded ? (
+					{this.state.timerLoaded && this.state.psGroupLoaded ? (
 						''
 					) : (
 						<LoadingSpinner lightMode={lightMode} />
 					)}
-					{this.props.onlineStatus ? (
+					{
 						<div>
 							<div className="parking-info-container">
 								<a
@@ -177,9 +172,7 @@ class ParkingInfo extends Component {
 								<Footer />
 							</div>
 						</div>
-					) : (
-						<OfflinePage />
-					)}
+					}
 				</div>
 			</React.Fragment>
 		);
