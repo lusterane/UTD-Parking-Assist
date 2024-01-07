@@ -7,13 +7,12 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import UIOptions from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
-import ParticlesPage from '../ParticlesPage/ParticlesPage';
+
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
 
 class Home extends Component {
-	//home
 	state = {
 		showModal: false,
 		colorBlindMode: false,
@@ -24,7 +23,6 @@ class Home extends Component {
 
 	componentDidMount() {
 		const lightMode = localStorage.getItem('light-mode-status') === 'true';
-		console.log(localStorage.getItem('light-mode-status'));
 		this.setState({ lightMode: lightMode, lightModeLoaded: true });
 	}
 
@@ -62,8 +60,7 @@ class Home extends Component {
 		const { onlineStatusLoaded, onlineStatus } = this.props;
 		return (
 			<React.Fragment>
-				<div className={lightMode ? '' : 'dark-mode'}>
-					<ParticlesPage parent="HomePage" />
+				<div id="center-text" className={lightMode ? '' : 'dark-mode'}>
 					{onlineStatusLoaded && lightModeLoaded ? (
 						''
 					) : (
@@ -98,28 +95,12 @@ class Home extends Component {
 												onClick={this.togglePopover}
 											></i>
 										</div>
-										<h3>What?</h3>
+										<h3>What is this?</h3>
 										<div>
 											This site finds the <span className="bold">best</span>{' '}
-											parking options based on your permit
+											parking choices tailored to your permit.
 										</div>
 										<br></br>
-										<h3>How?</h3>
-										<div>Achieves this by considering.</div>
-										<div>
-											<ul>
-												<li>
-													<span>Parking trends</span>
-												</li>
-												<li>
-													<span>Immediate spot availabilty</span>
-												</li>
-												<li>
-													<span>Permit tier</span>
-												</li>
-											</ul>
-										</div>
-
 										<hr className={lightMode ? '' : 'white-hr'}></hr>
 										<h3>BTW...</h3>
 
@@ -135,11 +116,13 @@ class Home extends Component {
 								</PopoverBody>
 							</Popover>
 							<div className="inner-content-container">
-								<h1 className={this.props.color + ' title-greeting'}>
-									UTD Parking
-								</h1>
-								<div className="sub-title-greeting">
-									<span>Live parking data at your fingertips</span>
+								<div className="text-content">
+									<h1 className={this.props.color + ' title-greeting'}>
+										UTD Parking
+									</h1>
+									<div className="sub-title-greeting">
+										<span>Park Smarter, Not Harder.</span>
+									</div>
 								</div>
 								<div className="color-option-container">
 									<ColorOption

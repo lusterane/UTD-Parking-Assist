@@ -99,7 +99,7 @@ class CrawlRoot:
     def find_parking(self):
         http = urllib3.PoolManager(
             cert_reqs='CERT_REQUIRED', ca_certs=certifi.where())
-        url_php = "https://www.utdallas.edu/services/transit/garages/_code.php"
+        url_php = "https://services.utdallas.edu/transit/garages/_code.php"
         response = http.request('GET', url_php)
         soup = BeautifulSoup(response.data, features="html.parser")
         # modular for more parking structures

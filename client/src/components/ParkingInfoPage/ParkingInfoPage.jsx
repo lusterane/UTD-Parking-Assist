@@ -8,7 +8,6 @@ import OfflinePage from './OfflinePage/OfflinePage';
 import UIOptions from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Footer from '../Footer/Footer';
-import ParticlesPage from '../ParticlesPage/ParticlesPage';
 
 import './ParkingInfoPage.css';
 
@@ -52,7 +51,6 @@ class ParkingInfo extends Component {
 			this.handleResetElapsedTime();
 			this.handleHTTPGetUpdateTime();
 		}
-
 
 		const lightMode = localStorage.getItem('light-mode-status') === 'true';
 
@@ -134,12 +132,10 @@ class ParkingInfo extends Component {
 					)}
 					{this.props.onlineStatus ? (
 						<div>
-							<div className='parking-info-container'>
-								<ParticlesPage parent='ParkingInfoPage' />
-
+							<div className="parking-info-container">
 								<a
 									href={process.env.PUBLIC_URL + '/'}
-									className='remove-decoration'
+									className="remove-decoration"
 								>
 									<i
 										className={
@@ -149,11 +145,11 @@ class ParkingInfo extends Component {
 										}
 									></i>
 								</a>
-								<div className='parking-info-header'>
-									<div className='centered-header'>
+								<div className="parking-info-header">
+									<div className="centered-header">
 										<h1 className={color}>UTD Parking</h1>
-										<div className='sub-title-greeting'>
-											<span>Live parking data at your fingertips</span>
+										<div className="sub-title-greeting">
+											<span>Park Smarter, Not Harder.</span>
 										</div>
 									</div>
 								</div>
@@ -173,7 +169,7 @@ class ParkingInfo extends Component {
 								</div>
 							</div>
 							<div
-								id='parking-info-footer-container'
+								id="parking-info-footer-container"
 								className={
 									lightMode ? 'footer-container' : 'dark-mode footer-container'
 								}

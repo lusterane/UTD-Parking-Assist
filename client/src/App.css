@@ -1,7 +1,6 @@
 body {
 	font-family: 'Roboto Mono', monospace;
 	font-weight: 300;
-	/* background-color: rgb(252, 252, 252); */
 }
 
 .root-container {
@@ -14,10 +13,6 @@ h1 {
 
 .pointer {
 	cursor: pointer;
-
-	-webkit-user-select: none; /* Chrome all / Safari all */
-	-moz-user-select: none; /* Firefox all */
-	-ms-user-select: none; /* IE 10+ */
 }
 
 .bold {

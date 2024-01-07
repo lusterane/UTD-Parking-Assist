@@ -6,16 +6,18 @@
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
 		"@testing-library/user-event": "^7.2.1",
-		"axios": "^0.19.2",
+		"@tsparticles/engine": "^3.0.3",
+		"@tsparticles/react": "^3.0.0",
+		"axios": "^1.6.5",
 		"bootstrap": "^4.4.1",
-		"react": "^16.13.1",
+		"react": "^18.2.0",
 		"react-bootstrap": "^1.0.1",
-		"react-dom": "^16.13.1",
-		"react-particles-js": "^3.2.1",
+		"react-dom": "^18.2.0",
 		"react-router-dom": "^5.1.2",
-		"react-scripts": "3.4.1",
+		"react-scripts": "^5.0.1",
 		"reactstrap": "^8.4.1",
-		"tsparticles": "^1.14.3"
+		"tslib": "^2.6.2",
+		"tsparticles": "^3.0.3"
 	},
 	"homepage": "http://lusterane.github.io/UTD-Parking-Assist",
 	"scripts": {
@@ -43,6 +45,7 @@
 		]
 	},
 	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"dotenv": "^8.2.0",
 		"gh-pages": "^2.2.0"
 	}

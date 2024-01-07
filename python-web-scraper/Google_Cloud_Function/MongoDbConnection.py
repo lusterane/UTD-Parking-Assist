@@ -151,4 +151,3 @@ class MongoDbConnection:
             _id = document['_id']
             old_permit_list[structure] = {'_id': _id, 'permit_category': permit_category}
         return old_permit_list
-

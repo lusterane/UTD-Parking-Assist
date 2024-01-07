@@ -75,15 +75,16 @@ class App extends Component {
 	// returns random  message
 	getNightMessage = () => {
 		return <i className='fas fa-moon'></i>;
+		return <i className="fas fa-moon"></i>;
 	};
 	getMorningMessage = () => {
-		return <i className='fas fa-sun'></i>;
+		return <i className="fas fa-sun"></i>;
 	};
 	getAfternoonMessage = () => {
-		return <i className='fas fa-sun'></i>;
+		return <i className="fas fa-sun"></i>;
 	};
 	getEveningMessage = () => {
-		return <i className='fas fa-moon'></i>;
+		return <i className="fas fa-moon"></i>;
 	};
 
 	render() {
