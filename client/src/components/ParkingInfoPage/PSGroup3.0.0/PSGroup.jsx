@@ -24,10 +24,8 @@ class PSGroup extends Component {
 	}
 
 	componentDidUpdate() {
-		const { elapsedTime } = this.props.timeUpdated.ps1;
-		const isTimeInRange = elapsedTime >= 60 && elapsedTime <= 66;
-
-		if (isTimeInRange) {
+		if (this.props.timeUpdated.ps1.elapsedTime === 62) {
+			this.setState({ isFetching: true });
 			this.handleHTTPGetPS();
 		}
 	}
@@ -172,7 +170,7 @@ class PSGroup extends Component {
 
 		return (
 			<React.Fragment>
-				<div className='card-group-container'>
+				<div className="card-group-container">
 					<PSCard lightMode={lightMode} dataArr={ps1DataArr} structure={'PS1'} />
 					<PSCard lightMode={lightMode} dataArr={ps3DataArr} structure={'PS3'} />
 					<PSCard lightMode={lightMode} dataArr={ps4DataArr} structure={'PS4'} />

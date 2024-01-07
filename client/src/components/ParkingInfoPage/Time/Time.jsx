@@ -9,8 +9,7 @@ class Time extends Component {
 		timerIsLoaded: false,
 	};
 	getTimeText = (elapsedTime) => {
-		console.log('elapsed time', elapsedTime);
-		if (elapsedTime > 70) {
+		if (elapsedTime > 120) {
 			return (
 				<Alert color="danger">"Oops! Something went wrong, please refresh the page"</Alert>
 			);

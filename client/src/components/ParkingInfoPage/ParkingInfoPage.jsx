@@ -48,13 +48,11 @@ class ParkingInfo extends Component {
 		clearInterval(this.state.updateTimeUpdatedInStateInterval);
 	}
 	componentDidUpdate() {
-		const range = [62, 63];
-		for (let i = range[0]; i <= range[1]; i++) {
-			if (this.state.timeUpdated.ps1.elapsedTime === i) {
-				this.handleResetElapsedTime();
-				this.handleHTTPGetUpdateTime();
-			}
+		if (this.state.timeUpdated.ps1.elapsedTime === 62) {
+			this.handleResetElapsedTime();
+			this.handleHTTPGetUpdateTime();
 		}
+
 
 		const lightMode = localStorage.getItem('light-mode-status') === 'true';
 
