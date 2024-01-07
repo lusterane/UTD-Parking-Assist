@@ -15,7 +15,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [12.x]
+                node-version: [20.10.0]
 
         steps:
             - name: Checkout 🛎️
@@ -23,11 +23,11 @@ jobs:
             - name: Install and Build 🔧
               run: |
                   npm install --prefix ./client
-                  npm run-script build --prefix ./client
+                  export SET NODE_OPTIONS=--openssl-legacy-provider && npm run-script build --prefix ./client
               env:
                   REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
-            - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@releases/v3
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@v4
               with:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   BRANCH: gh-pages

@@ -11,7 +11,7 @@ class Time extends Component {
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime > 120) {
 			return (
-				<Alert color="danger">"Oops! Something went wrong, please refresh the page"</Alert>
+				<Alert color="danger">Oops! Something went wrong, please refresh the page</Alert>
 			);
 		} else {
 			const calculatedTime = Math.min(60 - elapsedTime, 57);
