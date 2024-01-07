@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Tooltip } from 'reactstrap';
 import './UIOptions.css';
 
-function UIOptions() {
+function UIOptions({ onToggleColorBlindMode }) {
 	const [colorBlindMode, setColorBlindMode] = useState(
 		localStorage.getItem('color-blind-status') === 'true'
 	);
 	const [colorBlindTooltipOpen, setColorBlindTooltipOpen] = useState(false);
 
-	useEffect(() => {
-		localStorage.setItem('color-blind-status', colorBlindMode);
-	}, [colorBlindMode]);
+	const handleToggleColorBlindMode = () => {
+		const newColorBlindMode = !colorBlindMode;
+		setColorBlindMode(newColorBlindMode);
+		localStorage.setItem('color-blind-status', newColorBlindMode);
+
+		onToggleColorBlindMode();
+	};
 
 	return (
 		<div className="icons-container">
 			<div
-				onClick={() => setColorBlindMode(!colorBlindMode)}
+				onClick={handleToggleColorBlindMode}
 				id="color-blind"
 				className="icon pointer dark-icon-border rcorners"
 			>

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
-import UIOptions from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Footer from '../Footer/Footer';
 

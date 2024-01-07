@@ -5,11 +5,9 @@ import Footer from '../Footer/Footer';
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
-import UIOptions from '../UIOptions/UIOptions';
 
 function Home(props) {
 	const [showModal, setShowModal] = useState(false);
-	const [colorBlindMode] = useState(false);
 
 	// maintain modal
 	const handleModalClose = () => {
@@ -39,7 +37,7 @@ function Home(props) {
 						<div className="color-option-container">
 							<ColorOption
 								color="green"
-								colorBlindMode={colorBlindMode}
+								colorBlindMode={props.colorBlindMode}
 								onClick={() => {
 									handleModalShow(props.color);
 								}}
@@ -52,7 +50,7 @@ function Home(props) {
 							/>
 							<ColorOption
 								color="gold"
-								colorBlindMode={colorBlindMode}
+								colorBlindMode={props.colorBlindMode}
 								onClick={() => {
 									handleModalShow(props.color);
 								}}
@@ -65,7 +63,7 @@ function Home(props) {
 							/>
 							<ColorOption
 								color="orange"
-								colorBlindMode={colorBlindMode}
+								colorBlindMode={props.colorBlindMode}
 								onClick={() => {
 									handleModalShow(props.color);
 								}}
@@ -78,7 +76,7 @@ function Home(props) {
 							/>
 							<ColorOption
 								color="purple"
-								colorBlindMode={colorBlindMode}
+								colorBlindMode={props.colorBlindMode}
 								onClick={() => {
 									handleModalShow(props.color);
 								}}
