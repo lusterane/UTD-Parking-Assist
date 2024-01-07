@@ -111,7 +111,6 @@ class ParkingInfo extends Component {
 		return (
 			<React.Fragment>
 				<div className="dark-mode">
-					<UIOptions />
 					{this.state.timerLoaded && this.state.psGroupLoaded ? '' : <LoadingSpinner />}
 					{
 						<div>

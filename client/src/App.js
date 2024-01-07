@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import HomePage from './components/HomePage/HomePage';
@@ -6,41 +6,35 @@ import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 
 import './App.css';
 
-class App extends Component {
-	state = {
-		color: '',
+function App() {
+	const [color, setColor] = useState('');
+
+	const handleChangeColor = (newColor) => {
+		setColor(newColor);
 	};
 
-	// changes color for header
-	handleChangeColor = (color) => {
-		this.setState({ color: color });
+	const handleChangeColorDefault = () => {
+		setColor('');
 	};
 
-	handleChangeColorDefault = () => {
-		this.setState({ color: '' });
-	};
-
-	render() {
-		return (
-			<div className={'root-container'}>
-				<BrowserRouter>
-					<Switch>
-						<Route exact path={process.env.PUBLIC_URL + '/'}>
-							<HomePage
-								changeColor={this.handleChangeColor}
-								changeColorDefault={this.handleChangeColorDefault}
-								color={this.state.color}
-								getGreeting={this.getGreeting}
-							/>
-						</Route>
-						<Route path={process.env.PUBLIC_URL + '/parkingInfoPage'}>
-							<ParkingInfoPage />
-						</Route>
-					</Switch>
-				</BrowserRouter>
-			</div>
-		);
-	}
+	return (
+		<div className={'root-container'}>
+			<BrowserRouter>
+				<Switch>
+					<Route exact path={process.env.PUBLIC_URL + '/'}>
+						<HomePage
+							changeColor={handleChangeColor}
+							changeColorDefault={handleChangeColorDefault}
+							color={color}
+						/>
+					</Route>
+					<Route path={process.env.PUBLIC_URL + '/parkingInfoPage'}>
+						<ParkingInfoPage />
+					</Route>
+				</Switch>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;

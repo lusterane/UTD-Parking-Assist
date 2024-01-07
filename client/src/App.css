@@ -33,3 +33,7 @@ h1 {
 	border-color: white;
 	opacity: .6;
 }
+
+.rcorners {
+	border-radius: 7px;
+  }

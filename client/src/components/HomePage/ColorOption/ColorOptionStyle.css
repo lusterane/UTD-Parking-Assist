@@ -33,7 +33,8 @@
 	height: 2.7rem;
 	width: 10rem;
 	border-radius: 0.25rem;
-	color: black !important;
+	color: white !important;
+	background-color: black !important;
 	font-weight: 500 !important;
 }
 

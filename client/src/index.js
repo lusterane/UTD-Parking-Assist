@@ -6,12 +6,14 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App.js';
 import ParticlesComponent from './ParticlesComponent.js';
+import UIOptions from './components/UIOptions/UIOptions.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
 	<React.Fragment>
 		<App />
 		<ParticlesComponent />
+		<UIOptions />
 	</React.Fragment>
 );
 
