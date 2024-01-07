@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-//import ParkingStructureGroup from './ParkingStructureGroupv2/ParkingStructureGroupv2';
 import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
 import Time from './Time/Time';
 import UIOptions from '../UIOptions/UIOptions';
@@ -28,7 +27,6 @@ class ParkingInfo extends Component {
 		},
 		timerLoaded: false,
 		psGroupLoaded: false,
-		lightMode: false,
 	};
 
 	componentDidMount() {
@@ -49,12 +47,6 @@ class ParkingInfo extends Component {
 		if (this.state.timeUpdated.ps1.elapsedTime === 62) {
 			this.handleResetElapsedTime();
 			this.handleHTTPGetUpdateTime();
-		}
-
-		const lightMode = localStorage.getItem('light-mode-status') === 'true';
-
-		if (this.state.lightMode !== lightMode) {
-			this.setState({ lightMode: lightMode });
 		}
 	}
 
@@ -115,16 +107,12 @@ class ParkingInfo extends Component {
 	};
 
 	render() {
-		const { color, timeUpdated, lightMode } = this.state;
+		const { color, timeUpdated } = this.state;
 		return (
 			<React.Fragment>
-				<div className={lightMode ? '' : 'dark-mode'}>
+				<div className="dark-mode">
 					<UIOptions />
-					{this.state.timerLoaded && this.state.psGroupLoaded ? (
-						''
-					) : (
-						<LoadingSpinner lightMode={lightMode} />
-					)}
+					{this.state.timerLoaded && this.state.psGroupLoaded ? '' : <LoadingSpinner />}
 					{
 						<div>
 							<div className="parking-info-container">
@@ -132,13 +120,7 @@ class ParkingInfo extends Component {
 									href={process.env.PUBLIC_URL + '/'}
 									className="remove-decoration"
 								>
-									<i
-										className={
-											lightMode
-												? 'fas fa-chevron-left back-route-button'
-												: 'fas fa-chevron-left back-route-button light-text'
-										}
-									></i>
+									<i className="fas fa-chevron-left back-route-button"></i>
 								</a>
 								<div className="parking-info-header">
 									<div className="centered-header">
@@ -148,14 +130,9 @@ class ParkingInfo extends Component {
 										</div>
 									</div>
 								</div>
-								<div
-									className={
-										lightMode ? 'parking-data' : 'parking-data dark-borders'
-									}
-								>
+								<div className="parking-data dark-borders">
 									<Time timeUpdated={timeUpdated} />
 									<ParkingStructureGroup
-										lightMode={lightMode}
 										color={color}
 										setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
 										timeUpdated={timeUpdated}
@@ -165,9 +142,7 @@ class ParkingInfo extends Component {
 							</div>
 							<div
 								id="parking-info-footer-container"
-								className={
-									lightMode ? 'footer-container' : 'dark-mode footer-container'
-								}
+								className="dark-mode footer-container"
 							>
 								<Footer />
 							</div>

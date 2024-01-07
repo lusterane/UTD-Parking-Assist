@@ -47,10 +47,6 @@
 	background-color: var(--grey);
 }
 
-.light-text {
-	color: #ffffff !important;
-}
-
 .dark-text {
 	color: #343a40 !important;
 }

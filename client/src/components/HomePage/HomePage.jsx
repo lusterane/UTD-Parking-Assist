@@ -11,27 +11,8 @@ class Home extends Component {
 	state = {
 		showModal: false,
 		colorBlindMode: false,
-		lightMode: true,
-		lightModeLoaded: false,
 		popoverOpen: false,
 	};
-
-	componentDidMount() {
-		const lightMode = localStorage.getItem('light-mode-status') === 'true';
-		this.setState({ lightMode: lightMode, lightModeLoaded: true });
-	}
-
-	componentDidUpdate() {
-		const data = localStorage.getItem('color-blind-status') === 'true';
-		const lightMode = localStorage.getItem('light-mode-status') === 'true';
-
-		if (this.state.lightMode !== lightMode) {
-			this.setState({ lightMode: lightMode });
-		}
-		if (this.state.colorBlindMode !== data) {
-			this.setState({ colorBlindMode: data });
-		}
-	}
 
 	// maintain popover
 	togglePopover = () => {
@@ -51,11 +32,10 @@ class Home extends Component {
 	};
 
 	render() {
-		const { lightMode, popoverOpen, lightModeLoaded } = this.state;
+		const { popoverOpen } = this.state;
 		return (
 			<React.Fragment>
-				<div id="center-text" className={lightMode ? '' : 'dark-mode'}>
-					{lightModeLoaded ? '' : <LoadingSpinner lightMode={lightMode} />}
+				<div id="center-text" className="dark-mode">
 					<div className="content-container">
 						<div className="inner-content-container">
 							<div className="text-content">
@@ -70,7 +50,6 @@ class Home extends Component {
 								<ColorOption
 									color="green"
 									colorBlindMode={this.state.colorBlindMode}
-									lightMode={lightMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -84,7 +63,6 @@ class Home extends Component {
 								<ColorOption
 									color="gold"
 									colorBlindMode={this.state.colorBlindMode}
-									lightMode={lightMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -98,7 +76,6 @@ class Home extends Component {
 								<ColorOption
 									color="orange"
 									colorBlindMode={this.state.colorBlindMode}
-									lightMode={lightMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -112,7 +89,6 @@ class Home extends Component {
 								<ColorOption
 									color="purple"
 									colorBlindMode={this.state.colorBlindMode}
-									lightMode={lightMode}
 									onClick={() => {
 										this.handleModalShow(this.props.color);
 									}}
@@ -125,7 +101,6 @@ class Home extends Component {
 								/>
 							</div>
 							<ConfirmModal
-								lightMode={lightMode}
 								color={this.props.color}
 								showModal={this.state.showModal}
 								onModalShow={this.handleModalShow}

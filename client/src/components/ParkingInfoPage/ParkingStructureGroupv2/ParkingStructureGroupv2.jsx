@@ -12,25 +12,21 @@ class ParkingStructureGroup extends Component {
 		permit: {
 			green: {
 				id: 'mongodbpermitid0',
-				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
 			gold: {
 				id: 'mongodbpermitid1',
-				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
 			orange: {
 				id: 'mongodbpermitid2',
-				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
 			purple: {
 				id: 'mongodbpermitid3',
-				textStyle: 'light-text',
 				expand: false,
 				dataArr: [],
 			},
@@ -170,7 +166,7 @@ class ParkingStructureGroup extends Component {
 					empty ? (
 						<EmptyGroup />
 					) : (
-						<div className='card-container'>
+						<div className="card-container">
 							{Object.keys(permit).map((color, index) => {
 								if (permit[color].dataArr.length !== 0) {
 									return (
@@ -190,9 +186,9 @@ class ParkingStructureGroup extends Component {
 						</div>
 					)
 				) : (
-					<div className='spinner-container'>
-						<Spinner animation='border' role='status'>
-							<span className='sr-only'>Loading...</span>
+					<div className="spinner-container">
+						<Spinner animation="border" role="status">
+							<span className="sr-only">Loading...</span>
 						</Spinner>
 					</div>
 				)}
