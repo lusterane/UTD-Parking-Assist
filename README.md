@@ -1,4 +1,4 @@
-# UTD-Parking-Assist ![Node.js CI](https://github.com/lusterane/UTD-Parking-Assist/workflows/Node.js%20CI/badge.svg?branch=master)
+# UTD-Parking-Assist [![Node.js CI/CD](https://github.com/lusterane/UTD-Parking-Assist/actions/workflows/nodejs.yml/badge.svg)](https://github.com/lusterane/UTD-Parking-Assist/actions/workflows/nodejs.yml)
 
 Parking Assist for UTD students and faculty
 
