@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { Popover, PopoverBody } from 'reactstrap';
-
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import UIOptions from '../UIOptions/UIOptions';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
-
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
@@ -62,53 +57,6 @@ class Home extends Component {
 				<div id="center-text" className={lightMode ? '' : 'dark-mode'}>
 					{lightModeLoaded ? '' : <LoadingSpinner lightMode={lightMode} />}
 					<div className="content-container">
-						<UIOptions />
-						<Popover
-							innerClassName={
-								lightMode
-									? 'popover-content'
-									: 'popover-content dark-mode-off-hue-dark'
-							}
-							trigger="hover"
-							isOpen={popoverOpen}
-							target="info-text"
-							toggle={this.togglePopover}
-							hideArrow={true}
-						>
-							<PopoverBody>
-								<div
-									className={
-										lightMode
-											? 'popover-text-container'
-											: 'popover-text-container dark-mode-off-hue-dark'
-									}
-								>
-									<div className="popover-exit">
-										<i
-											className="fas fa-times pointer"
-											onClick={this.togglePopover}
-										></i>
-									</div>
-									<h3>What is this?</h3>
-									<div>
-										This site finds the <span className="bold">best</span>{' '}
-										parking choices tailored to your permit.
-									</div>
-									<br></br>
-									<hr className={lightMode ? '' : 'white-hr'}></hr>
-									<h3>BTW...</h3>
-
-									<div>
-										<span className="bold">Light Mode</span>:{' '}
-										<i className="far fa-moon"></i> at the top right.
-									</div>
-									<div>
-										<span className="bold">Color Blind Accessibility</span>:{' '}
-										<i className="fas fa-low-vision"></i> at the top right.
-									</div>
-								</div>
-							</PopoverBody>
-						</Popover>
 						<div className="inner-content-container">
 							<div className="text-content">
 								<h1 className={this.props.color + ' title-greeting'}>
@@ -175,11 +123,6 @@ class Home extends Component {
 										}
 									}}
 								/>
-							</div>
-							<div className="info-text-container">
-								<span id="info-text" className="info-text">
-									<i className="fas fa-angle-double-right"></i> What is this?
-								</span>
 							</div>
 							<ConfirmModal
 								lightMode={lightMode}
