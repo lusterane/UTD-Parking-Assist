@@ -112,7 +112,7 @@ class PSCard extends Component {
 	};
 
 	getFullGarageName = (garage) => {
-		if (garage == 'PS1') {
+		if (garage === 'PS1') {
 			return 'Parking Garage 1';
 		}
 		if (garage === 'PS3') {
@@ -130,7 +130,7 @@ class PSCard extends Component {
 			: 'best-choice-body';
 		return (
 			<React.Fragment>
-				<Card className="ps-card dark-mode-off-hue-dark">
+				<Card className="ps-card round-corners dark-mode-off-hue-dark">
 					{this.props.dataArr.length !== 0 ? (
 						<Card.Body className={this.state.index === 0 ? bestChoiceCardBody : ''}>
 							<UncontrolledTooltip placement="left" target="map">

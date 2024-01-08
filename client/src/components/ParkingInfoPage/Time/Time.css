@@ -1,28 +1,11 @@
 /* mobile */
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 768px) {
 	.time-text-container {
-		display: flex;
-		justify-content: center;
-		padding-top: 0vh !important;
-		margin-bottom: 0vh !important;
-		width: 100%;
-		text-align: center;
+		width: 101vw !important;
 	}
-
-	.time-text-container .alert {
-		width: 30vw !important;
-		min-width: 20.13rem;
-		max-width: 21.8rem !important;
-	}
-}
-
-/* tablet */
-@media only screen and (min-width: 600px) and (max-width: 1199px) {
 }
 
 .time-text-container {
-	width: 90% !important;
-	padding-top: 2vh;
-	margin-bottom: 6vh;
+	width: 45rem;
 	text-align: center;
 }

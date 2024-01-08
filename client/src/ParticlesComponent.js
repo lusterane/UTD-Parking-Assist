@@ -18,7 +18,7 @@ function ParticlesComponent() {
 		}).then(() => {
 			setInit(true);
 		});
-	}, []);
+	}, [init]);
 	return <Particles options={particlesOptions} />;
 }
 

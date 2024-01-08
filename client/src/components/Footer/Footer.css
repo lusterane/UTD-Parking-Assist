@@ -1,5 +1,5 @@
 /* mobile */
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 768px) {
 	.footer-container {
 		bottom: 1vh !important;
 	}

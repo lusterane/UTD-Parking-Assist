@@ -1,17 +1,17 @@
 /* mobile */
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 768px) {
 	.parking-data {
-		margin: 3vh 1vh 0vh 1vh !important;
-		padding: 3vh 0 3vh 0 !important;
-		border-top: 2px solid rgba(0, 0, 0, 0) !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+	}
+
+	.parking-info-header {
+		margin-top: -3rem !important;
 	}
 }
 
-/* tablet */
-@media only screen and (min-width: 600px) and (max-width: 1199px) {
-}
 .parking-info-header {
-	width: 100%;
+	width: 100vw;
 	padding: 1rem;
 }
 
@@ -33,22 +33,20 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
-	margin: 6vh 3vh 0 3vh;
-	padding: 5vh 0 5vh 0;
-	border-top: 2px solid rgba(0, 0, 0, 0.125);
-	border-bottom: 2px solid rgba(0, 0, 0, 0.125);
-}
-
-.dark-borders {
-	border-top: 2px solid rgba(255, 255, 255, 0.125);
-	border-bottom: 2px solid rgba(255, 255, 255, 0.125);
+	margin-bottom: 5vh;
 }
 
 /* sized by flexbox, not root */
 .parking-info-container {
 	position: relative;
 	font-size: 14px;
+	margin-bottom: 5vh;
+}
+
+.time-container {
+	display: flex;
+	flex-direction: center;
+	justify-content: center;
 	margin-bottom: 5vh;
 }
 

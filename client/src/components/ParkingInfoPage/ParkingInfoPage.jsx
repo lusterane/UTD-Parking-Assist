@@ -128,8 +128,10 @@ class ParkingInfo extends Component {
 										</div>
 									</div>
 								</div>
-								<div className="parking-data dark-borders">
+								<div className="time-container">
 									<Time timeUpdated={timeUpdated} />
+								</div>
+								<div className="parking-data">
 									<ParkingStructureGroup
 										color={color}
 										setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}

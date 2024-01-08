@@ -170,7 +170,7 @@ class PSGroup extends Component {
 		return (
 			<React.Fragment>
 				<div className="card-group-container">
-					<PSCard dataArr={ps1DataArr} structure={'PARKING STRUCTURE 1'} />
+					<PSCard dataArr={ps1DataArr} structure={'PS1'} />
 					<PSCard dataArr={ps3DataArr} structure={'PS3'} />
 					<PSCard dataArr={ps4DataArr} structure={'PS4'} />
 				</div>

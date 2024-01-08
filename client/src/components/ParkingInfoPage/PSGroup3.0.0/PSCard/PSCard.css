@@ -14,7 +14,7 @@
 
 .ps-card {
 	height: 100vh;
-	width: 30vw;
+	width: 100vw !important;
 	min-width: 20.3rem;
 	min-height: 28.5rem;
 	max-width: 21.8rem;
