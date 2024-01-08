@@ -21,7 +21,7 @@ function UIOptions({ onToggleColorBlindMode }) {
 			<div
 				onClick={handleToggleColorBlindMode}
 				id="color-blind"
-				className="icon pointer dark-icon-border rcorners"
+				className="icon pointer dark-icon-border round-corners"
 			>
 				{colorBlindMode ? (
 					<i className="fas fa-eye fa-lg"></i>
