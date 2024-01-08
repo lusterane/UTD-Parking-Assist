@@ -18,9 +18,17 @@ class Time extends Component {
 
 			const updateTimeText = this.standardizeSeconds(calculatedTime);
 			if (calculatedTime <= 3 || calculatedTime === 0) {
-				return <Alert color="success">Live update in {updateTimeText}</Alert>;
+				return (
+					<Alert className="time-alert" color="success">
+						Live update in {updateTimeText}
+					</Alert>
+				);
 			} else {
-				return <Alert color="primary">Live update in {updateTimeText}</Alert>;
+				return (
+					<Alert className="time-alert" color="primary">
+						Live update in {updateTimeText}
+					</Alert>
+				);
 			}
 		}
 	};
@@ -38,8 +46,8 @@ class Time extends Component {
 
 		return (
 			<React.Fragment>
-				<div className="time-text-container" id="timer">
-					<div className="time-text">{ps1TimeText}</div>
+				<div className="time-text-container">
+					<div>{ps1TimeText}</div>
 				</div>
 			</React.Fragment>
 		);

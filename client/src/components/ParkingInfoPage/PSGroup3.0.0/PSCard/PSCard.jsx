@@ -6,6 +6,7 @@ import FullPSCardBody from './FullPSCardBody/FullPSCardBody.jsx';
 
 import './PSCard.css';
 import '../../../../styles/shared/Colors.css';
+import ParkingGarageButton from './ParkingGarageButton/ParkingGarageButton.jsx';
 
 class PSCard extends Component {
 	state = {
@@ -100,17 +101,6 @@ class PSCard extends Component {
 		}
 	};
 
-	getParkingStructureLink = (structure) => {
-		if (structure === 'PS1') {
-			return 'https://maps.app.goo.gl/KNFHA2f7EvjYLYpo9';
-		} else if (structure === 'PS3') {
-			return 'https://maps.app.goo.gl/JvLwDxqK3iCTfdoQ6';
-		} else {
-			// 'ps4
-			return 'https://maps.app.goo.gl/ezUohyTSyzmRHJN48';
-		}
-	};
-
 	getFullGarageName = (garage) => {
 		if (garage === 'PS1') {
 			return 'Parking Garage 1';
@@ -133,9 +123,6 @@ class PSCard extends Component {
 				<Card className="ps-card round-corners dark-mode-off-hue-dark">
 					{this.props.dataArr.length !== 0 ? (
 						<Card.Body className={this.state.index === 0 ? bestChoiceCardBody : ''}>
-							<UncontrolledTooltip placement="left" target="map">
-								Google Maps
-							</UncontrolledTooltip>
 							<UncontrolledTooltip placement="bottom" target="best-choice">
 								Computed by weighting{' '}
 								<span className="bold">
@@ -152,15 +139,6 @@ class PSCard extends Component {
 									) : (
 										''
 									)}
-								</div>
-								<div className="icon-container">
-									<a
-										rel="noopener noreferrer"
-										target="_blank"
-										href={this.getParkingStructureLink(structure)}
-									>
-										<i id="map" className="fas fa-map-marked-alt fa-lg"></i>
-									</a>
 								</div>
 							</div>
 
@@ -206,8 +184,12 @@ class PSCard extends Component {
 								)}
 							</div>
 							<div className="ps-card-footer">
-								<hr className="ps-card-hr white-hr"></hr>
-								<p>{this.getFullGarageName(this.props.structure)}</p>
+								<ParkingGarageButton
+									name={this.getFullGarageName(this.props.structure)}
+									color={color}
+									structure={this.props.structure}
+								></ParkingGarageButton>
+								<p></p>
 							</div>
 						</Card.Body>
 					) : (

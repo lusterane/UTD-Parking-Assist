@@ -7,7 +7,7 @@
 	--shaded-green: #24933e;
 	--shaded-gold: #e1aa05;
 	--shaded-orange: #e69119;
-	--shaded-purple: #582c8e;
+	--shaded-purple: #c191fc;
 	--white: #fff;
 }
 
@@ -27,8 +27,9 @@
 	color: var(--orange);
 }
 .purple {
-	color: var(--purple);
+	color: var(--shaded-purple);
 }
+
 .pay-by-space {
 	color: var(--grey);
 }
@@ -58,6 +59,7 @@
 }
 .gold-button {
 	background-color: var(--gold);
+	color: #343a40;
 	border-color: var(--gold);
 }
 .orange-button {
@@ -109,7 +111,7 @@
 	margin: 1rem 0.7rem;
 	padding: 0.5rem;
 	border-radius: 0.25rem;
-	border: 2px solid rgba(119, 61, 188, 0.7);
+	border: 2px solid rgba(161, 89, 249, 0.7);
 }
 
 .green-color-background {
@@ -132,7 +134,7 @@
 .gold-color-background:hover {
 	background-color: var(--gold) !important;
 	border-color: var(--gold) !important;
-	color: #fff !important;
+	color: black !important;
 	font-weight: 500;
 }
 

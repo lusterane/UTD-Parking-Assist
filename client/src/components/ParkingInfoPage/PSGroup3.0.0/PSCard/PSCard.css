@@ -42,10 +42,6 @@
 	right: 7%;
 }
 
-#map {
-	padding-left: 0.5rem;
-}
-
 .ps-card-body {
 	display: flex;
 	height: 75%;
@@ -101,14 +97,13 @@
 	padding: 0 1.25rem;
 }
 
-.ps-card-hr {
-	width: 90%;
-	height: 0;
-}
-
 .ps-card-footer {
-	height: 15%;
+	position: absolute !important;
+	display: flex;
+    justify-content: center;
 	width: 100%;
+	bottom: 0;
+	padding-bottom: 1rem;
 }
 
 .ps-card-footer p {
