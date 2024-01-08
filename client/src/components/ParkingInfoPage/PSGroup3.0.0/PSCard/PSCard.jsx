@@ -112,7 +112,7 @@ class PSCard extends Component {
 	};
 
 	render() {
-		const { spots, structure, color, level, spot_change } = this.state.currentPermit;
+		const { spots, color, level, spot_change } = this.state.currentPermit;
 		const { colorBlindMode } = this.state;
 
 		const bestChoiceCardBody = colorBlindMode
