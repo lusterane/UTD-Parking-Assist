@@ -26,6 +26,7 @@ jobs:
                   export SET NODE_OPTIONS=--openssl-legacy-provider && npm run-script build --prefix ./client
               env:
                   REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
+                  CI: false
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@v4
               with:
