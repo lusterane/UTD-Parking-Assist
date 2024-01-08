@@ -1,3 +1,10 @@
+@media only screen and (max-width: 768px) {
+	.ps-card {
+		height: 30rem !important;
+		width: 85vw !important;
+	}
+}
+
 .card-body {
 	padding: 1.25rem 0px;
 }
@@ -13,13 +20,9 @@
 }
 
 .ps-card {
-	height: 100vh;
-	width: 100vw !important;
-	min-width: 20.3rem;
-	min-height: 28.5rem;
-	max-width: 21.8rem;
-	max-height: 34.3rem;
-	margin: 0 2vw 7vh 2vw;
+	height: 34.3rem;
+	width: 22.8rem;
+	margin: 0 2vw 2rem 2vw;
 	box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -51,7 +54,6 @@
 .ps-card-body .text {
 	display: flex;
 	position: relative;
-	top: -5%;
 	height: 100%;
 	width: 100%;
 	flex-direction: column;
@@ -71,8 +73,7 @@
 }
 
 .percent-change-container {
-	height: 10%;
-	margin-top: 10%;
+	margin-top: 3rem;
 	text-align: center;
 }
 
