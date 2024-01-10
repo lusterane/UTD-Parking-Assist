@@ -16,31 +16,6 @@ class MongoDbConnection:
     def terminateDBContext(self):
         self.client.close()
 
-    def placeIntoRecentCollection(self, json):
-        db = self.client.utd_parking
-        collection = db.recent_parkingstructures
-        print('recent_parkingstructures: ', collection.delete_many({}))
-        for ps in json:
-            result = collection.insert_one(ps)
-            print('recent_parkingstructures: ', result)
-
-
-    # def replaceOldPSDocuments(self, json):
-    #     db = self.client.utd_parking
-    #
-    #     collection = db.parkingstructures
-    #     old_permit_list = self.getListOldestPermits(collection)
-    #
-    #     for ps in json:
-    #         current_structure = ps['structure']
-    #         old_document_id = old_permit_list[current_structure]['_id']
-    #
-    #         # change to insert_one to initialize collection
-    #         #result = collection.insert_one(ps)
-    #
-    #         result = collection.replace_one({'_id': old_document_id}, ps)
-    #         print(result)
-
     def placeIntoPSCollection(self, json):
         db = self.client.utd_parking
 
@@ -49,44 +24,6 @@ class MongoDbConnection:
         for ps in json:
             result = collection.insert_one(ps)
             print(result)
-
-    def deleteOldestThreeDocuments(self):
-        db = self.client.utd_parking
-
-        collection = db.parkingstructures
-        old_permit_list = self.getListOldestPermits(collection)
-
-        ps1_id = old_permit_list['ps1']['_id']
-        ps3_id = old_permit_list['ps3']['_id']
-        ps4_id = old_permit_list['ps4']['_id']
-
-        print(collection.delete_one({"_id": ps1_id}))
-        print(collection.delete_one({"_id": ps3_id}))
-        print(collection.delete_one({"_id": ps4_id}))
-
-    # def checkDataIsStale(self):
-    #     # get most recent document
-    #     db = self.client.utd_parking
-    #     collection = db.parkingstructures
-    #
-    #     most_recent_document = collection.find().sort([("utc_time_updated", -1)]).limit(1)
-    #     stale = False
-    #
-    #     if most_recent_document is not None:
-    #         # check if stale
-    #         raw_document_datetime = most_recent_document.next()['utc_time_updated']
-    #         # ex: 2020-05-22
-    #         most_recent_date = datetime.datetime.date(raw_document_datetime)
-    #         now_date = datetime.datetime.utcnow().date()
-    #
-    #         if most_recent_date != now_date:
-    #             stale = True
-    #
-    #         # ex: 01:16:44.232000
-    #         # MAYBE UNNECESSARY CODE. WILL KNOW IN FUTURE
-    #         # most_recent_time = datetime.datetime.time(raw_document_datetime)
-    #         # now_time = datetime.datetime
-    #     return stale
 
     # only call if data is stale
     def CRITICAL_ResetPSCollection(self):
