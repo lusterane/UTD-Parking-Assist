@@ -33,7 +33,7 @@
 
 /* bootstrap */
 .card-body {
-	padding: 1rem;
+	padding: 1rem 1rem .46rem 1rem;
 }
 .ps-card-body {
 	display: flex;

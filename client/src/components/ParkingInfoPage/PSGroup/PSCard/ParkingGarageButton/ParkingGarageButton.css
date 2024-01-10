@@ -1,15 +1,14 @@
 /* mobile */
 @media only screen and (max-width: 768px) {
 	.parking-garage-button {
-		width: 80vw !important;
+		width: 72vw !important;
 	}
 }
 
 .parking-garage-button {
 	height: 4rem;
-	width: 18rem;
-	border-radius: 40px;
-	font-weight: 350 !important;
+	width: 20rem;
+	font-size: 1.2rem;
 }
 
 .button-shadow-gold, .button-shadow-orange {

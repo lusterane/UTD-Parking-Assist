@@ -21,7 +21,7 @@ const ParkingGarageButton = (props) => {
 			<a rel="noopener noreferrer" target="_blank" href={getParkingStructureLink(structure)}>
 				<Button
 					color="secondary"
-					className={`${color}-button parking-garage-button pointer button-shadow-${color} border-${color}`}
+					className={`${color}-button parking-garage-button round-corners pointer button-shadow-${color} border-${color}`}
 				>
 					<div>
 						<i className="fas fa-location-pin fa-lg"></i>
