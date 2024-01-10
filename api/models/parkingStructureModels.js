@@ -14,8 +14,4 @@ const parkingStructureSchema = mongoose.Schema({
 	permit_category: [Objects],
 });
 
-module.exports = mongoose.model(
-	'ParkingStructure',
-	parkingStructureSchema,
-	'recent_parkingstructures'
-);
+module.exports = mongoose.model('ParkingStructure', parkingStructureSchema);

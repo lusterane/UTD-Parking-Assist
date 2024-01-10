@@ -19,16 +19,4 @@ router.get('/color/:color', PSController.getColorInfo);
 // GET /parkingStructures/timeUpdated
 router.get('/timeUpdated', PSController.getAllParkingStructureTimes);
 
-//Handles GET request for TEST parking structures
-// GET /parkingStructures/TEST
-router.get('/TEST', PSController.TEST_getAllParkingStructures);
-
-// Handles GET request for TEST color permit
-// GET /parkingStructures/TEST_color/:color
-router.get('/TEST_color/:color', PSController.TEST_getColorInfo);
-
-//Handles GET request for TEST update times
-// GET /parkingStructures/TEST_timeUpdated
-router.get('/TEST_timeUpdated', PSController.TEST_getAllParkingStructureTimes);
-
 module.exports = router;
