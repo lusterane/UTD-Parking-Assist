@@ -48,34 +48,6 @@
 	flex-flow: row wrap;
 }
 
-.popover-content {
-	font-family: 'Roboto Mono', monospace !important;
-	font-weight: 300;
-	padding: 1.5rem;
-	width: 100%;
-
-	font-size: 0.9rem !important;
-}
-
-.popover-text-container {
-	position: relative;
-}
-
-.popover-exit {
-	position: absolute;
-	top: -1rem;
-	right: -1rem;
-	font-size: 1rem;
-}
-
-.popover {
-	max-width: 100%;
-}
-
-.popover-footer {
-	padding-top: 10vh;
-}
-
 .text-content {
 	margin-bottom: 3rem;
 }

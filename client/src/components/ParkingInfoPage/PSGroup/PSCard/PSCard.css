@@ -1,22 +1,29 @@
 @media only screen and (max-width: 768px) {
 	.ps-card {
-		/* height: 30rem !important; */
 		width: 85vw !important;
+	}
+	.ps-card-body {
+		margin: 3rem 0 4rem 0 !important;
 	}
 }
 
 .best-choice {
-	border: 2px solid var(--gold);
-	box-shadow: 0px 0px 15px 5px rgba(249, 201, 56, 0.2);
+	border: 2px solid var(--gold) !important;
+	box-shadow: 0px 0px 15px 5px rgba(249, 201, 56, 0.2) !important;
 }
 
 .ps-card {
+	display: flex;
+	border: 2px solid transparent;
+	flex-direction: column;
+	width: 23rem;
 	margin: 0 2vw 2rem 2vw;
-	box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .ps-card-header {
-	margin-bottom:1rem;
+	height: 4rem;
+	font-weight: 500;
 }
 
 .best-choice-container {
@@ -24,9 +31,13 @@
 	font-size: 1.2rem;
 }
 
+/* bootstrap */
+.card-body {
+	padding: 1rem;
+}
 .ps-card-body {
 	display: flex;
-	margin: 6rem 0;
+	margin: 6rem 0 7rem 0;
 }
 
 .ps-card-body .text {
@@ -42,16 +53,17 @@
 .ps-card-body .main-text {
 	margin-bottom: 0;
 	font-size: 2.25rem;
-	font-weight: 300;
+	font-weight: 350;
 	text-align: center;
 }
 
 .ps-card-body .sub-text {
 	margin-bottom: 0;
+	font-size: 1rem;
 }
 
 .ps-card .arrow {
-	font-size: 1.5rem;
+	font-size: 2rem;
 }
 .ps-card .arrow-container {
 	display: flex;
@@ -60,10 +72,9 @@
 }
 
 .ps-card-footer {
-	display: flex;
-    justify-content: center;
 	width: 100%;
-	margin-top:8rem;
+	display: flex;
+	justify-content: center;
 }
 
 .ps-card-footer p {
