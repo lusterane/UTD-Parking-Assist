@@ -8,75 +8,26 @@ from MongoDbConnection import MongoDbConnection
 DEBUG_MODE = False
 
 # integration with Google Cloud Function
-
-
 def CloudFunction(request):
     if DEBUG_MODE:
         import time
-        print("DEBUG_MODE ON")
+        print('DEBUG MODE ON')
         start_time = time.time()
 
     # initialize db context
     mongo_db = MongoDbConnection()
     mongo_db.initializeDBContext()
 
-    # testing
-    # NEEDS FLASK. implement in future
-    # req = request.args.get('name')
-    # if req and 'action' in req:
-    #     test(req, mongo_db)
-    # else:
-    numberCurrentDocuments = mongo_db.getEntriesCount()
     cr = CrawlRoot()
-
     cr.find_parking()
 
-    # Normal
     json = cr.buildJSONFormat()  # array of json documents
-    # <--- problem is before this line
-    #print("Unformatted JSON empty: ", len(json[0]['permit_category']) == 0)
-    # update percent change if necessary
-    if numberCurrentDocuments == 30:
-        json = mongo_db.updatePercentChange(json)
-    #print("Formatted JSON empty: ", len(json[0]['permit_category']) == 0)
-    if numberCurrentDocuments < 30:
-        mongo_db.placeIntoPSCollection(json)
-        mongo_db.placeIntoRecentCollection(json)
-    elif mongo_db.checkDataIsStale():
-        mongo_db.CRITICAL_ResetPSCollection()
-        mongo_db.placeIntoPSCollection(json)
-        mongo_db.placeIntoRecentCollection(json)
-    elif numberCurrentDocuments == 30:
-        mongo_db.deleteOldestThreeDocuments()
-        mongo_db.placeIntoPSCollection(json)
-        mongo_db.placeIntoRecentCollection(json)
-    else: # > 30
-        mongo_db.deleteOldestThreeDocuments()
+
+    mongo_db.placeIntoPSCollection(json)
     mongo_db.terminateDBContext()
 
     if DEBUG_MODE:
-        print("elapsed time: " + str(time.time() - start_time))
-
-# testing for Google Cloud Function
-def test(req, mongo_db):
-    if req == 'reset_parkingstructures':
-        print('ACTION: RESETTING PARKING STRUCTURES')
-        mongo_db.CRITICAL_ResetPSCollection()
-    elif req == 'place_into_ps_collection':
-        print('ACTION: PLACE INTO PS COLLECTION')
-        numberCurrentDocuments = mongo_db.getEntriesCount()
-
-        cr = CrawlRoot(numberCurrentDocuments)
-        cr.find_parking()
-        json = cr.buildJSONFormat()
-
-        mongo_db.placeIntoPSCollection(json)
-    else:
-        print('UNKNOWN ACTION')
-        print('Available Actions: reset_parkingstructures | place_into_ps_collection')
-        print('i.e. {"action": "reset_parkingstructures"}')
-
+        print("elapsed time: " + str(round(time.time() - start_time,3)) + ' seconds')
 
 if __name__ == "__main__":
     CloudFunction({})
-    # Test()

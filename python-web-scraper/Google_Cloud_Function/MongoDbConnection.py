@@ -64,25 +64,6 @@ class MongoDbConnection:
         print(collection.delete_one({"_id": ps3_id}))
         print(collection.delete_one({"_id": ps4_id}))
 
-    def checkDataIsStale(self):
-        # get most recent document
-        db = self.client.utd_parking
-        collection = db.recent_parkingstructures
-
-        stale = False
-
-        most_recent_document = collection.find()
-        if most_recent_document is not None:
-            for document in most_recent_document:
-                # check if stale
-                # ex: 2020-05-22
-                most_recent_date = datetime.datetime.date(document['utc_time_updated'])
-                now_date = datetime.datetime.utcnow().date()
-
-                if most_recent_date != now_date:
-                    stale = True
-        return stale
-
     # def checkDataIsStale(self):
     #     # get most recent document
     #     db = self.client.utd_parking
