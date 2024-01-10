@@ -68,24 +68,6 @@
 	margin-bottom: 0px;
 }
 
-.percent-change-container {
-	margin-top: 3rem;
-	text-align: center;
-}
-
-.percent-change-green {
-	color: rgb(40, 162, 40);
-}
-
-.percent-change-red {
-	color: rgb(245, 35, 35);
-}
-
-.percent-change-text {
-	font-size: 1.3rem;
-	font-weight: 300;
-}
-
 .ps-card .arrow {
 	font-size: 1.5rem;
 }

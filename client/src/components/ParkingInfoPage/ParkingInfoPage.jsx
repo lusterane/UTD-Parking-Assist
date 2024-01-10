@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ParkingStructureGroup from './PSGroup3.0.0/PSGroup';
+import ParkingStructureGroup from './PSGroup/PSGroup';
 import Time from './Time/Time';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Footer from '../Footer/Footer';
