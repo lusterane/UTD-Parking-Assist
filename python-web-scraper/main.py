@@ -20,14 +20,23 @@ def CloudFunction(request):
 
     cr = CrawlRoot()
     cr.find_parking()
-
     json = cr.buildJSONFormat()  # array of json documents
 
+    mongo_db.CRITICAL_ResetPSCollection()
     mongo_db.placeIntoPSCollection(json)
+
     mongo_db.terminateDBContext()
 
     if DEBUG_MODE:
         print("elapsed time: " + str(round(time.time() - start_time,3)) + ' seconds')
 
+    return '{"status":"200", "data": "OK"}'
+
+def CRITICAL_reset_parkingstructures_table():
+    mongo_db = MongoDbConnection()
+    mongo_db.initializeDBContext()
+    mongo_db.CRITICAL_ResetPSCollection()
+
 if __name__ == "__main__":
+    # CRITICAL_reset_parkingstructures_table()
     CloudFunction({})

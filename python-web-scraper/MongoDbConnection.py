@@ -23,14 +23,29 @@ class MongoDbConnection:
 
         for ps in json:
             result = collection.insert_one(ps)
-            print(result)
+            print('ADDING THIS ', result)
+
+    def clearStaleDocuments(self):
+        db = self.client.utd_parking
+
+        collection = db.parkingstructures
+        old_permit_list = self.getListOldestPermits(collection)
+
+        ps1_id = old_permit_list['ps1']['_id']
+        ps3_id = old_permit_list['ps3']['_id']
+        ps4_id = old_permit_list['ps4']['_id']
+
+        print(collection.delete_one({"_id": ps1_id}))
+        print(collection.delete_one({"_id": ps3_id}))
+        print(collection.delete_one({"_id": ps4_id}))
+
 
     # only call if data is stale
     def CRITICAL_ResetPSCollection(self):
         db = self.client.utd_parking
         collection_ps = db.parkingstructures
 
-        print('parkingstructures: ', collection_ps.delete_many({}))
+        print('CLEARING ALL parkingstructures DATA', collection_ps.delete_many({}))
 
     def getEntriesCount(self):
         db = self.client.utd_parking
