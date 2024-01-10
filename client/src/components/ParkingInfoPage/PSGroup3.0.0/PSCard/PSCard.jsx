@@ -31,7 +31,6 @@ class PSCard extends Component {
 					structure: props.dataArr[0].structure,
 					color: props.dataArr[0].color,
 					level: props.dataArr[0].level,
-					spot_change: props.dataArr[0].spot_change,
 				},
 			}));
 		}
@@ -52,7 +51,6 @@ class PSCard extends Component {
 				structure: props.dataArr[state.index + 1].structure,
 				color: props.dataArr[state.index + 1].color,
 				level: props.dataArr[state.index + 1].level,
-				spot_change: props.dataArr[state.index + 1].spot_change,
 			},
 		}));
 	};
@@ -65,40 +63,9 @@ class PSCard extends Component {
 				spots: props.dataArr[state.index - 1].spots,
 				structure: props.dataArr[state.index - 1].structure,
 				color: props.dataArr[state.index - 1].color,
-				level: props.dataArr[state.index - 1].level,
-				spot_change: props.dataArr[state.index - 1].spot_change,
+				level: props.dataArr[state.index - 1].level
 			},
 		}));
-	};
-
-	getSpotChangeJSX = (spot_change) => {
-		if (isNaN(spot_change) || spot_change === 0) {
-			return (
-				<div className="percent-change-container">
-					<p className="percent-change-text">
-						<span className="grey">No activity for 10 minutes</span>
-					</p>
-				</div>
-			);
-		} else if (spot_change > 0) {
-			return (
-				<div className="percent-change-container">
-					<p className="percent-change-text">
-						<span className="percent-change-green">+{spot_change}%</span>{' '}
-						<span className="grey">space availability</span>
-					</p>
-				</div>
-			);
-		} else {
-			return (
-				<div className="percent-change-container">
-					<p className="percent-change-text">
-						<span className="percent-change-red">{spot_change}%</span> space
-						availability
-					</p>
-				</div>
-			);
-		}
 	};
 
 	getFullGarageName = (garage) => {
@@ -112,7 +79,7 @@ class PSCard extends Component {
 	};
 
 	render() {
-		const { spots, color, level, spot_change } = this.state.currentPermit;
+		const { spots, color, level } = this.state.currentPermit;
 		const { colorBlindMode } = this.state;
 
 		const bestChoiceCardBody = colorBlindMode
@@ -172,7 +139,6 @@ class PSCard extends Component {
 											Color <i className={'fas fa-circle ' + color}></i>
 										</p>
 									)}
-									{this.getSpotChangeJSX(spot_change)}
 								</div>
 								{this.state.index !== this.props.dataArr.length - 1 ? (
 									<div

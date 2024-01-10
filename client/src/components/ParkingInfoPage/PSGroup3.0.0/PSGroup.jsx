@@ -57,7 +57,7 @@ class PSGroup extends Component {
 
 		res.data.forEach((element) => {
 			element.permit_category.forEach((permit) => {
-				const { id, level, spots, percent_change_past_10_mins } = permit;
+				const { id, level, spots } = permit;
 				const color = this.standardizeColorLongToShort(permit.color);
 
 				if (spots !== 0 && this.isRelevantColor(color)) {
@@ -67,7 +67,6 @@ class PSGroup extends Component {
 						level: level,
 						spots: spots,
 						structure: element.structure.toUpperCase(),
-						spot_change: Number((percent_change_past_10_mins * 100).toFixed(2)),
 					});
 				}
 			});
@@ -123,35 +122,29 @@ class PSGroup extends Component {
 	getSortedDataArr = (dataArr) => {
 		let sortedDataArr = [...dataArr];
 
-		const spotsWeight = 0.25;
-		const colorWeight = 0.35;
-		const spotChangeWeight = 0.4;
-
 		// assign pref score
 		sortedDataArr = sortedDataArr.map((element) => {
-			const weightedSpotChange = element.spot_change * spotChangeWeight;
-			const weightedSpots = (element.spots / 250) * spotsWeight;
+			const weightedSpots = element.spots / 250;
 
 			let weightedColor = 0;
 			switch (element.color) {
 				case 'purple':
-					weightedColor = 1;
+					weightedColor = 20;
 					break;
 				case 'orange':
-					weightedColor = 0.75;
+					weightedColor = 15;
 					break;
 				case 'gold':
-					weightedColor = 0.5;
+					weightedColor = 10;
 					break;
 				case 'green':
-					weightedColor = 0.25;
+					weightedColor = 5;
 					break;
 				default:
 					weightedColor = 0;
 					break;
 			}
-			weightedColor *= colorWeight;
-			return { ...element, score: weightedSpots + weightedColor + weightedSpotChange };
+			return { ...element, score: weightedSpots + weightedColor };
 		});
 
 		// sort the array
