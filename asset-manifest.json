@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/UTD-Parking-Assist/static/css/main.10a635e8.css",
-    "main.js": "/UTD-Parking-Assist/static/js/main.5ea79ef9.js",
+    "main.css": "/UTD-Parking-Assist/static/css/main.2daf423a.css",
+    "main.js": "/UTD-Parking-Assist/static/js/main.12573c73.js",
     "index.html": "/UTD-Parking-Assist/index.html",
-    "main.10a635e8.css.map": "/UTD-Parking-Assist/static/css/main.10a635e8.css.map",
-    "main.5ea79ef9.js.map": "/UTD-Parking-Assist/static/js/main.5ea79ef9.js.map"
+    "main.2daf423a.css.map": "/UTD-Parking-Assist/static/css/main.2daf423a.css.map",
+    "main.12573c73.js.map": "/UTD-Parking-Assist/static/js/main.12573c73.js.map"
   },
   "entrypoints": [
-    "static/css/main.10a635e8.css",
-    "static/js/main.5ea79ef9.js"
+    "static/css/main.2daf423a.css",
+    "static/js/main.12573c73.js"
   ]
 }
