@@ -4,10 +4,6 @@
 		margin-top: 0 !important;
 		padding: 0 !important;
 	}
-
-	.parking-info-header {
-		margin-top: -3rem !important;
-	}
 }
 
 .parking-info-header {
@@ -25,7 +21,10 @@
 .back-route-button {
 	padding: 1rem;
 	font-size: 1.5rem;
-	color: white
+	color: white;
+	position: fixed;
+	top: 0;
+	z-index: 100;
 }
 
 .parking-data {

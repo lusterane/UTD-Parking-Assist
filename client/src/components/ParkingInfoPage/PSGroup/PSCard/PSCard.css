@@ -1,50 +1,32 @@
 @media only screen and (max-width: 768px) {
 	.ps-card {
-		height: 30rem !important;
+		/* height: 30rem !important; */
 		width: 85vw !important;
 	}
 }
 
-.card-body {
-	padding: 1.25rem 0px;
-}
-
-.best-choice-body {
+.best-choice {
 	border: 2px solid var(--gold);
-	box-shadow: 0px 0px 20px 5px rgba(249, 201, 56, 0.2);
-}
-
-.best-choice-body-color-blind {
-	border: 4px solid var(--gold);
-	box-shadow: 0px 0px 20px 5px rgba(249, 201, 56, 0.2);
+	box-shadow: 0px 0px 15px 5px rgba(249, 201, 56, 0.2);
 }
 
 .ps-card {
-	height: 34.3rem;
-	width: 22.8rem;
 	margin: 0 2vw 2rem 2vw;
 	box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
 .ps-card-header {
-	height: 10%;
-	padding: 0px 1.25rem;
+	margin-bottom:1rem;
 }
 
 .best-choice-container {
 	display: inline;
-	font-size: 1rem;
-}
-
-.icon-container {
-	display: inline;
-	position: absolute;
-	right: 7%;
+	font-size: 1.2rem;
 }
 
 .ps-card-body {
 	display: flex;
-	height: 75%;
+	margin: 6rem 0;
 }
 
 .ps-card-body .text {
@@ -58,14 +40,14 @@
 }
 
 .ps-card-body .main-text {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 	font-size: 2.25rem;
 	font-weight: 300;
 	text-align: center;
 }
 
 .ps-card-body .sub-text {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 
 .ps-card .arrow {
@@ -73,27 +55,18 @@
 }
 .ps-card .arrow-container {
 	display: flex;
-	height: 100%;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 1.25rem;
 }
 
 .ps-card-footer {
-	position: absolute !important;
 	display: flex;
     justify-content: center;
 	width: 100%;
-	bottom: 0;
-	padding-bottom: 1rem;
+	margin-top:8rem;
 }
 
 .ps-card-footer p {
 	text-align: center;
 	font-size: 1.5rem;
-}
-
-.animated-div {
-	height: 100vh;
-	width: 100%;
 }

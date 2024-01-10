@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
-import { UncontrolledTooltip } from 'reactstrap';
 
 import FullPSCardBody from './FullPSCardBody/FullPSCardBody.jsx';
 
@@ -63,44 +62,34 @@ class PSCard extends Component {
 				spots: props.dataArr[state.index - 1].spots,
 				structure: props.dataArr[state.index - 1].structure,
 				color: props.dataArr[state.index - 1].color,
-				level: props.dataArr[state.index - 1].level
+				level: props.dataArr[state.index - 1].level,
 			},
 		}));
 	};
 
 	getFullGarageName = (garage) => {
 		if (garage === 'PS1') {
-			return 'Parking Garage 1';
+			return 'PARKING GARAGE 1';
 		}
 		if (garage === 'PS3') {
-			return 'Parking Garage 3';
+			return 'PARKING GARAGE 3';
 		}
-		return 'Parking Garage 4';
+		return 'PARKING GARAGE 4';
 	};
-
+	bestChoiceClassName = () => {
+		console.log(this.state.index);
+		return this.state.index === 0 ? 'best-choice' : '';
+	};
 	render() {
 		const { spots, color, level } = this.state.currentPermit;
-		const { colorBlindMode } = this.state;
 
-		const bestChoiceCardBody = colorBlindMode
-			? 'best-choice-body-color-blind'
-			: 'best-choice-body';
 		return (
 			<React.Fragment>
-				<Card className="ps-card round-corners dark-mode-off-hue-dark">
+				<Card
+					className={`ps-card round-corners dark-mode-off-hue-dark ${this.bestChoiceClassName()}`}
+				>
 					{this.props.dataArr.length !== 0 ? (
-						<Card.Body
-							className={
-								this.state.index === 0 ? `${bestChoiceCardBody} round-corners` : ''
-							}
-						>
-							<UncontrolledTooltip placement="bottom" target="best-choice">
-								Computed by weighting{' '}
-								<span className="bold">
-									parking trends, immediate spot availability,
-								</span>{' '}
-								and <span className="bold"> permit tier</span>
-							</UncontrolledTooltip>
+						<Card.Body>
 							<div className="text-muted ps-card-header">
 								<div className="best-choice-container">
 									{this.state.index === 0 ? (
