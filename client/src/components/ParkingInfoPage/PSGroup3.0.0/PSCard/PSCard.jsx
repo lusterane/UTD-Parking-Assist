@@ -122,7 +122,11 @@ class PSCard extends Component {
 			<React.Fragment>
 				<Card className="ps-card round-corners dark-mode-off-hue-dark">
 					{this.props.dataArr.length !== 0 ? (
-						<Card.Body className={this.state.index === 0 ? bestChoiceCardBody : ''}>
+						<Card.Body
+							className={
+								this.state.index === 0 ? `${bestChoiceCardBody} round-corners` : ''
+							}
+						>
 							<UncontrolledTooltip placement="bottom" target="best-choice">
 								Computed by weighting{' '}
 								<span className="bold">
