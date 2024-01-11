@@ -77,7 +77,6 @@ class PSCard extends Component {
 		return 'PARKING GARAGE 4';
 	};
 	bestChoiceClassName = () => {
-		console.log(this.state.index);
 		return this.state.index === 0 ? 'best-choice' : '';
 	};
 	render() {
