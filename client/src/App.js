@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
@@ -27,7 +27,7 @@ function App() {
 	return (
 		<div className={'root-container'}>
 			<UIOptions onToggleColorBlindMode={toggleColorBlindMode} />
-			<BrowserRouter>
+			<HashRouter>
 				<Switch>
 					<Route exact path={process.env.PUBLIC_URL + '/'}>
 						<HomePage
@@ -41,7 +41,7 @@ function App() {
 						<ParkingInfoPage colorBlindMode={colorBlindMode} />
 					</Route>
 				</Switch>
-			</BrowserRouter>
+			</HashRouter>
 			<Footer />
 		</div>
 	);
