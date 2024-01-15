@@ -1,15 +1,10 @@
 /* mobile */
 @media only screen and (max-width: 768px) {
-	.footer-container {
-		bottom: 1vh !important;
-	}
 }
 
 .footer-container {
-	position: absolute;
-	bottom: 0;
 	width: 100%;
-	height: 3.5rem;
+	height: 5vh;
 	font-size: 0.75rem;
 	text-align: center;
 }

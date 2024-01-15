@@ -4,7 +4,6 @@ import axios from 'axios';
 import ParkingStructureGroup from './PSGroup/PSGroup';
 import Time from './Time/Time';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
-import Footer from '../Footer/Footer';
 
 import './ParkingInfoPage.css';
 
@@ -109,11 +108,11 @@ class ParkingInfo extends Component {
 		const { color, timeUpdated } = this.state;
 		return (
 			<React.Fragment>
-				<div className="dark-mode">
+				<div className="dark-mode parking-info-page">
 					{this.state.timerLoaded && this.state.psGroupLoaded ? '' : <LoadingSpinner />}
 					{
 						<div>
-							<div className="parking-info-container">
+							<div className="parking-info-content">
 								<a
 									href={process.env.PUBLIC_URL + '/'}
 									className="remove-decoration"
@@ -139,12 +138,6 @@ class ParkingInfo extends Component {
 										onResetElapsedTime={this.handleResetElapsedTime}
 									/>
 								</div>
-							</div>
-							<div
-								id="parking-info-footer-container"
-								className="dark-mode footer-container"
-							>
-								<Footer />
 							</div>
 						</div>
 					}

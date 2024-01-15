@@ -23,6 +23,6 @@
 
 .loading-center .toast {
 	position: absolute;
-	bottom: 5vh;
+	bottom: 10vh;
 	text-align: center;
 }

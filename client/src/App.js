@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 import UIOptions from './components/UIOptions/UIOptions';
+import Footer from './components/Footer/Footer';
 
 import './App.css';
 
@@ -41,6 +42,7 @@ function App() {
 					</Route>
 				</Switch>
 			</BrowserRouter>
+			<Footer />
 		</div>
 	);
 }

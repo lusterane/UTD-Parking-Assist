@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer() {
 	return (
 		<React.Fragment>
-			<div className="footer-container">
+			<div className="footer-container dark-mode">
 				<div>
 					Made with <i className="fas fa-heart"></i> by{' '}
 					<a

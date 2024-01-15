@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
-import Footer from '../Footer/Footer';
 
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
@@ -96,7 +95,6 @@ function Home(props) {
 							onModalConfirm={handleModalConfirm}
 						/>
 					</div>
-					<Footer />
 				</div>
 			</div>
 		</React.Fragment>
