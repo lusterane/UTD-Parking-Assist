@@ -99,7 +99,9 @@ const PSCard = (props) => {
 
 								{colorBlindMode ? (
 									<p className={'sub-text border-' + color}>
-										{color.toUpperCase()}
+										{color === 'payBySpace'
+											? 'PAY BY SPACE'
+											: color.toUpperCase()}
 									</p>
 								) : (
 									<p className="sub-text">

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Tooltip } from 'reactstrap';
-import './UIOptions.css';
+import './ColorBlindToggle.css';
 
-function UIOptions({ onToggleColorBlindMode }) {
+function ColorBlindToggle({ onToggleColorBlindMode }) {
 	const [colorBlindMode, setColorBlindMode] = useState(
 		localStorage.getItem('color-blind-status') === 'true'
 	);
@@ -24,9 +24,9 @@ function UIOptions({ onToggleColorBlindMode }) {
 				className="icon pointer dark-icon-border round-corners"
 			>
 				{colorBlindMode ? (
-					<i className="fas fa-eye fa-lg"></i>
-				) : (
 					<i className="fas fa-low-vision fa-lg"></i>
+				) : (
+					<i className="fas fa-eye fa-lg"></i>
 				)}
 			</div>
 			<Tooltip
@@ -35,10 +35,10 @@ function UIOptions({ onToggleColorBlindMode }) {
 				target="color-blind"
 				toggle={() => setColorBlindTooltipOpen(!colorBlindTooltipOpen)}
 			>
-				Color Blind Accessibility
+				{colorBlindMode ? 'Turn OFF' : 'Turn ON'} <br /> {'Colorblind'}
 			</Tooltip>
 		</div>
 	);
 }
 
-export default UIOptions;
+export default ColorBlindToggle;

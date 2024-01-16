@@ -3,7 +3,7 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
-import UIOptions from './components/UIOptions/UIOptions';
+import ColorBlindToggle from './components/ColorBlindToggle/ColorBlindToggle';
 import Footer from './components/Footer/Footer';
 
 import './App.css';
@@ -26,7 +26,7 @@ function App() {
 
 	return (
 		<div className={'root-container'}>
-			<UIOptions onToggleColorBlindMode={toggleColorBlindMode} />
+			<ColorBlindToggle onToggleColorBlindMode={toggleColorBlindMode} />
 			<HashRouter>
 				<Switch>
 					<Route exact path={process.env.PUBLIC_URL + '/'}>
