@@ -8,7 +8,7 @@ import '../../../styles/shared/Colors.css';
 function ConfirmModal(props) {
 	const { showModal, onModalClose, onModalConfirm, color } = props;
 	const getColor = () => {
-		if (color == 'payBySpace') {
+		if (color === 'payBySpace') {
 			return 'Pay By Space';
 		}
 		return color;

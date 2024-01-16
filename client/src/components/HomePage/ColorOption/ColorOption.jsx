@@ -14,7 +14,7 @@ const ColorOption = (props) => {
 	};
 
 	const getPermitName = () => {
-		if (color == 'payBySpace') {
+		if (color === 'payBySpace') {
 			return 'Pay By Space';
 		}
 		return color.charAt(0).toUpperCase() + color.slice(1) + ' Permit';

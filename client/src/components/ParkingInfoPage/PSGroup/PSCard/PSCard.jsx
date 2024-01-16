@@ -1,167 +1,141 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 
 import FullPSCardBody from './FullPSCardBody/FullPSCardBody.jsx';
-
 import './PSCard.css';
 import '../../../../styles/shared/Colors.css';
 import ParkingGarageButton from './ParkingGarageButton/ParkingGarageButton.jsx';
 import Time from '../../Time/Time.jsx';
 
-class PSCard extends Component {
-	state = {
-		index: 0,
-		currentPermit: {
-			id: -1,
-			spots: -1,
-			structure: 'ps1',
-			color: 'green',
-			level: -1,
-		},
-		colorBlindMode: false,
-	};
+const PSCard = (props) => {
+	const [index, setIndex] = useState(0);
+	const [currentPermit, setCurrentPermit] = useState({
+		id: -1,
+		spots: -1,
+		structure: 'ps1',
+		color: 'green',
+		level: -1,
+	});
+	const [colorBlindMode, setColorBlindMode] = useState(false);
 
-	componentDidUpdate() {
-		// initialize current permit
-		if (this.state.currentPermit.id === -1 && this.props.dataArr.length > 0) {
-			this.setState((state, props) => ({
-				currentPermit: {
-					id: props.dataArr[0].id,
-					spots: props.dataArr[0].spots,
-					structure: props.dataArr[0].structure,
-					color: props.dataArr[0].color,
-					level: props.dataArr[0].level,
-				},
-			}));
+	useEffect(() => {
+		// Initialize current permit
+		if (currentPermit.id === -1 && props.dataArr.length > 0) {
+			setCurrentPermit(props.dataArr[0]);
 		}
 
-		// get color blind status
+		// Get color blind status
 		const data = localStorage.getItem('color-blind-status') === 'true';
-		if (this.state.colorBlindMode !== data) {
-			this.setState({ colorBlindMode: data });
+		if (colorBlindMode !== data) {
+			setColorBlindMode(data);
 		}
-	}
+	}, [props.dataArr, currentPermit, colorBlindMode]);
 
-	handleIncrementUpdate = () => {
-		this.setState((state, props) => ({
-			index: state.index + 1,
-			currentPermit: {
-				id: props.dataArr[state.index + 1].id,
-				spots: props.dataArr[state.index + 1].spots,
-				structure: props.dataArr[state.index + 1].structure,
-				color: props.dataArr[state.index + 1].color,
-				level: props.dataArr[state.index + 1].level,
-			},
-		}));
+	const handleIncrementUpdate = () => {
+		const newIndex = index + 1;
+		setIndex(newIndex);
+		setCurrentPermit(props.dataArr[newIndex]);
 	};
 
-	handleDecrementUpdate = () => {
-		this.setState((state, props) => ({
-			index: state.index - 1,
-			currentPermit: {
-				id: props.dataArr[state.index - 1].id,
-				spots: props.dataArr[state.index - 1].spots,
-				structure: props.dataArr[state.index - 1].structure,
-				color: props.dataArr[state.index - 1].color,
-				level: props.dataArr[state.index - 1].level,
-			},
-		}));
+	const handleDecrementUpdate = () => {
+		const newIndex = index - 1;
+		setIndex(newIndex);
+		setCurrentPermit(props.dataArr[newIndex]);
 	};
 
-	getFullGarageName = (garage) => {
-		if (garage === 'PS1') {
-			return 'PARKING GARAGE 1';
+	const getFullGarageName = (garage) => {
+		switch (garage) {
+			case 'PS1':
+				return 'PARKING GARAGE 1';
+			case 'PS3':
+				return 'PARKING GARAGE 3';
+			default:
+				return 'PARKING GARAGE 4';
 		}
-		if (garage === 'PS3') {
-			return 'PARKING GARAGE 3';
-		}
-		return 'PARKING GARAGE 4';
 	};
-	bestChoiceClassName = () => {
-		return this.state.index === 0 ? 'best-choice' : '';
+
+	const bestChoiceClassName = () => {
+		return index === 0 ? 'best-choice' : '';
 	};
-	render() {
-		const { spots, color, level } = this.state.currentPermit;
-		const { timeUpdated } = this.props;
 
-		return (
-			<React.Fragment>
-				<Card
-					className={`ps-card round-corners dark-mode-off-hue-dark ${this.bestChoiceClassName()}`}
-				>
-					{this.props.dataArr.length !== 0 ? (
-						<Card.Body>
-							<div className="text-muted ps-card-header">
-								<div className="best-choice-container">
-									{this.state.index === 0 ? (
-										<span className="gold" id="best-choice">
-											<i className="fas fa-star"></i> BEST CHOICE
-										</span>
-									) : (
-										''
-									)}
-								</div>
-							</div>
+	const { spots, color, level } = currentPermit;
 
-							<div className="ps-card-body">
-								{this.state.index !== 0 ? (
-									<div
-										onClick={this.handleDecrementUpdate}
-										className="pointer arrow-container"
-									>
-										<i className="arrow fas fa-angle-left"></i>
-									</div>
+	return (
+		<React.Fragment>
+			<Card
+				className={`ps-card round-corners dark-mode-off-hue-dark ${bestChoiceClassName()}`}
+			>
+				{props.dataArr.length !== 0 ? (
+					<Card.Body>
+						<div className="text-muted ps-card-header">
+							<div className="best-choice-container">
+								{index === 0 ? (
+									<span className="gold" id="best-choice">
+										<i className="fas fa-star"></i> BEST CHOICE
+									</span>
 								) : (
-									<div className="arrow-container">
-										<i className="grey-arrow arrow fas fa-angle-left"></i>
-									</div>
+									''
 								)}
-								<div className="text">
-									<p className="main-text">
-										<span className={`${color}-text`}>{spots}</span> SPACES
+							</div>
+						</div>
+						<div className="ps-card-body">
+							{index !== 0 ? (
+								<div
+									onClick={handleDecrementUpdate}
+									className="pointer arrow-container"
+								>
+									<i className="arrow fas fa-angle-left"></i>
+								</div>
+							) : (
+								<div className="arrow-container">
+									<i className="grey-arrow arrow fas fa-angle-left"></i>
+								</div>
+							)}
+							<div className="text">
+								<p className="main-text">
+									<span className={`${color}-text`}>{spots}</span> SPACES
+								</p>
+								<p className="sub-text">Level {level}</p>
+
+								{colorBlindMode ? (
+									<p className={'sub-text border-' + color}>
+										{color.toUpperCase()}
 									</p>
-									<p className="sub-text">Level {level}</p>
-
-									{this.state.colorBlindMode ? (
-										<p className={'sub-text border-' + color}>
-											{color.toUpperCase()}
-										</p>
-									) : (
-										<p className="sub-text">
-											Color <i className={'fas fa-circle ' + color}></i>
-										</p>
-									)}
-								</div>
-								{this.state.index !== this.props.dataArr.length - 1 ? (
-									<div
-										onClick={this.handleIncrementUpdate}
-										className="arrow-container pointer"
-									>
-										<i className="arrow fas fa-angle-right"></i>
-									</div>
 								) : (
-									<div className="arrow-container">
-										<i className="grey-arrow arrow fas fa-angle-right"></i>
-									</div>
+									<p className="sub-text">
+										Color <i className={'fas fa-circle ' + color}></i>
+									</p>
 								)}
 							</div>
+							{index !== props.dataArr.length - 1 ? (
+								<div
+									onClick={handleIncrementUpdate}
+									className="arrow-container pointer"
+								>
+									<i className="arrow fas fa-angle-right"></i>
+								</div>
+							) : (
+								<div className="arrow-container">
+									<i className="grey-arrow arrow fas fa-angle-right"></i>
+								</div>
+							)}
+						</div>
 
-							<div className="ps-card-footer">
-								<ParkingGarageButton
-									name={this.getFullGarageName(this.props.structure)}
-									color={color}
-									structure={this.props.structure}
-								></ParkingGarageButton>
-								<Time timeUpdated={this.props.timeUpdated} />
-							</div>
-						</Card.Body>
-					) : (
-						<FullPSCardBody structure={this.getFullGarageName(this.props.structure)} />
-					)}
-				</Card>
-			</React.Fragment>
-		);
-	}
-}
+						<div className="ps-card-footer">
+							<ParkingGarageButton
+								name={getFullGarageName(props.structure)}
+								color={color}
+								structure={props.structure}
+							/>
+							<Time timeUpdated={props.timeUpdated} />
+						</div>
+					</Card.Body>
+				) : (
+					<FullPSCardBody structure={getFullGarageName(props.structure)} />
+				)}
+			</Card>
+		</React.Fragment>
+	);
+};
 
 export default PSCard;
