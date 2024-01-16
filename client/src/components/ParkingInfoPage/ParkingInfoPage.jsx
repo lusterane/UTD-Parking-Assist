@@ -109,8 +109,7 @@ class ParkingInfo extends Component {
 		return (
 			<React.Fragment>
 				<div className="dark-mode parking-info-page">
-					{this.state.timerLoaded && this.state.psGroupLoaded ? '' : <LoadingSpinner />}
-					{
+					{this.state.timerLoaded && this.state.timerLoaded ? (
 						<div>
 							<div className="parking-info-content">
 								<a
@@ -140,7 +139,9 @@ class ParkingInfo extends Component {
 								</div>
 							</div>
 						</div>
-					}
+					) : (
+						<LoadingSpinner />
+					)}
 				</div>
 			</React.Fragment>
 		);
