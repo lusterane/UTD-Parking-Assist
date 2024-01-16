@@ -13,6 +13,13 @@ const ColorOption = (props) => {
 		return `${color}-color-background color-option round-corners pointer border-${color}`;
 	};
 
+	const getPermitName = () => {
+		if (color == 'payBySpace') {
+			return 'Pay By Space';
+		}
+		return color.charAt(0).toUpperCase() + color.slice(1) + ' Permit';
+	};
+
 	return (
 		<React.Fragment>
 			<Button
@@ -29,7 +36,7 @@ const ColorOption = (props) => {
 				}}
 				className={getClassName()}
 			>
-				{color.charAt(0).toUpperCase() + color.slice(1)} Permit
+				{getPermitName()}
 			</Button>
 		</React.Fragment>
 	);

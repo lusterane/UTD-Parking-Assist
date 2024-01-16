@@ -113,7 +113,7 @@ class PSCard extends Component {
 									</div>
 								) : (
 									<div className="arrow-container">
-										<i className="grey arrow fas fa-angle-left"></i>
+										<i className="grey-arrow arrow fas fa-angle-left"></i>
 									</div>
 								)}
 								<div className="text">
@@ -141,7 +141,7 @@ class PSCard extends Component {
 									</div>
 								) : (
 									<div className="arrow-container">
-										<i className="grey arrow fas fa-angle-right"></i>
+										<i className="grey-arrow arrow fas fa-angle-right"></i>
 									</div>
 								)}
 							</div>

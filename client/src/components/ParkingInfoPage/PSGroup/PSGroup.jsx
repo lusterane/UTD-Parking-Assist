@@ -76,7 +76,7 @@ class PSGroup extends Component {
 
 	isRelevantColor = (color) => {
 		// cut array to relavent colors
-		let colorArr = ['green', 'gold', 'orange', 'purple'];
+		let colorArr = ['payBySpace', 'gold', 'orange', 'purple'];
 		const index = colorArr.indexOf(this.props.color) + 1;
 		colorArr = colorArr.slice(0, index);
 
@@ -99,23 +99,6 @@ class PSGroup extends Component {
 				return 'payBySpace';
 			default:
 				return 'green';
-		}
-	};
-
-	standardizeColorShortToLong = (color) => {
-		switch (color) {
-			case 'green':
-				return 'Green%20Permit';
-			case 'gold':
-				return 'Gold%20Permit';
-			case 'orange':
-				return 'Orange%20Permit';
-			case 'purple':
-				return 'Purple%20Permit';
-			case 'pay-by-space':
-				return 'Pay-By-Space';
-			default:
-				return 'Green%20Permit';
 		}
 	};
 

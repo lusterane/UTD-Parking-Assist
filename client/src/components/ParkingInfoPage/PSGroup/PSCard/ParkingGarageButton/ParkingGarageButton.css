@@ -16,5 +16,9 @@
 }
 
 .button-shadow-purple {
-	box-shadow: 0px 0px 20px 5px rgba(191, 73, 255, 0.4);
+	box-shadow: 0px 0px 30px 2px rgba(195, 97, 248, 0.5);
+}
+
+.button-shadow-payBySpace {
+	box-shadow: 0px 0px 20px 5px rgba(23, 134, 237, 0.7);
 }

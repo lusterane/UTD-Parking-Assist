@@ -65,6 +65,11 @@
 .ps-card .arrow {
 	font-size: 2rem;
 }
+
+.grey-arrow {
+	color: rgb(95, 95, 95)
+}
+
 .ps-card .arrow-container {
 	display: flex;
 	justify-content: center;

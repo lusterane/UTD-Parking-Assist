@@ -16,7 +16,7 @@ function Footer() {
 					</a>
 					.
 				</div>
-				<div className="sub-text">
+				<div className="footer-sub-text">
 					Like the project? A <i className="far fa-star"></i> on the{' '}
 					<a
 						href="https://github.com/lusterane/UTD-Parking-Assist"
