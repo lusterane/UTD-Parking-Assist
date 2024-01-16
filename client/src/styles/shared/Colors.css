@@ -54,39 +54,23 @@
 
 /* confirmation buttons (NOT COLOR OPTIONS) */
 .green-button {
-	background-color: var(--green);
-	border-color: var(--green);
+	background-color: var(--green) !important;
+	border-color: var(--green) !important;
 }
 .gold-button {
-	background-color: var(--gold);
-	color: #343a40;
+	background-color: var(--gold) !important;
+	color: #343a40 !important;
 	border-color: var(--gold);
 }
 .orange-button {
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--orange) !important;
+	border-color: var(--orange) !important;
 }
 .purple-button {
-	background-color: var(--purple);
-	border-color: var(--purple);
+	background-color: var(--purple) !important;
+	border-color: var(--purple) !important;
 }
 
-.green-button:hover {
-	background-color: var(--shaded-green);
-	border-color: var(--shaded-green);
-}
-.gold-button:hover {
-	background-color: var(--shaded-gold);
-	border-color: var(--shaded-gold);
-}
-.orange-button:hover {
-	background-color: var(--shaded-orange);
-	border-color: var(--shaded-orange);
-}
-.purple-button:hover {
-	background-color: var(--shaded-purple);
-	border-color: var(--shaded-purple);
-}
 
 /* color options*/
 .border-green {
