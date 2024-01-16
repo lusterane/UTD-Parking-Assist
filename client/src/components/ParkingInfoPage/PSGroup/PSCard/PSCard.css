@@ -28,7 +28,7 @@
 
 .best-choice-container {
 	display: inline;
-	font-size: 1.2rem;
+	font-size: .9rem;
 }
 
 /* bootstrap */
@@ -72,9 +72,11 @@
 }
 
 .ps-card-footer {
+	display: flex;
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	text-align: center;
+	flex-direction: column;
 }
 
 .ps-card-footer p {

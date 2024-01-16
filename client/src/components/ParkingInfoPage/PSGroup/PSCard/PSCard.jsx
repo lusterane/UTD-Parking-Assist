@@ -6,6 +6,7 @@ import FullPSCardBody from './FullPSCardBody/FullPSCardBody.jsx';
 import './PSCard.css';
 import '../../../../styles/shared/Colors.css';
 import ParkingGarageButton from './ParkingGarageButton/ParkingGarageButton.jsx';
+import Time from '../../Time/Time.jsx';
 
 class PSCard extends Component {
 	state = {
@@ -81,6 +82,7 @@ class PSCard extends Component {
 	};
 	render() {
 		const { spots, color, level } = this.state.currentPermit;
+		const { timeUpdated } = this.props;
 
 		return (
 			<React.Fragment>
@@ -115,7 +117,9 @@ class PSCard extends Component {
 									</div>
 								)}
 								<div className="text">
-									<p className="main-text">{spots} SPACES</p>
+									<p className="main-text">
+										<span className={`${color}-text`}>{spots}</span> SPACES
+									</p>
 									<p className="sub-text">Level {level}</p>
 
 									{this.state.colorBlindMode ? (
@@ -141,13 +145,14 @@ class PSCard extends Component {
 									</div>
 								)}
 							</div>
+
 							<div className="ps-card-footer">
 								<ParkingGarageButton
 									name={this.getFullGarageName(this.props.structure)}
 									color={color}
 									structure={this.props.structure}
 								></ParkingGarageButton>
-								<p></p>
+								<Time timeUpdated={this.props.timeUpdated} />
 							</div>
 						</Card.Body>
 					) : (

@@ -30,10 +30,3 @@
 	height: 100%;
 	min-height: 95vh;
 }
-
-.time-container {
-	display: flex;
-	flex-direction: center;
-	justify-content: center;
-	margin-bottom: 5vh;
-}

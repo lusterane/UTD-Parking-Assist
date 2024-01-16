@@ -71,6 +71,19 @@
 	border-color: var(--purple) !important;
 }
 
+.green-text {
+	color: var(--green) !important;
+}
+.gold-text {
+	color: var(--gold) !important;
+}
+.orange-text {
+	color: var(--orange) !important;
+}
+.purple-text {
+	color: var(--purple) !important;
+}
+
 
 /* color options*/
 .border-green {
