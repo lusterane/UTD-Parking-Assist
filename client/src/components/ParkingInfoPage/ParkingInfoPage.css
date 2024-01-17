@@ -3,6 +3,10 @@
 	.parking-info-page {
 		padding-bottom: 10vh;
 	}
+
+	.parking-data {
+		margin-top: 0 !important;
+	}
 }
 
 .heading-hr {
