@@ -28,11 +28,6 @@ h1 {
 	color: black;
 }
 
-.alert {
-	border-color: white;
-	opacity: .6;
-}
-
 .round-corners {
 	border-radius: 11px;
 }
