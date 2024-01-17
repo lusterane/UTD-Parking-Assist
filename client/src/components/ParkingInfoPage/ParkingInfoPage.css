@@ -5,9 +5,19 @@
 	}
 }
 
+.heading-hr {
+	border-top: 2px solid rgba(255, 255, 255, 0.1);
+	width: 90%;
+	margin: 2rem 0;
+}
+
 .parking-info-header {
 	width: 100vw;
 	padding: 1rem;
+}
+
+.parking-data {
+	margin-top: 2rem;
 }
 
 .parking-info-header .centered-header {

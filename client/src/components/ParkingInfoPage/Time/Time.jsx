@@ -13,7 +13,7 @@ class Time extends Component {
 		} else {
 			const calculatedTime = Math.min(60 - elapsedTime, 57);
 			const updateTimeText = this.standardizeSeconds(calculatedTime);
-			return `🚀 Next update in ${updateTimeText}`;
+			return `🚀 Refresh in ${updateTimeText}`;
 		}
 	};
 

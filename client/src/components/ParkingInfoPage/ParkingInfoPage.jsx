@@ -205,8 +205,9 @@ class ParkingInfo extends Component {
 									<div className="centered-header">
 										<h1 className={color}>UTD Parking</h1>
 										<div className="sub-title-greeting">
-											<span>Park Smarter, Not Harder.</span>
+											<span>Park Smarter, Not Harder</span>
 										</div>
+										<hr className="heading-hr"></hr>
 									</div>
 								</div>
 								<div className="parking-data">

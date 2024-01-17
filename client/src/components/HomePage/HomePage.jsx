@@ -30,7 +30,7 @@ function Home(props) {
 						<div className="text-content">
 							<h1 className={props.color + ' title-greeting'}>UTD Parking</h1>
 							<div className="sub-title-greeting">
-								<span>Park Smarter, Not Harder.</span>
+								<span>Park Smarter, Not Harder</span>
 							</div>
 						</div>
 						<div className="color-option-container">
