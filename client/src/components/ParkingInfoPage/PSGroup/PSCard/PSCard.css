@@ -1,9 +1,6 @@
 @media only screen and (max-width: 768px) {
-	.ps-card {
-		width: 85vw !important;
-	}
-	.ps-card-body {
-		margin: 3rem 0 4rem 0 !important;
+	.ps-card-body .text{
+		padding: 6rem 0 5rem !important;
 	}
 }
 
@@ -16,19 +13,22 @@
 	display: flex;
 	border: 2px solid transparent;
 	flex-direction: column;
-	width: 23rem;
 	margin: 0 2vw 2rem 2vw;
 	box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .ps-card-header {
-	height: 4rem;
 	font-weight: 500;
 }
 
 .best-choice-container {
-	display: inline;
 	font-size: .9rem;
+	height: 1rem !important;
+}
+
+.best-choice-text {
+	position: relative;
+	left: -0.5rem !important;
 }
 
 /* bootstrap */
@@ -37,7 +37,7 @@
 }
 .ps-card-body {
 	display: flex;
-	margin: 6rem 0 7rem 0;
+	flex-direction: column;
 }
 
 .ps-card-body .text {
@@ -45,6 +45,7 @@
 	position: relative;
 	height: 100%;
 	width: 100%;
+	padding: 8rem 0 8rem;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -55,6 +56,11 @@
 	font-size: 2.25rem;
 	font-weight: 350;
 	text-align: center;
+}
+
+.card-content {
+	display: flex;
+	flex-direction: row;
 }
 
 .ps-card-body .sub-text {
@@ -70,10 +76,11 @@
 	color: rgb(95, 95, 95)
 }
 
-.ps-card .arrow-container {
+.arrow-container {
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
+	text-align: center;
+	justify-content: center;
 }
 
 .ps-card-footer {

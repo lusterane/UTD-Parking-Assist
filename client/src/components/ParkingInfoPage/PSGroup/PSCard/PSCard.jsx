@@ -67,18 +67,7 @@ const PSCard = (props) => {
 			>
 				{props.dataArr.length !== 0 ? (
 					<Card.Body>
-						<div className="text-muted ps-card-header">
-							<div className="best-choice-container">
-								{index === 0 ? (
-									<span className="gold" id="best-choice">
-										<i className="fas fa-star"></i> BEST CHOICE
-									</span>
-								) : (
-									''
-								)}
-							</div>
-						</div>
-						<div className="ps-card-body">
+						<div className="card-content">
 							{index !== 0 ? (
 								<div
 									onClick={handleDecrementUpdate}
@@ -91,23 +80,47 @@ const PSCard = (props) => {
 									<i className="grey-arrow arrow fas fa-caret-left"></i>
 								</div>
 							)}
-							<div className="text">
-								<p className="main-text">
-									<span className={`${color}-text`}>{spots}</span> SPACES
-								</p>
-								<p className="sub-text">Level {level}</p>
+							<div className="ps-card-body">
+								<div className="text-muted ps-card-header">
+									<div className="best-choice-container">
+										{index === 0 ? (
+											<span
+												className="gold best-choice-text"
+												id="best-choice"
+											>
+												<i className="fas fa-star"></i> BEST CHOICE
+											</span>
+										) : (
+											''
+										)}
+									</div>
+								</div>
+								<div className="text">
+									<p className="main-text">
+										<span className={`${color}-text`}>{spots}</span> SPACES
+									</p>
+									<p className="sub-text">Level {level}</p>
 
-								{colorBlindMode ? (
-									<p className={'sub-text border-' + color}>
-										{color === 'payBySpace'
-											? 'PAY BY SPACE'
-											: color.toUpperCase()}
-									</p>
-								) : (
-									<p className="sub-text">
-										Color <i className={'fas fa-circle ' + color}></i>
-									</p>
-								)}
+									{colorBlindMode ? (
+										<p className={'sub-text border-' + color}>
+											{color === 'payBySpace'
+												? 'PAY BY SPACE'
+												: color.toUpperCase()}
+										</p>
+									) : (
+										<p className="sub-text">
+											Color <i className={'fas fa-circle ' + color}></i>
+										</p>
+									)}
+								</div>
+								<div className="ps-card-footer">
+									<ParkingGarageButton
+										name={getFullGarageName(props.structure)}
+										color={color}
+										structure={props.structure}
+									/>
+									<Time timeUpdated={props.timeUpdated} />
+								</div>
 							</div>
 							{index !== props.dataArr.length - 1 ? (
 								<div
@@ -117,19 +130,10 @@ const PSCard = (props) => {
 									<i className="arrow fas fa-caret-right"></i>
 								</div>
 							) : (
-								<div className="arrow-container">
+								<div className="arrow-container right-container">
 									<i className="grey-arrow arrow fas fa-caret-right"></i>
 								</div>
 							)}
-						</div>
-
-						<div className="ps-card-footer">
-							<ParkingGarageButton
-								name={getFullGarageName(props.structure)}
-								color={color}
-								structure={props.structure}
-							/>
-							<Time timeUpdated={props.timeUpdated} />
 						</div>
 					</Card.Body>
 				) : (
