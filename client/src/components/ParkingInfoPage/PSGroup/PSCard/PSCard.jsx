@@ -84,11 +84,11 @@ const PSCard = (props) => {
 									onClick={handleDecrementUpdate}
 									className="pointer arrow-container"
 								>
-									<i className="arrow fas fa-angle-left"></i>
+									<i className="arrow fas fa-caret-left"></i>
 								</div>
 							) : (
 								<div className="arrow-container">
-									<i className="grey-arrow arrow fas fa-angle-left"></i>
+									<i className="grey-arrow arrow fas fa-caret-left"></i>
 								</div>
 							)}
 							<div className="text">
@@ -114,11 +114,11 @@ const PSCard = (props) => {
 									onClick={handleIncrementUpdate}
 									className="arrow-container pointer"
 								>
-									<i className="arrow fas fa-angle-right"></i>
+									<i className="arrow fas fa-caret-right"></i>
 								</div>
 							) : (
 								<div className="arrow-container">
-									<i className="grey-arrow arrow fas fa-angle-right"></i>
+									<i className="grey-arrow arrow fas fa-caret-right"></i>
 								</div>
 							)}
 						</div>

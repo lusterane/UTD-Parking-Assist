@@ -3,8 +3,9 @@
 }
 
 .footer-container {
+	position: relative;
 	width: 100%;
-	font-size: 0.6rem;
+	font-size: 0.8rem;
 	padding-bottom:1rem;
 	text-align: center;
 	height: 100%;

@@ -24,7 +24,7 @@
 
 .content-container {
 	display: flex;
-	min-height: 95vh;
+	height: 100vh;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;

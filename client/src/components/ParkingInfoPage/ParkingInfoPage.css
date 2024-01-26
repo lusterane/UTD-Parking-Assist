@@ -7,6 +7,10 @@
 	.parking-data {
 		margin-top: 0 !important;
 	}
+
+	.parking-info-header {
+		padding-top: 2rem !important;
+	}
 }
 
 .heading-hr {
