@@ -1,15 +1,27 @@
 /* mobile */
 @media only screen and (max-width: 768px) {
 	.parking-garage-button {
-		width: 67vw !important;
+		width: 100%;
 	}
 }
 
 .parking-garage-button {
+	z-index: 999;
 	height: 4rem;
-	width: 20rem;
 	font-size: 1.2rem;
-	margin-bottom: 2rem;
+	width: 100%;
+	margin: 0;
+}
+
+.button-map-link {
+	width: 100%;
+}
+
+.parking-button-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+	width: 100%;
 }
 
 .button-shadow-gold, .button-shadow-orange {

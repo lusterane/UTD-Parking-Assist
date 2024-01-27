@@ -67,34 +67,36 @@ const PSCard = (props) => {
 			>
 				{props.dataArr.length !== 0 ? (
 					<Card.Body>
+						<div className="text-muted ps-card-header">
+							<div className="best-choice-container">
+								{index === 0 ? (
+									<span className="gold best-choice-text" id="best-choice">
+										<i className="fas fa-star"></i> BEST CHOICE
+									</span>
+								) : (
+									''
+								)}
+							</div>
+						</div>
 						<div className="card-content">
-							{index !== 0 ? (
-								<div
-									onClick={handleDecrementUpdate}
-									className="pointer arrow-container"
-								>
-									<i className="arrow fas fa-caret-left"></i>
-								</div>
-							) : (
-								<div className="arrow-container">
-									<i className="grey-arrow arrow fas fa-caret-left"></i>
-								</div>
-							)}
 							<div className="ps-card-body">
-								<div className="text-muted ps-card-header">
-									<div className="best-choice-container">
-										{index === 0 ? (
-											<span
-												className="gold best-choice-text"
-												id="best-choice"
-											>
-												<i className="fas fa-star"></i> BEST CHOICE
-											</span>
-										) : (
-											''
-										)}
+								{index !== 0 ? (
+									<div>
+										<div
+											onClick={handleDecrementUpdate}
+											className="left-clickable pointer"
+										></div>
+										<div className="arrow-container">
+											<i className="arrow fas fa-caret-left"></i>
+										</div>
 									</div>
-								</div>
+								) : (
+									<div>
+										<div className="arrow-container">
+											<i className="grey-arrow arrow fas fa-caret-left"></i>
+										</div>
+									</div>
+								)}
 								<div className="text">
 									<p className="main-text">
 										<span className={`${color}-text`}>{spots}</span> SPACES
@@ -113,27 +115,33 @@ const PSCard = (props) => {
 										</p>
 									)}
 								</div>
-								<div className="ps-card-footer">
-									<ParkingGarageButton
-										name={getFullGarageName(props.structure)}
-										color={color}
-										structure={props.structure}
-									/>
-									<Time timeUpdated={props.timeUpdated} />
-								</div>
+
+								{index !== props.dataArr.length - 1 ? (
+									<div>
+										<div
+											className="right-clickable pointer"
+											onClick={handleIncrementUpdate}
+										></div>
+										<div className="arrow-container">
+											<i className="arrow fas fa-caret-right"></i>
+										</div>
+									</div>
+								) : (
+									<div>
+										<div className="arrow-container">
+											<i className="grey-arrow arrow fas fa-caret-right"></i>
+										</div>
+									</div>
+								)}
 							</div>
-							{index !== props.dataArr.length - 1 ? (
-								<div
-									onClick={handleIncrementUpdate}
-									className="arrow-container pointer"
-								>
-									<i className="arrow fas fa-caret-right"></i>
-								</div>
-							) : (
-								<div className="arrow-container right-container">
-									<i className="grey-arrow arrow fas fa-caret-right"></i>
-								</div>
-							)}
+						</div>
+						<div className="ps-card-footer">
+							<ParkingGarageButton
+								name={getFullGarageName(props.structure)}
+								color={color}
+								structure={props.structure}
+							/>
+							<Time timeUpdated={props.timeUpdated} />
 						</div>
 					</Card.Body>
 				) : (

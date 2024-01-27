@@ -18,17 +18,24 @@ const ParkingGarageButton = (props) => {
 
 	return (
 		<React.Fragment>
-			<a rel="noopener noreferrer" target="_blank" href={getParkingStructureLink(structure)}>
-				<Button
-					color="secondary"
-					className={`${color}-button parking-garage-button round-corners pointer button-shadow-${color} border-${color}`}
+			<div className="parking-button-container">
+				<a
+					rel="noopener noreferrer"
+					target="_blank"
+					href={getParkingStructureLink(structure)}
+					className="button-map-link"
 				>
-					<div>
-						<i className="fas fa-location-pin fa-lg"></i>
-						<i className="fas fa-map-marked-alt fa-lg"></i> {name}
-					</div>
-				</Button>
-			</a>
+					<Button
+						color="secondary"
+						className={`${color}-button parking-garage-button round-corners pointer button-shadow-${color} border-${color}`}
+					>
+						<div>
+							<i className="fas fa-location-pin fa-lg"></i>
+							<i className="fas fa-map-marked-alt fa-lg"></i> {name}
+						</div>
+					</Button>
+				</a>
+			</div>
 		</React.Fragment>
 	);
 };
