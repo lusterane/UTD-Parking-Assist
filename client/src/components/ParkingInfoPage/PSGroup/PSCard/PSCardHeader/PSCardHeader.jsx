@@ -1,11 +1,12 @@
 import React from 'react';
 import './PSCardHeader.css';
-class PSCardHeader extends React.Component {
-	getHeader = (color, index) => {
+
+function PSCardHeader({ color, index }) {
+	const getHeader = (color, index) => {
 		if (color === 'payBySpace') {
 			return (
-				<span className="">
-					<i class="fas fa-info-circle"></i>
+				<span>
+					<i className="fas fa-info-circle"></i>
 					<span> This option is Pay By Space</span>
 				</span>
 			);
@@ -21,11 +22,8 @@ class PSCardHeader extends React.Component {
 		}
 		return '';
 	};
-	render() {
-		const { color, index } = this.props;
 
-		return <div className="ps-card-header-container">{this.getHeader(color, index)}</div>;
-	}
+	return <div className="ps-card-header-container">{getHeader(color, index)}</div>;
 }
 
 export default PSCardHeader;

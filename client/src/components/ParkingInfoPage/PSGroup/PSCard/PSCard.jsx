@@ -7,6 +7,7 @@ import '../../../../styles/shared/Colors.css';
 import ParkingGarageButton from './ParkingGarageButton/ParkingGarageButton.jsx';
 import Time from '../../Time/Time.jsx';
 import PSCardHeader from './PSCardHeader/PSCardHeader.jsx';
+import PSCardBody from './FullPSCardBody/PSCardBody/PSCardBody.jsx';
 
 const PSCard = (props) => {
 	const [index, setIndex] = useState(0);
@@ -88,24 +89,12 @@ const PSCard = (props) => {
 										</div>
 									</div>
 								)}
-								<div className="text">
-									<p className="main-text">
-										<span className={`${color}-text`}>{spots}</span> SPACES
-									</p>
-									<p className="sub-text">Level {level}</p>
-
-									{colorBlindMode ? (
-										<p className={'sub-text border-' + color}>
-											{color === 'payBySpace'
-												? 'PAY BY SPACE'
-												: color.toUpperCase()}
-										</p>
-									) : (
-										<p className="sub-text">
-											Color <i className={'fas fa-circle ' + color}></i>
-										</p>
-									)}
-								</div>
+								<PSCardBody
+									spots={spots}
+									level={level}
+									color={color}
+									colorBlindMode={colorBlindMode}
+								/>
 
 								{index !== props.dataArr.length - 1 ? (
 									<div>

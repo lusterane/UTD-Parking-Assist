@@ -37,12 +37,17 @@ const PSGroup = (props) => {
 		return sortedDataArr;
 	};
 
+	const fillEmptyCards = (color, dataArr) => {
+		// if (dataArr.length == 1)
+	};
+
 	const { ps1, ps3, ps4 } = props.structures;
+	const { color } = props;
 
 	const ps1DataArr = getSortedDataArr(ps1.dataArr);
 	const ps3DataArr = getSortedDataArr(ps3.dataArr);
 	const ps4DataArr = getSortedDataArr(ps4.dataArr);
-
+	
 	return (
 		<React.Fragment>
 			<div className="card-group-container">
