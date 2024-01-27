@@ -9,6 +9,7 @@ class Time extends Component {
 	};
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime > 120) {
+			// do callback
 			return '';
 		} else {
 			const calculatedTime = Math.min(60 - elapsedTime, 57);

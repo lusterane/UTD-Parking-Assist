@@ -109,26 +109,3 @@ exports.getAllParkingStructureTimes = (req, res, next) => {
 			});
 		});
 };
-
-// TEST gets all relevant information for specific parking
-exports.TEST_getColorInfo = (req, res, next) => {
-	const color = req.params.color;
-	const unparsedColorArr = [
-		'Green Permit',
-		'Gold Permit',
-		'Orange Permit',
-		'Purple Permit',
-		'Pay-By-Space',
-	];
-
-	// filter out irrelevant colors in array
-	const index =
-		unparsedColorArr.findIndex((element) => {
-			return element == color;
-		}) + 1;
-
-	const parsedColorArr = [];
-	for (let i = 0; i < index; i++) {
-		parsedColorArr.push(unparsedColorArr[i]);
-	}
-};
