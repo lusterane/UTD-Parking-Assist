@@ -6,6 +6,7 @@ import './PSCard.css';
 import '../../../../styles/shared/Colors.css';
 import ParkingGarageButton from './ParkingGarageButton/ParkingGarageButton.jsx';
 import Time from '../../Time/Time.jsx';
+import PSCardHeader from './PSCardHeader/PSCardHeader.jsx';
 
 const PSCard = (props) => {
 	const [index, setIndex] = useState(0);
@@ -67,17 +68,7 @@ const PSCard = (props) => {
 			>
 				{props.dataArr.length !== 0 ? (
 					<Card.Body>
-						<div className="text-muted ps-card-header">
-							<div className="best-choice-container">
-								{index === 0 ? (
-									<span className="gold best-choice-text" id="best-choice">
-										<i className="fas fa-star"></i> BEST CHOICE
-									</span>
-								) : (
-									''
-								)}
-							</div>
-						</div>
+						<PSCardHeader color={color} index={index} />
 						<div className="card-content">
 							<div className="ps-card-body">
 								{index !== 0 ? (
