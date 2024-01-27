@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Alert } from 'reactstrap';
 
 import './Time.css';
 
@@ -10,35 +9,21 @@ class Time extends Component {
 	};
 	getTimeText = (elapsedTime) => {
 		if (elapsedTime > 120) {
-			return (
-				<Alert color="danger">Oops! Something went wrong, please refresh the page</Alert>
-			);
+			// do callback
+			return '';
 		} else {
 			const calculatedTime = Math.min(60 - elapsedTime, 57);
-
 			const updateTimeText = this.standardizeSeconds(calculatedTime);
-			if (calculatedTime <= 3 || calculatedTime === 0) {
-				return (
-					<Alert className="time-alert" color="success">
-						Live update in {updateTimeText}
-					</Alert>
-				);
-			} else {
-				return (
-					<Alert className="time-alert" color="primary">
-						Live update in {updateTimeText}
-					</Alert>
-				);
-			}
+			return `🚀 Refresh in ${updateTimeText}`;
 		}
 	};
 
 	standardizeSeconds = (calculatedTime) => {
 		if (calculatedTime < 1) {
-			return 'less than 1 second';
+			return 'less than 1s';
 		}
 
-		return calculatedTime + (calculatedTime === 1 ? ' second' : ' seconds');
+		return calculatedTime + 's';
 	};
 
 	render() {

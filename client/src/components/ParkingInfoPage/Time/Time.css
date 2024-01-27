@@ -1,11 +1,10 @@
 /* mobile */
 @media only screen and (max-width: 768px) {
-	.time-text-container {
-		width: 101vw !important;
-	}
 }
 
 .time-text-container {
-	width: 45rem;
+	width: 100%;
+	font-size: .7rem;
 	text-align: center;
+	margin-top: -.5rem;
 }

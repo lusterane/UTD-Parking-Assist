@@ -1,24 +1,19 @@
 :root {
-	--green: #28a746;
+	--payBySpace: rgb(23, 134, 237);
 	--gold: #f9c938;
 	--orange: #ff8c00;
 	--purple: #773dbc;
 	--grey: rgb(159, 158, 158);
-	--shaded-green: #24933e;
+	--shaded-payBySpace: rgb(23, 134, 237);
 	--shaded-gold: #e1aa05;
 	--shaded-orange: #e69119;
-	--shaded-purple: #c191fc;
+	--shaded-purple: #aa67fc;
 	--white: #fff;
 }
 
-/* DOM */
-.white-hr {
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 /* General */
-.green {
-	color: var(--green);
+.payBySpace {
+	color: var(--payBySpace);
 }
 .gold {
 	color: var(--gold);
@@ -53,47 +48,44 @@
 }
 
 /* confirmation buttons (NOT COLOR OPTIONS) */
-.green-button {
-	background-color: var(--green);
-	border-color: var(--green);
+.payBySpace-button {
+	background-color: var(--payBySpace) !important;
+	border-color: var(--payBySpace) !important;
 }
 .gold-button {
-	background-color: var(--gold);
-	color: #343a40;
+	background-color: var(--gold) !important;
+	color: #343a40 !important;
 	border-color: var(--gold);
 }
 .orange-button {
-	background-color: var(--orange);
-	border-color: var(--orange);
+	background-color: var(--orange) !important;
+	border-color: var(--orange) !important;
 }
 .purple-button {
-	background-color: var(--purple);
-	border-color: var(--purple);
+	background-color: var(--purple) !important;
+	border-color: var(--purple) !important;
 }
 
-.green-button:hover {
-	background-color: var(--shaded-green);
-	border-color: var(--shaded-green);
+.payBySpace-text {
+	color: var(--payBySpace) !important;
 }
-.gold-button:hover {
-	background-color: var(--shaded-gold);
-	border-color: var(--shaded-gold);
+.gold-text {
+	color: var(--gold) !important;
 }
-.orange-button:hover {
-	background-color: var(--shaded-orange);
-	border-color: var(--shaded-orange);
+.orange-text {
+	color: var(--orange) !important;
 }
-.purple-button:hover {
-	background-color: var(--shaded-purple);
-	border-color: var(--shaded-purple);
+.purple-text {
+	color: var(--purple) !important;
 }
+
 
 /* color options*/
-.border-green {
+.border-payBySpace {
 	margin: 1rem 0.7rem;
 	padding: 0.5rem;
 	border-radius: 0.25rem;
-	border: 2px solid rgba(40, 167, 70, 0.7);
+	border: 2px solid rgba(29, 146, 255, 0.7);
 }
 .border-gold {
 	margin: 1rem 0.7rem;
@@ -114,14 +106,14 @@
 	border: 2px solid rgba(161, 89, 249, 0.7);
 }
 
-.green-color-background {
-	color: var(--shaded-green);
+.payBySpace-color-background {
+	color: var(--shaded-payBySpace);
 	font-weight: 400;
 }
-
-.green-color-background:hover {
-	background-color: var(--green) !important;
-	border-color: var(--green) !important;
+/*  */
+.payBySpace-color-background:hover {
+	background-color: var(--payBySpace) !important;
+	border-color: var(--payBySpace) !important;
 	color: #fff !important;
 	font-weight: 500;
 }

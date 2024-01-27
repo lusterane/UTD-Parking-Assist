@@ -1,44 +1,49 @@
 import React, { Component } from 'react';
 import { Spinner, Toast, ToastBody, ToastHeader } from 'reactstrap';
-
 import './LoadingSpinner.css';
 
 class LoadingSpinner extends Component {
 	state = {
 		textList: [
-			'Starting Up Car ...',
-			'Running Red Lights ...',
-			'Picking Up Coffee ...',
-			'Spilling Coffee On Dashboard ...',
-			'Parking In Red ...',
-			'Running To Class ...',
-			'Almost Ready!!!',
+			'Dodging Campus Squirrels...',
+			'Searching for Lost Car Keys...',
+			'Arguing with the GPS...',
+			'Considering a Career as a Valet...',
+			'Rehearsing Excuses for Being Late...',
+			'Waiting for the Pedestrian... Again...',
+			'Avoiding Speed Bumps at Light Speed...',
+			'Challenging the One-Way Sign...',
+			'Revving Up for a Parking Showdown...',
+			'Scouting for Free Parking Real Estate...',
+			"Contemplating the Meaning of 'No Parking Anytime'...",
+			'Mimicking a Parking Sensor Beep...',
+			'Consulting the Stars for a Closer Spot...',
+			'Jousting for the Corner Spot...',
+			'Summoning Patience at the Parking Gate...',
 		],
 		index: 0,
-		incrementIndexInterval: '',
 		showToastTimeout: '',
 		showToast: false,
 	};
 
 	componentDidMount() {
 		this.setState({
-			incrementIndexInterval: setInterval(this.incrementIndex, 2000),
+			shuffleTextInterval: setInterval(this.shuffleTextList, 2000),
 			showToastTimeout: setTimeout(this.toggleToast, 5000),
 		});
 	}
 
 	componentWillUnmount() {
-		clearInterval(this.state.incrementIndexInterval);
+		clearInterval(this.state.shuffleTextInterval);
 		clearTimeout(this.state.showToastTimeout);
 	}
 
-	incrementIndex = () => {
-		const { textList, index } = this.state;
-		if (index < textList.length - 1) {
-			this.setState((state, props) => ({
-				index: state.index + 1,
-			}));
-		}
+	shuffleTextList = () => {
+		const shuffled = this.state.textList
+			.map((value) => ({ value, sort: Math.random() }))
+			.sort((a, b) => a.sort - b.sort)
+			.map(({ value }) => value);
+		this.setState({ textList: shuffled });
 	};
 
 	toggleToast = () => {

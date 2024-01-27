@@ -1,14 +1,31 @@
 /* mobile */
 @media only screen and (max-width: 768px) {
+	.parking-info-page {
+		padding-bottom: 10vh;
+	}
+
 	.parking-data {
 		margin-top: 0 !important;
-		padding: 0 !important;
 	}
+
+	.parking-info-header {
+		padding-top: 2rem !important;
+	}
+}
+
+.heading-hr {
+	border-top: 2px solid rgba(255, 255, 255, 0.1);
+	width: 90%;
+	margin: 2rem 0;
 }
 
 .parking-info-header {
 	width: 100vw;
 	padding: 1rem;
+}
+
+.parking-data {
+	margin-top: 2rem;
 }
 
 .parking-info-header .centered-header {
@@ -27,28 +44,7 @@
 	z-index: 100;
 }
 
-.parking-data {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 5vh;
-}
-
-/* sized by flexbox, not root */
-.parking-info-container {
-	position: relative;
-	font-size: 14px;
-	margin-bottom: 5vh;
-}
-
-.time-container {
-	display: flex;
-	flex-direction: center;
-	justify-content: center;
-	margin-bottom: 5vh;
-}
-
-#parking-info-footer-container {
-	position: relative;
+.parking-info-page {
+	height: 100%;
+	min-height: 95vh;
 }

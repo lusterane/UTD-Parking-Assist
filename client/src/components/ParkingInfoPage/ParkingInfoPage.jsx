@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import ParkingStructureGroup from './PSGroup/PSGroup';
-import Time from './Time/Time';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
-import Footer from '../Footer/Footer';
 
 import './ParkingInfoPage.css';
 
@@ -26,6 +24,17 @@ class ParkingInfo extends Component {
 		},
 		timerLoaded: false,
 		psGroupLoaded: false,
+		structures: {
+			ps1: {
+				dataArr: [],
+			},
+			ps3: {
+				dataArr: [],
+			},
+			ps4: {
+				dataArr: [],
+			},
+		},
 	};
 
 	componentDidMount() {
@@ -37,6 +46,7 @@ class ParkingInfo extends Component {
 			updateTimeUpdatedInStateInterval: setInterval(this.updateTimeUpdatedInState, 1000),
 		});
 		this.handleHTTPGetUpdateTime();
+		this.handleHTTPGetPS();
 	}
 
 	componentWillUnmount() {
@@ -46,6 +56,7 @@ class ParkingInfo extends Component {
 		if (this.state.timeUpdated.ps1.elapsedTime === 62) {
 			this.handleResetElapsedTime();
 			this.handleHTTPGetUpdateTime();
+			this.handleHTTPGetPS();
 		}
 	}
 
@@ -82,6 +93,77 @@ class ParkingInfo extends Component {
 			});
 	};
 
+	handleHTTPGetPS = () => {
+		console.log('HTTP CALL: GET /parkingStructures');
+
+		axios
+			.get(process.env.REACT_APP_API_ENDPOINT + `parkingStructures`)
+			.then((res) => {
+				if (res.status === 200) {
+					this.updatePSFromHTTPResponse(res);
+				} else {
+					console.log('GET /parkingStructures/ ' + res.status);
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	updatePSFromHTTPResponse = (res) => {
+		let structures = { ...this.state.structures };
+		// reset dataArr for each parking structure
+		Object.entries(structures).forEach((element) => {
+			element[1].dataArr = [];
+		});
+
+		res.data.forEach((element) => {
+			element.permit_category.forEach((permit) => {
+				const { id, level, spots } = permit;
+				const color = this.standardizeColorLongToShort(permit.color);
+
+				if (spots !== 0 && this.isRelevantColor(color)) {
+					structures[element.structure].dataArr.push({
+						id: id,
+						color: color,
+						level: level,
+						spots: spots,
+						structure: element.structure.toUpperCase(),
+					});
+				}
+			});
+		});
+		this.setState({ structures: structures }, this.setPSGroupLoadedTrue);
+	};
+
+	isRelevantColor = (color) => {
+		// cut array to relavent colors
+		let colorArr = ['payBySpace', 'gold', 'orange', 'purple'];
+		const index = colorArr.indexOf(this.state.color) + 1;
+		colorArr = colorArr.slice(0, index);
+
+		// check if color is in array
+		return colorArr.indexOf(color) > -1;
+	};
+
+	// returns standardized color. 'Green Permit' -> 'green'
+	standardizeColorLongToShort = (color) => {
+		switch (color) {
+			case 'Green Permit':
+				return 'green';
+			case 'Gold Permit':
+				return 'gold';
+			case 'Orange Permit':
+				return 'orange';
+			case 'Purple Permit':
+				return 'purple';
+			case 'Pay-By-Space':
+				return 'payBySpace';
+			default:
+				return 'green';
+		}
+	};
+
 	updateTimeFromHTTPResponse = (res) => {
 		let timeUpdated = { ...this.state.timeUpdated };
 		Object.entries(res.data).forEach((value) => {
@@ -106,14 +188,13 @@ class ParkingInfo extends Component {
 	};
 
 	render() {
-		const { color, timeUpdated } = this.state;
+		const { color, timeUpdated, psGroupLoaded, structures, timerLoaded } = this.state;
 		return (
 			<React.Fragment>
-				<div className="dark-mode">
-					{this.state.timerLoaded && this.state.psGroupLoaded ? '' : <LoadingSpinner />}
-					{
+				<div className="dark-mode parking-info-page">
+					{timerLoaded && psGroupLoaded ? (
 						<div>
-							<div className="parking-info-container">
+							<div className="parking-info-content">
 								<a
 									href={process.env.PUBLIC_URL + '/'}
 									className="remove-decoration"
@@ -124,30 +205,23 @@ class ParkingInfo extends Component {
 									<div className="centered-header">
 										<h1 className={color}>UTD Parking</h1>
 										<div className="sub-title-greeting">
-											<span>Park Smarter, Not Harder.</span>
+											<span>Park Smarter, Not Harder</span>
 										</div>
+										<hr className="heading-hr"></hr>
 									</div>
-								</div>
-								<div className="time-container">
-									<Time timeUpdated={timeUpdated} />
 								</div>
 								<div className="parking-data">
 									<ParkingStructureGroup
 										color={color}
-										setPSGroupLoadedTrue={this.setPSGroupLoadedTrue}
+										structures={structures}
 										timeUpdated={timeUpdated}
-										onResetElapsedTime={this.handleResetElapsedTime}
 									/>
 								</div>
 							</div>
-							<div
-								id="parking-info-footer-container"
-								className="dark-mode footer-container"
-							>
-								<Footer />
-							</div>
 						</div>
-					}
+					) : (
+						<LoadingSpinner />
+					)}
 				</div>
 			</React.Fragment>
 		);

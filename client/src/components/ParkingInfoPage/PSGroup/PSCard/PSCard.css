@@ -1,80 +1,73 @@
 @media only screen and (max-width: 768px) {
-	.ps-card {
-		width: 85vw !important;
-	}
-	.ps-card-body {
-		margin: 3rem 0 4rem 0 !important;
+	.card-content {
+		width: 75vw !important;
 	}
 }
 
-.best-choice {
-	border: 2px solid var(--gold) !important;
-	box-shadow: 0px 0px 15px 5px rgba(249, 201, 56, 0.2) !important;
+.card-content {
+	width: 20rem;
+}
+
+/* bootstrap */
+.card-body {
+	padding: 1rem 1.5rem;
 }
 
 .ps-card {
 	display: flex;
 	border: 2px solid transparent;
-	flex-direction: column;
-	width: 23rem;
+	align-items: center;
 	margin: 0 2vw 2rem 2vw;
 	box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
+.left-clickable {
+	position: absolute;
+	width: 30%;
+	left: 0;
+	top:0;
+	height: 60%;
+}
+
+.right-clickable {
+	position: absolute;
+	width: 30%;
+	right: 0;
+	top:0;
+	height: 60%;
+}
+
 .ps-card-header {
-	height: 4rem;
 	font-weight: 500;
 }
 
-.best-choice-container {
-	display: inline;
-	font-size: 1.2rem;
-}
-
-/* bootstrap */
-.card-body {
-	padding: 1rem 1rem .46rem 1rem;
-}
 .ps-card-body {
 	display: flex;
-	margin: 6rem 0 7rem 0;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
-.ps-card-body .text {
+.arrow {
+	font-size: 2rem;
+}
+
+.grey-arrow {
+	color: rgb(95, 95, 95)
+}
+
+.arrow-container {
 	display: flex;
-	position: relative;
 	height: 100%;
-	width: 100%;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
 
-.ps-card-body .main-text {
-	margin-bottom: 0;
-	font-size: 2.25rem;
-	font-weight: 350;
-	text-align: center;
-}
-
-.ps-card-body .sub-text {
-	margin-bottom: 0;
-	font-size: 1rem;
-}
-
-.ps-card .arrow {
-	font-size: 2rem;
-}
-.ps-card .arrow-container {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-}
-
 .ps-card-footer {
+	display: flex;
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	text-align: center;
+	flex-direction: column;
 }
 
 .ps-card-footer p {

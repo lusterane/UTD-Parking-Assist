@@ -1,0 +1,32 @@
+.sub-text {
+	margin-bottom: 0;
+	font-size: 1rem;
+}
+
+.main-text {
+	margin-bottom: 0;
+	font-size: 2.25rem;
+	font-weight: 350;
+	text-align: center;
+}
+
+
+.ps-card-body .text {
+	display: flex;
+	user-select: none;
+	position: relative;
+	z-index: -2;
+	height: 100%;
+	width: 100%;
+	padding: 6rem 0 6rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.ps-card-body .main-text {
+	margin-bottom: 0;
+	font-size: 2.25rem;
+	font-weight: 350;
+	text-align: center;
+}

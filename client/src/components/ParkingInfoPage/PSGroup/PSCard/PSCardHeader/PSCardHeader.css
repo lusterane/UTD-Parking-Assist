@@ -1,0 +1,9 @@
+.best-choice {
+	border: 2px solid var(--gold) !important;
+	box-shadow: 0px 0px 15px 5px rgba(249, 201, 56, 0.2) !important;
+}
+
+.ps-card-header-container {
+	font-size: .9rem;
+	height: 1rem !important;
+}

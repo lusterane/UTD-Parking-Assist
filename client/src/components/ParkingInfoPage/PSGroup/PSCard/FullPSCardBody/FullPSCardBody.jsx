@@ -10,7 +10,7 @@ class FullPSCardBody extends Component {
 					<div className="ps-card-body">
 						<div className="text">
 							<p className="main-text">FULL</p>
-							<p className="sub-text">No available parking spots at this time</p>
+							<p className="full-sub-text">Sorry, all the parking spots are taken!</p>
 						</div>
 					</div>
 					<div className="ps-card-footer">
