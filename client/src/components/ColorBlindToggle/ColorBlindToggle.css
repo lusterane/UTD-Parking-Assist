@@ -2,14 +2,15 @@
 	display: flex;
 	position: fixed;
 	z-index: 100;
-	top: 1%;
-	right: 1%;
-	margin-right: 0.25rem;
-	padding: 0.4rem;
+	top: .5rem;
+	right: 1rem;
+	justify-content: center;
+	align-items: center;
+	padding:0.1rem 0.3rem;
 }
 
 .icon {
-	color: white
+	color: white;
 }
 
 .dark-icon-border {
