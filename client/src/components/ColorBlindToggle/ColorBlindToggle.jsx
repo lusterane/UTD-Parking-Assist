@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Tooltip } from 'reactstrap';
 import './ColorBlindToggle.css';
 
 function ColorBlindToggle({ onToggleColorBlindMode }) {
 	const [colorBlindMode, setColorBlindMode] = useState(
 		localStorage.getItem('color-blind-status') === 'true'
 	);
-	const [colorBlindTooltipOpen, setColorBlindTooltipOpen] = useState(false);
 
 	const handleToggleColorBlindMode = () => {
 		const newColorBlindMode = !colorBlindMode;
@@ -25,14 +23,6 @@ function ColorBlindToggle({ onToggleColorBlindMode }) {
 					<i className="fas fa-eye fa-lg"></i>
 				)}
 			</div>
-			<Tooltip
-				placement="bottom"
-				isOpen={colorBlindTooltipOpen}
-				target="color-blind"
-				toggle={() => setColorBlindTooltipOpen(!colorBlindTooltipOpen)}
-			>
-				{colorBlindMode ? 'Turn OFF' : 'Turn ON'} <br /> {'Colorblind'}
-			</Tooltip>
 		</div>
 	);
 }

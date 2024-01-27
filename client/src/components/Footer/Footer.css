@@ -5,8 +5,9 @@
 .footer-container {
 	position: relative;
 	width: 100%;
-	font-size: 0.8rem;
+	font-size: 0.65rem;
 	padding-bottom:1rem;
+	padding: 0 3rem 1rem 3rem;
 	text-align: center;
 	height: 100%;
 }
