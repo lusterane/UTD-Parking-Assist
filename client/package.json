@@ -23,7 +23,7 @@
 	"scripts": {
 		"predeploy": "npm run build utd-parking-assist",
 		"deploy": "gh-pages -d build",
-		"start": "export REACT_APP_API_ENDPOINT=https://utd-parking-assist.vercel.app/ && react-scripts start",
+		"start": "export REACT_APP_API_ENDPOINT=https://utd-parking.herokuapp.com/ && react-scripts start",
 		"dev": "export REACT_APP_API_ENDPOINT=http://localhost:80/ && react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
