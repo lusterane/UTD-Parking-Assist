@@ -212,7 +212,6 @@ class ParkingInfo extends Component {
 								</div>
 								<div className="parking-data">
 									<ParkingStructureGroup
-										color={color}
 										structures={structures}
 										timeUpdated={timeUpdated}
 									/>

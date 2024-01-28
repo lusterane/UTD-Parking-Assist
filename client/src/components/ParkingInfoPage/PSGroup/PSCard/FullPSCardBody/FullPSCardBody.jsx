@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
 import './FullPSCardBody.css';
 class FullPSCardBody extends Component {
 	state = {};

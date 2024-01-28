@@ -42,18 +42,17 @@ const PSGroup = (props) => {
 	};
 
 	const { ps1, ps3, ps4 } = props.structures;
-	const { color } = props;
 
 	const ps1DataArr = getSortedDataArr(ps1.dataArr);
 	const ps3DataArr = getSortedDataArr(ps3.dataArr);
 	const ps4DataArr = getSortedDataArr(ps4.dataArr);
-	
+
 	return (
 		<React.Fragment>
 			<div className="card-group-container">
-				<PSCard dataArr={ps1DataArr} timeUpdated={props.timeUpdated} structure={'PS1'} />
-				<PSCard dataArr={ps3DataArr} timeUpdated={props.timeUpdated} structure={'PS3'} />
 				<PSCard dataArr={ps4DataArr} timeUpdated={props.timeUpdated} structure={'PS4'} />
+				<PSCard dataArr={ps3DataArr} timeUpdated={props.timeUpdated} structure={'PS3'} />
+				<PSCard dataArr={ps1DataArr} timeUpdated={props.timeUpdated} structure={'PS1'} />
 			</div>
 		</React.Fragment>
 	);
