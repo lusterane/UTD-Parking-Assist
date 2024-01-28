@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import './ParkingGarageButton.css';
 
 const ParkingGarageButton = (props) => {
-	const { color, name, structure } = props;
+	const { disabled, color, name, structure } = props;
 
 	const getParkingStructureLink = (structure) => {
 		if (structure === 'PS1') {
@@ -18,24 +18,43 @@ const ParkingGarageButton = (props) => {
 
 	return (
 		<React.Fragment>
-			<div className="parking-button-container">
-				<a
-					rel="noopener noreferrer"
-					target="_blank"
-					href={getParkingStructureLink(structure)}
-					className="button-map-link"
-				>
-					<Button
-						color="secondary"
-						className={`${color}-button parking-garage-button round-corners pointer button-shadow-${color} border-${color}`}
-					>
-						<div>
-							<i className="fas fa-location-pin fa-lg"></i>
-							<i className="fas fa-map-marked-alt fa-lg"></i> {name}
-						</div>
-					</Button>
-				</a>
-			</div>
+			{disabled ? (
+				<React.Fragment>
+					<div className="parking-button-container">
+						<Button
+							color="secondary"
+							className={`disabled parking-garage-button round-corners`}
+							disabled
+						>
+							<div>
+								<i className="fas fa-location-pin fa-lg"></i>
+								<i className="fas fa-map-marked-alt fa-lg"></i> {name}
+							</div>
+						</Button>
+					</div>
+				</React.Fragment>
+			) : (
+				<React.Fragment>
+					<div className="parking-button-container">
+						<a
+							rel="noopener noreferrer"
+							target="_blank"
+							href={getParkingStructureLink(structure)}
+							className="button-map-link"
+						>
+							<Button
+								color="secondary"
+								className={`${color}-button parking-garage-button round-corners pointer button-shadow-${color} border-${color}`}
+							>
+								<div>
+									<i className="fas fa-location-pin fa-lg"></i>
+									<i className="fas fa-map-marked-alt fa-lg"></i> {name}
+								</div>
+							</Button>
+						</a>
+					</div>
+				</React.Fragment>
+			)}
 		</React.Fragment>
 	);
 };

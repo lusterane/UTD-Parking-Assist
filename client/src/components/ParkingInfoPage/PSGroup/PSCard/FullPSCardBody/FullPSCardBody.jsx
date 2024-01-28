@@ -6,18 +6,10 @@ class FullPSCardBody extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Card.Body>
-					<div className="ps-card-body">
-						<div className="text">
-							<p className="main-text">FULL</p>
-							<p className="full-sub-text">Sorry, all the parking spots are taken!</p>
-						</div>
-					</div>
-					<div className="ps-card-footer">
-						<hr className="white-hr"></hr>
-						<p>{this.props.structure}</p>
-					</div>
-				</Card.Body>
+				<div className="full-text-container">
+					<p className="full-title">FULL</p>
+					<p className="full-subtext">Sorry, this parking garage is unavailable!</p>
+				</div>
 			</React.Fragment>
 		);
 	}

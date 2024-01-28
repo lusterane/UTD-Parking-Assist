@@ -1,8 +1,12 @@
 import React from 'react';
 import './PSCardHeader.css';
 
-function PSCardHeader({ color, index }) {
-	const getHeader = (color, index) => {
+function PSCardHeader({ dataEmpty, color, index }) {
+	const getHeader = (dataEmpty, color, index) => {
+		if (dataEmpty) {
+			return '';
+		}
+
 		if (color === 'payBySpace') {
 			return (
 				<span>
@@ -23,7 +27,7 @@ function PSCardHeader({ color, index }) {
 		return '';
 	};
 
-	return <div className="ps-card-header-container">{getHeader(color, index)}</div>;
+	return <div className="ps-card-header-container">{getHeader(dataEmpty, color, index)}</div>;
 }
 
 export default PSCardHeader;

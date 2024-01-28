@@ -5,6 +5,11 @@
 	}
 }
 
+.disabled {
+	background-color: rgb(105, 104, 104) !important;
+	pointer-events: none;
+}
+
 .parking-garage-button {
 	z-index: 999;
 	height: 4rem;

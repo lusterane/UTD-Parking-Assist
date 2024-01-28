@@ -7,7 +7,7 @@ import '../../../../styles/shared/Colors.css';
 import ParkingGarageButton from './ParkingGarageButton/ParkingGarageButton.jsx';
 import Time from '../../Time/Time.jsx';
 import PSCardHeader from './PSCardHeader/PSCardHeader.jsx';
-import PSCardBody from './FullPSCardBody/PSCardBody/PSCardBody.jsx';
+import PSCardBody from './PSCardBody/PSCardBody.jsx';
 
 const PSCard = (props) => {
 	const [index, setIndex] = useState(0);
@@ -57,7 +57,17 @@ const PSCard = (props) => {
 	};
 
 	const bestChoiceClassName = () => {
+		if (props.dataArr.length === 0) {
+			return '';
+		}
 		return index === 0 ? 'best-choice' : '';
+	};
+
+	const dataEmpty = () => {
+		if (props.dataArr.length === 0) {
+			return true;
+		}
+		return false;
 	};
 
 	const { spots, color, level } = currentPermit;
@@ -67,66 +77,70 @@ const PSCard = (props) => {
 			<Card
 				className={`ps-card round-corners dark-mode-off-hue-dark ${bestChoiceClassName()}`}
 			>
-				{props.dataArr.length !== 0 ? (
-					<Card.Body>
-						<PSCardHeader color={color} index={index} />
-						<div className="card-content">
-							<div className="ps-card-body">
-								{index !== 0 ? (
-									<div>
-										<div
-											onClick={handleDecrementUpdate}
-											className="left-clickable pointer"
-										></div>
-										<div className="arrow-container">
-											<i className="arrow fas fa-caret-left"></i>
+				<Card.Body>
+					<PSCardHeader color={color} dataEmpty={dataEmpty()} index={index} />
+					<div className="card-content">
+						<div className="ps-card-body">
+							{props.dataArr.length === 0 ? (
+								<FullPSCardBody structure={getFullGarageName(props.structure)} />
+							) : (
+								<React.Fragment>
+									{index !== 0 ? (
+										<div>
+											<div
+												onClick={handleDecrementUpdate}
+												className="left-clickable pointer"
+											></div>
+											<div className="arrow-container">
+												<i className="arrow fas fa-caret-left"></i>
+											</div>
 										</div>
-									</div>
-								) : (
-									<div>
-										<div className="arrow-container">
-											<i className="grey-arrow arrow fas fa-caret-left"></i>
+									) : (
+										<div>
+											<div className="arrow-container">
+												<i className="grey-arrow arrow fas fa-caret-left"></i>
+											</div>
 										</div>
-									</div>
-								)}
-								<PSCardBody
-									spots={spots}
-									level={level}
-									color={color}
-									colorBlindMode={colorBlindMode}
-								/>
+									)}
 
-								{index !== props.dataArr.length - 1 ? (
-									<div>
-										<div
-											className="right-clickable pointer"
-											onClick={handleIncrementUpdate}
-										></div>
-										<div className="arrow-container">
-											<i className="arrow fas fa-caret-right"></i>
+									<PSCardBody
+										spots={spots}
+										level={level}
+										color={color}
+										colorBlindMode={colorBlindMode}
+									/>
+
+									{index !== props.dataArr.length - 1 ? (
+										<div>
+											<div
+												className="right-clickable pointer"
+												onClick={handleIncrementUpdate}
+											></div>
+											<div className="arrow-container">
+												<i className="arrow fas fa-caret-right"></i>
+											</div>
 										</div>
-									</div>
-								) : (
-									<div>
-										<div className="arrow-container">
-											<i className="grey-arrow arrow fas fa-caret-right"></i>
+									) : (
+										<div>
+											<div className="arrow-container">
+												<i className="grey-arrow arrow fas fa-caret-right"></i>
+											</div>
 										</div>
-									</div>
-								)}
-							</div>
+									)}
+								</React.Fragment>
+							)}
 						</div>
-						<div className="ps-card-footer">
-							<ParkingGarageButton
-								name={getFullGarageName(props.structure)}
-								color={color}
-								structure={props.structure}
-							/>
-							<Time timeUpdated={props.timeUpdated} />
-						</div>
-					</Card.Body>
-				) : (
-					<FullPSCardBody structure={getFullGarageName(props.structure)} />
-				)}
+					</div>
+					<div className="ps-card-footer">
+						<ParkingGarageButton
+							disabled={dataEmpty()}
+							name={getFullGarageName(props.structure)}
+							color={color}
+							structure={props.structure}
+						/>
+						<Time timeUpdated={props.timeUpdated} />
+					</div>
+				</Card.Body>
 			</Card>
 		</React.Fragment>
 	);

@@ -1,4 +1,16 @@
-.full-sub-text {
-    margin-top:3rem;
+.full-title {
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+.full-subtext {
     text-align: center;
+}
+
+.full-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
