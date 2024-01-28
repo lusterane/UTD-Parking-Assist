@@ -34,6 +34,19 @@ function Home(props) {
 					</div>
 					<div className="color-option-container">
 						<ColorOption
+							color="payBySpace"
+							colorBlindMode={props.colorBlindMode}
+							onClick={() => {
+								handleModalShow(props.color);
+							}}
+							handleMouseOver={props.changeColor}
+							handleMouseLeave={() => {
+								if (!showModal) {
+									props.changeColorDefault();
+								}
+							}}
+						/>
+						<ColorOption
 							color="gold"
 							colorBlindMode={props.colorBlindMode}
 							onClick={() => {
@@ -61,19 +74,6 @@ function Home(props) {
 						/>
 						<ColorOption
 							color="purple"
-							colorBlindMode={props.colorBlindMode}
-							onClick={() => {
-								handleModalShow(props.color);
-							}}
-							handleMouseOver={props.changeColor}
-							handleMouseLeave={() => {
-								if (!showModal) {
-									props.changeColorDefault();
-								}
-							}}
-						/>
-						<ColorOption
-							color="payBySpace"
 							colorBlindMode={props.colorBlindMode}
 							onClick={() => {
 								handleModalShow(props.color);
