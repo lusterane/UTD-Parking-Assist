@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import ReactGA from 'react-ga4';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -7,6 +8,8 @@ import * as serviceWorker from './serviceWorker';
 import App from './App.js';
 import ParticlesComponent from './ParticlesComponent.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+ReactGA.initialize('G-S5M5CEPJMM', { debug: true });
 
 root.render(
 	<React.Fragment>

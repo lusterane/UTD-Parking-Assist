@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactGA from 'react-ga4';
 
 import ParkingStructureGroup from './PSGroup/PSGroup';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
@@ -38,6 +39,12 @@ class ParkingInfo extends Component {
 	};
 
 	componentDidMount() {
+		ReactGA.send({
+			hitType: 'pageview',
+			page: window.location.pathname + window.location.search,
+			title: 'ParkingInfoPage',
+		});
+
 		window.scrollTo(0, 0);
 
 		const data = localStorage.getItem('color');
