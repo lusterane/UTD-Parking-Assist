@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga4';
+
 import './ColorBlindToggle.css';
 
 function ColorBlindToggle({ onToggleColorBlindMode }) {
@@ -7,6 +9,12 @@ function ColorBlindToggle({ onToggleColorBlindMode }) {
 	);
 
 	const handleToggleColorBlindMode = () => {
+		ReactGA.event({
+			category: 'button_press',
+			action: 'toggle_color_blind',
+			label: 'set color blind to ' + !colorBlindMode,
+		});
+
 		const newColorBlindMode = !colorBlindMode;
 		setColorBlindMode(newColorBlindMode);
 		localStorage.setItem('color-blind-status', newColorBlindMode);

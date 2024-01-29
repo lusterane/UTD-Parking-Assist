@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import ReactGA from 'react-ga4';
+
 import './ParkingGarageButton.css';
 
 const ParkingGarageButton = (props) => {
@@ -14,6 +16,14 @@ const ParkingGarageButton = (props) => {
 			// 'ps4
 			return 'https://maps.app.goo.gl/ezUohyTSyzmRHJN48';
 		}
+	};
+
+	const handleButtonClick = () => {
+		ReactGA.event({
+			category: 'button_press',
+			action: 'navigate_map',
+			label: 'navigated to ' + structure + "'s map",
+		});
 	};
 
 	return (
@@ -43,6 +53,7 @@ const ParkingGarageButton = (props) => {
 							className="button-map-link"
 						>
 							<Button
+								onClick={handleButtonClick}
 								color="secondary"
 								className={`${color}-button parking-garage-button round-corners pointer button-shadow-${color} border-${color}`}
 							>

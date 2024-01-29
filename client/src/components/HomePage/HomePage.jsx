@@ -25,6 +25,12 @@ function Home(props) {
 	};
 
 	const handleModalConfirm = () => {
+		ReactGA.event({
+			category: 'button_press',
+			action: 'permit_chosen',
+			label: 'chose ' + props.color,
+		});
+
 		localStorage.setItem('color', props.color);
 		setShowModal(false);
 	};
