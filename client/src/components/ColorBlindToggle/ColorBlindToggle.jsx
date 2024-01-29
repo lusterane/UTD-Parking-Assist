@@ -19,7 +19,7 @@ function ColorBlindToggle({ onToggleColorBlindMode }) {
 			className="icons-container dark-icon-border pointer round-corners"
 			onClick={handleToggleColorBlindMode}
 		>
-			<div id="color-blind" className="icon ">
+			<div id="color-blind" className="eye-icon">
 				{colorBlindMode ? (
 					<i className="fas fa-low-vision"></i>
 				) : (
