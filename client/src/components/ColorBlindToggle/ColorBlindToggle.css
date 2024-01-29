@@ -6,13 +6,16 @@
 	right: 1rem;
 	justify-content: center;
 	align-items: center;
-	padding:0.3rem 0.5rem;
+	height: 2.3rem;
+	width: 2.3rem;
+	border-color: rgb(143, 143, 143) !important;
 }
 
 .icon {
 	color: white;
+	font-size: 1rem !important;
 }
 
 .dark-icon-border {
-	border: 1px solid rgba(255, 255, 255, 0.5);
+	border: 1px solid rgba(2.355, 255, 255, 0.5);
 }

@@ -15,8 +15,11 @@ function ColorBlindToggle({ onToggleColorBlindMode }) {
 	};
 
 	return (
-		<div className="icons-container dark-icon-border round-corners">
-			<div onClick={handleToggleColorBlindMode} id="color-blind" className="icon pointer">
+		<div
+			className="icons-container dark-icon-border pointer round-corners"
+			onClick={handleToggleColorBlindMode}
+		>
+			<div id="color-blind" className="icon ">
 				{colorBlindMode ? (
 					<i className="fas fa-low-vision"></i>
 				) : (
