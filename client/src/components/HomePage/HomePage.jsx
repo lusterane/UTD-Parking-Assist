@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
-import Footer from '../Footer/Footer';
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
 
 function Home(props) {
 	const [showModal, setShowModal] = useState(false);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	// maintain modal
 	const handleModalClose = () => {

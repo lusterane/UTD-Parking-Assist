@@ -38,6 +38,8 @@ class ParkingInfo extends Component {
 	};
 
 	componentDidMount() {
+		window.scrollTo(0, 0);
+
 		const data = localStorage.getItem('color');
 		if (data) {
 			this.setState({ color: data });
