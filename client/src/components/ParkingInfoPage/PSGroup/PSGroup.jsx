@@ -37,10 +37,6 @@ const PSGroup = (props) => {
 		return sortedDataArr;
 	};
 
-	const fillEmptyCards = (color, dataArr) => {
-		// if (dataArr.length == 1)
-	};
-
 	const { ps1, ps3, ps4 } = props.structures;
 
 	const ps1DataArr = getSortedDataArr(ps1.dataArr);

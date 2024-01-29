@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
+
 import HomePage from './components/HomePage/HomePage';
 import ParkingInfoPage from './components/ParkingInfoPage/ParkingInfoPage';
 import ColorBlindToggle from './components/ColorBlindToggle/ColorBlindToggle';

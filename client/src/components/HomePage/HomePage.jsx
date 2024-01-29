@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga4';
+
 import ColorOption from './ColorOption/ColorOption';
 import ConfirmModal from './ConfirmModal/ConfirmModal';
 import './HomePageStyle.css';
 import '../../styles/shared/Colors.css';
 
 function Home(props) {
+	ReactGA.initialize('G-S5M5CEPJMM');
+	ReactGA.send({ hitType: 'pageview', page: '/', title: 'HomePage' });
+
 	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
