@@ -19,11 +19,11 @@ function PSCardBody({ spots, level, color, colorBlindMode }) {
 	};
 
 	return (
-		<div className="text">
-			<p className="main-text">
+		<div className="ps-card-body-container">
+			<p className="body-main-text">
 				<span className={`${color}-text`}>{spots}</span> SPACES
 			</p>
-			<p className="sub-text">Level {level}</p>
+			<p className="body-sub-text">Level {level}</p>
 			{renderColorBlindModeText()}
 		</div>
 	);

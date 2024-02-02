@@ -78,7 +78,7 @@ const PSCard = (props) => {
 				className={`ps-card round-corners dark-mode-off-hue-dark ${bestChoiceClassName()}`}
 			>
 				<Card.Body>
-					<PSCardHeader color={color} dataEmpty={dataEmpty()} index={index} />
+					<PSCardHeader color={color} garage={getFullGarageName(props.structure)} />
 					<div className="card-content">
 						<div className="ps-card-body">
 							{props.dataArr.length === 0 ? (
@@ -133,6 +133,7 @@ const PSCard = (props) => {
 					</div>
 					<div className="ps-card-footer">
 						<ParkingGarageButton
+							index={index}
 							disabled={dataEmpty()}
 							name={getFullGarageName(props.structure)}
 							color={color}

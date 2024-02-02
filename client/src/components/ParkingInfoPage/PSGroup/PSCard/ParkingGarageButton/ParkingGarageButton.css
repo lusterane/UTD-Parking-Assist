@@ -5,6 +5,23 @@
 	}
 }
 
+.message-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+	font-size: .9rem;
+	height: 1rem !important;
+}
+
+.best-choice-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	align-items: center;
+	gap:0.3rem;
+}
+
+
 .disabled {
 	background-color: rgb(105, 104, 104) !important;
 	pointer-events: none;
@@ -24,8 +41,6 @@
 
 .parking-button-container {
 	display: flex;
-	justify-content: center;
-	margin-bottom: 1rem;
 	width: 100%;
 }
 

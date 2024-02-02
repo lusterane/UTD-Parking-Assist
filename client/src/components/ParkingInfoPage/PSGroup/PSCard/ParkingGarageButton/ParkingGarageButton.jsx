@@ -5,7 +5,32 @@ import ReactGA from 'react-ga4';
 import './ParkingGarageButton.css';
 
 const ParkingGarageButton = (props) => {
-	const { disabled, color, name, structure } = props;
+	const { disabled, index, color, name, structure } = props;
+
+	const getMessage = () => {
+		if (disabled) {
+			return '';
+		}
+		if (color === 'payBySpace') {
+			return (
+				<span>
+					<i className="fas fa-info-circle"></i>
+					<span> This option is Pay By Space</span>
+				</span>
+			);
+		}
+		// show best choice text
+		if (index === 0) {
+			return (
+				<span className="gold best-choice-container">
+					<i className="fas fa-star"></i>
+					<span>BEST CHOICE</span>
+				</span>
+			);
+		}
+
+		return '';
+	};
 
 	const getParkingStructureLink = (structure) => {
 		if (structure === 'PS1') {
@@ -28,6 +53,7 @@ const ParkingGarageButton = (props) => {
 
 	return (
 		<React.Fragment>
+			<div className="message-container">{getMessage()}</div>
 			{disabled ? (
 				<React.Fragment>
 					<div className="parking-button-container">
@@ -37,7 +63,6 @@ const ParkingGarageButton = (props) => {
 							disabled
 						>
 							<div>
-								<i className="fas fa-location-pin fa-lg"></i>
 								<i className="fas fa-map-marked-alt fa-lg"></i> {name}
 							</div>
 						</Button>
@@ -58,8 +83,7 @@ const ParkingGarageButton = (props) => {
 								className={`${color}-button parking-garage-button round-corners pointer button-shadow-${color} border-${color}`}
 							>
 								<div>
-									<i className="fas fa-location-pin fa-lg"></i>
-									<i className="fas fa-map-marked-alt fa-lg"></i> {name}
+									<i className="fas fa-map-marked-alt fa-lg"></i> PARK HERE!
 								</div>
 							</Button>
 						</a>

@@ -1,31 +1,18 @@
-.sub-text {
+.ps-card-body-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.body-main-text {
+	font-size: 2.25rem;
+	font-weight: 350;
+	margin-bottom: 0;
+}
+
+.body-sub-text {
 	margin-bottom: 0;
 	font-size: 1rem;
-}
-
-.main-text {
-	margin-bottom: 0;
-	font-size: 2.25rem;
-	font-weight: 350;
-	text-align: center;
-}
-
-
-.ps-card-body .text {
-	display: flex;
-	user-select: none;
-	position: relative;
-	z-index: -2;
-	height: 100%;
-	width: 100%;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.ps-card-body .main-text {
-	margin-bottom: 0;
-	font-size: 2.25rem;
-	font-weight: 350;
-	text-align: center;
 }

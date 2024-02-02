@@ -5,7 +5,7 @@ Description: Main method for testing Crawler
 from Crawl_Parking_Structures import CrawlRoot
 from MongoDbConnection import MongoDbConnection
 
-DEBUG_MODE = False
+DEBUG_MODE = True
 
 # integration with Google Cloud Function
 def CloudFunction(request):
