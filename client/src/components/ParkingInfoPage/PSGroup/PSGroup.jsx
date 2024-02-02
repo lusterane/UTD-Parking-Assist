@@ -46,7 +46,7 @@ const PSGroup = (props) => {
 	return (
 		<React.Fragment>
 			<div className="card-group-container">
-				<PSCard dataArr={[]} timeUpdated={props.timeUpdated} structure={'PS4'} />
+				<PSCard dataArr={ps4DataArr} timeUpdated={props.timeUpdated} structure={'PS4'} />
 				<PSCard dataArr={ps3DataArr} timeUpdated={props.timeUpdated} structure={'PS3'} />
 				<PSCard dataArr={ps1DataArr} timeUpdated={props.timeUpdated} structure={'PS1'} />
 			</div>
