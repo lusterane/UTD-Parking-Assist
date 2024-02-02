@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('/parkingStructures', parkingStructuresRoute);
+app.use('/', parkingStructuresRoute);
 
 // error handling
 

@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const ParkingStructure = require('../models/parkingStructureModels');
+
+exports.root = (req, res, next) => {
+	res.status(200).json({ message: '🚀 Working!' });
+};
+
 exports.getAllParkingStructures = (req, res, next) => {
 	ParkingStructure.find()
 		.exec()
