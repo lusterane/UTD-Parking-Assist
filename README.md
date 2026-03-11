@@ -1,4 +1,6 @@
-⚠️ Project Discontinued: Due to rising cloud hosting and infrastructure costs, this project is no longer actively maintained. Thank you to everyone who used and supported UTD Parking Assist!
+⚠️ Project Discontinued: Infra costs were too expensive. Thank you to everyone who used and supported UTD Parking Assist!
+
+[▶️ Demo Video!](https://youtu.be/ToogWrmem8k)
 
 # UTD-Parking-Assist [![Node.js CI/CD](https://github.com/lusterane/UTD-Parking-Assist/actions/workflows/nodejs.yml/badge.svg)](https://github.com/lusterane/UTD-Parking-Assist/actions/workflows/nodejs.yml)
 
